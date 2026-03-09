@@ -1,15 +1,8 @@
 'use client';
 
-import React from 'react';
-import { useI18n } from 'next-localization';
-import {
-  ImageField,
-  NextImage as ContentSdkImage,
-  withDatasourceCheck,
-} from '@sitecore-content-sdk/nextjs';
+import React, { useRef, useState } from 'react';
+import { ImageField, withDatasourceCheck } from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from '@/lib/component-props';
-import BlobAccent from '@/assets/shapes/BlobAccent';
-import HeroClip from '@/assets/shapes/HeroClip';
 
 interface Fields {
   Image: ImageField;
@@ -19,84 +12,64 @@ interface HeroBannerProps extends ComponentProps {
   fields: Fields;
 }
 
+const HERO_VIDEO_URL =
+  'https://videos.pexels.com/video-files/8731414/8731414-hd_1920_1080_25fps.mp4';
+const HERO_POSTER_URL =
+  'https://images.pexels.com/photos/4427430/pexels-photo-4427430.jpeg?auto=compress&cs=tinysrgb&w=2400&h=1200&dpr=2';
 export const DefaultHeroBanner = (props: HeroBannerProps) => {
   const id = props.params.RenderingIdentifier;
-  const { t } = useI18n();
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const togglePlayback = () => {
+    const video = videoRef.current;
+    if (!video) {
+      return;
+    }
+
+    if (video.paused) {
+      void video.play();
+      setIsPaused(false);
+    } else {
+      video.pause();
+      setIsPaused(true);
+    }
+  };
 
   return (
-    <section className={`relative pb-12 ${props?.params?.styles}`} id={id || undefined}>
-      <div className="relative">
-        <div className="absolute inset-0 z-0 mask-[var(--background-image-hero-clip)] mask-cover">
-          <ContentSdkImage field={props.fields.Image} className="h-full w-full object-cover" />
-        </div>
-        <HeroClip />
-        <BlobAccent className="absolute bottom-14 left-0 z-1 lg:left-4" />
-        <div className="pointer-events-none relative z-10 container flex min-h-[80vh] flex-col">
-          <div className="mt-auto flex items-end justify-end">
-            <div className="pointer-events-auto relative flex basis-full items-end justify-center pt-14 lg:basis-1/2">
-              <BlobAccent
-                size="full"
-                fill="solid"
-                colorScheme="secondary"
-                mirrored
-                className="relative z-1"
-              />
-              <BlobAccent
-                size="lg"
-                className="absolute top-0 left-1/2 z-2 !max-w-3/5 -translate-x-1/2"
-              />
-              <BlobAccent
-                shape="circle"
-                size="sm"
-                fill="solid"
-                colorScheme="tertiary"
-                className="absolute -bottom-12 left-1/2 z-2 -translate-x-1/2"
-              />
-              <BlobAccent
-                shape="circle"
-                size="sm"
-                className="absolute top-4 right-4 z-0 lg:right-16"
-              />
-              <div className="absolute top-1/2 left-1/2 z-3 w-3/4 -translate-x-1/2 -translate-y-1/2 sm:w-2/3 xl:w-1/2">
-                <form action="" className="mt-12 flex flex-col gap-4 md:ml-12">
-                  <input
-                    type="text"
-                    name="your-name"
-                    id="your-name"
-                    placeholder={t('your_name') || 'Your Name'}
-                    className="form-input"
-                  />
-                  <input
-                    type="email"
-                    name="your-email"
-                    id="your-email"
-                    placeholder={t('your_email') || 'Your Email'}
-                    className="form-input"
-                  />
-                  <input
-                    type="text"
-                    name="select-attorney"
-                    id="select-attorney"
-                    placeholder={t('select_attorney') || 'Select an Attorney'}
-                    className="form-input"
-                  />
-                  <input
-                    type="text"
-                    name="select-date"
-                    id="select-date"
-                    placeholder={t('select_date') || 'Select a Date'}
-                    className="form-input"
-                  />
+    <section className={`relative overflow-hidden ${props?.params?.styles}`} id={id || undefined}>
+      <div className="absolute inset-0 z-0">
+        <video
+          ref={videoRef}
+          className="h-full min-h-[68vh] w-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster={HERO_POSTER_URL}
+        >
+          <source src={HERO_VIDEO_URL} type="video/mp4" />
+        </video>
+        <div className="from-background/90 via-background/45 to-background/65 dark:from-background-dark/90 dark:via-background-dark/55 dark:to-background-dark/70 absolute inset-0 bg-gradient-to-r" />
+      </div>
 
-                  <input
-                    type="submit"
-                    value={t('make_appointment') || 'Make an appointment'}
-                    className="btn self-center"
-                  />
-                </form>
-              </div>
-            </div>
-          </div>
+      <div className="relative z-10 container py-8 lg:py-12">
+        <div className="max-w-4xl space-y-6 pt-8 pb-16 lg:pt-12 lg:pb-24">
+          <h1 className="text-background dark:text-background-dark font-heading text-5xl leading-[0.96] tracking-[-0.02em] md:text-6xl lg:text-7xl">
+            <span className="block">Innovation,</span>
+            <span className="block">Sector Leadership</span>
+          </h1>
+          <p className="text-background/85 dark:text-background-dark/80 max-w-2xl text-lg leading-relaxed">
+            Practical legal counsel for ambitious teams building, scaling, and navigating
+            high-stakes decisions.
+          </p>
+          <button
+            type="button"
+            onClick={togglePlayback}
+            className="border-background/70 text-background dark:border-background-dark/70 dark:text-background-dark hover:bg-background hover:text-foreground dark:hover:bg-background-dark dark:hover:text-foreground-dark rounded-full border px-5 py-2 text-sm font-semibold transition"
+          >
+            {isPaused ? 'Play video' : 'Pause video'}
+          </button>
         </div>
       </div>
     </section>

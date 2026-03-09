@@ -1,21 +1,14 @@
 import { ComponentProps } from '@/lib/component-props';
-import {
-  ImageField,
-  LinkField,
-  NextImage as ContentSdkImage,
-  Link as ContentSdkLink,
-  Placeholder,
-  withDatasourceCheck,
-} from '@sitecore-content-sdk/nextjs';
+import { ImageField, Placeholder, withDatasourceCheck } from '@sitecore-content-sdk/nextjs';
 import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+import Image from 'next/image';
+
+const ORRICK_LOGO_URL =
+  'https://upload.wikimedia.org/wikipedia/commons/1/19/Orrick_Herrington_%26_Sutcliffe_logo.svg';
 
 interface Fields {
   LogoLight: ImageField;
   LogoDark: ImageField;
-  PhoneLink: LinkField;
-  MailLink: LinkField;
 }
 
 interface HeaderProps extends ComponentProps {
@@ -33,18 +26,12 @@ export const DefaultHeaderExtended = (props: HeaderProps) => {
       <div className="container flex items-center gap-2 lg:gap-4">
         <div className="mr-auto max-w-50">
           <Link href={'/'}>
-            <ContentSdkImage
-              field={props.fields.LogoLight}
-              width={345}
-              height={45}
-              className="dark:hidden"
-              priority
-            />
-            <ContentSdkImage
-              field={props.fields.LogoDark}
-              width={345}
-              height={45}
-              className="hidden dark:block"
+            <Image
+              src={ORRICK_LOGO_URL}
+              alt="Orrick"
+              width={300}
+              height={169}
+              className="h-auto w-full max-w-[220px]"
               priority
             />
           </Link>
@@ -54,26 +41,6 @@ export const DefaultHeaderExtended = (props: HeaderProps) => {
             name={`header-extended-nav-${props?.params?.DynamicPlaceholderId}`}
             rendering={props.rendering}
           />
-        </div>
-        <div className="mx-2 lg:mx-0">
-          <Placeholder
-            name={`header-extended-theme-switcher-${props?.params?.DynamicPlaceholderId}`}
-            rendering={props.rendering}
-          />
-        </div>
-        <div className="flex items-center gap-2">
-          <ContentSdkLink
-            field={props.fields.MailLink}
-            className="flex h-6 w-6 items-center justify-center"
-          >
-            <FontAwesomeIcon icon={faEnvelope} width={16} height={16} />
-          </ContentSdkLink>
-          <ContentSdkLink
-            field={props.fields.PhoneLink}
-            className="flex h-6 w-6 items-center justify-center"
-          >
-            <FontAwesomeIcon icon={faPhone} width={14} height={14} />
-          </ContentSdkLink>
         </div>
       </div>
     </section>

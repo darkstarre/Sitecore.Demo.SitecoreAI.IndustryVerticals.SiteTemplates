@@ -28,16 +28,86 @@ type NavigationProps = {
   fields: Record<string, NavItemFields>;
 };
 
+const getFieldLabel = (item: NavItemFields): string =>
+  (
+    item.NavigationTitle?.value?.toString() ||
+    item.Title?.value?.toString() ||
+    item.DisplayName ||
+    ''
+  ).trim();
+
+const createTechStudioItem = (): NavItemFields => ({
+  Id: 'tech-studio-nav-item',
+  DisplayName: 'Tech Studio',
+  Title: { value: 'Tech Studio' } as TextField,
+  NavigationTitle: { value: 'Tech Studio' } as TextField,
+  Href: '/Tech-Studio',
+  Querystring: '',
+  Styles: ['level1', 'item-tech-studio'],
+});
+
+const withProminentTechStudio = (
+  fields: Record<string, NavItemFields>
+): Record<string, NavItemFields> => {
+  const entries = Object.entries(fields);
+  const next: Record<string, NavItemFields> = {};
+
+  entries.forEach(([key, item]) => {
+    if (!item) {
+      return;
+    }
+
+    if (item.Styles?.includes('level0') && item.Children?.length) {
+      const hasTechStudio = item.Children.some((child) =>
+        getFieldLabel(child).toLowerCase().includes('tech studio')
+      );
+      next[key] = hasTechStudio
+        ? {
+            ...item,
+            Children: [
+              ...item.Children.filter(
+                (child) => !getFieldLabel(child).toLowerCase().includes('tech studio')
+              ),
+              item.Children.find((child) =>
+                getFieldLabel(child).toLowerCase().includes('tech studio')
+              )!,
+            ],
+          }
+        : {
+            ...item,
+            Children: [...item.Children, createTechStudioItem()],
+          };
+      return;
+    }
+
+    next[key] = item;
+  });
+
+  const hasTechStudioTopLevel = Object.values(next).some((item) =>
+    getFieldLabel(item).toLowerCase().includes('tech studio')
+  );
+
+  if (
+    !hasTechStudioTopLevel &&
+    !Object.values(next).some((item) => item.Styles?.includes('level0'))
+  ) {
+    next.techStudio = createTechStudioItem();
+  }
+
+  return next;
+};
+
 export const Default = (props: NavigationProps) => {
   const [isOpenMenu, openMenu] = useState(false);
   const { page } = useSitecore();
+  const normalizedFields = withProminentTechStudio(props.fields);
   const styles =
     props.params != null
       ? `${props.params.GridParameters ?? ''} ${props?.params?.Styles ?? ''}`.trimEnd()
       : '';
   const id = props.params != null ? props.params.RenderingIdentifier : null;
 
-  if (!Object.values(props.fields).length) {
+  if (!Object.values(normalizedFields).length) {
     return (
       <div className={`component navigation ${styles}`} id={id ? id : undefined}>
         <div className="component-content">[Navigation]</div>
@@ -57,7 +127,7 @@ export const Default = (props: NavigationProps) => {
     openMenu(!isOpenMenu);
   };
 
-  const list = Object.values(props.fields)
+  const list = Object.values(normalizedFields)
     .filter((element) => element)
     .map((element: NavItemFields, key: number) => (
       <NavigationList
@@ -81,9 +151,11 @@ export const Default = (props: NavigationProps) => {
         <nav
           className={`${
             isOpenMenu ? 'flex' : 'hidden'
-          } bg-background dark:bg-background-dark absolute top-full right-0 left-0 z-100 lg:static lg:flex`}
+          } bg-background dark:bg-background-dark absolute top-full right-0 left-0 z-100 border-t lg:static lg:flex lg:border-0`}
         >
-          <ul className={`container flex flex-col gap-x-8 pb-8 lg:flex-row lg:pb-0 xl:gap-x-14`}>
+          <ul
+            className={`container flex flex-col gap-x-8 pb-8 lg:flex-row lg:items-center lg:pb-0 xl:gap-x-10`}
+          >
             {list}
           </ul>
         </nav>
@@ -100,22 +172,20 @@ const NavigationList = (props: NavigationListProps) => {
   )}`;
 
   const isRootItem = props.fields.Styles.includes('level0');
-
-  let children: React.JSX.Element[] = [];
-  if (props.fields.Children && props.fields.Children.length) {
-    children = props.fields.Children.map((element: NavItemFields, index: number) => (
-      <NavigationList
-        key={`${index}${element.Id}`}
-        fields={element}
-        handleClick={props.handleClick}
-        relativeLevel={props.relativeLevel + 1}
-      />
-    ));
-  }
+  const hasChildren = !!props.fields.Children?.length;
+  const isTechStudio = getFieldLabel(props.fields).toLowerCase().includes('tech studio');
+  const children = (props.fields.Children || []).map((element: NavItemFields, index: number) => (
+    <NavigationList
+      key={`${index}${element.Id}`}
+      fields={element}
+      handleClick={props.handleClick}
+      relativeLevel={props.relativeLevel + 1}
+    />
+  ));
 
   return (
     <li
-      className={`${classNameList} relative flex flex-col ${isRootItem ? 'lg:flex-row' : ''} gap-x-8 gap-y-4 xl:gap-x-14 ${active ? 'active' : ''} uppercase`}
+      className={`${classNameList} group relative flex flex-col ${isRootItem ? 'lg:flex-row' : ''} gap-x-8 gap-y-4 xl:gap-x-10 ${active ? 'active' : ''} uppercase`}
       key={props.fields.Id}
       tabIndex={0}
     >
@@ -124,13 +194,17 @@ const NavigationList = (props: NavigationListProps) => {
           field={getLinkField(props)}
           editable={page.mode.isEditing}
           onClick={props.handleClick}
-          className="whitespace-nowrap"
+          className={`whitespace-nowrap transition ${
+            isTechStudio
+              ? 'text-[1.2em] font-semibold tracking-tight normal-case [text-shadow:0_0_10px_rgba(120,155,72,0.55)] hover:[text-shadow:0_0_14px_rgba(120,155,72,0.8)]'
+              : ''
+          }`}
         >
           {getNavigationText(props)}
         </Link>
-        {children.length > 0 && !isRootItem ? (
+        {hasChildren && !isRootItem ? (
           <div
-            className="flex h-6 w-6 items-center justify-center"
+            className="flex h-6 w-6 items-center justify-center lg:hidden"
             onClick={() => setActive((a) => !a)}
           >
             <FontAwesomeIcon
@@ -144,15 +218,15 @@ const NavigationList = (props: NavigationListProps) => {
           <></>
         )}
       </div>
-      {children.length > 0 ? (
+      {hasChildren ? (
         <ul
-          className={`flex flex-col gap-x-8 gap-y-4 xl:gap-x-14 ${
+          className={
             isRootItem
-              ? 'lg:flex-row'
-              : `bg-background dark:bg-background-dark top-full -left-4 pl-4 lg:absolute lg:p-4 ${
+              ? 'mt-2 flex flex-col gap-4 pl-4 lg:mt-0 lg:flex-row lg:items-center lg:gap-8 lg:pl-0'
+              : `bg-background dark:bg-background-dark border-border/40 mt-2 flex flex-col gap-3 pl-4 text-sm tracking-wide ${
                   active ? 'block' : 'hidden'
-                } z-100`
-          }`}
+                } lg:invisible lg:absolute lg:top-full lg:left-0 lg:mt-3 lg:block lg:min-w-[260px] lg:rounded-md lg:border lg:p-4 lg:pl-4 lg:opacity-0 lg:shadow-md lg:transition lg:group-hover:visible lg:group-hover:opacity-100`
+          }
         >
           {children}
         </ul>

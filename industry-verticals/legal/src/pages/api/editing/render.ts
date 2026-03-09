@@ -1,4 +1,5 @@
 import { EditingRenderMiddleware } from '@sitecore-content-sdk/nextjs/editing';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 /**
  * This Next.js API route is used to handle GET requests from Sitecore Editor.
@@ -22,7 +23,20 @@ export const config = {
   },
 };
 
-// Wire up the EditingRenderMiddleware handler
-const handler = new EditingRenderMiddleware().getHandler();
+// Wire up the EditingRenderMiddleware handler.
+const editingRenderHandler = new EditingRenderMiddleware().getHandler();
+type EditingRenderRequest = Parameters<typeof editingRenderHandler>[0];
 
-export default handler;
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  try {
+    await editingRenderHandler(req as EditingRenderRequest, res);
+    return;
+  } catch (error) {
+    // Node/Next runtime differences can break preview token generation in local dev.
+    // Fall back to a route redirect so the app remains usable while styling.
+    console.error('Editing render middleware failed', error);
+    const route = typeof req.query.route === 'string' ? req.query.route : '/';
+    res.redirect(307, route);
+    return;
+  }
+}

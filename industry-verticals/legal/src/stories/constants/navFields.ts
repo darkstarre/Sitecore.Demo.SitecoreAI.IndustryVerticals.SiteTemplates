@@ -30,103 +30,114 @@ export const navRoot: NavItemFields = {
 
 export const topLevelPages: NavItemFields[] = [
   {
-    ...createNavItem('About us', '1dcca542-9bca-47db-acd2-0ac28c15052d'),
+    ...createNavItem('People', '1dcca542-9bca-47db-acd2-0ac28c15052d'),
     Styles: ['level1', 'item0', 'odd', 'first'],
   },
   {
-    ...createNavItem('Services', '8d8252c6-b93b-43a1-959d-7ab0ff749269'),
+    ...createNavItem('Practices', '8d8252c6-b93b-43a1-959d-7ab0ff749269'),
     Styles: ['level1', 'item1', 'even'],
   },
   {
-    ...createNavItem('Attorneys', 'f1ab5368-6202-4acf-b27f-ab80be5e6bb1'),
-    Styles: ['level1', 'submenu', 'item2', 'odd', 'last'],
+    ...createNavItem('Insights', 'f1ab5368-6202-4acf-b27f-ab80be5e6bb1'),
+    Styles: ['level1', 'submenu', 'item2', 'odd'],
     Children: [
       {
-        ...createNavItem('Angelina Serzila', '5e3a6d08-66bc-40b1-8de2-70481a8f0c61'),
-        Href: '/Attorneys/Angelina-Serzila',
+        ...createNavItem('Technology & Innovation', '5e3a6d08-66bc-40b1-8de2-70481a8f0c61'),
+        Href: '/Insights/Technology-and-Innovation',
         Styles: ['level2', 'item0', 'odd', 'first'],
       },
       {
-        ...createNavItem('Anna Guanche', '33b964b9-d3d9-4689-84f0-5094afc0d08a'),
-        Href: '/Attorneys/Anna-Guanche',
+        ...createNavItem('Energy & Infrastructure', '33b964b9-d3d9-4689-84f0-5094afc0d08a'),
+        Href: '/Insights/Energy-and-Infrastructure',
         Styles: ['level2', 'item1', 'even'],
       },
       {
-        ...createNavItem('David Vassilakis', 'd2ba02a5-b1c0-435d-ac5b-6c5a0a0437d4'),
-        Href: '/Attorneys/David-Vassilakis',
+        ...createNavItem('Finance', 'd2ba02a5-b1c0-435d-ac5b-6c5a0a0437d4'),
+        Href: '/Insights/Finance',
         Styles: ['level2', 'item2', 'odd'],
       },
       {
-        ...createNavItem('Alina Moreau', '87482563-ed64-44da-8a30-b3e178d3bd73'),
-        Href: '/Attorneys/Alina-Moreau',
+        ...createNavItem('Life Sciences & HealthTech', '87482563-ed64-44da-8a30-b3e178d3bd73'),
+        Href: '/Insights/Life-Sciences-and-HealthTech',
         Styles: ['level2', 'item3', 'even'],
       },
+    ],
+  },
+  {
+    ...createNavItem('Careers', '55f39209-2ea2-417d-badb-2b7d51c8c87e'),
+    Styles: ['level1', 'item3', 'even'],
+  },
+  {
+    ...createNavItem('About', '645d5fb5-1e32-4cc9-9583-61af38b3b5cb'),
+    Styles: ['level1', 'submenu', 'item4', 'odd'],
+    Children: [
       {
-        ...createNavItem('Julian Ramires', '55f39209-2ea2-417d-badb-2b7d51c8c87e'),
-        Href: '/Attorneys/Julian-Ramires',
-        Styles: ['level2', 'item4', 'odd'],
+        ...createNavItem('About Us', 'f7424601-f4f0-4f2f-8136-0ac88934f8f6'),
+        Href: '/About',
+        Styles: ['level2', 'item0', 'odd', 'first'],
       },
       {
-        ...createNavItem('Marcus Veldt', '645d5fb5-1e32-4cc9-9583-61af38b3b5cb'),
-        Href: '/Attorneys/Marcus-Veldt',
-        Styles: ['level2', 'item5', 'even'],
+        ...createNavItem('News', '36f88b12-f6f0-44ab-af64-f240eb2f4b0a'),
+        Href: '/About/News',
+        Styles: ['level2', 'item1', 'even'],
       },
       {
-        ...createNavItem('Sofia Liang', '0b1e72e6-17c0-4aec-8fe5-7a3aef79232a'),
-        Href: '/Attorneys/Sofia-Liang',
-        Styles: ['level2', 'item6', 'odd', 'last'],
+        ...createNavItem('Locations', 'a0d675ff-71db-43d7-88fd-370df05f0c3f'),
+        Href: '/About/Locations',
+        Styles: ['level2', 'item2', 'odd', 'last'],
       },
     ],
+  },
+  {
+    ...createNavItem('Orrick Tech Studio', '0b1e72e6-17c0-4aec-8fe5-7a3aef79232a'),
+    Styles: ['level1', 'item5', 'odd', 'last'],
   },
 ];
 
 export const flatTopLevelPages: NavItemFields[] = [
   {
-    ...createNavItem('About us'),
+    ...createNavItem('People'),
     Styles: ['level0', 'item0', 'odd', 'first', 'flat-level1'],
   },
   {
-    ...createNavItem('Services'),
+    ...createNavItem('Practices'),
     Styles: ['level0', 'item1', 'even', 'flat-level1'],
   },
   {
-    ...createNavItem('Attorneys'),
+    ...createNavItem('Insights'),
     Styles: ['level0', 'item2', 'odd', 'flat-level1'],
   },
   {
-    ...createNavItem('Angelina Serzila'),
-    Href: '/Attorneys/Angelina-Serzila',
+    ...createNavItem('Technology & Innovation'),
+    Href: '/Insights/Technology-and-Innovation',
     Styles: ['level0', 'item3', 'even', 'flat-level2'],
   },
   {
-    ...createNavItem('Anna Guanche'),
-    Href: '/Attorneys/Anna-Guanche',
+    ...createNavItem('Energy & Infrastructure'),
+    Href: '/Insights/Energy-and-Infrastructure',
     Styles: ['level0', 'item4', 'odd', 'flat-level2'],
   },
   {
-    ...createNavItem('David Vassilakis'),
-    Href: '/Attorneys/David-Vassilakis',
+    ...createNavItem('Finance'),
+    Href: '/Insights/Finance',
     Styles: ['level0', 'item5', 'even', 'flat-level2'],
   },
   {
-    ...createNavItem('Alina Moreau'),
-    Href: '/Attorneys/Alina-Moreau',
+    ...createNavItem('Life Sciences & HealthTech'),
+    Href: '/Insights/Life-Sciences-and-HealthTech',
     Styles: ['level0', 'item6', 'odd', 'flat-level2'],
   },
   {
-    ...createNavItem('Julian Ramires'),
-    Href: '/Attorneys/Julian-Ramires',
-    Styles: ['level0', 'item7', 'even', 'flat-level2'],
+    ...createNavItem('Careers'),
+    Styles: ['level0', 'item7', 'even', 'flat-level1'],
   },
   {
-    ...createNavItem('Marcus Veldt'),
-    Href: '/Attorneys/Marcus-Veldt',
-    Styles: ['level0', 'item8', 'odd', 'flat-level2'],
+    ...createNavItem('About'),
+    Styles: ['level0', 'item8', 'odd', 'flat-level1'],
   },
   {
-    ...createNavItem('Sofia Liang'),
-    Href: '/Attorneys/Sofia-Liang',
-    Styles: ['level0', 'item9', 'even', 'last', 'flat-level2'],
+    ...createNavItem('Orrick Tech Studio'),
+    Styles: ['level0', 'item9', 'even', 'last', 'flat-level1'],
   },
 ];
 

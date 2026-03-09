@@ -8,7 +8,7 @@ import {
 // end of built-in imports
 
 import { Link, Text, useSitecore, RichText, withDatasourceCheck, Placeholder, NextImage, CdpHelper } from '@sitecore-content-sdk/nextjs';
-import { useEffect, useMemo, useState, useId } from 'react';
+import { useEffect, useMemo, useState, useRef, useId } from 'react';
 import React from 'react';
 import { useTheme } from 'next-themes';
 import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
@@ -17,22 +17,20 @@ import BlobAccent from 'src/assets/shapes/BlobAccent';
 import CurvedClip from 'src/assets/shapes/CurvedClip';
 import { CommonStyles, FeatureStyles } from '@/types/styleFlags';
 import BlobAccent_ff719d36323bb13e49440edf42521225aa8ecaa1 from '@/assets/shapes/BlobAccent';
-import { faArrowRight, faBars, faChevronDown, faChevronUp, faTimes, faEnvelope, faPhone, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import Image from 'next/image';
+import { faArrowRight, faBars, faChevronDown, faChevronUp, faTimes, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import BlobAccent_c450f25c63b00a2e370305e155038c473dbb9c49 from 'src/components/non-sitecore/BlobAccent';
 import CurvedClip_6089ba18dc7000eae1dc64c54178a20f58206b41 from 'src/components/non-sitecore/CurvedClip';
 import { getLinkField, getNavigationText } from '@/helpers/navHelpers';
-import { useI18n } from 'next-localization';
-import HeroClip from '@/assets/shapes/HeroClip';
 import Link_a258c208ba01265ca0aa9c7abae745cc7141aa63 from 'next/link';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Keyboard, Navigation, Pagination } from 'swiper/modules';
 import client from 'lib/sitecore-client';
-import Image from 'next/image';
 import * as FEAAS from '@sitecore-feaas/clientside/react';
 import nextConfig from 'next.config';
 import { pageView } from '@sitecore-cloudsdk/events/browser';
 import config from 'sitecore.config';
 import { extractMediaUrl } from '@/helpers/extractMediaUrl';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Keyboard, Navigation, Pagination } from 'swiper/modules';
 
 const importMap = [
   {
@@ -54,6 +52,7 @@ const importMap = [
       { name: 'useEffect', value: useEffect },
       { name: 'useMemo', value: useMemo },
       { name: 'useState', value: useState },
+      { name: 'useRef', value: useRef },
       { name: 'useId', value: useId },
       { name: 'default', value: React },
     ]
@@ -104,6 +103,12 @@ const importMap = [
     ]
   },
   {
+    module: 'next/image',
+    exports: [
+      { name: 'default', value: Image },
+    ]
+  },
+  {
     module: '@fortawesome/free-solid-svg-icons',
     exports: [
       { name: 'faArrowRight', value: faArrowRight },
@@ -111,8 +116,6 @@ const importMap = [
       { name: 'faChevronDown', value: faChevronDown },
       { name: 'faChevronUp', value: faChevronUp },
       { name: 'faTimes', value: faTimes },
-      { name: 'faEnvelope', value: faEnvelope },
-      { name: 'faPhone', value: faPhone },
       { name: 'faArrowLeft', value: faArrowLeft },
     ]
   },
@@ -136,48 +139,15 @@ const importMap = [
     ]
   },
   {
-    module: 'next-localization',
-    exports: [
-      { name: 'useI18n', value: useI18n },
-    ]
-  },
-  {
-    module: '@/assets/shapes/HeroClip',
-    exports: [
-      { name: 'default', value: HeroClip },
-    ]
-  },
-  {
     module: 'next/link',
     exports: [
       { name: 'default', value: Link_a258c208ba01265ca0aa9c7abae745cc7141aa63 },
     ]
   },
   {
-    module: 'swiper/react',
-    exports: [
-      { name: 'Swiper', value: Swiper },
-      { name: 'SwiperSlide', value: SwiperSlide },
-    ]
-  },
-  {
-    module: 'swiper/modules',
-    exports: [
-      { name: 'Keyboard', value: Keyboard },
-      { name: 'Navigation', value: Navigation },
-      { name: 'Pagination', value: Pagination },
-    ]
-  },
-  {
     module: 'lib/sitecore-client',
     exports: [
       { name: 'default', value: client },
-    ]
-  },
-  {
-    module: 'next/image',
-    exports: [
-      { name: 'default', value: Image },
     ]
   },
   {
@@ -208,6 +178,21 @@ const importMap = [
     module: '@/helpers/extractMediaUrl',
     exports: [
       { name: 'extractMediaUrl', value: extractMediaUrl },
+    ]
+  },
+  {
+    module: 'swiper/react',
+    exports: [
+      { name: 'Swiper', value: Swiper },
+      { name: 'SwiperSlide', value: SwiperSlide },
+    ]
+  },
+  {
+    module: 'swiper/modules',
+    exports: [
+      { name: 'Keyboard', value: Keyboard },
+      { name: 'Navigation', value: Navigation },
+      { name: 'Pagination', value: Pagination },
     ]
   }
 ] as ImportEntry[];

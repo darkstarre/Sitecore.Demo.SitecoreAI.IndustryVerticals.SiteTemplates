@@ -1,6 +1,9 @@
 import { ComponentProps } from 'react';
-import { Default as AttorneysListing, Slider } from '../components/attorneys-listing/AttorneysListing';
-import { Meta, StoryObj } from '@storybook/react-vite/*';
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import {
+  Default as AttorneysListing,
+  Slider,
+} from '../components/attorneys-listing/AttorneysListing';
 import { CommonParams, CommonRendering } from './common/commonData';
 import { generateId } from './helpers/generateId';
 import { createAttorneyItems } from './helpers/createItems';
