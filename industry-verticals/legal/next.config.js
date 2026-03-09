@@ -47,6 +47,21 @@ const nextConfig = {
         hostname: 'starter-verticals-v2.sitecoresandbox.cloud',
         port: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'upload.wikimedia.org',
+        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.pexels.com',
+        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'media.ceros.com',
+        port: '',
+      },
     ],
   },
 
