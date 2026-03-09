@@ -25,6 +25,8 @@ export interface Product {
   SeatHeight: Field<string>;
   LegHeight: Field<string>;
   Reviews: ReviewFields[];
+  /** Computed average rating from reviews (e.g. in ProductCarousel) */
+  Rating?: number;
 }
 
 export interface ProductIGQL {

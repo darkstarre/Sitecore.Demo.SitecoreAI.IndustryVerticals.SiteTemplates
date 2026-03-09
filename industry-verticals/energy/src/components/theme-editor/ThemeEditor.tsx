@@ -1,5 +1,4 @@
-import React, { JSX, useMemo } from 'react';
-import Head from 'next/head';
+import React, { JSX, useEffect, useMemo } from 'react';
 import { Field } from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from 'lib/component-props';
 
@@ -80,42 +79,53 @@ export const Default = (props: ThemeEditorProps): JSX.Element => {
   const selectedFontNames = getSelectedFontNames(varMap);
   const selectedFontLinks = findFontLinks(fonts, selectedFontNames);
 
-  return (
-    <>
-      {/* Early application on initial load */}
-      <Head>
-        {/* Load Google Fonts based on selected theme */}
-        {selectedFontLinks.length > 0 && (
-          <>
-            <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-            {selectedFontLinks.map((href) => (
-              <link key={href} rel="stylesheet" href={href} />
-            ))}
-          </>
-        )}
+  useEffect(() => {
+    try {
+      for (const [name, value] of Object.entries(varMap)) {
+        document.documentElement.style.setProperty(name, value);
+      }
+    } catch (e) {
+      console.error('Dynamic theme injection failed', e);
+    }
+  }, [varMap]);
 
-        {/* Early variable injection to avoid FOUC */}
-        <script
-          id="apply-theme-vars"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var vars = ${JSON.stringify(varMap)};
-                  for (var name in vars) {
-                    if (Object.prototype.hasOwnProperty.call(vars, name)) {
-                      document.documentElement.style.setProperty(name, vars[name]);
-                    }
-                  }
-                } catch(e) {
-                  console.error('Dynamic theme injection failed', e);
-                }
-              })();
-            `,
-          }}
-        />
-      </Head>
-    </>
-  );
+  useEffect(() => {
+    if (selectedFontLinks.length === 0) {
+      return;
+    }
+
+    const createdLinks: HTMLLinkElement[] = [];
+    const ensureUniqueLink = (
+      rel: string,
+      href: string,
+      extra?: Partial<HTMLLinkElement> & { crossOrigin?: string }
+    ) => {
+      const existing = document.head.querySelector(
+        `link[rel="${rel}"][href="${href}"][data-theme-editor="true"]`
+      ) as HTMLLinkElement | null;
+      if (existing) {
+        return;
+      }
+
+      const link = document.createElement('link');
+      link.rel = rel;
+      link.href = href;
+      link.setAttribute('data-theme-editor', 'true');
+      if (extra?.crossOrigin !== undefined) {
+        link.crossOrigin = extra.crossOrigin;
+      }
+      document.head.appendChild(link);
+      createdLinks.push(link);
+    };
+
+    ensureUniqueLink('preconnect', 'https://fonts.googleapis.com');
+    ensureUniqueLink('preconnect', 'https://fonts.gstatic.com', { crossOrigin: '' });
+    selectedFontLinks.forEach((href) => ensureUniqueLink('stylesheet', href));
+
+    return () => {
+      createdLinks.forEach((link) => link.remove());
+    };
+  }, [selectedFontLinks]);
+
+  return <></>;
 };

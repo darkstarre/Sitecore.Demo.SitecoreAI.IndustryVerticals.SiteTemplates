@@ -90,7 +90,6 @@ const NavigationListItem: React.FC<NavigationListItemProps> = ({
     >
       <div className="">
         {hasDropdownMenu ? (
-          // Drawer for items with children
           <Drawer
             open={isActiveLocal}
             onOpenChange={(open) => setIsActiveLocal(open)}
@@ -136,7 +135,6 @@ const NavigationListItem: React.FC<NavigationListItemProps> = ({
             </DrawerContent>
           </Drawer>
         ) : (
-          // Regular link for items without children
           <Link
             field={getLinkField(fields)}
             editable={page.mode.isEditing}

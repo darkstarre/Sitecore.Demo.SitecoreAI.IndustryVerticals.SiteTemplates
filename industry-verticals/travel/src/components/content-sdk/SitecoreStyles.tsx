@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import { useEffect } from 'react';
 import client from 'lib/sitecore-client';
 import { LayoutServiceData, HTMLLink } from '@sitecore-content-sdk/nextjs';
 
@@ -16,17 +16,34 @@ const SitecoreStyles = ({
 }) => {
   const headLinks = client.getHeadLinks(layoutData, { enableStyles, enableThemes });
 
-  if (headLinks.length === 0) {
-    return null;
-  }
+  useEffect(() => {
+    if (headLinks.length === 0) {
+      return;
+    }
 
-  return (
-    <Head>
-      {headLinks.map(({ rel, href }: HTMLLink) => (
-        <link rel={rel} key={href} href={href} />
-      ))}
-    </Head>
-  );
+    const createdLinks: HTMLLinkElement[] = [];
+    headLinks.forEach(({ rel, href }: HTMLLink) => {
+      const existing = document.head.querySelector(
+        `link[rel="${rel}"][href="${href}"][data-sitecore-style="true"]`
+      ) as HTMLLinkElement | null;
+      if (existing) {
+        return;
+      }
+
+      const link = document.createElement('link');
+      link.rel = rel;
+      link.href = href;
+      link.setAttribute('data-sitecore-style', 'true');
+      document.head.appendChild(link);
+      createdLinks.push(link);
+    });
+
+    return () => {
+      createdLinks.forEach((link) => link.remove());
+    };
+  }, [headLinks]);
+
+  return null;
 };
 
 export default SitecoreStyles;

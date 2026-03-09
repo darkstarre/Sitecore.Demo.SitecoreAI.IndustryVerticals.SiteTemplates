@@ -1,5 +1,4 @@
-import React, { JSX, useMemo } from 'react';
-import Head from 'next/head';
+import { JSX, useEffect, useMemo } from 'react';
 import { Field } from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from 'lib/component-props';
 
@@ -62,7 +61,7 @@ const findFontLinks = (fontData: FontOptions, selectedNames: string[]) => {
   return links;
 };
 
-export const Default = (props: ThemeEditorProps): JSX.Element => {
+export const Default = (props: ThemeEditorProps): JSX.Element | null => {
   const customCssValue = props.fields.CustomCSS?.value || '';
   const fontOptionsValue = props.fields.FontOptions?.value || '';
 
@@ -80,42 +79,49 @@ export const Default = (props: ThemeEditorProps): JSX.Element => {
   const selectedFontNames = getSelectedFontNames(varMap);
   const selectedFontLinks = findFontLinks(fonts, selectedFontNames);
 
-  return (
-    <>
-      {/* Early application on initial load */}
-      <Head>
-        {/* Load Google Fonts based on selected theme */}
-        {selectedFontLinks.length > 0 && (
-          <>
-            <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-            {selectedFontLinks.map((href) => (
-              <link key={href} rel="stylesheet" href={href} />
-            ))}
-          </>
-        )}
+  useEffect(() => {
+    const vars = varMap;
+    for (const name in vars) {
+      if (Object.prototype.hasOwnProperty.call(vars, name)) {
+        document.documentElement.style.setProperty(name, vars[name]);
+      }
+    }
+  }, [varMap]);
 
-        {/* Early variable injection to avoid FOUC */}
-        <script
-          id="apply-theme-vars"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var vars = ${JSON.stringify(varMap)};
-                  for (var name in vars) {
-                    if (Object.prototype.hasOwnProperty.call(vars, name)) {
-                      document.documentElement.style.setProperty(name, vars[name]);
-                    }
-                  }
-                } catch(e) {
-                  console.error('Dynamic theme injection failed', e);
-                }
-              })();
-            `,
-          }}
-        />
-      </Head>
-    </>
-  );
+  useEffect(() => {
+    if (selectedFontLinks.length === 0) {
+      return;
+    }
+
+    const createdLinks: HTMLLinkElement[] = [];
+    const ensureLink = (rel: string, href: string, crossOrigin?: string) => {
+      const selector =
+        crossOrigin !== undefined
+          ? `link[rel="${rel}"][href="${href}"][crossorigin]`
+          : `link[rel="${rel}"][href="${href}"]`;
+      const existing = document.head.querySelector(selector);
+      if (existing) {
+        return;
+      }
+      const link = document.createElement('link');
+      link.rel = rel;
+      link.href = href;
+      if (crossOrigin !== undefined) {
+        link.crossOrigin = crossOrigin;
+      }
+      link.setAttribute('data-theme-editor-font', 'true');
+      document.head.appendChild(link);
+      createdLinks.push(link);
+    };
+
+    ensureLink('preconnect', 'https://fonts.googleapis.com');
+    ensureLink('preconnect', 'https://fonts.gstatic.com', '');
+    selectedFontLinks.forEach((href) => ensureLink('stylesheet', href));
+
+    return () => {
+      createdLinks.forEach((link) => link.remove());
+    };
+  }, [selectedFontLinks]);
+
+  return null;
 };

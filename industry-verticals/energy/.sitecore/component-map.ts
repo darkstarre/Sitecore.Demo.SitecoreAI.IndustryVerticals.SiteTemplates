@@ -35,8 +35,8 @@ import * as Image from 'src/components/image/Image';
 import * as HeroBanner from 'src/components/hero-banner/HeroBanner';
 import * as Header from 'src/components/header/Header';
 import * as GridStatusGauge from 'src/components/gridstatusgauge/GridStatusGauge';
-import * as GridDemand from 'src/components/grid-demand/GridDemand';
 import * as gridChartData from 'src/components/grid-demand/gridChartData';
+import * as GridDemand from 'src/components/grid-demand/GridDemand';
 import * as gridData from 'src/components/grid-conditions/gridData';
 import * as GridConditions from 'src/components/grid-conditions/GridConditions';
 import * as Footer from 'src/components/footer/Footer';
@@ -82,8 +82,8 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['HeroBanner', { ...HeroBanner }],
   ['Header', { ...Header, componentType: 'client' }],
   ['GridStatusGauge', { ...GridStatusGauge }],
-  ['GridDemand', { ...GridDemand }],
   ['gridChartData', { ...gridChartData }],
+  ['GridDemand', { ...GridDemand }],
   ['gridData', { ...gridData }],
   ['GridConditions', { ...GridConditions }],
   ['Footer', { ...Footer }],

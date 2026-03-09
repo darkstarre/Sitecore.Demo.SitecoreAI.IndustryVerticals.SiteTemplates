@@ -3,7 +3,6 @@ import { User, Heart, ShoppingCart, X } from 'lucide-react';
 import { ComponentProps } from '@/lib/component-props';
 import { isParamEnabled } from '@/helpers/isParamEnabled';
 import { useI18n } from 'next-localization';
-// import { MiniCart } from '../non-sitecore/MiniCart';
 import { LinkField } from '@sitecore-content-sdk/nextjs';
 import { Drawer, DrawerClose, DrawerContent, DrawerTrigger } from '@/shadcn/components/ui/drawer';
 import { MiniCart } from '../non-sitecore/MiniCart';

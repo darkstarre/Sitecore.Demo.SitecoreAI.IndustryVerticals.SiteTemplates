@@ -8,9 +8,8 @@ import {
 // end of built-in imports
 
 import { Link, Text, useSitecore, RichText, Image, Placeholder, NextImage, DateField, withDatasourceCheck, CdpHelper } from '@sitecore-content-sdk/nextjs';
-import { useMemo, useState, useCallback, useRef, useEffect } from 'react';
+import { useEffect, useMemo, useState, useCallback, useRef } from 'react';
 import React from 'react';
-import Head from 'next/head';
 import { faFacebookF, faInstagram, faLinkedinIn, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ArrowRight, Share2, ChevronLeft, Calendar, User, LoaderCircle, ChevronRight, ArrowLeft, X, Menu, Search, Activity, Thermometer, TrendingDown, TrendingUp, Unplug, Zap, Loader2, Bookmark } from 'lucide-react';
@@ -87,18 +86,12 @@ const importMap = [
   {
     module: 'react',
     exports: [
+      { name: 'useEffect', value: useEffect },
       { name: 'useMemo', value: useMemo },
       { name: 'useState', value: useState },
       { name: 'useCallback', value: useCallback },
       { name: 'useRef', value: useRef },
-      { name: 'useEffect', value: useEffect },
       { name: 'default', value: React },
-    ]
-  },
-  {
-    module: 'next/head',
-    exports: [
-      { name: 'default', value: Head },
     ]
   },
   {

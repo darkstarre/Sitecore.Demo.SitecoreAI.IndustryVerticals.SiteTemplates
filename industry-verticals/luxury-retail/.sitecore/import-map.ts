@@ -7,20 +7,23 @@ import {
 } from '@sitecore-content-sdk/nextjs/codegen';
 // end of built-in imports
 
-import { Link, Text, useSitecore, NextImage, Placeholder, RichText, Image, CdpHelper, withDatasourceCheck } from '@sitecore-content-sdk/nextjs';
+import { Link, Text, useSitecore, RichText, NextImage, Image, Placeholder, CdpHelper, withDatasourceCheck } from '@sitecore-content-sdk/nextjs';
 import { useMemo, useId, useEffect, useState, useRef, useCallback } from 'react';
 import React from 'react';
 import * as React_7214d18997ee864dd178de7b3a8430f6783e8b89 from 'react';
 import Head from 'next/head';
+import { useI18n } from 'next-localization';
 import { faFacebookF, faInstagram, faLinkedin, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { A11y, Keyboard, Navigation, Pagination, Autoplay } from 'swiper/modules';
-import { ChevronLeft, ChevronRight, Loader2, Check, Heart, Plus, Star, X, User, ShoppingCart, ArrowLeft, Globe, Menu } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowRight, Loader2, Check, Heart, Plus, Star, X, User, ShoppingCart, ArrowLeft, Globe, Menu, MoreHorizontal, Home } from 'lucide-react';
 import { ProductCard } from 'src/components/non-sitecore/ProductCard';
+import Link_a258c208ba01265ca0aa9c7abae745cc7141aa63 from 'next/link';
+import BlobAccent from '@/assets/shapes/BlobAccent';
+import { CommonStyles } from '@/types/styleFlags';
 import InfiniteScroll from '@/shadcn/components/ui/infiniteScroll';
 import { ProductCard as ProductCard_f5c29266c91cfe4f66c8f4e91c1fad0bbbe159f9 } from '@/components/non-sitecore/ProductCard';
-import { useI18n } from 'next-localization';
 import { isParamEnabled } from '@/helpers/isParamEnabled';
 import QuantityControl from 'src/components/non-sitecore/QuantityControl';
 import { ProductGallery } from 'src/components/non-sitecore/ProductGallery';
@@ -33,11 +36,13 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { ParentPathLink } from 'src/components/non-sitecore/ParentPathLink';
 import { ProductReviews } from 'src/components/non-sitecore/ProductReviews';
 import StarRating from 'src/components/non-sitecore/StarRating';
-import Link_a258c208ba01265ca0aa9c7abae745cc7141aa63 from 'next/link';
+import CarouselButton from 'src/components/non-sitecore/CarouselButton';
+import { calculateAverageRating } from '@/helpers/productUtils';
 import { usePathname } from 'next/navigation';
 import { useCartAction } from '@/hooks/useCartAction';
 import { getCart } from '@/lib/cart';
 import { DrawerClose, Drawer, DrawerContent, DrawerTrigger } from '@/shadcn/components/ui/drawer';
+import ShortArrow from '@/assets/icons/arrow-short/ArrowShort';
 import { MiniCart } from 'src/components/non-sitecore/MiniCart';
 import { useClickAway } from '@/hooks/useClickAway';
 import { useStopResponsiveTransition } from '@/hooks/useStopResponsiveTransition';
@@ -52,6 +57,7 @@ import * as FEAAS from '@sitecore-feaas/clientside/react';
 import nextConfig from 'next.config';
 import { pageView } from '@sitecore-cloudsdk/events/browser';
 import config from 'sitecore.config';
+import ProductCarousel from 'src/components/non-sitecore/ProductCarousel';
 
 const importMap = [
   {
@@ -60,10 +66,10 @@ const importMap = [
       { name: 'Link', value: Link },
       { name: 'Text', value: Text },
       { name: 'useSitecore', value: useSitecore },
-      { name: 'NextImage', value: NextImage },
-      { name: 'Placeholder', value: Placeholder },
       { name: 'RichText', value: RichText },
+      { name: 'NextImage', value: NextImage },
       { name: 'Image', value: Image },
+      { name: 'Placeholder', value: Placeholder },
       { name: 'CdpHelper', value: CdpHelper },
       { name: 'withDatasourceCheck', value: withDatasourceCheck },
     ]
@@ -85,6 +91,12 @@ const importMap = [
     module: 'next/head',
     exports: [
       { name: 'default', value: Head },
+    ]
+  },
+  {
+    module: 'next-localization',
+    exports: [
+      { name: 'useI18n', value: useI18n },
     ]
   },
   {
@@ -125,6 +137,7 @@ const importMap = [
     exports: [
       { name: 'ChevronLeft', value: ChevronLeft },
       { name: 'ChevronRight', value: ChevronRight },
+      { name: 'ArrowRight', value: ArrowRight },
       { name: 'Loader2', value: Loader2 },
       { name: 'Check', value: Check },
       { name: 'Heart', value: Heart },
@@ -136,12 +149,32 @@ const importMap = [
       { name: 'ArrowLeft', value: ArrowLeft },
       { name: 'Globe', value: Globe },
       { name: 'Menu', value: Menu },
+      { name: 'MoreHorizontal', value: MoreHorizontal },
+      { name: 'Home', value: Home },
     ]
   },
   {
     module: 'src/components/non-sitecore/ProductCard',
     exports: [
       { name: 'ProductCard', value: ProductCard },
+    ]
+  },
+  {
+    module: 'next/link',
+    exports: [
+      { name: 'default', value: Link_a258c208ba01265ca0aa9c7abae745cc7141aa63 },
+    ]
+  },
+  {
+    module: '@/assets/shapes/BlobAccent',
+    exports: [
+      { name: 'default', value: BlobAccent },
+    ]
+  },
+  {
+    module: '@/types/styleFlags',
+    exports: [
+      { name: 'CommonStyles', value: CommonStyles },
     ]
   },
   {
@@ -154,12 +187,6 @@ const importMap = [
     module: '@/components/non-sitecore/ProductCard',
     exports: [
       { name: 'ProductCard', value: ProductCard_f5c29266c91cfe4f66c8f4e91c1fad0bbbe159f9 },
-    ]
-  },
-  {
-    module: 'next-localization',
-    exports: [
-      { name: 'useI18n', value: useI18n },
     ]
   },
   {
@@ -238,9 +265,15 @@ const importMap = [
     ]
   },
   {
-    module: 'next/link',
+    module: 'src/components/non-sitecore/CarouselButton',
     exports: [
-      { name: 'default', value: Link_a258c208ba01265ca0aa9c7abae745cc7141aa63 },
+      { name: 'default', value: CarouselButton },
+    ]
+  },
+  {
+    module: '@/helpers/productUtils',
+    exports: [
+      { name: 'calculateAverageRating', value: calculateAverageRating },
     ]
   },
   {
@@ -268,6 +301,12 @@ const importMap = [
       { name: 'Drawer', value: Drawer },
       { name: 'DrawerContent', value: DrawerContent },
       { name: 'DrawerTrigger', value: DrawerTrigger },
+    ]
+  },
+  {
+    module: '@/assets/icons/arrow-short/ArrowShort',
+    exports: [
+      { name: 'default', value: ShortArrow },
     ]
   },
   {
@@ -356,6 +395,12 @@ const importMap = [
     module: 'sitecore.config',
     exports: [
       { name: 'default', value: config },
+    ]
+  },
+  {
+    module: 'src/components/non-sitecore/ProductCarousel',
+    exports: [
+      { name: 'default', value: ProductCarousel },
     ]
   }
 ] as ImportEntry[];

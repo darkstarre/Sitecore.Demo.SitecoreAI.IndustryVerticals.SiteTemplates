@@ -1,4 +1,4 @@
-import { JSX } from 'react';
+import { JSX, useEffect, useState } from 'react';
 import type { AppProps } from 'next/app';
 import { I18nProvider } from 'next-localization';
 import Bootstrap from 'src/Bootstrap';
@@ -15,15 +15,26 @@ const SEARCH_CONFIG = {
 
 function App({ Component, pageProps }: AppProps<SitecorePageProps>): JSX.Element {
   const { dictionary, ...rest } = pageProps;
+  const [isClient, setIsClient] = useState(false);
 
   const lang = pageProps.page?.locale || scConfig.defaultLanguage;
 
-  PageController.getContext().setLocaleLanguage(lang.split('-')[0]);
-  if (lang == 'en') {
-    PageController.getContext().setLocaleCountry('us');
-  } else {
-    PageController.getContext().setLocaleCountry(lang.split('-')[1].toLocaleLowerCase());
-  }
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    PageController.getContext().setLocaleLanguage(lang.split('-')[0]);
+    if (lang === 'en') {
+      PageController.getContext().setLocaleCountry('us');
+    } else {
+      PageController.getContext().setLocaleCountry(lang.split('-')[1].toLocaleLowerCase());
+    }
+  }, [lang]);
+
+  const isSearchConfigured =
+    !!SEARCH_CONFIG.env && !!SEARCH_CONFIG.customerKey && !!SEARCH_CONFIG.apiKey;
+  const appContent = <Component {...rest} />;
 
   return (
     <>
@@ -37,14 +48,18 @@ function App({ Component, pageProps }: AppProps<SitecorePageProps>): JSX.Element
         lngDict={dictionary}
         locale={pageProps.page?.locale || scConfig.defaultLanguage}
       >
-        <WidgetsProvider
-          env={SEARCH_CONFIG.env as Environment}
-          customerKey={SEARCH_CONFIG.customerKey}
-          apiKey={SEARCH_CONFIG.apiKey}
-          publicSuffix={true}
-        >
-          <Component {...rest} />
-        </WidgetsProvider>
+        {isClient && isSearchConfigured ? (
+          <WidgetsProvider
+            env={SEARCH_CONFIG.env as Environment}
+            customerKey={SEARCH_CONFIG.customerKey}
+            apiKey={SEARCH_CONFIG.apiKey}
+            publicSuffix={true}
+          >
+            {appContent}
+          </WidgetsProvider>
+        ) : (
+          appContent
+        )}
       </I18nProvider>
     </>
   );

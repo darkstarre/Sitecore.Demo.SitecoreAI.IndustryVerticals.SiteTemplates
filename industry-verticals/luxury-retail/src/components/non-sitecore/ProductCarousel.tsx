@@ -68,6 +68,7 @@ const ProductCarousel = ({
                   ...product.fields,
                   Rating: calculateAverageRating(product.fields.Reviews || []),
                 }}
+                productId={product.id}
                 url={product.url}
               />
             </SwiperSlide>
