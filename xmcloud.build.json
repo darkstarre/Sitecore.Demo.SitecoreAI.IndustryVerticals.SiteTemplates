@@ -46,7 +46,7 @@
       "runCommand": "next:start"
     },
     "orrick": {
-      "path": "./industry-verticals/legal",
+      "path": "./industry-verticals/orrick",
       "nodeVersion": "22.11.0",
       "jssDeploymentSecret": "110F1C44A496B45478640DD36F80C18C9",
       "enabled": true,

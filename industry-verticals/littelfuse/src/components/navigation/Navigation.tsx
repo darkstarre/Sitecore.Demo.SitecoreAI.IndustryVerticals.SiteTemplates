@@ -100,7 +100,7 @@ const NavigationListItem: React.FC<NavigationListItemProps> = ({
               <button
                 type="button"
                 aria-label={`Open submenu for ${fields.DisplayName}`}
-                className="navigation-item navigation-item-primary"
+                className="navigation-item navigation-item-primary text-[0.92rem] font-semibold tracking-[0.07em] text-[#2b2b2b] uppercase transition-colors hover:text-[#d71920]"
                 onClick={(e) => {
                   e.preventDefault();
                   setIsActiveLocal((a) => !a);
@@ -141,7 +141,7 @@ const NavigationListItem: React.FC<NavigationListItemProps> = ({
             field={getLinkField(fields)}
             editable={page.mode.isEditing}
             onClick={clickHandler}
-            className="navigation-item navigation-item-primary"
+            className="navigation-item navigation-item-primary text-[0.92rem] font-semibold tracking-[0.07em] text-[#2b2b2b] uppercase transition-colors hover:text-[#d71920]"
           >
             {getLinkContent(fields, logoSrc)}
           </Link>

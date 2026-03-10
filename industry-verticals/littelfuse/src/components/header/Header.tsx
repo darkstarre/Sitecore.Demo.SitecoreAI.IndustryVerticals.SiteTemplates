@@ -29,8 +29,12 @@ export const Default = (props: HeaderProps): JSX.Element => {
     <div className={`component header bg-background border-b ${styles}`} id={id}>
       <div className="container flex items-center gap-4 py-4 lg:gap-6">
         <div className="header-block *:shrink max-lg:w-full max-lg:justify-between lg:shrink-0">
-          <Link href="/" className="text-xl font-bold tracking-tight uppercase">
-            Littelfuse
+          <Link href="/" aria-label="Littelfuse home">
+            <img
+              src="https://static.cdnlogo.com/logos/l/10/littelfuse.svg"
+              alt="Littelfuse"
+              className="h-auto w-40"
+            />
           </Link>
         </div>
         <div className="hidden! lg:flex! lg:shrink lg:basis-full">

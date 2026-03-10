@@ -1,6 +1,6 @@
 {
-  "name": "legal",
-  "description": "Legal industry vertical built with Content SDK and Next.js",
+  "name": "orrick",
+  "description": "Orrick industry vertical built with Content SDK and Next.js",
   "version": "1.0.0",
   "private": true,
   "config": {

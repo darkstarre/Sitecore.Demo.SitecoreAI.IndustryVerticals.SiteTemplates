@@ -1,8 +1,8 @@
-# Legal
+# Orrick
 
 ## Overview
 
-Legal is a demo website designed to represent a modern, client-focused legal services experience. The site demonstrates how law firms can create a trustworthy and user-friendly platform for showcasing practices, attorneys, and insights.
+Orrick is a demo website designed to represent a modern, client-focused legal services experience. The site demonstrates how law firms can create a trustworthy and user-friendly platform for showcasing practices, attorneys, and insights.
 
 ## Developer Expectations:
 
@@ -19,7 +19,7 @@ Legal is a demo website designed to represent a modern, client-focused legal ser
 1. Clone the repository (if not yet done)
    `git clone https://github.com/Sitecore/Sitecore.Demo.XMCloud.IndustryVerticals.SiteTemplates`
 2. Starting from the root of the repository navigate to site app folder
-   `cd industry-verticals\legal`
+   `cd industry-verticals\orrick`
 3. Copy the environment file `.env.container.example`
 4. Rename the copied file to `.env.local`
 5. Edit `.env.local` and provide a value for
@@ -28,7 +28,7 @@ Legal is a demo website designed to represent a modern, client-focused legal ser
    - NEXT_PUBLIC_SITECORE_EDGE_CONTEXT_ID
    - SITECORE_EDITING_SECRET
 6. Install dependencies:
-   from `industry-verticals\legal` run `npm install`
+   from `industry-verticals\orrick` run `npm install`
 7. Run the site locally:
    `npm run dev`
 8. Access the site:
@@ -43,7 +43,7 @@ If you have not enabled the split deployment feature your editing hosts are auto
 3. Select Project that has been deployed
 4. Switch to tab "Editing Hosts"
 5. Click "Add editing host"
-6. Provide Editing host name `legal` as per xmcloud.build.json
+6. Provide Editing host name `orrick` as per xmcloud.build.json
 7. Include search related environment variables
 8. Check if the link to authoring environment is set correctly (should be by default)
 9. Check if the source code provider is set correctly (should be by default)

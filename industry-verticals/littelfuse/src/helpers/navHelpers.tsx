@@ -1,6 +1,19 @@
 import { NavigationProps, NavItemFields } from '@/components/navigation/Navigation';
 import React, { JSX } from 'react';
-import { LinkField, Text } from '@sitecore-content-sdk/nextjs';
+import { LinkField } from '@sitecore-content-sdk/nextjs';
+
+const NAV_LABEL_MAP: Record<string, string> = {
+  Articles: 'Products',
+  'Committees and Groups': 'Industries',
+  Services: 'Solutions',
+  Alerts: 'Resources',
+  'Grid Status': 'Support',
+  'Service Name 1': 'Circuit Protection',
+  'Service Name 2': 'Power Control',
+  'Service Name 3': 'Sensing and Components',
+};
+
+export const normalizeNavLabel = (label: string): string => NAV_LABEL_MAP[label.trim()] || label;
 
 export const isNavLevel = (fields: NavItemFields, level: number): boolean => {
   return Array.isArray(fields.Styles) && fields.Styles.includes(`level${level}`);
@@ -22,21 +35,23 @@ export const getLinkContent = (fields: NavItemFields, logoSrc?: string): JSX.Ele
     return <img src={logoSrc} alt={String(altText)} className="h-auto w-36" />;
   }
 
-  const textField = fields.NavigationTitle || fields.Title;
-  if (textField) {
-    return <Text field={textField} />;
-  }
+  const textValue =
+    fields.NavigationTitle?.value?.toString() ||
+    fields.Title?.value?.toString() ||
+    fields.DisplayName ||
+    '';
 
-  return fields.DisplayName;
+  return normalizeNavLabel(textValue);
 };
 
 export const getLinkField = (fields: NavItemFields): LinkField => ({
   value: {
     href: fields.Href,
-    title:
+    title: normalizeNavLabel(
       fields.NavigationTitle?.value?.toString() ??
-      fields.Title?.value?.toString() ??
-      fields.DisplayName,
+        fields.Title?.value?.toString() ??
+        fields.DisplayName
+    ),
     querystring: fields.Querystring,
   },
 });
