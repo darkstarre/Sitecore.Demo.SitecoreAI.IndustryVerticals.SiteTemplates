@@ -115,11 +115,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
       : await client.getPage(path, { locale: context.locale });
   }
 
-  // Local Interstate safety net:
+  // Interstate safety net:
   // until Interstate placeholders are mapped in Sitecore, reuse Forma Lux route
-  // so local styling work can continue without blank pages.
+  // so the site does not render blank in preview/runtime.
   if (
-    process.env.NODE_ENV === 'development' &&
     process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME === 'interstate-batteries' &&
     (!page || !hasRenderablePlaceholders(page))
   ) {
@@ -129,11 +128,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
   }
 
-  if (
-    process.env.NODE_ENV === 'development' &&
-    process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME === 'interstate-batteries' &&
-    page
-  ) {
+  if (process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME === 'interstate-batteries' && page) {
     page = replaceLegacyBrandText(page);
   }
 
