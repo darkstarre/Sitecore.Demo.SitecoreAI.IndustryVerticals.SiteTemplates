@@ -50,6 +50,12 @@ const shouldUseLegalAboutCopy = (props: PromoProps) => {
   return title.includes('about') && description.includes(LEGACY_HEALTHCARE_COPY_MARKER);
 };
 
+const getPromoCtaText = (linkField: LinkField | undefined): string | undefined => {
+  const source = linkField?.value?.text?.toString().trim();
+  if (!source) return source;
+  return source.toLowerCase() === 'get started' ? 'Learn More' : source;
+};
+
 const PromoWrapper = ({
   children,
   props,
@@ -134,7 +140,7 @@ const DefaultPromo = (props: PromoProps) => {
       <ContentSdkRichText className="mb-10 text-lg" field={promoDescriptionField} />
 
       <ContentSdkLink field={props.fields.PromoMoreInfo} className="btn btn-icon">
-        {props.fields?.PromoMoreInfo?.value?.text}
+        {getPromoCtaText(props.fields?.PromoMoreInfo)}
         <FontAwesomeIcon icon={faArrowRight} />
       </ContentSdkLink>
     </PromoWrapper>

@@ -2,28 +2,62 @@
 
 import React from 'react';
 import {
-  NextImage as ContentSdkImage,
-  Link as ContentSdkLink,
-  Text as ContentSdkText,
   ImageField,
-  LinkField,
   ComponentRendering,
   ComponentParams,
   Placeholder,
-  RichTextField,
   withDatasourceCheck,
   TextField,
   Text,
 } from '@sitecore-content-sdk/nextjs';
 import Link from 'next/link';
+import Image from 'next/image';
 import { CommonStyles } from '@/types/styleFlags';
+
+const ORRICK_LOGO_URL =
+  'https://upload.wikimedia.org/wikipedia/commons/1/19/Orrick_Herrington_%26_Sutcliffe_logo.svg';
+
+const LEGAL_NOTICE_LINKS = [
+  { label: 'Legal Notices', href: '#' },
+  { label: 'Privacy Notice', href: '#' },
+  { label: 'Cookie Notice', href: '#' },
+  { label: 'Attorney Advertising', href: '#' },
+  { label: 'Secure Login', href: '#' },
+];
+
+const ORRICK_LOCATIONS = [
+  'Austin',
+  'Beijing',
+  'Boston',
+  'Brussels',
+  'Charlotte',
+  'Chicago',
+  'Dusseldorf',
+  'Houston',
+  'London',
+  'Los Angeles',
+  'Miami',
+  'Milan',
+  'Munich',
+  'New York',
+  'Orange County',
+  'Paris',
+  'Portland',
+  'Rome',
+  'Sacramento',
+  'San Francisco',
+  'Santa Monica',
+  'Seattle',
+  'Silicon Valley',
+  'Singapore',
+  'Tokyo',
+  'Washington, D.C.',
+  'Wheeling, WV, (GOIC)',
+];
 
 interface Fields {
   Logo: ImageField;
   LogoDark: ImageField;
-  CopyrightText: RichTextField;
-  PolicyText: LinkField;
-  TermsText: LinkField;
   TitleOne: TextField;
   TitleTwo: TextField;
   TitleThree: TextField;
@@ -45,30 +79,6 @@ const DefaultFooter = (props: FooterProps) => {
   const phKeyThree = `footer-list-third-${props?.params?.DynamicPlaceholderId}`;
   const phKeyFour = `footer-list-fourth-${props?.params?.DynamicPlaceholderId}`;
   const phKeyFive = `footer-list-fifth-${props?.params?.DynamicPlaceholderId}`;
-
-  // footer sections data
-  const sections = [
-    {
-      key: 'first_nav',
-      title: <Text field={props.fields.TitleOne} />,
-      content: <Placeholder name={phKeyOne} rendering={props.rendering} />,
-    },
-    {
-      key: 'second_nav',
-      title: <Text field={props.fields.TitleTwo} />,
-      content: <Placeholder name={phKeyTwo} rendering={props.rendering} />,
-    },
-    {
-      key: 'third_nav',
-      title: <Text field={props.fields.TitleThree} />,
-      content: <Placeholder name={phKeyThree} rendering={props.rendering} />,
-    },
-    {
-      key: 'fourth_nav',
-      title: <Text field={props.fields.TitleFour} />,
-      content: <Placeholder name={phKeyFour} rendering={props.rendering} />,
-    },
-  ];
 
   // styles to hide and show sections
   const hideTopSection = props.params?.Styles?.includes(CommonStyles.HideTopSection) || undefined;
@@ -98,54 +108,49 @@ const DefaultFooter = (props: FooterProps) => {
           <div className="relative z-20 container">
             {/* logo section */}
             <Link href={'/'} className="mb-12 inline-block max-w-50">
-              <ContentSdkImage
-                field={props.fields.Logo}
-                width={345}
-                height={45}
-                className="dark:hidden"
-                priority
-              />
-              <ContentSdkImage
-                field={props.fields.LogoDark}
-                width={345}
-                height={45}
-                className="hidden dark:block"
+              <Image
+                src={ORRICK_LOGO_URL}
+                alt="Orrick"
+                width={300}
+                height={169}
+                className="h-auto w-full max-w-[220px]"
                 priority
               />
             </Link>
             {/* content section */}
-            <div className="grid gap-x-4 gap-y-12 lg:grid-cols-4">
-              {sections.map(({ key, title, content }) => (
-                <div key={key}>
-                  <div className="mb-8 text-lg font-bold">{title}</div>
-                  <div>{content}</div>
-                </div>
-              ))}
+            <div className="space-y-4">
+              <div>
+                <Placeholder name={phKeyFive} rendering={props.rendering} />
+              </div>
+
+              <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
+                {LEGAL_NOTICE_LINKS.map((link, index) => (
+                  <React.Fragment key={link.label}>
+                    <Link href={link.href}>{link.label}</Link>
+                    {index < LEGAL_NOTICE_LINKS.length - 1 ? <span>|</span> : null}
+                  </React.Fragment>
+                ))}
+              </div>
+
+              <p className="text-sm">© 2026 Orrick, Herrington &amp; Sutcliffe LLP. All rights reserved.</p>
+
+              <div className="flex flex-wrap gap-x-2 gap-y-1 text-sm">
+                {ORRICK_LOCATIONS.map((location, index) => (
+                  <React.Fragment key={location}>
+                    <span>{location}</span>
+                    {index < ORRICK_LOCATIONS.length - 1 ? <span>|</span> : null}
+                  </React.Fragment>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       )}
       {/* footer bottom section */}
-      {!hideBottomSection && (
+      {!hideBottomSection && !hideTopSection && false && (
         <div className="container py-4">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
-            {/* copyright section */}
-            <div className="mr-auto">
-              <p>
-                <ContentSdkText field={props.fields.CopyrightText} />
-              </p>
-            </div>
-
-            {/* policy and terms section */}
-            <div className="flex flex-wrap gap-4 lg:mx-8">
-              <ContentSdkLink field={props.fields.TermsText} />
-              <ContentSdkLink field={props.fields.PolicyText} />
-            </div>
-
-            {/* social icons section */}
-            <div>
-              <Placeholder name={phKeyFive} rendering={props.rendering} />
-            </div>
+            <div className="mr-auto" />
           </div>
         </div>
       )}
