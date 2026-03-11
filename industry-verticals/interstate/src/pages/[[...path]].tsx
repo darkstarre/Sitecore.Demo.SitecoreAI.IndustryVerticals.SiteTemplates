@@ -25,6 +25,11 @@ const hasRenderablePlaceholders = (pageData: SitecorePageProps['page']) => {
   );
 };
 
+const isInterstateSite = () => {
+  const siteName = process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME;
+  return siteName === 'interstate-batteries' || siteName === 'interstate';
+};
+
 const replaceLegacyBrandText = <T,>(input: T): T => {
   if (typeof input === 'string') {
     return input.replace(/forma\s+lux/gi, 'Interstate Batteries') as T;
@@ -118,17 +123,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // Interstate safety net:
   // until Interstate placeholders are mapped in Sitecore, reuse Forma Lux route
   // so the site does not render blank in preview/runtime.
-  if (
-    process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME === 'interstate-batteries' &&
-    (!page || !hasRenderablePlaceholders(page))
-  ) {
+  const shouldFallbackToFormaLux =
+    isInterstateSite() && (context.preview || !page || !hasRenderablePlaceholders(page));
+
+  if (shouldFallbackToFormaLux) {
     const fallbackPage = await client.getPage('/_site_forma-lux', { locale: context.locale });
     if (fallbackPage) {
       page = fallbackPage;
     }
   }
 
-  if (process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME === 'interstate-batteries' && page) {
+  if (isInterstateSite() && page) {
     page = replaceLegacyBrandText(page);
   }
 
