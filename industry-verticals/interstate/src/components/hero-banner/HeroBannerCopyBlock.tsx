@@ -2,13 +2,15 @@ import React from 'react';
 import { Link, LinkField, Placeholder } from '@sitecore-content-sdk/nextjs';
 import AccentLine from '@/assets/icons/accent-line/AccentLine';
 
+type PlaceholderRenderingProp = React.ComponentProps<typeof Placeholder>['rendering'];
+
 interface HeroBannerCopyBlockProps {
   title: string;
   subcopy: string;
   ctaLink: LinkField;
   withPlaceholder: boolean;
   searchBarPlaceholderKey: string;
-  rendering: unknown;
+  rendering: PlaceholderRenderingProp;
   hideAccentLine: boolean;
 }
 

@@ -21,7 +21,7 @@ import ProductCarousel from 'src/components/non-sitecore/ProductCarousel';
 import { CommonStyles, LayoutStyles, PromoFlags, HeroBannerStyles } from '@/types/styleFlags';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation, A11y, Keyboard } from 'swiper/modules';
-import { ArrowRight, ChevronLeft, ChevronRight, ChevronDown, Heart, Plus, Star, User, X, Check, Loader2, LoaderCircle, ShoppingCart, Search, Globe, MoreHorizontal, Home } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, ChevronDown, Heart, Plus, Star, User, X, Check, Loader2, LoaderCircle, ShoppingCart, Search, Zap, Globe, MoreHorizontal, Home } from 'lucide-react';
 import Link_a258c208ba01265ca0aa9c7abae745cc7141aa63 from 'next/link';
 import { cn } from '@/shadcn/lib/utils';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
@@ -83,6 +83,7 @@ import { useRouter as useRouter_0e8a928699f624a3ad05eb9c9906b0e7ce1a00be } from 
 import { Select as Select_4a7098778d43a9b4dcd5871ec48ea51b5a246850, SelectContent, SelectItem, SelectTrigger, SelectValue } from 'src/shadcn/components/ui/select';
 import { localeOptions } from '@/constants/localeOptions';
 import HeroBannerCopyBlock from 'src/components/hero-banner/HeroBannerCopyBlock';
+import { Default } from '@/components/location-finder/LocationFinder';
 import { generateIndexes } from '@/helpers/generateIndexes';
 import client from 'lib/sitecore-client';
 import * as FEAAS from '@sitecore-feaas/clientside/react';
@@ -219,6 +220,7 @@ const importMap = [
       { name: 'LoaderCircle', value: LoaderCircle },
       { name: 'ShoppingCart', value: ShoppingCart },
       { name: 'Search', value: Search },
+      { name: 'Zap', value: Zap },
       { name: 'Globe', value: Globe },
       { name: 'MoreHorizontal', value: MoreHorizontal },
       { name: 'Home', value: Home },
@@ -638,6 +640,12 @@ const importMap = [
     module: 'src/components/hero-banner/HeroBannerCopyBlock',
     exports: [
       { name: 'default', value: HeroBannerCopyBlock },
+    ]
+  },
+  {
+    module: '@/components/location-finder/LocationFinder',
+    exports: [
+      { name: 'Default', value: Default },
     ]
   },
   {
