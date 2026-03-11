@@ -1,7 +1,7 @@
 /**
  * This Layout is needed for Starter Kit.
  */
-import React, { JSX } from 'react';
+import React, { JSX, useEffect } from 'react';
 import Head from 'next/head';
 import { Placeholder, Field, Page, ImageField } from '@sitecore-content-sdk/nextjs';
 import Scripts from 'src/Scripts';
@@ -23,6 +23,11 @@ interface RouteFields {
   ogImage?: ImageField;
 }
 
+const normalizeInterstateBrandCopy = (value: string | undefined): string => {
+  if (!value) return '';
+  return value.replace(/forma\s+lux/gi, 'Interstate Batteries');
+};
+
 const Layout = ({ page }: LayoutProps): JSX.Element => {
   const router = useRouter();
   const { layout, mode } = page;
@@ -30,22 +35,75 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
   const fields = route?.fields as RouteFields;
   const mainClassPageEditing = mode.isEditing ? 'editing-mode' : 'prod-mode';
 
-  const metaDescription =
-    fields?.metadataDescription?.value?.toString() || fields?.pageSummary?.value?.toString() || '';
+  const metaDescription = normalizeInterstateBrandCopy(
+    fields?.metadataDescription?.value?.toString() || fields?.pageSummary?.value?.toString() || ''
+  );
   const metaKeywords = fields?.metadataKeywords?.value?.toString() || '';
-  const ogTitle = fields?.metadataTitle?.value?.toString() || 'Page';
+  const ogTitle = normalizeInterstateBrandCopy(fields?.metadataTitle?.value?.toString() || 'Page');
   const ogImage = fields?.ogImage?.value?.src;
-  const ogDescription =
-    fields?.metadataDescription?.value?.toString() || fields?.pageSummary?.value?.toString() || '';
+  const ogDescription = normalizeInterstateBrandCopy(
+    fields?.metadataDescription?.value?.toString() || fields?.pageSummary?.value?.toString() || ''
+  );
+  const pageTitle = normalizeInterstateBrandCopy(fields?.Title?.value?.toString() || 'Page');
   const currentPath = router.asPath;
   const ogUrl = `${process.env.NEXT_PUBLIC_BASE_URL || ''}${currentPath}`;
+
+  useEffect(() => {
+    if (process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME !== 'interstate-batteries') return;
+
+    const replaceLegacyBrand = (value: string): string =>
+      value.replace(/forma[\s\u00a0]*lux/gi, 'Interstate Batteries');
+
+    const sanitizeTextNode = (node: Text) => {
+      const currentValue = node.nodeValue ?? '';
+      const nextValue = replaceLegacyBrand(currentValue);
+      if (nextValue !== currentValue) {
+        node.nodeValue = nextValue;
+      }
+    };
+
+    const sanitizeSubtree = (root: Node) => {
+      if (root.nodeType === Node.TEXT_NODE) {
+        sanitizeTextNode(root as Text);
+        return;
+      }
+
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+      let currentNode = walker.nextNode();
+      while (currentNode) {
+        sanitizeTextNode(currentNode as Text);
+        currentNode = walker.nextNode();
+      }
+    };
+
+    const headerRoot = document.getElementById('header');
+    if (!headerRoot) return;
+    sanitizeSubtree(headerRoot);
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'characterData' && mutation.target.nodeType === Node.TEXT_NODE) {
+          sanitizeTextNode(mutation.target as Text);
+          return;
+        }
+
+        mutation.addedNodes.forEach((addedNode) => {
+          sanitizeSubtree(addedNode);
+        });
+      });
+    });
+
+    observer.observe(headerRoot, { childList: true, subtree: true, characterData: true });
+
+    return () => observer.disconnect();
+  }, [router.asPath]);
 
   return (
     <>
       <Scripts />
       <SitecoreStyles layoutData={layout} />
       <Head>
-        <title>{fields?.Title?.value?.toString() || 'Page'}</title>
+        <title>{pageTitle}</title>
         <link rel="icon" href="/favicon.ico" />
         {metaDescription && <meta name="description" content={metaDescription} />}
         {metaKeywords && <meta name="keywords" content={metaKeywords} />}

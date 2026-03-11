@@ -73,25 +73,29 @@ export const Default = (props: FooterProps) => {
 
   return (
     <section className={`component footer relative ${props.params.styles} overflow-hidden`} id={id}>
-      <div className="bg-background-muted">
+      <div className="bg-[#0d2f5f] text-white">
         <div className="container grid gap-12 py-28.5 lg:grid-cols-[1fr_3fr]">
           <div className="flex flex-col gap-7">
             <div className="sm:max-w-34">
               <Image field={props.fields.Logo} />
             </div>
-            <RichText field={props.fields.Description} />
+            <div className="[&_p]:text-white/85">
+              <RichText field={props.fields.Description} />
+            </div>
           </div>
           <div className="grid gap-13 sm:grid-cols-3 lg:grid-cols-5 lg:gap-5 xl:gap-12">
             {sections.map(({ key, title, content }) => (
               <div key={key}>
                 <div className="text-accent mb-8 text-lg font-bold">{title}</div>
-                <div className="space-y-4">{content}</div>
+                <div className="space-y-4 [&_a]:text-white/85 [&_a:hover]:text-white">
+                  {content}
+                </div>
               </div>
             ))}
           </div>
         </div>
       </div>
-      <div className="bg-background">
+      <div className="bg-[#0a264f] text-white/90">
         <div className="container flex items-center justify-between py-8.5 max-sm:flex-col max-sm:items-start max-sm:gap-10">
           <div className="max-sm:order-2">
             <Text field={props.fields.CopyrightText} />

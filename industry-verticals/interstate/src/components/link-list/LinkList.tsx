@@ -24,6 +24,11 @@ interface LinkListProps extends ComponentProps {
   };
 }
 
+const isLegacyFormaLuxText = (value?: string): boolean => {
+  if (!value) return false;
+  return /forma\s*lux/i.test(value.replace(/\u00a0/g, ' '));
+};
+
 const LinkListItem = ({
   index,
   total,
@@ -41,6 +46,12 @@ const LinkListItem = ({
   ]
     .filter(Boolean)
     .join(' ');
+
+  const linkText = field?.value?.text?.toString();
+  const linkTitle = field?.value?.title?.toString();
+  if (isLegacyFormaLuxText(linkText) || isLegacyFormaLuxText(linkTitle)) {
+    return null;
+  }
 
   return (
     <li className={classNames}>
@@ -111,7 +122,11 @@ export const Default = ({ params, fields }: LinkListProps) => {
       return <h3>Link List</h3>;
     }
 
-    const validLinks = getLinksFromDatasource();
+    const validLinks = getLinksFromDatasource().filter((link) => {
+      const linkText = link?.value?.text?.toString();
+      const linkTitle = link?.value?.title?.toString();
+      return !isLegacyFormaLuxText(linkText) && !isLegacyFormaLuxText(linkTitle);
+    });
 
     const links = validLinks.map((linkField, index) => (
       <LinkListItem
@@ -124,7 +139,9 @@ export const Default = ({ params, fields }: LinkListProps) => {
 
     return (
       <>
-        <Text tag="h3" field={datasource.field?.title} />
+        {!isLegacyFormaLuxText(datasource.field?.title?.value?.toString()) && (
+          <Text tag="h3" field={datasource.field?.title} />
+        )}
         <ul>{links}</ul>
       </>
     );

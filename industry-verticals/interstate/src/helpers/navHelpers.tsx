@@ -2,6 +2,21 @@ import { NavigationProps, NavItemFields } from '@/components/navigation/Navigati
 import React, { JSX } from 'react';
 import { LinkField, Text } from '@sitecore-content-sdk/nextjs';
 
+const LABEL_MAP: Record<string, string> = {
+  'forma lux': 'INTERSTATE BATTERIES',
+  furniture: 'Find a Battery',
+  articles: 'Resources',
+  services: 'Find a Location',
+  'about us': 'About',
+};
+
+const normalizeLabel = (value?: string): string => {
+  const text = (value || '').trim();
+  if (!text) return '';
+  const mapped = LABEL_MAP[text.toLowerCase()];
+  return mapped || text;
+};
+
 export const isNavLevel = (fields: NavItemFields, level: number): boolean => {
   return Array.isArray(fields.Styles) && fields.Styles.includes(`level${level}`);
 };
@@ -15,6 +30,11 @@ export const isNavRootItem = (fields: NavItemFields): boolean => {
 
 export const getLinkContent = (fields: NavItemFields, logoSrc?: string): JSX.Element | string => {
   const isRootItem = isNavRootItem(fields);
+  const normalizedLabel = normalizeLabel(
+    fields.NavigationTitle?.value?.toString() ||
+      fields.Title?.value?.toString() ||
+      fields.DisplayName
+  );
 
   if (isRootItem && logoSrc) {
     const altText =
@@ -22,21 +42,26 @@ export const getLinkContent = (fields: NavItemFields, logoSrc?: string): JSX.Ele
     return <img src={logoSrc} alt={String(altText)} className="h-auto w-36" />;
   }
 
+  const sourceText =
+    fields.NavigationTitle?.value?.toString() ||
+    fields.Title?.value?.toString() ||
+    fields.DisplayName;
   const textField = fields.NavigationTitle || fields.Title;
-  if (textField) {
+  if (textField && normalizedLabel === sourceText) {
     return <Text field={textField} />;
   }
 
-  return fields.DisplayName;
+  return normalizedLabel || fields.DisplayName;
 };
 
 export const getLinkField = (fields: NavItemFields): LinkField => ({
   value: {
     href: fields.Href,
-    title:
+    title: normalizeLabel(
       fields.NavigationTitle?.value?.toString() ??
-      fields.Title?.value?.toString() ??
-      fields.DisplayName,
+        fields.Title?.value?.toString() ??
+        fields.DisplayName
+    ),
     querystring: fields.Querystring,
   },
 });

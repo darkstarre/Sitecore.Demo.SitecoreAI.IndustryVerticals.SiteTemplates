@@ -25,12 +25,17 @@ const autoPlayDelay = 5000;
 
 export const Default = (props: OfferProps) => {
   const { page } = useSitecore();
+  const isInterstateSite = process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME === 'interstate-batteries';
 
   const id = props.params.RenderingIdentifier;
   const uid = props.rendering.uid;
   const datasource = props.fields?.Offers || [];
   const styles = `${props.params.styles || ''}`.trim();
   const autoPlay = isParamEnabled(props.params.Autoplay);
+
+  if (isInterstateSite) {
+    return <></>;
+  }
 
   if (!datasource.length) {
     return page.mode.isEditing ? (

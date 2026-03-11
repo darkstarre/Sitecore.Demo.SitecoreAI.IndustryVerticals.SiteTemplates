@@ -40,6 +40,19 @@ export interface NavigationProps extends ComponentProps {
   fields: Record<string, NavItemFields>;
 }
 
+const isLegacyFormaLuxItem = (item: NavItemFields): boolean => {
+  const candidateText = [
+    item.DisplayName,
+    item.NavigationTitle?.value?.toString(),
+    item.Title?.value?.toString(),
+  ]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase();
+
+  return candidateText.includes('forma lux');
+};
+
 const NavigationListItem: React.FC<NavigationListItemProps> = ({
   fields,
   handleClick,
@@ -94,7 +107,7 @@ const NavigationListItem: React.FC<NavigationListItemProps> = ({
           field={getLinkField(fields)}
           editable={page.mode.isEditing}
           onClick={clickHandler}
-          className="hover:text-foreground-light whitespace-nowrap transition-colors"
+          className="hover:text-accent hover:border-accent border-b-2 border-transparent px-1 py-1 text-sm font-bold tracking-[0.08em] whitespace-nowrap uppercase transition-colors"
         >
           {getLinkContent(fields, logoSrc)}
         </Link>
@@ -177,6 +190,9 @@ export const Default = ({ params, fields }: NavigationProps) => {
 
   const navigationItems = Object.values(preparedFields)
     .filter((item): item is NavItemFields => !!item)
+    // Interstate uses a custom brand lockup in Header, so hide Sitecore's root brand item.
+    .filter((item) => !isNavRootItem(item))
+    .filter((item) => !isLegacyFormaLuxItem(item))
     .map((item) => (
       <NavigationListItem
         key={item.Id}
@@ -188,7 +204,10 @@ export const Default = ({ params, fields }: NavigationProps) => {
     ));
 
   return (
-    <div className={`component navigation bg-background ${styles}`} id={id}>
+    <div
+      className={`component navigation border-t border-[#e1ebd6] bg-[#f9fcf6] text-[#0d2f5f] ${styles}`}
+      id={id}
+    >
       <div
         className={clsx(
           'relative z-150 container flex items-center py-4 lg:hidden',

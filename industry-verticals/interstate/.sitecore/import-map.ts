@@ -82,6 +82,7 @@ import { getLinkContent, getLinkField, isNavLevel, isNavRootItem, prepareFields 
 import { useRouter as useRouter_0e8a928699f624a3ad05eb9c9906b0e7ce1a00be } from 'next/router';
 import { Select as Select_4a7098778d43a9b4dcd5871ec48ea51b5a246850, SelectContent, SelectItem, SelectTrigger, SelectValue } from 'src/shadcn/components/ui/select';
 import { localeOptions } from '@/constants/localeOptions';
+import HeroBannerCopyBlock from 'src/components/hero-banner/HeroBannerCopyBlock';
 import { generateIndexes } from '@/helpers/generateIndexes';
 import client from 'lib/sitecore-client';
 import * as FEAAS from '@sitecore-feaas/clientside/react';
@@ -631,6 +632,12 @@ const importMap = [
     module: '@/constants/localeOptions',
     exports: [
       { name: 'localeOptions', value: localeOptions },
+    ]
+  },
+  {
+    module: 'src/components/hero-banner/HeroBannerCopyBlock',
+    exports: [
+      { name: 'default', value: HeroBannerCopyBlock },
     ]
   },
   {

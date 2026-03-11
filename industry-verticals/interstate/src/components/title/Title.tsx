@@ -45,6 +45,15 @@ export const Default = ({ params, fields }: TitleProps): JSX.Element => {
   const { styles, RenderingIdentifier: id } = params;
   const datasource = fields?.data?.datasource || fields?.data?.contextItem;
   const text: TextField = datasource?.field?.jsonValue || {};
+  const titleValue = datasource?.field?.jsonValue?.value?.toString() || '';
+  const shouldHideLegacyBrandTitle =
+    process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME === 'interstate-batteries' &&
+    /forma\s*lux/i.test(titleValue.replace(/\u00a0/g, ' '));
+
+  if (shouldHideLegacyBrandTitle) {
+    return <></>;
+  }
+
   const link: LinkField = {
     value: {
       href: datasource?.url?.path,

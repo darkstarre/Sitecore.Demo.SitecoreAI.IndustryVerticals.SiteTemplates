@@ -16,6 +16,35 @@ import client from 'lib/sitecore-client';
 import components from '.sitecore/component-map';
 import scConfig from 'sitecore.config';
 
+const hasRenderablePlaceholders = (pageData: SitecorePageProps['page']) => {
+  const placeholders = pageData?.layout?.sitecore?.route?.placeholders;
+  if (!placeholders) return false;
+
+  return Object.values(placeholders).some(
+    (renderings) => Array.isArray(renderings) && renderings.length > 0
+  );
+};
+
+const replaceLegacyBrandText = <T,>(input: T): T => {
+  if (typeof input === 'string') {
+    return input.replace(/forma\s+lux/gi, 'Interstate Batteries') as T;
+  }
+
+  if (Array.isArray(input)) {
+    return input.map((item) => replaceLegacyBrandText(item)) as T;
+  }
+
+  if (input && typeof input === 'object') {
+    const entries = Object.entries(input as Record<string, unknown>).map(([key, value]) => [
+      key,
+      replaceLegacyBrandText(value),
+    ]);
+    return Object.fromEntries(entries) as T;
+  }
+
+  return input;
+};
+
 const SitecorePage = ({ page, notFound, componentProps }: SitecorePageProps): JSX.Element => {
   useEffect(() => {
     // Since Sitecore Editor does not support Fast Refresh, need to refresh editor chromes after Fast Refresh finished
@@ -85,6 +114,29 @@ export const getStaticProps: GetStaticProps = async (context) => {
       ? await client.getPreview(context.previewData)
       : await client.getPage(path, { locale: context.locale });
   }
+
+  // Local Interstate safety net:
+  // until Interstate placeholders are mapped in Sitecore, reuse Forma Lux route
+  // so local styling work can continue without blank pages.
+  if (
+    process.env.NODE_ENV === 'development' &&
+    process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME === 'interstate-batteries' &&
+    (!page || !hasRenderablePlaceholders(page))
+  ) {
+    const fallbackPage = await client.getPage('/_site_forma-lux', { locale: context.locale });
+    if (fallbackPage) {
+      page = fallbackPage;
+    }
+  }
+
+  if (
+    process.env.NODE_ENV === 'development' &&
+    process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME === 'interstate-batteries' &&
+    page
+  ) {
+    page = replaceLegacyBrandText(page);
+  }
+
   if (page) {
     props = {
       page,

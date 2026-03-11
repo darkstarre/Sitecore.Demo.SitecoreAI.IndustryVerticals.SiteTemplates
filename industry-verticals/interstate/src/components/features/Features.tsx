@@ -10,6 +10,7 @@ import {
 import React from 'react';
 import AccentLine from '@/assets/icons/accent-line/AccentLine';
 import { CommonStyles } from '@/types/styleFlags';
+import { useRouter } from 'next/router';
 
 interface Fields {
   data: {
@@ -93,6 +94,15 @@ export const Default = (props: FeaturesProps) => {
 };
 
 export const ImageGrid = (props: FeaturesProps) => {
+  const router = useRouter();
+  const isInterstateHomepageLogoStrip =
+    process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME === 'interstate-batteries' &&
+    (router.asPath === '/' || router.asPath.startsWith('/?'));
+
+  if (isInterstateHomepageLogoStrip) {
+    return null;
+  }
+
   // results of the graphql
   const results = props.fields.data.datasource.children.results;
 
