@@ -1,7 +1,6 @@
 'use client';
 
 import React, { JSX, useEffect, useMemo, useState } from 'react';
-import { ComponentProps } from '@/lib/component-props';
 import { Zap } from 'lucide-react';
 
 type LocationData = {
@@ -12,7 +11,7 @@ type LocationData = {
   longitude: number;
 };
 
-type LocationFinderProps = ComponentProps & {
+type LocationFinderProps = {
   params: { [key: string]: string };
 };
 
