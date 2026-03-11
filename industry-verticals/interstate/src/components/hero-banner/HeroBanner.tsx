@@ -1,6 +1,6 @@
 import { Field, LinkField, useSitecore } from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from '@/lib/component-props';
-import { CommonStyles, HeroBannerStyles, LayoutStyles } from '@/types/styleFlags';
+import { CommonStyles, HeroBannerStyles } from '@/types/styleFlags';
 import HeroBannerCopyBlock from './HeroBannerCopyBlock';
 import { Default as LocationFinder } from '@/components/location-finder/LocationFinder';
 
@@ -58,7 +58,6 @@ export const Default = ({ params, fields, rendering }: HeroBannerProps) => {
   const styles = params.styles || '';
   const hideAccentLine = styles.includes(CommonStyles.HideAccentLine);
   const withPlaceholder = styles.includes(HeroBannerStyles.WithPlaceholder);
-  const reverseLayout = styles.includes(LayoutStyles.Reversed);
   const searchBarPlaceholderKey = `hero-banner-search-bar-${params.DynamicPlaceholderId}`;
 
   return (
