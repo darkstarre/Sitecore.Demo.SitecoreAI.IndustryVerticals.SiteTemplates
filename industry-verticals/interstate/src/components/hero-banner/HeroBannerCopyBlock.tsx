@@ -27,7 +27,7 @@ const HeroBannerCopyBlock = ({
   const accentLineClass = 'mx-auto !mt-2 !h-5 w-[9ch]';
 
   return (
-    <section className="hero-banner-copy w-full bg-background py-10 lg:py-14">
+    <section className="hero-banner-copy bg-background w-full py-10 lg:py-14">
       <div className="container mx-auto flex justify-center px-4">
         <div className={wrapperClass} style={{ textAlign: 'center' }}>
           <h1
@@ -37,7 +37,7 @@ const HeroBannerCopyBlock = ({
             {!hideAccentLine && <AccentLine className={accentLineClass} />}
           </h1>
 
-          <div className={`mt-5 text-lg text-foreground md:text-2xl ${headingAlignClass}`}>
+          <div className={`text-foreground mt-5 text-lg md:text-2xl ${headingAlignClass}`}>
             <p>{subcopy}</p>
           </div>
 

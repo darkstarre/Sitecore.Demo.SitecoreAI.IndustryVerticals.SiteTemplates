@@ -292,14 +292,12 @@ export const Default = ({ params }: LocationFinderProps): JSX.Element => {
 
           <div className="mt-6 grid gap-6 lg:grid-cols-[2fr_1fr]">
             <div>
-              {isLoading && (
-                <p className="text-base text-foreground">Detecting your location...</p>
-              )}
+              {isLoading && <p className="text-foreground text-base">Detecting your location...</p>}
 
               {!isLoading && error && <p className="text-base text-[#b3261e]">{error}</p>}
 
               {!isLoading && !error && location && (
-                <p className="text-lg text-foreground">
+                <p className="text-foreground text-lg">
                   Showing service area near <strong>{buildLocationLabel(location)}</strong>
                 </p>
               )}
@@ -320,7 +318,7 @@ export const Default = ({ params }: LocationFinderProps): JSX.Element => {
             <div className="grid gap-4 lg:grid-cols-2">
               <div className="rounded-xl border border-[#d9e5cb] bg-[#f8fbf4] p-4 lg:p-5">
                 <h3 className="text-lg font-bold text-[#0d2f5f]">Set Location Manually</h3>
-                <p className="mt-1 text-sm text-foreground">Enter city/state or ZIP code.</p>
+                <p className="text-foreground mt-1 text-sm">Enter city/state or ZIP code.</p>
 
                 <button
                   type="button"
@@ -373,7 +371,7 @@ export const Default = ({ params }: LocationFinderProps): JSX.Element => {
                 <h4 className="text-base font-extrabold text-[#0d2f5f]">
                   When should you replace your battery?
                 </h4>
-                <ul className="mt-2 space-y-2 text-sm text-foreground">
+                <ul className="text-foreground mt-2 space-y-2 text-sm">
                   <li className="flex items-start gap-2">
                     <Zap className="mt-0.5 h-4 w-4 shrink-0 text-[#1f5a31]" />
                     <span>Most car batteries should be tested yearly after year 3.</span>

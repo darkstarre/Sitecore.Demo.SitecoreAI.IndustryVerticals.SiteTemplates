@@ -1,8 +1,4 @@
-import {
-  Field,
-  LinkField,
-  useSitecore,
-} from '@sitecore-content-sdk/nextjs';
+import { Field, LinkField, useSitecore } from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from '@/lib/component-props';
 import { CommonStyles, HeroBannerStyles, LayoutStyles } from '@/types/styleFlags';
 import HeroBannerCopyBlock from './HeroBannerCopyBlock';
@@ -26,10 +22,7 @@ const HERO_SUBCOPY =
 const HERO_IMAGE_URL =
   'https://www.interstatebatteries.com/-/media/project/interstate-batteries/final-images/landing-pages/mrdependable-pphero-interstate-batteries-desktop.png?w=1440&hash=7A14B3D0879211A20E4636DF0524C7FC';
 
-const HeroBannerCommon = ({
-  params,
-  fields,
-}: HeroBannerProps) => {
+const HeroBannerCommon = ({ params, fields }: HeroBannerProps) => {
   const { page } = useSitecore();
   const { styles, RenderingIdentifier: id } = params;
   const isPageEditing = page.mode.isEditing;
@@ -81,7 +74,10 @@ export const Default = ({ params, fields, rendering }: HeroBannerProps) => {
         hideAccentLine={hideAccentLine}
       />
       <LocationFinder
-        params={{ styles: '', RenderingIdentifier: `${params.DynamicPlaceholderId}-hero-location-finder` }}
+        params={{
+          styles: '',
+          RenderingIdentifier: `${params.DynamicPlaceholderId}-hero-location-finder`,
+        }}
       />
     </>
   );
@@ -106,7 +102,10 @@ export const TopContent = ({ params, fields, rendering }: HeroBannerProps) => {
         hideAccentLine={hideAccentLine}
       />
       <LocationFinder
-        params={{ styles: '', RenderingIdentifier: `${params.DynamicPlaceholderId}-hero-location-finder` }}
+        params={{
+          styles: '',
+          RenderingIdentifier: `${params.DynamicPlaceholderId}-hero-location-finder`,
+        }}
       />
     </>
   );
