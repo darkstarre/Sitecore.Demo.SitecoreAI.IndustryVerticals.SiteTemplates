@@ -10,11 +10,17 @@ import {
   StaticPath,
   SiteInfo,
 } from '@sitecore-content-sdk/nextjs';
+import { SitecoreClient } from '@sitecore-content-sdk/nextjs/client';
 import { extractPath, handleEditorFastRefresh } from '@sitecore-content-sdk/nextjs/utils';
 import { isDesignLibraryPreviewData } from '@sitecore-content-sdk/nextjs/editing';
 import client from 'lib/sitecore-client';
 import components from '.sitecore/component-map';
 import scConfig from 'sitecore.config';
+
+const formaLuxFallbackClient = new SitecoreClient({
+  ...scConfig,
+  defaultSite: 'forma-lux',
+});
 
 const hasRenderablePlaceholders = (pageData: SitecorePageProps['page']) => {
   const placeholders = pageData?.layout?.sitecore?.route?.placeholders;
@@ -127,9 +133,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
     isInterstateSite() && (context.preview || !page || !hasRenderablePlaceholders(page));
 
   if (shouldFallbackToFormaLux) {
-    const fallbackPage = await client.getPage('/_site_forma-lux', { locale: context.locale });
-    if (fallbackPage) {
-      page = fallbackPage;
+    const fallbackPaths = [path, '/', '/home', '/_site_forma-lux'];
+
+    for (const fallbackPath of fallbackPaths) {
+      const fallbackPage =
+        (await formaLuxFallbackClient.getPage(fallbackPath, { locale: context.locale })) ||
+        (await client.getPage(fallbackPath, { locale: context.locale }));
+
+      if (fallbackPage && hasRenderablePlaceholders(fallbackPage)) {
+        page = fallbackPage;
+        break;
+      }
     }
   }
 
