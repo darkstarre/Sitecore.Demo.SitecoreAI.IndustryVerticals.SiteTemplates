@@ -22,6 +22,7 @@ import * as HeroBanner from 'src/components/hero-banner/HeroBanner';
 import * as HeaderExtended from 'src/components/header-extended/HeaderExtended';
 import * as Footer from 'src/components/footer/Footer';
 import * as Features from 'src/components/features/Features';
+import * as FeaturedArticles from 'src/components/featured-articles/FeaturedArticles';
 import * as DoctorsListing from 'src/components/doctors-listing/DoctorsListing';
 import * as DoctorDetails from 'src/components/doctor-details/DoctorDetails';
 import * as ContentBlock from 'src/components/content-block/ContentBlock';
@@ -52,6 +53,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['HeaderExtended', { ...HeaderExtended }],
   ['Footer', { ...Footer, componentType: 'client' }],
   ['Features', { ...Features, componentType: 'client' }],
+  ['FeaturedArticles', { ...FeaturedArticles, componentType: 'client' }],
   ['DoctorsListing', { ...DoctorsListing }],
   ['DoctorDetails', { ...DoctorDetails }],
   ['ContentBlock', { ...ContentBlock }],

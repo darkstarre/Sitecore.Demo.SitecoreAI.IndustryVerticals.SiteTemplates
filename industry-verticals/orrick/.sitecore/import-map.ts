@@ -21,6 +21,7 @@ import { faArrowRight, faBars, faChevronDown, faChevronUp, faTimes, faArrowLeft 
 import BlobAccent_c450f25c63b00a2e370305e155038c473dbb9c49 from 'src/components/non-sitecore/BlobAccent';
 import CurvedClip_6089ba18dc7000eae1dc64c54178a20f58206b41 from 'src/components/non-sitecore/CurvedClip';
 import { getLinkField, getNavigationText } from '@/helpers/navHelpers';
+import { InlineFeaturedArticles } from 'src/components/featured-articles/FeaturedArticles';
 import Link_a258c208ba01265ca0aa9c7abae745cc7141aa63 from 'next/link';
 import client from 'lib/sitecore-client';
 import * as FEAAS from '@sitecore-feaas/clientside/react';
@@ -129,6 +130,12 @@ const importMap = [
     exports: [
       { name: 'getLinkField', value: getLinkField },
       { name: 'getNavigationText', value: getNavigationText },
+    ]
+  },
+  {
+    module: 'src/components/featured-articles/FeaturedArticles',
+    exports: [
+      { name: 'InlineFeaturedArticles', value: InlineFeaturedArticles },
     ]
   },
   {

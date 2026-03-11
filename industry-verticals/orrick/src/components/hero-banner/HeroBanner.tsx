@@ -3,8 +3,7 @@
 import React, { useRef, useState } from 'react';
 import { ImageField, withDatasourceCheck } from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from '@/lib/component-props';
-import Link from 'next/link';
-import BlobAccent from '../../assets/shapes/BlobAccent';
+import { InlineFeaturedArticles } from '../featured-articles/FeaturedArticles';
 
 interface Fields {
   Image: ImageField;
@@ -19,43 +18,9 @@ const HERO_VIDEO_URL =
 const HERO_POSTER_URL =
   'https://images.pexels.com/photos/4427430/pexels-photo-4427430.jpeg?auto=compress&cs=tinysrgb&w=2400&h=1200&dpr=2';
 
-const INSIGHTS_ARTICLES = [
-  {
-    title: 'Cross-Border Expansion Playbook for Growth Companies',
-    meta: 'Briefing | March 2, 2026',
-    href: '/Insights/Technology-and-Innovation',
-  },
-  {
-    title: 'Data Center Transactions: Structuring Deals for Speed and Certainty',
-    meta: 'Analysis | February 21, 2026',
-    href: '/Insights/Energy-and-Infrastructure',
-  },
-  {
-    title: 'AI Governance in Practice: 7 Questions Boards Are Asking',
-    meta: 'Resource | February 11, 2026',
-    href: '/Insights/Finance',
-  },
-  {
-    title: 'Managing Regulatory Risk While Scaling Into New Markets',
-    meta: 'Perspective | January 30, 2026',
-    href: '/Insights/Finance',
-  },
-  {
-    title: 'Board-Level AI Governance: What Counsel Should Prioritize',
-    meta: 'Guide | January 18, 2026',
-    href: '/Insights/Technology-and-Innovation',
-  },
-  {
-    title: 'Critical Infrastructure Transactions in Volatile Markets',
-    meta: 'Update | January 10, 2026',
-    href: '/Insights/Energy-and-Infrastructure',
-  },
-];
-
 export const DefaultHeroBanner = (props: HeroBannerProps) => {
   const id = props.params.RenderingIdentifier;
   const videoRef = useRef<HTMLVideoElement>(null);
-  const insightsRef = useRef<HTMLUListElement>(null);
   const [isPaused, setIsPaused] = useState(false);
 
   const togglePlayback = () => {
@@ -71,16 +36,6 @@ export const DefaultHeroBanner = (props: HeroBannerProps) => {
       video.pause();
       setIsPaused(true);
     }
-  };
-
-  const scrollInsights = (direction: 'prev' | 'next') => {
-    const element = insightsRef.current;
-    if (!element) return;
-    const amount = Math.max(320, Math.round(element.clientWidth * 0.85));
-    element.scrollBy({
-      left: direction === 'next' ? amount : -amount,
-      behavior: 'smooth',
-    });
   };
 
   return (
@@ -121,87 +76,7 @@ export const DefaultHeroBanner = (props: HeroBannerProps) => {
           </div>
         </div>
       </section>
-
-      <section className="bg-background dark:bg-background-dark relative overflow-hidden py-14">
-        <BlobAccent
-          size="lg"
-          className="pointer-events-none absolute top-6 -right-18 z-0 text-[#023859]/25 md:-right-8 lg:right-0 dark:text-[#8ec7ff]/20"
-        />
-        <div className="relative z-10 container space-y-8">
-          <div className="flex items-start justify-between gap-6">
-            <div>
-              <p className="text-xs font-semibold tracking-[0.2em] text-[#023859] uppercase dark:text-[#8ec7ff]">
-                Insights
-              </p>
-              <h2 className="mt-2 text-[#023859] dark:text-[#b9ddff]">Featured Articles</h2>
-            </div>
-            <div className="flex items-center gap-3 pt-2">
-              <button
-                type="button"
-                onClick={() => scrollInsights('prev')}
-                className="group inline-flex items-center gap-2 text-3xl font-black tracking-tight text-[#023859] transition hover:text-[#1f3f64] dark:text-[#8ec7ff] dark:hover:text-[#c6e4ff]"
-                aria-label="Scroll previous articles"
-              >
-                <svg
-                  aria-hidden
-                  viewBox="0 0 12 12"
-                  className="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-1"
-                >
-                  <path
-                    d="M7.8 1.6L3.4 6l4.4 4.4"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                <span className="h-px w-8 bg-current opacity-70 transition-all duration-200 group-hover:w-10 group-hover:opacity-100" />
-              </button>
-              <button
-                type="button"
-                onClick={() => scrollInsights('next')}
-                className="group inline-flex items-center gap-2 text-3xl font-black tracking-tight text-[#023859] transition hover:text-[#1f3f64] dark:text-[#8ec7ff] dark:hover:text-[#c6e4ff]"
-                aria-label="Scroll more articles"
-              >
-                <span className="h-px w-8 bg-current opacity-70 transition-all duration-200 group-hover:w-10 group-hover:opacity-100" />
-                <svg
-                  aria-hidden
-                  viewBox="0 0 12 12"
-                  className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
-                >
-                  <path
-                    d="M4.2 1.6L8.6 6l-4.4 4.4"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-          <ul
-            ref={insightsRef}
-            className="flex snap-x snap-mandatory gap-8 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-          >
-            {INSIGHTS_ARTICLES.map((article) => (
-              <li
-                key={article.title}
-                className="border-border/60 min-w-[290px] snap-start border-t pt-4 md:min-w-[360px]"
-              >
-                <Link href={article.href} className="group block space-y-3">
-                  <h3 className="font-heading text-2xl leading-tight text-[#023859] transition group-hover:text-[#1f3f64] dark:text-[#d9ecff] dark:group-hover:text-[#8ec7ff]">
-                    {article.title}
-                  </h3>
-                  <p className="text-muted text-sm">{article.meta}</p>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      <InlineFeaturedArticles />
     </>
   );
 };
