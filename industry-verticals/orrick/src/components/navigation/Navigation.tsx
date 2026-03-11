@@ -263,14 +263,6 @@ export const Default = (props: NavigationProps) => {
       : '';
   const id = props.params != null ? props.params.RenderingIdentifier : null;
 
-  if (!Object.values(normalizedFields).length) {
-    return (
-      <div className={`component navigation ${styles}`} id={id ? id : undefined}>
-        <div className="component-content">[Navigation]</div>
-      </div>
-    );
-  }
-
   const handleToggleMenu = (event?: React.MouseEvent<HTMLElement>, flag?: boolean): void => {
     if (event && page.mode.isEditing) {
       event.preventDefault();
@@ -294,14 +286,13 @@ export const Default = (props: NavigationProps) => {
             }
             return [element];
           })
-          .filter((element) => !isAttorneysNavigationItem(element) && !isHomeNavigationItem(element))
+          .filter(
+            (element) => !isAttorneysNavigationItem(element) && !isHomeNavigationItem(element)
+          )
       )
     )
   );
-  const searchableItems = useMemo(
-    () => collectSearchableItems(topLevelItems),
-    [topLevelItems]
-  );
+  const searchableItems = useMemo(() => collectSearchableItems(topLevelItems), [topLevelItems]);
   const trimmedQuery = searchQuery.trim().toLowerCase();
   const searchMatches =
     trimmedQuery.length > 0
@@ -324,15 +315,22 @@ export const Default = (props: NavigationProps) => {
     window.location.href = searchMatches[0].href;
   };
 
-  const list = topLevelItems
-    .map((element: NavItemFields, key: number) => (
-      <NavigationList
-        key={`${key}${element.Id}`}
-        fields={element}
-        handleClick={(event: React.MouseEvent<HTMLElement>) => handleToggleMenu(event, false)}
-        relativeLevel={1}
-      />
-    ));
+  const list = topLevelItems.map((element: NavItemFields, key: number) => (
+    <NavigationList
+      key={`${key}${element.Id}`}
+      fields={element}
+      handleClick={(event: React.MouseEvent<HTMLElement>) => handleToggleMenu(event, false)}
+      relativeLevel={1}
+    />
+  ));
+
+  if (!Object.values(normalizedFields).length) {
+    return (
+      <div className={`component navigation ${styles}`} id={id ? id : undefined}>
+        <div className="component-content">[Navigation]</div>
+      </div>
+    );
+  }
 
   return (
     <div className={`component navigation font-heading text-lg ${styles}`} id={id ? id : undefined}>
@@ -356,16 +354,16 @@ export const Default = (props: NavigationProps) => {
               {list}
             </ul>
             <form
-              className="mt-4 mb-4 flex w-full flex-col gap-2 border-t border-[#b7cabc] bg-[#c9d9cf] px-4 py-3 rounded-tl-md rounded-bl-sm rounded-tr-[2.25rem] rounded-br-[1.25rem] lg:mt-3 lg:ml-6 lg:pr-10 dark:border-[#365344] dark:bg-[#254233]"
+              className="mt-4 mb-4 flex w-full flex-col gap-2 rounded-tl-md rounded-tr-[2.25rem] rounded-br-[1.25rem] rounded-bl-sm border-t border-[#b7cabc] bg-[#c9d9cf] px-4 py-3 lg:mt-3 lg:ml-6 lg:pr-10 dark:border-[#365344] dark:bg-[#254233]"
               onSubmit={handleSearchSubmit}
             >
               <div className="flex w-full flex-col gap-3 lg:grid lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-6">
-                <div className="flex w-full min-w-0 flex-nowrap items-center gap-4 overflow-x-auto text-sm normal-case whitespace-nowrap">
+                <div className="flex w-full min-w-0 flex-nowrap items-center gap-4 overflow-x-auto text-sm whitespace-nowrap normal-case">
                   {SECONDARY_NAV_ITEMS.map((item) => (
                     <a
                       key={item.href}
                       href={item.href}
-                      className="text-[#1f3f64] hover:text-[#173252] underline-offset-2 hover:underline dark:text-[#d6e8dd] dark:hover:text-white"
+                      className="text-[#1f3f64] underline-offset-2 hover:text-[#173252] hover:underline dark:text-[#d6e8dd] dark:hover:text-white"
                     >
                       {item.label}
                     </a>
@@ -407,8 +405,8 @@ export const Default = (props: NavigationProps) => {
                 </div>
               ) : null}
               {showNoResults ? (
-                <p className="text-sm normal-case text-[#b74b4b] dark:text-[#ff9b9b]">
-                  No matching navigation results for "{searchQuery.trim()}".
+                <p className="text-sm text-[#b74b4b] normal-case dark:text-[#ff9b9b]">
+                  No matching navigation results for &quot;{searchQuery.trim()}&quot;.
                 </p>
               ) : null}
             </form>
@@ -432,15 +430,14 @@ const NavigationList = (props: NavigationListProps) => {
     (element) => !isAttorneysNavigationItem(element)
   );
   const hasChildren = visibleChildren.length > 0;
-  const children = visibleChildren
-    .map((element: NavItemFields, index: number) => (
-      <NavigationList
-        key={`${index}${element.Id}`}
-        fields={element}
-        handleClick={props.handleClick}
-        relativeLevel={props.relativeLevel + 1}
-      />
-    ));
+  const children = visibleChildren.map((element: NavItemFields, index: number) => (
+    <NavigationList
+      key={`${index}${element.Id}`}
+      fields={element}
+      handleClick={props.handleClick}
+      relativeLevel={props.relativeLevel + 1}
+    />
+  ));
 
   return (
     <li
