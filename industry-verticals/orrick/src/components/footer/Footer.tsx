@@ -8,7 +8,6 @@ import {
   Placeholder,
   withDatasourceCheck,
   TextField,
-  Text,
 } from '@sitecore-content-sdk/nextjs';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -74,10 +73,6 @@ const DefaultFooter = (props: FooterProps) => {
   const id = props.params.RenderingIdentifier;
 
   // placeholders keys
-  const phKeyOne = `footer-list-first-${props?.params?.DynamicPlaceholderId}`;
-  const phKeyTwo = `footer-list-second-${props?.params?.DynamicPlaceholderId}`;
-  const phKeyThree = `footer-list-third-${props?.params?.DynamicPlaceholderId}`;
-  const phKeyFour = `footer-list-fourth-${props?.params?.DynamicPlaceholderId}`;
   const phKeyFive = `footer-list-fifth-${props?.params?.DynamicPlaceholderId}`;
 
   // styles to hide and show sections
@@ -132,7 +127,9 @@ const DefaultFooter = (props: FooterProps) => {
                 ))}
               </div>
 
-              <p className="text-sm">© 2026 Orrick, Herrington &amp; Sutcliffe LLP. All rights reserved.</p>
+              <p className="text-sm">
+                © 2026 Orrick, Herrington &amp; Sutcliffe LLP. All rights reserved.
+              </p>
 
               <div className="flex flex-wrap gap-x-2 gap-y-1 text-sm">
                 {ORRICK_LOCATIONS.map((location, index) => (

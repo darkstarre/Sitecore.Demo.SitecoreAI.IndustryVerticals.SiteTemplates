@@ -157,11 +157,23 @@ export const Default = (props: AttorneyDetailsProps) => {
               field={props.fields?.Engagements}
               isPageEditing={isPageEditing}
             />
-            <DetailSection title="Insights" field={props.fields?.Insights} isPageEditing={isPageEditing} />
-            <DetailSection title="Events" field={props.fields?.Events} isPageEditing={isPageEditing} />
+            <DetailSection
+              title="Insights"
+              field={props.fields?.Insights}
+              isPageEditing={isPageEditing}
+            />
+            <DetailSection
+              title="Events"
+              field={props.fields?.Events}
+              isPageEditing={isPageEditing}
+            />
           </div>
           <div className="space-y-8 lg:col-span-4">
-            <DetailSection title="Practices" field={props.fields?.Practices} isPageEditing={isPageEditing} />
+            <DetailSection
+              title="Practices"
+              field={props.fields?.Practices}
+              isPageEditing={isPageEditing}
+            />
             <DetailSection
               title="Admitted In"
               field={props.fields?.AdmittedIn}
@@ -172,8 +184,16 @@ export const Default = (props: AttorneyDetailsProps) => {
               field={props.fields?.CourtAdmissions}
               isPageEditing={isPageEditing}
             />
-            <DetailSection title="Education" field={props.fields?.Education} isPageEditing={isPageEditing} />
-            <DetailSection title="Honors" field={props.fields?.Honors} isPageEditing={isPageEditing} />
+            <DetailSection
+              title="Education"
+              field={props.fields?.Education}
+              isPageEditing={isPageEditing}
+            />
+            <DetailSection
+              title="Honors"
+              field={props.fields?.Honors}
+              isPageEditing={isPageEditing}
+            />
           </div>
         </div>
       </div>

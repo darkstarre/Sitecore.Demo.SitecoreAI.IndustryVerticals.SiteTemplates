@@ -10,7 +10,6 @@ import {
 import { Link, Text, useSitecore, RichText, withDatasourceCheck, Placeholder, NextImage, CdpHelper } from '@sitecore-content-sdk/nextjs';
 import { useEffect, useMemo, useState, useRef, useId } from 'react';
 import React from 'react';
-import { useTheme } from 'next-themes';
 import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import BlobAccent from 'src/assets/shapes/BlobAccent';
@@ -55,12 +54,6 @@ const importMap = [
       { name: 'useRef', value: useRef },
       { name: 'useId', value: useId },
       { name: 'default', value: React },
-    ]
-  },
-  {
-    module: 'next-themes',
-    exports: [
-      { name: 'useTheme', value: useTheme },
     ]
   },
   {

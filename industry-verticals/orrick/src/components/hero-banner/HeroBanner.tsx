@@ -125,12 +125,12 @@ export const DefaultHeroBanner = (props: HeroBannerProps) => {
       <section className="bg-background dark:bg-background-dark relative overflow-hidden py-14">
         <BlobAccent
           size="lg"
-          className="text-[#023859]/25 dark:text-[#8ec7ff]/20 pointer-events-none absolute top-6 -right-18 z-0 md:-right-8 lg:right-0"
+          className="pointer-events-none absolute top-6 -right-18 z-0 text-[#023859]/25 md:-right-8 lg:right-0 dark:text-[#8ec7ff]/20"
         />
         <div className="relative z-10 container space-y-8">
           <div className="flex items-start justify-between gap-6">
             <div>
-              <p className="text-[#023859] dark:text-[#8ec7ff] text-xs font-semibold tracking-[0.2em] uppercase">
+              <p className="text-xs font-semibold tracking-[0.2em] text-[#023859] uppercase dark:text-[#8ec7ff]">
                 Insights
               </p>
               <h2 className="mt-2 text-[#023859] dark:text-[#b9ddff]">Featured Articles</h2>
@@ -139,7 +139,7 @@ export const DefaultHeroBanner = (props: HeroBannerProps) => {
               <button
                 type="button"
                 onClick={() => scrollInsights('prev')}
-                className="group text-[#023859] dark:text-[#8ec7ff] hover:text-[#1f3f64] dark:hover:text-[#c6e4ff] inline-flex items-center gap-2 text-3xl font-black tracking-tight transition"
+                className="group inline-flex items-center gap-2 text-3xl font-black tracking-tight text-[#023859] transition hover:text-[#1f3f64] dark:text-[#8ec7ff] dark:hover:text-[#c6e4ff]"
                 aria-label="Scroll previous articles"
               >
                 <svg
@@ -161,7 +161,7 @@ export const DefaultHeroBanner = (props: HeroBannerProps) => {
               <button
                 type="button"
                 onClick={() => scrollInsights('next')}
-                className="group text-[#023859] dark:text-[#8ec7ff] hover:text-[#1f3f64] dark:hover:text-[#c6e4ff] inline-flex items-center gap-2 text-3xl font-black tracking-tight transition"
+                className="group inline-flex items-center gap-2 text-3xl font-black tracking-tight text-[#023859] transition hover:text-[#1f3f64] dark:text-[#8ec7ff] dark:hover:text-[#c6e4ff]"
                 aria-label="Scroll more articles"
               >
                 <span className="h-px w-8 bg-current opacity-70 transition-all duration-200 group-hover:w-10 group-hover:opacity-100" />
@@ -187,9 +187,12 @@ export const DefaultHeroBanner = (props: HeroBannerProps) => {
             className="flex snap-x snap-mandatory gap-8 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
             {INSIGHTS_ARTICLES.map((article) => (
-              <li key={article.title} className="border-border/60 min-w-[290px] snap-start border-t pt-4 md:min-w-[360px]">
+              <li
+                key={article.title}
+                className="border-border/60 min-w-[290px] snap-start border-t pt-4 md:min-w-[360px]"
+              >
                 <Link href={article.href} className="group block space-y-3">
-                  <h3 className="font-heading text-[#023859] group-hover:text-[#1f3f64] dark:text-[#d9ecff] dark:group-hover:text-[#8ec7ff] text-2xl leading-tight transition">
+                  <h3 className="font-heading text-2xl leading-tight text-[#023859] transition group-hover:text-[#1f3f64] dark:text-[#d9ecff] dark:group-hover:text-[#8ec7ff]">
                     {article.title}
                   </h3>
                   <p className="text-muted text-sm">{article.meta}</p>

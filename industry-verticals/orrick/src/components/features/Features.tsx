@@ -11,6 +11,7 @@ import {
 } from '@sitecore-content-sdk/nextjs';
 import BlobAccent from '../../assets/shapes/BlobAccent';
 import { FeatureStyles, CommonStyles } from '@/types/styleFlags';
+import Link from 'next/link';
 
 interface Fields {
   data: {
@@ -166,8 +167,8 @@ const DefaultFeatures = ({ fields, params }: FeaturesProps) => {
   });
   const isRecruitingShowcaseSection =
     normalizedFeatureTitles.length >= 3 &&
-    ['corporate & transactional', 'regulatory & compliance', 'litigation & disputes'].every((title) =>
-      normalizedFeatureTitles.includes(title)
+    ['corporate & transactional', 'regulatory & compliance', 'litigation & disputes'].every(
+      (title) => normalizedFeatureTitles.includes(title)
     );
   const hideBlobAccent = params?.styles.includes(CommonStyles.HideBlobAccent);
   const useAccentColor = params?.styles.includes(FeatureStyles.UseAccentColor);
@@ -235,7 +236,7 @@ const DefaultFeatures = ({ fields, params }: FeaturesProps) => {
             <div className="ml-auto bg-[#9bb3d2] text-[#173252] lg:mr-[calc(50%-50vw)] lg:pr-[calc(50vw-50%+1.25rem)]">
               <div className="grid gap-0 md:grid-cols-[260px_repeat(3,minmax(0,1fr))]">
                 <div className="bg-[#c8d6e8] px-6 py-8 lg:px-8">
-                  <p className="text-[#6fd48f] text-4xl leading-[0.95] font-semibold tracking-tight">
+                  <p className="text-4xl leading-[0.95] font-semibold tracking-tight text-[#6fd48f]">
                     Welcome
                     <br />
                     More New
@@ -246,7 +247,7 @@ const DefaultFeatures = ({ fields, params }: FeaturesProps) => {
                 {RECRUITING_SHOWCASE_ITEMS.map((item) => (
                   <article
                     key={item.title}
-                    className="border-[#173252]/14 flex flex-col justify-between gap-5 border-t px-6 py-8 md:border-t-0 md:border-l"
+                    className="flex flex-col justify-between gap-5 border-t border-[#173252]/14 px-6 py-8 md:border-t-0 md:border-l"
                   >
                     <div className="flex items-start gap-4">
                       <img
@@ -259,7 +260,7 @@ const DefaultFeatures = ({ fields, params }: FeaturesProps) => {
                     </div>
                     <a
                       href={item.href}
-                      className="bg-[#4bd37f] text-[#1f3f64] hover:bg-[#6ee39a] inline-flex w-fit items-center rounded-full px-4 py-1 text-xs font-bold tracking-[0.08em] uppercase transition"
+                      className="inline-flex w-fit items-center rounded-full bg-[#4bd37f] px-4 py-1 text-xs font-bold tracking-[0.08em] text-[#1f3f64] uppercase transition hover:bg-[#6ee39a]"
                     >
                       Read More →
                     </a>
@@ -270,7 +271,7 @@ const DefaultFeatures = ({ fields, params }: FeaturesProps) => {
 
             <div className="grid overflow-hidden lg:grid-cols-2">
               <div className="space-y-6 bg-[#f6f8fb] px-8 py-10 lg:px-14 lg:py-14">
-                <h2 className="font-heading text-[#1f3f64] text-5xl leading-[0.95] md:text-6xl">
+                <h2 className="font-heading text-5xl leading-[0.95] text-[#1f3f64] md:text-6xl">
                   Celebrating Our
                   <br />
                   New Partners
@@ -280,22 +281,22 @@ const DefaultFeatures = ({ fields, params }: FeaturesProps) => {
                   and regulatory matters in Technology, Energy & Infrastructure, Finance and Life
                   Sciences & HealthTech.
                 </p>
-                <a
+                <Link
                   href="/Careers"
-                  className="text-[#1f3f64] hover:text-[#2e5a8e] inline-flex items-center gap-2 text-lg font-semibold transition"
+                  className="inline-flex items-center gap-2 text-lg font-semibold text-[#1f3f64] transition hover:text-[#2e5a8e]"
                 >
                   Learn More <span aria-hidden>→</span>
-                </a>
+                </Link>
               </div>
               <div className="bg-[#1f3f64] px-8 py-10 lg:px-14 lg:py-14">
                 <div className="space-y-4">
                   <p className="text-5xl leading-[0.95] text-white md:text-6xl">Welcome to the</p>
-                  <p className="text-[#9ec771] text-7xl leading-[0.88] font-semibold md:text-8xl">
+                  <p className="text-7xl leading-[0.88] font-semibold text-[#9ec771] md:text-8xl">
                     CLASS OF
                     <br />
                     2026!
                   </p>
-                  <p className="text-[#9ec771] pt-4 text-5xl leading-none font-medium">
+                  <p className="pt-4 text-5xl leading-none font-medium text-[#9ec771]">
                     team<span className="text-white">orrick</span>
                   </p>
                 </div>
