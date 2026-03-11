@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Link, TextField, useSitecore } from '@sitecore-content-sdk/nextjs';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faChevronDown, faChevronUp, faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -28,6 +28,21 @@ type NavigationProps = {
   fields: Record<string, NavItemFields>;
 };
 
+type SearchableNavigationItem = {
+  id: string;
+  label: string;
+  href: string;
+};
+
+const SECONDARY_NAV_ITEMS = [
+  { label: 'Technology & Innovation', href: '/Insights/Technology-and-Innovation' },
+  { label: 'Energy & Infrastructure', href: '/Insights/Energy-and-Infrastructure' },
+  { label: 'Finance', href: '/Insights/Finance' },
+  { label: 'Life Sciences & HealthTech', href: '/Insights/Life-Sciences-and-HealthTech' },
+];
+
+const TECH_STUDIO_BACKGROUND_IMAGE = '/tech-studio-nav-bg.jpg';
+
 const getFieldLabel = (item: NavItemFields): string =>
   (
     item.NavigationTitle?.value?.toString() ||
@@ -35,6 +50,30 @@ const getFieldLabel = (item: NavItemFields): string =>
     item.DisplayName ||
     ''
   ).trim();
+
+const isAttorneysNavigationItem = (item: NavItemFields): boolean => {
+  const label = getFieldLabel(item).toLowerCase();
+  return label === 'attorneys' || label === 'doctors';
+};
+
+const isHomeNavigationItem = (item: NavItemFields): boolean => {
+  return getFieldLabel(item).toLowerCase() === 'home';
+};
+
+const isTechStudioNavigationItem = (item: NavItemFields): boolean => {
+  return getFieldLabel(item).toLowerCase().includes('tech studio');
+};
+
+const isCareersNavigationItem = (item: NavItemFields): boolean => {
+  return getFieldLabel(item).toLowerCase() === 'careers';
+};
+
+const getDisplayLabelForDeduplication = (item: NavItemFields): string => {
+  const raw = getFieldLabel(item).toLowerCase();
+  if (raw === 'services') return 'practices';
+  if (raw === 'doctors') return 'attorneys';
+  return raw;
+};
 
 const createTechStudioItem = (): NavItemFields => ({
   Id: 'tech-studio-nav-item',
@@ -45,6 +84,121 @@ const createTechStudioItem = (): NavItemFields => ({
   Querystring: '',
   Styles: ['level1', 'item-tech-studio'],
 });
+
+const createCareersItem = (): NavItemFields => ({
+  Id: 'careers-nav-item',
+  DisplayName: 'Careers',
+  Title: { value: 'Careers' } as TextField,
+  NavigationTitle: { value: 'Careers' } as TextField,
+  Href: '/Careers',
+  Querystring: '',
+  Styles: ['level1', 'item-careers'],
+});
+
+const createPeopleItem = (): NavItemFields => ({
+  Id: 'people-nav-item',
+  DisplayName: 'People',
+  Title: { value: 'People' } as TextField,
+  NavigationTitle: { value: 'People' } as TextField,
+  Href: '/People',
+  Querystring: '',
+  Styles: ['level1', 'item-people'],
+});
+
+const createAboutUsItem = (): NavItemFields => ({
+  Id: 'about-us-nav-item',
+  DisplayName: 'About Us',
+  Title: { value: 'About Us' } as TextField,
+  NavigationTitle: { value: 'About Us' } as TextField,
+  Href: '/About',
+  Querystring: '',
+  Styles: ['level1', 'item-about-us'],
+});
+
+const withRequiredItems = (items: NavItemFields[]): NavItemFields[] => {
+  const hasPeople = items.some((item) => getFieldLabel(item).toLowerCase() === 'people');
+  const hasCareers = items.some((item) => getFieldLabel(item).toLowerCase() === 'careers');
+  const hasAboutUs = items.some((item) => getFieldLabel(item).toLowerCase() === 'about us');
+
+  const next = [...items];
+
+  if (!hasPeople) {
+    next.unshift(createPeopleItem());
+  }
+
+  if (!hasCareers) {
+    next.push(createCareersItem());
+  }
+
+  if (!hasAboutUs) {
+    next.push(createAboutUsItem());
+  }
+
+  return next;
+};
+
+const dedupeTopLevelItems = (items: NavItemFields[]): NavItemFields[] => {
+  const seen = new Set<string>();
+  return items.filter((item) => {
+    const key = getDisplayLabelForDeduplication(item);
+    if (seen.has(key)) {
+      return false;
+    }
+    seen.add(key);
+    return true;
+  });
+};
+
+const withCareersBeforeTechStudio = (items: NavItemFields[]): NavItemFields[] => {
+  const next = [...items];
+  const careersIndex = next.findIndex((item) => isCareersNavigationItem(item));
+  const techStudioIndex = next.findIndex((item) => isTechStudioNavigationItem(item));
+
+  if (careersIndex === -1 || techStudioIndex === -1 || careersIndex < techStudioIndex) {
+    return next;
+  }
+
+  const [careersItem] = next.splice(careersIndex, 1);
+  const updatedTechStudioIndex = next.findIndex((item) => isTechStudioNavigationItem(item));
+  next.splice(updatedTechStudioIndex, 0, careersItem);
+  return next;
+};
+
+const collectSearchableItems = (items: NavItemFields[]): SearchableNavigationItem[] => {
+  const collected: SearchableNavigationItem[] = [];
+
+  const visit = (item: NavItemFields) => {
+    const label = getFieldLabel(item);
+    if (!label || isHomeNavigationItem(item) || isAttorneysNavigationItem(item)) {
+      return;
+    }
+
+    collected.push({
+      id: item.Id,
+      label,
+      href: item.Href || '/',
+    });
+
+    (item.Children || []).forEach((child) => visit(child));
+  };
+
+  items.forEach((item) => visit(item));
+  return dedupeTopLevelItems(
+    collected.map((item) => ({
+      Id: item.id,
+      DisplayName: item.label,
+      Title: { value: item.label } as TextField,
+      NavigationTitle: { value: item.label } as TextField,
+      Href: item.href,
+      Querystring: '',
+      Styles: [],
+    }))
+  ).map((item) => ({
+    id: item.Id,
+    label: getFieldLabel(item),
+    href: item.Href || '/',
+  }));
+};
 
 const withProminentTechStudio = (
   fields: Record<string, NavItemFields>
@@ -99,6 +253,8 @@ const withProminentTechStudio = (
 
 export const Default = (props: NavigationProps) => {
   const [isOpenMenu, openMenu] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [showNoResults, setShowNoResults] = useState(false);
   const { page } = useSitecore();
   const normalizedFields = withProminentTechStudio(props.fields);
   const styles =
@@ -127,8 +283,48 @@ export const Default = (props: NavigationProps) => {
     openMenu(!isOpenMenu);
   };
 
-  const list = Object.values(normalizedFields)
-    .filter((element) => element)
+  const topLevelItems = withCareersBeforeTechStudio(
+    withRequiredItems(
+      dedupeTopLevelItems(
+        Object.values(normalizedFields)
+          .filter((element) => element)
+          .flatMap((element) => {
+            if (isHomeNavigationItem(element) && element.Children?.length) {
+              return element.Children;
+            }
+            return [element];
+          })
+          .filter((element) => !isAttorneysNavigationItem(element) && !isHomeNavigationItem(element))
+      )
+    )
+  );
+  const searchableItems = useMemo(
+    () => collectSearchableItems(topLevelItems),
+    [topLevelItems]
+  );
+  const trimmedQuery = searchQuery.trim().toLowerCase();
+  const searchMatches =
+    trimmedQuery.length > 0
+      ? searchableItems.filter((item) => item.label.toLowerCase().includes(trimmedQuery))
+      : [];
+
+  const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!trimmedQuery) {
+      setShowNoResults(false);
+      return;
+    }
+
+    if (!searchMatches.length) {
+      setShowNoResults(true);
+      return;
+    }
+
+    setShowNoResults(false);
+    window.location.href = searchMatches[0].href;
+  };
+
+  const list = topLevelItems
     .map((element: NavItemFields, key: number) => (
       <NavigationList
         key={`${key}${element.Id}`}
@@ -151,13 +347,72 @@ export const Default = (props: NavigationProps) => {
         <nav
           className={`${
             isOpenMenu ? 'flex' : 'hidden'
-          } bg-background dark:bg-background-dark absolute top-full right-0 left-0 z-100 border-t lg:static lg:flex lg:border-0`}
+          } bg-background dark:bg-background-dark absolute top-full right-0 left-0 z-100 flex-col border-t lg:static lg:flex lg:flex-col lg:border-0`}
         >
-          <ul
-            className={`container flex flex-col gap-x-8 pb-8 lg:flex-row lg:items-center lg:pb-0 xl:gap-x-10`}
-          >
-            {list}
-          </ul>
+          <div className="flex w-full flex-col">
+            <ul
+              className={`container flex flex-col gap-x-8 pb-8 lg:flex-row lg:items-center lg:pb-0 xl:gap-x-10`}
+            >
+              {list}
+            </ul>
+            <form
+              className="mt-4 mb-4 flex w-full flex-col gap-2 border-t border-[#b7cabc] bg-[#c9d9cf] px-4 py-3 rounded-tl-md rounded-bl-sm rounded-tr-[2.25rem] rounded-br-[1.25rem] lg:mt-3 lg:ml-6 lg:pr-10 dark:border-[#365344] dark:bg-[#254233]"
+              onSubmit={handleSearchSubmit}
+            >
+              <div className="flex w-full flex-col gap-3 lg:grid lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-6">
+                <div className="flex w-full min-w-0 flex-nowrap items-center gap-4 overflow-x-auto text-sm normal-case whitespace-nowrap">
+                  {SECONDARY_NAV_ITEMS.map((item) => (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      className="text-[#1f3f64] hover:text-[#173252] underline-offset-2 hover:underline dark:text-[#d6e8dd] dark:hover:text-white"
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+                <div className="flex w-full items-center gap-2 lg:w-auto lg:min-w-[380px]">
+                  <input
+                    type="search"
+                    value={searchQuery}
+                    onChange={(event) => {
+                      setSearchQuery(event.target.value);
+                      if (showNoResults) {
+                        setShowNoResults(false);
+                      }
+                    }}
+                    placeholder="Search people, practices, insights..."
+                    aria-label="Search site navigation"
+                    className="h-10 w-full rounded-md border border-[#9ab2a4] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#789b48]/40 dark:border-[#4a6a5a] dark:bg-[#1b2f25]"
+                  />
+                  <button
+                    type="submit"
+                    className="h-10 rounded-md bg-[#1f3f64] px-4 text-sm font-medium text-white hover:bg-[#173252] dark:bg-[#1b3554] dark:hover:bg-[#162b44]"
+                  >
+                    Search
+                  </button>
+                </div>
+              </div>
+              {trimmedQuery.length > 0 && searchMatches.length > 0 ? (
+                <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm normal-case">
+                  {searchMatches.slice(0, 6).map((match) => (
+                    <a
+                      key={match.id}
+                      href={match.href}
+                      className="text-foreground/80 hover:text-foreground dark:text-foreground-dark/80 dark:hover:text-foreground-dark underline-offset-2 hover:underline"
+                    >
+                      {match.label}
+                    </a>
+                  ))}
+                </div>
+              ) : null}
+              {showNoResults ? (
+                <p className="text-sm normal-case text-[#b74b4b] dark:text-[#ff9b9b]">
+                  No matching navigation results for "{searchQuery.trim()}".
+                </p>
+              ) : null}
+            </form>
+          </div>
         </nav>
       </div>
     </div>
@@ -172,16 +427,20 @@ const NavigationList = (props: NavigationListProps) => {
   )}`;
 
   const isRootItem = props.fields.Styles.includes('level0');
-  const hasChildren = !!props.fields.Children?.length;
   const isTechStudio = getFieldLabel(props.fields).toLowerCase().includes('tech studio');
-  const children = (props.fields.Children || []).map((element: NavItemFields, index: number) => (
-    <NavigationList
-      key={`${index}${element.Id}`}
-      fields={element}
-      handleClick={props.handleClick}
-      relativeLevel={props.relativeLevel + 1}
-    />
-  ));
+  const visibleChildren = (props.fields.Children || []).filter(
+    (element) => !isAttorneysNavigationItem(element)
+  );
+  const hasChildren = visibleChildren.length > 0;
+  const children = visibleChildren
+    .map((element: NavItemFields, index: number) => (
+      <NavigationList
+        key={`${index}${element.Id}`}
+        fields={element}
+        handleClick={props.handleClick}
+        relativeLevel={props.relativeLevel + 1}
+      />
+    ));
 
   return (
     <li
@@ -196,11 +455,22 @@ const NavigationList = (props: NavigationListProps) => {
           onClick={props.handleClick}
           className={`whitespace-nowrap transition ${
             isTechStudio
-              ? 'text-[1.2em] font-semibold tracking-tight normal-case [text-shadow:0_0_10px_rgba(120,155,72,0.55)] hover:[text-shadow:0_0_14px_rgba(120,155,72,0.8)]'
+              ? 'relative isolate inline-flex min-w-[11rem] items-center justify-end overflow-hidden rounded-xl py-2 pr-4 pl-12 text-[1.1em] font-semibold tracking-tight normal-case shadow-[0_0_14px_rgba(120,155,72,0.4)] hover:shadow-[0_0_18px_rgba(120,155,72,0.55)]'
               : ''
           }`}
         >
-          {getNavigationText(props)}
+          {isTechStudio ? (
+            <>
+              <span
+                aria-hidden
+                className="absolute inset-0 -z-20 bg-cover bg-left"
+                style={{ backgroundImage: `url(${TECH_STUDIO_BACKGROUND_IMAGE})` }}
+              />
+              <span className="relative z-10 translate-x-1">{getNavigationText(props)}</span>
+            </>
+          ) : (
+            getNavigationText(props)
+          )}
         </Link>
         {hasChildren && !isRootItem ? (
           <div
