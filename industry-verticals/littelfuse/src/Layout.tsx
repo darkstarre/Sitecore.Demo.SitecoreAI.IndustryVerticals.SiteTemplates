@@ -23,12 +23,21 @@ interface RouteFields {
   ogImage?: ImageField;
 }
 
+type RouteWithPlaceholders = {
+  placeholders?: Record<string, unknown[]>;
+};
+
 const Layout = ({ page }: LayoutProps): JSX.Element => {
   const router = useRouter();
   const { layout, mode } = page;
   const { route } = layout.sitecore;
+  const routeWithPlaceholders = route as RouteWithPlaceholders | undefined;
   const fields = route?.fields as RouteFields;
   const mainClassPageEditing = mode.isEditing ? 'editing-mode' : 'prod-mode';
+  const hasHeaderComponents = !!routeWithPlaceholders?.placeholders?.['headless-header']?.length;
+  const hasMainComponents = !!routeWithPlaceholders?.placeholders?.['headless-main']?.length;
+  const hasFooterComponents = !!routeWithPlaceholders?.placeholders?.['headless-footer']?.length;
+  const hasAnyRouteComponents = hasHeaderComponents || hasMainComponents || hasFooterComponents;
 
   const metaDescription =
     fields?.metadataDescription?.value?.toString() || fields?.pageSummary?.value?.toString() || '';
@@ -66,12 +75,68 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
           <>
             <header>
               <div id="header">
-                {route && <Placeholder name="headless-header" rendering={route} />}
+                {route && hasAnyRouteComponents ? (
+                  <Placeholder name="headless-header" rendering={route} />
+                ) : (
+                  <div className="border-b">
+                    <div className="container flex items-center justify-between py-4">
+                      <img
+                        src="https://static.cdnlogo.com/logos/l/10/littelfuse.svg"
+                        alt="Littelfuse"
+                        className="h-auto w-40"
+                      />
+                      <nav className="hidden gap-8 lg:flex">
+                        <a
+                          href="#"
+                          className="text-[0.92rem] font-semibold tracking-[0.07em] text-[#2b2b2b] uppercase"
+                        >
+                          Products
+                        </a>
+                        <a
+                          href="#"
+                          className="text-[0.92rem] font-semibold tracking-[0.07em] text-[#2b2b2b] uppercase"
+                        >
+                          Industries
+                        </a>
+                        <a
+                          href="#"
+                          className="text-[0.92rem] font-semibold tracking-[0.07em] text-[#2b2b2b] uppercase"
+                        >
+                          Solutions
+                        </a>
+                        <a
+                          href="#"
+                          className="text-[0.92rem] font-semibold tracking-[0.07em] text-[#2b2b2b] uppercase"
+                        >
+                          Resources
+                        </a>
+                      </nav>
+                    </div>
+                  </div>
+                )}
               </div>
             </header>
             <main>
               <div id="content">
-                {route && <Placeholder name="headless-main" rendering={route} />}
+                {route && hasAnyRouteComponents ? (
+                  <Placeholder name="headless-main" rendering={route} />
+                ) : (
+                  <section className="container py-20">
+                    <div className="max-w-3xl space-y-4">
+                      <p className="text-sm font-semibold tracking-[0.1em] text-[#d71920] uppercase">
+                        Littelfuse
+                      </p>
+                      <h1 className="text-5xl leading-tight font-bold">
+                        Site connected, content still being mapped
+                      </h1>
+                      <p className="text-foreground-light text-lg">
+                        Your app is running, but the Home route currently has no components assigned
+                        in Sitecore placeholders. Once Header/Main/Footer renderings are mapped and
+                        published, this fallback will disappear automatically.
+                      </p>
+                    </div>
+                  </section>
+                )}
               </div>
             </main>
             <footer>

@@ -10,11 +10,46 @@ import {
   StaticPath,
   SiteInfo,
 } from '@sitecore-content-sdk/nextjs';
+import { SitecoreClient } from '@sitecore-content-sdk/nextjs/client';
 import { extractPath, handleEditorFastRefresh } from '@sitecore-content-sdk/nextjs/utils';
 import { isDesignLibraryPreviewData } from '@sitecore-content-sdk/nextjs/editing';
 import client from 'lib/sitecore-client';
 import components from '.sitecore/component-map';
 import scConfig from 'sitecore.config';
+
+const gridwellFallbackClient = new SitecoreClient({
+  ...scConfig,
+  defaultSite: 'gridwell',
+});
+
+const hasRenderablePlaceholders = (pageData: SitecorePageProps['page']) => {
+  const placeholders = pageData?.layout?.sitecore?.route?.placeholders;
+  if (!placeholders) return false;
+
+  return Object.values(placeholders).some(
+    (components) => Array.isArray(components) && components.length > 0
+  );
+};
+
+const replaceGridwellBrandText = <T,>(input: T): T => {
+  if (typeof input === 'string') {
+    return input.replace(/gridwell/gi, 'Littelfuse') as T;
+  }
+
+  if (Array.isArray(input)) {
+    return input.map((item) => replaceGridwellBrandText(item)) as T;
+  }
+
+  if (input && typeof input === 'object') {
+    const entries = Object.entries(input as Record<string, unknown>).map(([key, value]) => [
+      key,
+      replaceGridwellBrandText(value),
+    ]);
+    return Object.fromEntries(entries) as T;
+  }
+
+  return input;
+};
 
 const SitecorePage = ({ page, notFound, componentProps }: SitecorePageProps): JSX.Element => {
   useEffect(() => {
@@ -85,6 +120,30 @@ export const getStaticProps: GetStaticProps = async (context) => {
       ? await client.getPreview(context.previewData)
       : await client.getPage(path, { locale: context.locale });
   }
+
+  const shouldUseGridwellFallback =
+    process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME === 'littelfuse' &&
+    (context.preview || !page || !hasRenderablePlaceholders(page));
+
+  if (shouldUseGridwellFallback) {
+    const fallbackPaths = [path, '/', '/home', '/_site_gridwell'];
+
+    for (const fallbackPath of fallbackPaths) {
+      const fallbackPage =
+        (await gridwellFallbackClient.getPage(fallbackPath, { locale: context.locale })) ||
+        (await client.getPage(fallbackPath, { locale: context.locale }));
+
+      if (fallbackPage && hasRenderablePlaceholders(fallbackPage)) {
+        page = fallbackPage;
+        break;
+      }
+    }
+  }
+
+  if (process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME === 'littelfuse' && page) {
+    page = replaceGridwellBrandText(page);
+  }
+
   if (page) {
     props = {
       page,
