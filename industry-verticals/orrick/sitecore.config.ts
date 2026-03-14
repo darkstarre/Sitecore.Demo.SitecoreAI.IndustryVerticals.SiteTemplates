@@ -28,7 +28,9 @@ export default defineConfig({
   },
   multisite: {
     enabled: true,
-    useCookieResolution: () => process.env.VERCEL_ENV === 'preview',
+    // Force deterministic site resolution for Orrick.
+    // Preview cookies can otherwise drift to another site (e.g. Nova) in shared contexts.
+    useCookieResolution: () => false,
   },
   personalize: {
     scope: process.env.NEXT_PUBLIC_PERSONALIZE_SCOPE,
