@@ -1,6 +1,5 @@
 import { useEffect, JSX } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import sites from '.sitecore/sites.json';
 import NotFound from 'src/NotFound';
 import Layout from 'src/Layout';
 import {
@@ -8,13 +7,19 @@ import {
   ComponentPropsContext,
   SitecorePageProps,
   StaticPath,
-  SiteInfo,
 } from '@sitecore-content-sdk/nextjs';
+import { SitecoreClient } from '@sitecore-content-sdk/nextjs/client';
 import { extractPath, handleEditorFastRefresh } from '@sitecore-content-sdk/nextjs/utils';
 import { isDesignLibraryPreviewData } from '@sitecore-content-sdk/nextjs/editing';
 import client from 'lib/sitecore-client';
 import components from '.sitecore/component-map';
 import scConfig from 'sitecore.config';
+
+const ORRICK_SITE = 'orrick';
+const orrickClient = new SitecoreClient({
+  ...scConfig,
+  defaultSite: ORRICK_SITE,
+});
 
 const SitecorePage = ({ page, notFound, componentProps }: SitecorePageProps): JSX.Element => {
   useEffect(() => {
@@ -52,10 +57,7 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
 
   if (process.env.NODE_ENV !== 'development' && scConfig.generateStaticPaths) {
     try {
-      paths = await client.getPagePaths(
-        sites.map((site: SiteInfo) => site.name),
-        context?.locales || []
-      );
+      paths = await orrickClient.getPagePaths([ORRICK_SITE], context?.locales || []);
     } catch (error) {
       console.log('Error occurred while fetching static paths');
       console.log(error);
@@ -83,13 +85,21 @@ export const getStaticProps: GetStaticProps = async (context) => {
   } else {
     page = context.preview
       ? await client.getPreview(context.previewData)
-      : await client.getPage(path, { locale: context.locale });
+      : await orrickClient.getPage(path, { locale: context.locale });
+  }
+
+  // Guard against preview/site resolution drift returning a different site payload.
+  if (page?.siteName?.toLowerCase() !== ORRICK_SITE) {
+    const forcedSitePage = await orrickClient.getPage(path, { locale: context.locale });
+    if (forcedSitePage) {
+      page = forcedSitePage;
+    }
   }
   if (page) {
     props = {
       page,
       dictionary: await client.getDictionary({
-        site: page.siteName,
+        site: ORRICK_SITE,
         locale: page.locale,
       }),
       componentProps: await client.getComponentData(page.layout, context, components),

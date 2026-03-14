@@ -19,7 +19,8 @@ export default defineConfig({
       apiHost: process.env.NEXT_PUBLIC_SITECORE_API_HOST || '',
     },
   },
-  defaultSite: process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME,
+  // Orrick is a dedicated single-site app; keep this fixed to avoid cross-site context drift.
+  defaultSite: 'orrick',
   defaultLanguage: process.env.NEXT_PUBLIC_DEFAULT_LANGUAGE || 'en',
   editingSecret: process.env.SITECORE_EDITING_SECRET,
   redirects: {
@@ -27,9 +28,7 @@ export default defineConfig({
     locales: ['en'],
   },
   multisite: {
-    enabled: true,
-    // Force deterministic site resolution for Orrick.
-    // Preview cookies can otherwise drift to another site (e.g. Nova) in shared contexts.
+    enabled: false,
     useCookieResolution: () => false,
   },
   personalize: {
