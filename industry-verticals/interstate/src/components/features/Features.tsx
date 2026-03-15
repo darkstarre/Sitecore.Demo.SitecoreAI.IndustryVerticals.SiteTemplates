@@ -10,13 +10,13 @@ import {
 import React from 'react';
 
 interface Fields {
-  data: {
-    datasource: {
-      children: {
-        results: Feature[];
+  data?: {
+    datasource?: {
+      children?: {
+        results?: Feature[];
       };
-      title: IGQLTextField;
-      description: IGQLTextField;
+      title?: IGQLTextField;
+      description?: IGQLTextField;
     };
   };
 }
@@ -52,8 +52,10 @@ const FeatureWrapper = (wrapperProps: FeatureWrapperProps) => {
 export const Default = (props: FeaturesProps) => {
   const { page } = useSitecore();
   const isPageEditing = page.mode.isEditing;
-  const { title, description } = props.fields.data.datasource;
-  const results = props.fields.data.datasource.children.results;
+  const datasource = props.fields?.data?.datasource;
+  const title = datasource?.title;
+  const description = datasource?.description;
+  const results = datasource?.children?.results || [];
 
   return (
     <FeatureWrapper props={props}>
@@ -62,12 +64,12 @@ export const Default = (props: FeaturesProps) => {
         <div className="mb-10">
           {(title?.jsonValue || isPageEditing) && (
             <h2 className="text-4xl md:text-5xl">
-              <Text field={title.jsonValue} />
+              {title?.jsonValue ? <Text field={title.jsonValue} /> : null}
             </h2>
           )}
           {(description?.jsonValue || isPageEditing) && (
             <p className="mt-2 text-base">
-              <Text field={description.jsonValue} />
+              {description?.jsonValue ? <Text field={description.jsonValue} /> : null}
             </p>
           )}
         </div>
@@ -111,8 +113,7 @@ export const Default = (props: FeaturesProps) => {
 };
 
 export const ImageGrid = (props: FeaturesProps) => {
-  // results of the graphql
-  const results = props.fields.data.datasource.children.results;
+  const results = props.fields?.data?.datasource?.children?.results || [];
 
   return (
     <FeatureWrapper props={props}>
@@ -131,7 +132,7 @@ export const ImageGrid = (props: FeaturesProps) => {
 };
 
 export const FourColGrid = (props: FeaturesProps) => {
-  const results = props.fields.data.datasource.children.results;
+  const results = props.fields?.data?.datasource?.children?.results || [];
 
   return (
     <FeatureWrapper props={props}>
