@@ -29,7 +29,7 @@ interface ProductListingProps extends ComponentProps {
 
 export const Default = (props: ProductListingProps) => {
   const id = props.params.RenderingIdentifier;
-  const items = props.fields.data.contextItem.children.results;
+  const items = props.fields?.data?.contextItem?.children?.results || [];
 
   const { t } = useI18n();
 
@@ -57,13 +57,15 @@ export const Default = (props: ProductListingProps) => {
         url: product?.url?.path,
       };
     })
-    .filter((product) => product.id);
+    .filter((product) => !!product.id && !!product.Title);
 
   // Filtering logic
   const categories: Category[] = [];
   products.forEach((product) => {
-    const category = product.Category?.fields.CategoryName.value;
-    if (!categories.find((cat) => cat?.fields.CategoryName.value === category)) {
+    const category = product.Category?.fields?.CategoryName?.value;
+    if (!category) return;
+
+    if (!categories.find((cat) => cat?.fields?.CategoryName?.value === category)) {
       categories.push(product.Category);
     }
   });
@@ -72,7 +74,7 @@ export const Default = (props: ProductListingProps) => {
 
   const filteredProducts = React.useMemo(() => {
     if (!selectedCategory) return products;
-    return products.filter((p) => p.Category?.fields.CategoryName.value === selectedCategory);
+    return products.filter((p) => p.Category?.fields?.CategoryName?.value === selectedCategory);
   }, [selectedCategory, products]);
 
   // Infinite scroll state
@@ -98,7 +100,7 @@ export const Default = (props: ProductListingProps) => {
 
   return (
     <section
-      className={`component product-listing py-18 ${props?.params.styles.trimEnd()}`}
+      className={`component product-listing py-18 ${props?.params?.styles?.trimEnd?.() || ''}`}
       id={id}
     >
       <div className="container">
@@ -116,14 +118,14 @@ export const Default = (props: ProductListingProps) => {
             {categories.map((cat) => (
               <button
                 key={cat?.id}
-                onClick={() => setSelectedCategory(cat?.fields.CategoryName.value)}
+                onClick={() => setSelectedCategory(cat?.fields?.CategoryName?.value || null)}
                 className={`hover:text-accent transition-colors ${
-                  selectedCategory === cat?.fields.CategoryName.value
+                  selectedCategory === cat?.fields?.CategoryName?.value
                     ? 'text-accent underline'
                     : 'text-foreground'
                 }`}
               >
-                {cat?.fields.CategoryName.value}
+                {cat?.fields?.CategoryName?.value}
               </button>
             ))}
           </div>
