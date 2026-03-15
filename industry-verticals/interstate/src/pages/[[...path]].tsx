@@ -26,6 +26,15 @@ const retailSourceClient = new SitecoreClient({
   defaultSite: RETAIL_SOURCE_SITE,
 });
 
+const hasRenderablePlaceholders = (pageData: SitecorePageProps['page']) => {
+  const placeholders = pageData?.layout?.sitecore?.route?.placeholders;
+  if (!placeholders) return false;
+
+  return Object.values(placeholders).some(
+    (components) => Array.isArray(components) && components.length > 0
+  );
+};
+
 const replaceRetailBrandText = <T,>(input: T): T => {
   if (typeof input === 'string') {
     return input
@@ -124,8 +133,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 
   const hasInterstatePage = page?.siteName?.toLowerCase() === INTERSTATE_SITE;
-  if (!hasInterstatePage) {
-    // Interstate is still being provisioned. Render Retail content for parity until items exist.
+  const hasInterstateRenderings = hasRenderablePlaceholders(page);
+  if (!hasInterstatePage || !hasInterstateRenderings) {
+    // Interstate item exists but may not have page design/renderings yet. Bootstrap from Retail.
     const retailPage = await retailSourceClient.getPage(path, { locale: context.locale });
     if (retailPage) {
       page = retailPage;
