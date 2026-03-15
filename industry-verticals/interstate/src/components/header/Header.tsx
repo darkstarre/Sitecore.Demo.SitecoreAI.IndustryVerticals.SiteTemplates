@@ -15,7 +15,7 @@ export const Default = (props: HeaderProps): JSX.Element => {
         <div className="max-lg:order-1 lg:flex-[1_1]">
           <Placeholder name={`header-left-${DynamicPlaceholderId}`} rendering={props.rendering} />
         </div>
-        <div className="max-lg:order-0 w-full flex-1">
+        <div className="w-full flex-1 max-lg:order-0">
           <Placeholder name={`header-nav-${DynamicPlaceholderId}`} rendering={props.rendering} />
         </div>
         <div className="max-lg:order-2 lg:flex-[1_1]">

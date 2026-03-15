@@ -17,8 +17,7 @@ import {
 import clsx from 'clsx';
 import { isParamEnabled } from '@/helpers/isParamEnabled';
 
-const INTERSTATE_LOGO_URL =
-  '/Interstate_Batteries_logo.png';
+const INTERSTATE_LOGO_URL = '/Interstate_Batteries_logo.png';
 
 export interface NavItemFields {
   Id: string;
@@ -96,7 +95,7 @@ const NavigationListItem: React.FC<NavigationListItemProps> = ({
           field={getLinkField(fields)}
           editable={page.mode.isEditing}
           onClick={clickHandler}
-          className="text-white hover:text-white/80 whitespace-nowrap font-semibold transition-colors"
+          className="font-semibold whitespace-nowrap text-white transition-colors hover:text-white/80"
         >
           {getLinkContent(fields, logoSrc)}
         </Link>
@@ -106,7 +105,7 @@ const NavigationListItem: React.FC<NavigationListItemProps> = ({
             aria-label="Toggle submenu"
             aria-haspopup="true"
             aria-expanded={isActive}
-            className="text-white flex h-6 w-6 cursor-pointer items-center justify-center"
+            className="flex h-6 w-6 cursor-pointer items-center justify-center text-white"
             onClick={() => setIsActive((a) => !a)}
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') {
@@ -135,7 +134,7 @@ const NavigationListItem: React.FC<NavigationListItemProps> = ({
               clsx(
                 'z-110 text-base max-lg:border-b max-lg:pb-4 max-lg:text-sm',
                 'lg:absolute lg:top-full lg:left-1/2 lg:-translate-x-1/2 lg:p-6 lg:transition-all lg:duration-300',
-                'lg:bg-[#2f6f5b] lg:rounded-xl lg:shadow-md',
+                'lg:rounded-xl lg:bg-[#2f6f5b] lg:shadow-md',
                 isActive
                   ? 'max-lg:flex'
                   : 'max-lg:hidden lg:pointer-events-none lg:translate-y-2 lg:scale-95 lg:opacity-0'
@@ -230,7 +229,7 @@ export const Default = ({ params, fields }: NavigationProps) => {
 
       <nav
         className={clsx(
-          'bg-transparent z-100 flex w-full duration-300',
+          'z-100 flex w-full bg-transparent duration-300',
           'max-lg:fixed max-lg:inset-0',
           !isMenuOpen && 'max-lg:-translate-y-full max-lg:opacity-0'
         )}
