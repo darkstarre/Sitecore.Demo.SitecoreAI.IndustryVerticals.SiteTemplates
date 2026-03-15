@@ -71,10 +71,21 @@
       "type": "sxa",
       "buildCommand": "build",
       "runCommand": "next:start"
+    },
+    "littelfuse": {
+      "path": "./industry-verticals/littelfuse",
+      "nodeVersion": "22.11.0",
+      "jssDeploymentSecret": "110F1C44A496B45478640DD36F80C18C9",
+      "enabled": true,
+      "type": "sxa",
+      "buildCommand": "build",
+      "runCommand": "next:start"
     }
   },
   "deployItems": {
-    "modules": ["Project.IndustryVerticals"]
+    "modules": [
+      "Project.IndustryVerticals"
+    ]
   },
   "postActions": {
     "actions": {
@@ -91,7 +102,9 @@
           "Project.Energy-Media",
           "Project.Energy-Content",
           "Project.Interstate-Media",
-          "Project.Interstate-Content"
+          "Project.Interstate-Content",
+          "Project.Littelfuse-Media",
+          "Project.Littelfuse-Content"
         ]
       },
       "warmUpCm": {

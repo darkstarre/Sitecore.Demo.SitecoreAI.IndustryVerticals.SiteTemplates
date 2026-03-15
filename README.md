@@ -71,6 +71,28 @@ For developers new to SitecoreAI you can follow the Getting Started Guide on the
   ```
 - You should now be able to access your site on `http://localhost:3000` and see your changes in real-time as you make them.
 
+## Clone-ready Retail Base
+
+To create a new vertical from the `retail` starter with Sitecore serialization wiring included, run:
+
+```bash
+./scripts/create-vertical-from-retail.sh <vertical-slug>
+```
+
+Example:
+
+```bash
+./scripts/create-vertical-from-retail.sh interstate
+```
+
+This command:
+- clones `industry-verticals/retail` into `industry-verticals/<vertical-slug>`
+- creates content/media module files under `authoring/items/industry-verticals/sites/<vertical-slug>/`
+- adds a rendering host entry to `xmcloud.build.json`
+- adds `Project.<Slug>-Media` and `Project.<Slug>-Content` to SCS post-action modules
+
+After running the script, deploy and then wire the Sitecore site item tree/page design/partial designs as usual.
+
 ## Serialization Structure
 
 ### Overview
