@@ -79,13 +79,18 @@ export const Default = (props: FooterProps) => {
             <div className="sm:max-w-34 [&_img]:invert">
               <Image field={props.fields.Logo} />
             </div>
-            <RichText field={props.fields.Description} className="[&_a]:text-on-dark [&_a]:hover:text-on-dark-muted [&_p]:text-on-dark-muted" />
+            <RichText
+              field={props.fields.Description}
+              className="[&_a]:text-on-dark [&_a]:hover:text-on-dark-muted [&_p]:text-on-dark-muted"
+            />
           </div>
           <div className="grid gap-13 sm:grid-cols-3 lg:grid-cols-5 lg:gap-5 xl:gap-12">
             {sections.map(({ key, title, content }) => (
               <div key={key}>
                 <h5 className="font-body text-on-dark mb-8 text-lg font-medium">{title}</h5>
-                <div className="space-y-4 [&_a]:text-on-dark-muted [&_a]:hover:text-on-dark [&_a]:transition-colors">{content}</div>
+                <div className="[&_a]:text-on-dark-muted [&_a]:hover:text-on-dark space-y-4 [&_a]:transition-colors">
+                  {content}
+                </div>
               </div>
             ))}
           </div>
@@ -93,10 +98,10 @@ export const Default = (props: FooterProps) => {
       </div>
       <div className="bg-surface-dark-muted text-on-dark-muted">
         <div className="container flex items-center justify-between py-8.5 max-sm:flex-col max-sm:items-start max-sm:gap-10">
-          <p className="max-sm:order-2 text-sm">
+          <p className="text-sm max-sm:order-2">
             <Text field={props.fields.CopyrightText} />
           </p>
-          <p className="flex items-center justify-between gap-20 max-lg:gap-10 max-sm:order-1 max-sm:flex-col max-sm:items-start max-sm:gap-5 [&_a]:text-on-dark-muted [&_a]:hover:text-on-dark">
+          <p className="[&_a]:text-on-dark-muted [&_a]:hover:text-on-dark flex items-center justify-between gap-20 max-lg:gap-10 max-sm:order-1 max-sm:flex-col max-sm:items-start max-sm:gap-5">
             <Link field={props.fields.TermsText} className="hover:underline" />
             <Link field={props.fields.PolicyText} className="hover:underline" />
           </p>

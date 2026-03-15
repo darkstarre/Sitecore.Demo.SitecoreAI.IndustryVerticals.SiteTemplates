@@ -63,9 +63,7 @@ const HeroBannerCommon = ({
             <source
               src={fields?.Video?.value?.src || DEFAULT_HERO_VIDEO}
               type={
-                (fields?.Video?.value?.src || '').endsWith('.webm')
-                  ? 'video/webm'
-                  : 'video/mp4'
+                (fields?.Video?.value?.src || '').endsWith('.webm') ? 'video/webm' : 'video/mp4'
               }
             />
           </video>
@@ -104,11 +102,11 @@ export const Default = ({ params, fields, rendering }: HeroBannerProps) => {
             }`}
           >
             <div>
-              <h1 className="font-heading text-on-dark text-4xl tracking-tight capitalize lg:text-7xl drop-shadow-lg">
+              <h1 className="font-heading text-on-dark text-4xl tracking-tight capitalize drop-shadow-lg lg:text-7xl">
                 <ContentSdkText field={fields.Title} />
               </h1>
 
-              <div className="text-on-dark-muted text-md lg:text-xl drop-shadow-md [&_*]:text-on-dark-muted">
+              <div className="text-on-dark-muted text-md [&_*]:text-on-dark-muted drop-shadow-md lg:text-xl">
                 <ContentSdkRichText field={fields.Description} />
               </div>
             </div>
@@ -134,11 +132,11 @@ export const TopContent = ({ params, fields, rendering }: HeroBannerProps) => {
             }`}
           >
             <div className="">
-              <h1 className="font-heading text-on-dark text-4xl tracking-tight capitalize lg:text-7xl drop-shadow-lg">
+              <h1 className="font-heading text-on-dark text-4xl tracking-tight capitalize drop-shadow-lg lg:text-7xl">
                 <ContentSdkText field={fields.Title} />
               </h1>
 
-              <div className="text-on-dark-muted text-md lg:text-xl drop-shadow-md [&_*]:text-on-dark-muted">
+              <div className="text-on-dark-muted text-md [&_*]:text-on-dark-muted drop-shadow-md lg:text-xl">
                 <ContentSdkRichText field={fields.Description} />
               </div>
             </div>
