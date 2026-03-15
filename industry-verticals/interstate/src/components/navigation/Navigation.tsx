@@ -40,6 +40,8 @@ export interface NavigationProps extends ComponentProps {
   fields: Record<string, NavItemFields>;
 }
 
+const INTERSTATE_LOGO_FALLBACK = '/interstate-logo-classic.jpg';
+
 const NavigationListItem: React.FC<NavigationListItemProps> = ({
   fields,
   handleClick,
@@ -174,7 +176,7 @@ export const Default = ({ params, fields }: NavigationProps) => {
   const isSimpleLayout = isParamEnabled(simpleLayout);
   const preparedFields = prepareFields(fields, !isSimpleLayout);
   const rootItem = Object.values(preparedFields).find((item) => isNavRootItem(item));
-  const logoSrc = extractMediaUrl(logoImage);
+  const logoSrc = extractMediaUrl(logoImage) || INTERSTATE_LOGO_FALLBACK;
   const hasLogoRootItem = rootItem && logoSrc;
 
   const navigationItems = Object.values(preparedFields)
