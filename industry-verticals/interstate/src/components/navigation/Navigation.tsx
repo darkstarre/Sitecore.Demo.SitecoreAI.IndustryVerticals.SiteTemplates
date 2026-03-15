@@ -94,7 +94,7 @@ const NavigationListItem: React.FC<NavigationListItemProps> = ({
           field={getLinkField(fields)}
           editable={page.mode.isEditing}
           onClick={clickHandler}
-          className="whitespace-nowrap text-[0.95rem] font-semibold tracking-[0.04em] text-[#0f3b2e] uppercase transition-colors hover:text-[#8fc73e]"
+          className="text-[0.95rem] font-semibold tracking-[0.04em] whitespace-nowrap text-[#0f3b2e] uppercase transition-colors hover:text-[#8fc73e]"
         >
           {getLinkContent(fields, logoSrc)}
         </Link>
