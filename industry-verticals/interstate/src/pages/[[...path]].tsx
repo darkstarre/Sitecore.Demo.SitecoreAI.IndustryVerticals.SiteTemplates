@@ -16,47 +16,10 @@ import components from '.sitecore/component-map';
 import scConfig from 'sitecore.config';
 
 const INTERSTATE_SITE = 'interstate';
-const RETAIL_SOURCE_SITE = 'forma-lux';
 const interstateClient = new SitecoreClient({
   ...scConfig,
   defaultSite: INTERSTATE_SITE,
 });
-const retailSourceClient = new SitecoreClient({
-  ...scConfig,
-  defaultSite: RETAIL_SOURCE_SITE,
-});
-
-const hasRenderablePlaceholders = (pageData: SitecorePageProps['page']) => {
-  const placeholders = pageData?.layout?.sitecore?.route?.placeholders;
-  if (!placeholders) return false;
-
-  return Object.values(placeholders).some(
-    (components) => Array.isArray(components) && components.length > 0
-  );
-};
-
-const replaceRetailBrandText = <T,>(input: T): T => {
-  if (typeof input === 'string') {
-    return input
-      .replace(/Forma Lux/gi, 'Interstate Batteries')
-      .replace(/forma-lux/gi, 'interstate')
-      .replace(/forma lux/gi, 'Interstate Batteries') as T;
-  }
-
-  if (Array.isArray(input)) {
-    return input.map((item) => replaceRetailBrandText(item)) as T;
-  }
-
-  if (input && typeof input === 'object') {
-    const entries = Object.entries(input as Record<string, unknown>).map(([key, value]) => [
-      key,
-      replaceRetailBrandText(value),
-    ]);
-    return Object.fromEntries(entries) as T;
-  }
-
-  return input;
-};
 
 const SitecorePage = ({ page, notFound, componentProps }: SitecorePageProps): JSX.Element => {
   useEffect(() => {
@@ -98,12 +61,6 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
     } catch (error) {
       console.log('Error occurred while fetching static paths');
       console.log(error);
-      try {
-        paths = await retailSourceClient.getPagePaths([RETAIL_SOURCE_SITE], context?.locales || []);
-      } catch (fallbackError) {
-        console.log('Error occurred while fetching retail fallback static paths');
-        console.log(fallbackError);
-      }
     }
 
     fallback = process.env.EXPORT_MODE ? false : fallback;
@@ -122,7 +79,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   let props = {};
   const path = extractPath(context);
   let page;
-  let usingRetailFallback = false;
 
   if (context.preview && isDesignLibraryPreviewData(context.previewData)) {
     page = await client.getDesignLibraryData(context.previewData);
@@ -132,24 +88,19 @@ export const getStaticProps: GetStaticProps = async (context) => {
       : await interstateClient.getPage(path, { locale: context.locale });
   }
 
-  const hasInterstatePage = page?.siteName?.toLowerCase() === INTERSTATE_SITE;
-  const hasInterstateRenderings = hasRenderablePlaceholders(page);
-  if (!hasInterstatePage || !hasInterstateRenderings) {
-    // Interstate item exists but may not have page design/renderings yet. Bootstrap from Retail.
-    const retailPage = await retailSourceClient.getPage(path, { locale: context.locale });
-    if (retailPage) {
-      page = retailPage;
-      usingRetailFallback = true;
+  // Guard against preview/site resolution drift returning a different site payload.
+  if (page?.siteName?.toLowerCase() !== INTERSTATE_SITE) {
+    const forcedSitePage = await interstateClient.getPage(path, { locale: context.locale });
+    if (forcedSitePage) {
+      page = forcedSitePage;
     }
   }
 
   if (page) {
-    page = replaceRetailBrandText(page);
-
     props = {
       page,
       dictionary: await client.getDictionary({
-        site: usingRetailFallback ? RETAIL_SOURCE_SITE : INTERSTATE_SITE,
+        site: INTERSTATE_SITE,
         locale: page.locale,
       }),
       componentProps: await client.getComponentData(page.layout, context, components),

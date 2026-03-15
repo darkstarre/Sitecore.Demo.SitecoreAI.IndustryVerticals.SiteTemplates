@@ -41,14 +41,6 @@ export interface NavigationProps extends ComponentProps {
   fields: Record<string, NavItemFields>;
 }
 
-const INTERSTATE_FALLBACK_LINKS = [
-  { id: 'home', title: 'Home', href: '/' },
-  { id: 'products', title: 'Products', href: '/Products' },
-  { id: 'solutions', title: 'Solutions', href: '/Solutions' },
-  { id: 'locations', title: 'Find a Location', href: '/Find-A-Location' },
-  { id: 'about', title: 'About Us', href: '/About-Us' },
-];
-
 const NavigationListItem: React.FC<NavigationListItemProps> = ({
   fields,
   handleClick,
@@ -165,29 +157,8 @@ export const Default = ({ params, fields }: NavigationProps) => {
 
   if (!Object.values(fields).some((v) => !!v)) {
     return (
-      <div className={`component navigation bg-transparent ${styles}`} id={id}>
-        <nav className="z-100 flex w-full bg-transparent">
-          <ul
-            role="menubar"
-            className="flex w-full flex-col items-center justify-center gap-x-8 gap-y-4 px-4 py-6 text-lg font-semibold lg:flex-row lg:px-8 xl:gap-x-16"
-          >
-            <li className="shrink-0 max-lg:hidden">
-              <a href="/" className="navigation-mobile-trigger">
-                <img src={INTERSTATE_LOGO_URL} alt="Interstate Batteries" className="h-auto w-36" />
-              </a>
-            </li>
-            {INTERSTATE_FALLBACK_LINKS.map((link) => (
-              <li key={link.id} className="relative flex flex-col gap-x-8 gap-y-4 xl:gap-x-14">
-                <a
-                  href={link.href}
-                  className="font-semibold whitespace-nowrap text-white transition-colors hover:text-white/80"
-                >
-                  {link.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+      <div className={`component navigation ${styles}`} id={id}>
+        <div className="component-content">[Navigation]</div>
       </div>
     );
   }
