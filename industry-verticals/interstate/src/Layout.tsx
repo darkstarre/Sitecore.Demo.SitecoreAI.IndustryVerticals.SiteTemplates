@@ -3,6 +3,7 @@
  */
 import React, { JSX } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import { Placeholder, Field, Page, ImageField } from '@sitecore-content-sdk/nextjs';
 import Scripts from 'src/Scripts';
 import SitecoreStyles from 'src/components/content-sdk/SitecoreStyles';
@@ -23,12 +24,18 @@ interface RouteFields {
   ogImage?: ImageField;
 }
 
+type RouteWithPlaceholders = {
+  placeholders?: Record<string, unknown[]>;
+};
+
 const Layout = ({ page }: LayoutProps): JSX.Element => {
   const router = useRouter();
   const { layout, mode } = page;
   const { route } = layout.sitecore;
+  const routeWithPlaceholders = route as RouteWithPlaceholders | undefined;
   const fields = route?.fields as RouteFields;
   const mainClassPageEditing = mode.isEditing ? 'editing-mode' : 'prod-mode';
+  const hasHeaderComponents = !!routeWithPlaceholders?.placeholders?.['headless-header']?.length;
 
   const metaDescription =
     fields?.metadataDescription?.value?.toString() || fields?.pageSummary?.value?.toString() || '';
@@ -66,7 +73,70 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
           <>
             <header>
               <div id="header">
-                {route && <Placeholder name="headless-header" rendering={route} />}
+                {route && hasHeaderComponents ? (
+                  <Placeholder name="headless-header" rendering={route} />
+                ) : (
+                  <div className="component header bg-[#2f6f5b] text-white">
+                    <div className="flex w-full items-center px-4 lg:px-8">
+                      <nav className="z-100 flex w-full bg-transparent">
+                        <ul
+                          role="menubar"
+                          className="flex w-full flex-col items-center justify-center gap-x-8 gap-y-4 px-4 py-6 text-lg font-semibold lg:flex-row lg:px-8 xl:gap-x-16"
+                        >
+                          <li className="shrink-0 max-lg:hidden">
+                            <Link href="/" className="navigation-mobile-trigger">
+                              <img
+                                src="/Interstate_Batteries_logo.png"
+                                alt="Interstate Batteries"
+                                className="h-auto w-36"
+                              />
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/"
+                              className="font-semibold whitespace-nowrap text-white transition-colors hover:text-white/80"
+                            >
+                              Home
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/Products"
+                              className="font-semibold whitespace-nowrap text-white transition-colors hover:text-white/80"
+                            >
+                              Products
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/Solutions"
+                              className="font-semibold whitespace-nowrap text-white transition-colors hover:text-white/80"
+                            >
+                              Solutions
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/Find-A-Location"
+                              className="font-semibold whitespace-nowrap text-white transition-colors hover:text-white/80"
+                            >
+                              Find a Location
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/About-Us"
+                              className="font-semibold whitespace-nowrap text-white transition-colors hover:text-white/80"
+                            >
+                              About Us
+                            </Link>
+                          </li>
+                        </ul>
+                      </nav>
+                    </div>
+                  </div>
+                )}
               </div>
             </header>
             <main>
