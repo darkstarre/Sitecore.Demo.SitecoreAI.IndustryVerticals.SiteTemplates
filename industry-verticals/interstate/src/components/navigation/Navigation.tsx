@@ -7,6 +7,7 @@ import { ChevronDown } from 'lucide-react';
 import HamburgerIcon from '@/components/non-sitecore/HamburgerIcon';
 import { useClickAway } from '@/hooks/useClickAway';
 import { useStopResponsiveTransition } from '@/hooks/useStopResponsiveTransition';
+import { extractMediaUrl } from '@/helpers/extractMediaUrl';
 import {
   getLinkContent,
   getLinkField,
@@ -16,8 +17,6 @@ import {
 } from '@/helpers/navHelpers';
 import clsx from 'clsx';
 import { isParamEnabled } from '@/helpers/isParamEnabled';
-
-const INTERSTATE_LOGO_URL = '/Interstate_Batteries_logo.png';
 
 export interface NavItemFields {
   Id: string;
@@ -95,7 +94,7 @@ const NavigationListItem: React.FC<NavigationListItemProps> = ({
           field={getLinkField(fields)}
           editable={page.mode.isEditing}
           onClick={clickHandler}
-          className="font-semibold whitespace-nowrap text-white transition-colors hover:text-white/80"
+          className="whitespace-nowrap text-[0.95rem] font-semibold tracking-[0.04em] text-[#0f3b2e] uppercase transition-colors hover:text-[#8fc73e]"
         >
           {getLinkContent(fields, logoSrc)}
         </Link>
@@ -105,7 +104,7 @@ const NavigationListItem: React.FC<NavigationListItemProps> = ({
             aria-label="Toggle submenu"
             aria-haspopup="true"
             aria-expanded={isActive}
-            className="flex h-6 w-6 cursor-pointer items-center justify-center text-white"
+            className="flex h-6 w-6 cursor-pointer items-center justify-center text-[#0f3b2e]"
             onClick={() => setIsActive((a) => !a)}
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') {
@@ -134,7 +133,7 @@ const NavigationListItem: React.FC<NavigationListItemProps> = ({
               clsx(
                 'z-110 text-base max-lg:border-b max-lg:pb-4 max-lg:text-sm',
                 'lg:absolute lg:top-full lg:left-1/2 lg:-translate-x-1/2 lg:p-6 lg:transition-all lg:duration-300',
-                'lg:rounded-xl lg:bg-[#2f6f5b] lg:shadow-md',
+                'lg:rounded-xl lg:border lg:border-[#d9e4de] lg:bg-white lg:shadow-md',
                 isActive
                   ? 'max-lg:flex'
                   : 'max-lg:hidden lg:pointer-events-none lg:translate-y-2 lg:scale-95 lg:opacity-0'
@@ -151,7 +150,7 @@ const NavigationListItem: React.FC<NavigationListItemProps> = ({
 export const Default = ({ params, fields }: NavigationProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { page } = useSitecore();
-  const { styles, RenderingIdentifier: id, SimpleLayout: simpleLayout } = params;
+  const { styles, RenderingIdentifier: id, Logo: logoImage, SimpleLayout: simpleLayout } = params;
 
   useStopResponsiveTransition();
 
@@ -173,7 +172,7 @@ export const Default = ({ params, fields }: NavigationProps) => {
   const isSimpleLayout = isParamEnabled(simpleLayout);
   const preparedFields = prepareFields(fields, !isSimpleLayout);
   const rootItem = Object.values(preparedFields).find((item) => isNavRootItem(item));
-  const logoSrc = INTERSTATE_LOGO_URL;
+  const logoSrc = extractMediaUrl(logoImage);
   const hasLogoRootItem = rootItem && logoSrc;
 
   const navigationItems = Object.values(preparedFields)
@@ -192,7 +191,7 @@ export const Default = ({ params, fields }: NavigationProps) => {
     <div className={`component navigation bg-transparent ${styles}`} id={id}>
       <div
         className={clsx(
-          'relative z-150 flex w-full items-center px-4 py-4 lg:hidden',
+          'relative z-150 container flex items-center py-3 lg:hidden',
           !isSimpleLayout &&
             '[.component.header_&]:grid-cols-2 [.component.header_&]:px-0 [.component.header_&]:max-lg:grid',
           !isSimpleLayout ? 'flex-row-reverse' : '',
@@ -229,7 +228,7 @@ export const Default = ({ params, fields }: NavigationProps) => {
 
       <nav
         className={clsx(
-          'z-100 flex w-full bg-transparent duration-300',
+          'z-100 flex border-b-4 border-[#f4cf3a] bg-white duration-300',
           'max-lg:fixed max-lg:inset-0',
           !isMenuOpen && 'max-lg:-translate-y-full max-lg:opacity-0'
         )}
@@ -237,7 +236,7 @@ export const Default = ({ params, fields }: NavigationProps) => {
         <ul
           role="menubar"
           className={clsx(
-            'flex w-full flex-col items-center justify-center gap-x-8 gap-y-4 px-4 py-6 text-lg font-semibold lg:flex-row lg:px-8 xl:gap-x-16',
+            'container flex flex-col items-center justify-center gap-x-8 gap-y-4 py-6 text-lg lg:flex-row lg:py-4 xl:gap-x-12',
             isSimpleLayout && !hasLogoRootItem && 'lg:justify-end'
           )}
         >

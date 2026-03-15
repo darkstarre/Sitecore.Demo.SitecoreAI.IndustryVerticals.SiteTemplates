@@ -1,6 +1,6 @@
 {
-  "name": "interstate",
-  "description": "Interstate Batteries industry vertical built with Content SDK and Next.js",
+  "name": "content-sdk-nextjs",
+  "description": "Application utilizing Content SDK and Next.js",
   "version": "1.0.0",
   "private": true,
   "config": {
@@ -103,7 +103,7 @@
     "sitecore-tools:build": "sitecore-tools project build",
     "dev": "cross-env NODE_ENV=development npm-run-all --serial sitecore-tools:build --parallel next:dev sitecore-tools:generate-map:watch",
     "start": "cross-env-shell NODE_ENV=production npm-run-all --serial build next:start",
-    "prepare": "git config core.hooksPath industry-verticals/interstate/.husky || true",
+    "prepare": "git config core.hooksPath industry-verticals/retail/.husky || true",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "percy": "percy storybook http://localhost:9009",

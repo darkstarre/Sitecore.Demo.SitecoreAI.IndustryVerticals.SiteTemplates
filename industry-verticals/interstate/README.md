@@ -1,8 +1,8 @@
-# Interstate Batteries
+# Retail
 
 ## Overview
 
-Interstate Batteries is a demo website created to showcase a modern battery shopping and service experience. It highlights key features such as intuitive navigation, multilingual support, and engaging content presentation.
+Forma Lux is a demo website created to showcase a modern shopping experience. It highlights key features such as intuitive navigation, multilingual support, and engaging content presentation. The site is designed to demonstrate how a retail brand can deliver a seamless and personalized experience to its customers.
 
 ## Developer Expectations:
 
@@ -19,7 +19,7 @@ Interstate Batteries is a demo website created to showcase a modern battery shop
 1. Clone the repository (if not yet done)
    `git clone https://github.com/Sitecore/Sitecore.Demo.XMCloud.IndustryVerticals.SiteTemplates`
 2. Starting from the root of the repository navigate to site app folder
-   `cd industry-verticals\interstate`
+   `cd industry-verticals\retail`
 3. Copy the environment file `.env.remote.example`
 4. Rename the copied file to `.env.local`
 5. Edit `.env.local` and provide a value for
@@ -33,7 +33,7 @@ Interstate Batteries is a demo website created to showcase a modern battery shop
    - NEXT_PUBLIC_SEARCH_SOURCE
    - NEXT_PUBLIC_BASE_URL
 6. Install dependencies:
-   from `industry-verticals\interstate` run `npm install`
+   from `industry-verticals\retail` run `npm install`
 7. Run the site locally:
    `npm run dev`
 8. Access the site:
@@ -48,7 +48,7 @@ If you have not enabled the split deployment feature your editing hosts are auto
 3. Select Project that has been deployed
 4. Switch to tab "Editing Hosts"
 5. Click "Add editing host"
-6. Provide Editing host name `interstate` as per xmcloud.build.json
+6. Provide Editing host name `nextjsstarter` as per xmcloud.build.json
 7. Include search related environment variables
 8. Check if the link to authoring environment is set correctly (should be by default)
 9. Check if the source code provider is set correctly (should be by default)
@@ -66,7 +66,7 @@ Additional Info: You do not have to create rendering host items in XM Cloud as t
 ## Sitecore Search Configuration
 
 There are two options for you can try for search configuration:
-1. Use the existing retail search source
+1. Use the existing forma-lux search source
 2. Create a new source in the CEC portal and link it to your application
 
 ### Use existing forma-lux search source
