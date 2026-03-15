@@ -14,7 +14,10 @@ export const Default = (props: HeaderProps): JSX.Element => {
   const { styles, RenderingIdentifier: id, DynamicPlaceholderId } = props.params;
 
   return (
-    <div className={`component header bg-background shadow-sm ${styles}`} id={id}>
+    <div
+      className={`component header border-b-4 border-[#f6c700] bg-white shadow-sm ${styles}`}
+      id={id}
+    >
       <div className="container flex items-center gap-3 py-3 lg:gap-6">
         <div className="header-block *:shrink max-lg:w-full max-lg:justify-between">
           <Placeholder name={`header-left-${DynamicPlaceholderId}`} rendering={props.rendering} />
@@ -33,13 +36,13 @@ export const Default = (props: HeaderProps): JSX.Element => {
               <button
                 type="button"
                 aria-label="Open menu"
-                className="text-foreground hover:text-foreground-light p-2 transition-colors"
+                className="text-foreground hover:text-surface-dark p-2 transition-colors"
               >
                 <Menu className="h-6 w-6" />
               </button>
             </DrawerTrigger>
 
-            <DrawerContent className="bg-background-accent !w-xl !max-w-full p-5">
+            <DrawerContent className="bg-background-accent !w-xl !max-w-full border-r-4 border-[#f6c700] p-5">
               <div className="flex h-full flex-col">
                 <div className="mb-14 flex items-center justify-between self-end">
                   <DrawerClose asChild>

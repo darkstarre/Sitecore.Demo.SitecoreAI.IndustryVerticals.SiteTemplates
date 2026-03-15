@@ -1,33 +1,29 @@
 @theme {
-  /* Cooley-inspired: dark navy foreground on light backgrounds */
-  --color-foreground: #0d1b2a;
-  --color-foreground-light: #64748b;
+  /* Interstate-inspired: green-forward palette with yellow accent */
+  --color-foreground: #17392b;
+  --color-foreground-light: #4f675c;
 
-  /* Light, clean backgrounds */
   --color-background: #ffffff;
-  --color-background-accent: #f8fafc;
-  --color-background-muted: #f1f5f9;
+  --color-background-accent: #f4f8f5;
+  --color-background-muted: #eaf2ed;
 
-  /* Dark surface for header, footer, hero (Cooley navy) */
-  --color-surface-dark: #0d1b2a;
-  --color-surface-dark-muted: #1b263b;
+  --color-surface-dark: #0f4a36;
+  --color-surface-dark-muted: #0b3c2b;
   --color-on-dark: #ffffff;
-  --color-on-dark-muted: #94a3b8;
+  --color-on-dark-muted: #c6d8cf;
 
-  /* Accent: professional blue */
-  --color-accent: #0d47a1;
-  --color-accent-hover: #1565c0;
+  --color-accent: #f6c700;
+  --color-accent-hover: #e0b500;
 
-  --color-success: #2e7d32;
-  --color-danger: #c62828;
+  --color-success: #2b8a3e;
+  --color-danger: #b02a2a;
 
-  --color-border: #e2e8f0;
+  --color-border: #cfddd5;
 
-  /* Professional typography: clean sans-serif */
-  --font-heading: 'Source Serif 4', 'Georgia', serif;
-  --font-body: 'Source Sans 3', 'Helvetica Neue', sans-serif;
+  --font-heading: 'Barlow', 'Arial', sans-serif;
+  --font-body: 'Barlow', 'Arial', sans-serif;
 
-  --radius-base: 0rem;
+  --radius-base: 0.25rem;
 
   /*
   This does not show in the theme editor
