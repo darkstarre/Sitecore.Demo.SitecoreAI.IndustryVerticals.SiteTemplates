@@ -3,10 +3,10 @@
  */
 import React, { JSX } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
 import { Placeholder, Field, Page, ImageField } from '@sitecore-content-sdk/nextjs';
 import Scripts from 'src/Scripts';
 import SitecoreStyles from 'src/components/content-sdk/SitecoreStyles';
+import { LittelfuseNav } from 'src/components/littelfuse-nav/LittelfuseNav';
 import { DesignLibraryLayout } from './DesignLibraryLayout';
 import { useRouter } from 'next/router';
 
@@ -29,7 +29,6 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
   const { layout, mode } = page;
   const { route } = layout.sitecore;
   const fields = route?.fields as RouteFields;
-  const hasHeaderComponents = !!route?.placeholders?.['headless-header']?.length;
   const mainClassPageEditing = mode.isEditing ? 'editing-mode' : 'prod-mode';
 
   const metaDescription =
@@ -70,18 +69,7 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
               <div id="header">
                 {route && <Placeholder name="headless-header" rendering={route} />}
               </div>
-              {!hasHeaderComponents && (
-                <div className="border-b-2 border-[#f6c700] bg-white">
-                  <nav className="container flex items-center gap-6 px-4 py-4 text-sm font-semibold tracking-[0.05em] text-[#17392b] uppercase">
-                    <Link href="/">Home</Link>
-                    <Link href="/shop">Shop</Link>
-                    <Link href="/inspiration">Inspiration</Link>
-                    <Link href="/offers">Offers</Link>
-                    <Link href="/about-us">About Us</Link>
-                    <Link href="/contact">Contact</Link>
-                  </nav>
-                </div>
-              )}
+              <LittelfuseNav />
             </header>
             <main>
               <div id="content">
