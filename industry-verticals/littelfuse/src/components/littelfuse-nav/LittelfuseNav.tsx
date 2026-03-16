@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { Text } from '@sitecore-content-sdk/nextjs';
+import NextImage from 'next/image';
 
 type TextFieldType = { value: string };
 
@@ -27,6 +27,7 @@ interface LittelfuseNavProps {
 type MenuItem = {
   id: string;
   label: string;
+  href?: string;
   children?: Array<{ id: string; label: string }>;
 };
 
@@ -39,10 +40,10 @@ export const LittelfuseNav = (
 
   const menuData: MenuItem[] = useMemo(
     () => [
-      { id: 'home', label: 'Home' },
       {
         id: 'products',
         label: 'Products',
+        href: '#',
         children: [
           { id: 'prod-1', label: 'Circuit Protection' },
           { id: 'prod-2', label: 'Power Semiconductors' },
@@ -50,8 +51,9 @@ export const LittelfuseNav = (
         ],
       },
       {
-        id: 'services',
-        label: 'Solutions',
+        id: 'applications',
+        label: 'Applications',
+        href: '#',
         children: [
           { id: 'svc-1', label: 'Automotive' },
           { id: 'svc-2', label: 'Industrial' },
@@ -59,15 +61,47 @@ export const LittelfuseNav = (
         ],
       },
       {
-        id: 'about',
-        label: 'About',
+        id: 'design-center',
+        label: 'Design Center',
+        href: '#',
         children: [
-          { id: 'abt-1', label: 'Company' },
-          { id: 'abt-2', label: 'Careers' },
-          { id: 'abt-3', label: 'Investor Relations' },
+          { id: 'des-1', label: 'Resources' },
+          { id: 'des-2', label: 'Reference Designs' },
+          { id: 'des-3', label: 'Tools' },
         ],
       },
-      { id: 'contact', label: 'Contact' },
+      {
+        id: 'company',
+        label: 'Company',
+        href: '#',
+        children: [
+          { id: 'com-1', label: 'About Littelfuse' },
+          { id: 'com-2', label: 'Newsroom' },
+          { id: 'com-3', label: 'Investors' },
+        ],
+      },
+      {
+        id: 'support',
+        label: 'Support',
+        href: '#',
+        children: [
+          { id: 'sup-1', label: 'Contact Support' },
+          { id: 'sup-2', label: 'Product Help' },
+          { id: 'sup-3', label: 'Documentation' },
+        ],
+      },
+    ],
+    []
+  );
+
+  const utilityLinks = useMemo(
+    () => [
+      { id: 'cross-reference', label: 'Cross Reference' },
+      { id: 'check-stock', label: 'Check Distributor Stock' },
+      { id: 'where-to-buy', label: 'Where to Buy' },
+      { id: 'request-sample', label: 'Request Sample' },
+      { id: 'lang', label: 'English (EN)' },
+      { id: 'login', label: 'Log In / Register' },
     ],
     []
   );
@@ -111,8 +145,8 @@ export const LittelfuseNav = (
           <li key={item.id} className="relative" role="none">
             <div className="flex items-center" role="none">
               <a
-                href="#"
-                className="text-foreground hover:text-accent focus:ring-accent px-3 py-2 text-sm font-semibold tracking-[0.04em] uppercase focus:ring-2 focus:outline-none"
+                href={item.href || '#'}
+                className="text-foreground hover:text-accent focus:ring-accent px-1 py-2 text-sm font-semibold whitespace-nowrap focus:ring-2 focus:outline-none"
                 role="menuitem"
                 aria-label={item.label}
               >
@@ -160,22 +194,49 @@ export const LittelfuseNav = (
 
   return (
     <nav
-      className={`${styles} border-accent bg-background border-b-2 p-4 shadow-sm`}
+      className={`${styles} bg-background border-border border-b`}
       id={id}
       aria-label="Primary Navigation"
     >
-      <div className="component-content">
-        <div className="flex items-center justify-between">
-          <Text
-            tag="h2"
-            field={titleField}
-            className="font-heading text-accent text-lg font-bold tracking-[0.06em] uppercase"
-          />
+      <div className="component-content mx-auto w-full max-w-[1280px]">
+        <span className="sr-only">{titleField.value}</span>
+
+        <div className="border-border hidden border-b px-4 py-2 lg:block">
+          <ul className="flex items-center justify-end gap-6 text-[11px] font-medium tracking-[0.02em] uppercase">
+            {utilityLinks.map((item) => (
+              <li key={item.id}>
+                <a href="#" className="text-foreground-light hover:text-accent transition-colors">
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="flex items-center justify-between gap-4 px-4 py-3">
+          <a
+            href="/"
+            className="relative block h-12 w-[205px] shrink-0"
+            aria-label="Littelfuse home"
+          >
+            <NextImage
+              src="/Littelfuse_logo%20copy.svg"
+              alt="Littelfuse"
+              fill
+              className="object-contain object-left"
+              priority
+            />
+          </a>
+
+          <ul role="menubar" className="hidden items-center gap-7 lg:flex">
+            {primaryList}
+          </ul>
+
           <div className="flex items-center gap-3">
             <form
               role="search"
               aria-label="Site search"
-              className="flex items-center"
+              className="hidden items-center md:flex"
               onSubmit={onSubmitSearch}
             >
               <label htmlFor="nav-search" className="sr-only">
@@ -187,15 +248,24 @@ export const LittelfuseNav = (
                 type="search"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search..."
-                className="border-border bg-background text-foreground placeholder-foreground-muted focus:border-accent focus:ring-accent w-40 rounded-l-sm border px-3 py-2 focus:ring-2 focus:outline-none md:w-64"
+                placeholder="Enter a part # or keyword"
+                className="border-border bg-background text-foreground placeholder-foreground-muted focus:border-accent focus:ring-accent w-56 border-b px-3 py-2 text-sm focus:ring-2 focus:outline-none lg:w-72"
               />
               <button
                 type="submit"
-                className="border-accent bg-accent hover:bg-accent-hover focus:ring-accent rounded-r-sm border border-l-0 px-3 py-2 text-white focus:ring-2 focus:outline-none"
+                className="text-foreground hover:text-accent p-2"
                 aria-label="Submit search"
               >
-                Go
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="m20 20-3.5-3.5" />
+                </svg>
               </button>
             </form>
             <button
@@ -218,12 +288,42 @@ export const LittelfuseNav = (
             </button>
           </div>
         </div>
-        <div className={`mt-4 lg:mt-6 ${mobileOpen ? 'block' : 'hidden'} lg:block`}>
-          <ul
-            role="menubar"
-            className="flex flex-col gap-2 text-base lg:flex-row lg:items-center lg:gap-6"
+
+        <div
+          className={`border-border border-t px-4 py-4 lg:hidden ${mobileOpen ? 'block' : 'hidden'}`}
+        >
+          <form
+            role="search"
+            aria-label="Site search"
+            className="mb-4 flex items-center"
+            onSubmit={onSubmitSearch}
           >
+            <label htmlFor="mobile-nav-search" className="sr-only">
+              Search
+            </label>
+            <input
+              id="mobile-nav-search"
+              name="q-mobile"
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Enter a part # or keyword"
+              className="border-border bg-background text-foreground placeholder-foreground-muted focus:border-accent focus:ring-accent w-full border-b px-3 py-2 text-sm focus:ring-2 focus:outline-none"
+            />
+          </form>
+
+          <ul role="menubar" className="mb-4 flex flex-col gap-2">
             {primaryList}
+          </ul>
+
+          <ul className="border-border flex flex-col gap-2 border-t pt-3 text-xs font-semibold uppercase">
+            {utilityLinks.map((item) => (
+              <li key={item.id}>
+                <a href="#" className="text-foreground-light hover:text-accent transition-colors">
+                  {item.label}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

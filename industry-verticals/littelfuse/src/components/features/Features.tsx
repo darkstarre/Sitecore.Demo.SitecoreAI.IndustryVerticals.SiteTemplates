@@ -7,9 +7,16 @@ import {
   Link,
   Text,
 } from '@sitecore-content-sdk/nextjs';
+import NextImage from 'next/image';
 import React from 'react';
 import AccentLine from '@/assets/icons/accent-line/AccentLine';
 import { CommonStyles } from '@/types/styleFlags';
+
+const FEATURED_PRODUCT_IMAGES = [
+  '/featuredproduct1.webp',
+  '/featuredproduct2.webp',
+  '/featuredproduct3.webp',
+];
 
 interface Fields {
   data: {
@@ -93,20 +100,68 @@ export const Default = (props: FeaturesProps) => {
 };
 
 export const ImageGrid = (props: FeaturesProps) => {
-  // results of the graphql
-  const results = props.fields.data.datasource.children.results;
+  const results = props.fields?.data?.datasource?.children?.results || [];
+  const hideAccentLine = props.params.styles?.includes(CommonStyles.HideAccentLine);
+  const featureSectionTitle = props.fields?.data?.datasource?.title;
 
   return (
     <FeatureWrapper props={props}>
-      <div className="container grid grid-cols-1 gap-4 py-9 md:grid-cols-2 lg:grid-cols-5">
-        {results.map((item, index) => {
-          const imageField = item?.featureImage.jsonValue;
-          return (
-            <div className="flex items-center justify-center py-9 lg:py-2" key={index}>
-              {imageField && <Image field={imageField} className="max-h-20 object-contain" />}
-            </div>
-          );
-        })}
+      <div className="container py-16 lg:py-20">
+        <div className="mb-12 lg:mb-14">
+          <h2 className="inline-block max-w-2xl font-bold max-lg:text-[42px]">
+            {featureSectionTitle?.jsonValue ? (
+              <Text field={featureSectionTitle.jsonValue} />
+            ) : (
+              'Featured Products'
+            )}
+            {!hideAccentLine && <AccentLine className="w-full max-w-xs" />}
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {results.slice(0, 3).map((item, index) => {
+            const title = item?.featureTitle?.jsonValue;
+            const description = item?.featureDescription?.jsonValue;
+            const link = item?.featureLink?.jsonValue;
+            const image = item?.featureImage?.jsonValue;
+            const featuredImageSrc = FEATURED_PRODUCT_IMAGES[index] || image?.value?.src;
+
+            return (
+              <article
+                className="border-border bg-background-surface flex h-full flex-col overflow-hidden rounded-md border shadow-sm transition-shadow hover:shadow-md"
+                key={index}
+              >
+                <div className="aspect-[16/10] overflow-hidden bg-white">
+                  {featuredImageSrc ? (
+                    <div className="relative h-full w-full">
+                      <NextImage
+                        src={featuredImageSrc}
+                        alt={title?.value || `Featured product ${index + 1}`}
+                        fill
+                        className="object-cover object-center"
+                        sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                      />
+                    </div>
+                  ) : (
+                    <div className="text-foreground-muted flex h-full w-full items-center justify-center text-sm">
+                      No Image
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="text-foreground mb-3 text-2xl font-bold">
+                    {title ? <Text field={title} /> : 'Product'}
+                  </h3>
+                  <div className="text-foreground-light mb-5 flex-auto leading-7">
+                    {description ? <Text field={description} /> : null}
+                  </div>
+                  {link ? <Link field={link} className="arrow-btn" /> : null}
+                </div>
+              </article>
+            );
+          })}
+        </div>
       </div>
     </FeatureWrapper>
   );
@@ -119,7 +174,7 @@ export const ThreeColGridCentered = (props: FeaturesProps) => {
   return (
     <FeatureWrapper props={props}>
       <div className="container flex flex-col flex-wrap justify-evenly gap-20 md:flex-row lg:gap-20">
-        {results.map((item, index) => {
+        {results.slice(0, 3).map((item, index) => {
           const title = item.featureTitle.jsonValue;
           const description = item.featureDescription.jsonValue;
           const image = item.featureImage.jsonValue;
