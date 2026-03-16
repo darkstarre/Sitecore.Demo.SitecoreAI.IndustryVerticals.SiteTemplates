@@ -97,18 +97,18 @@ export const Default = ({ params, fields, rendering }: HeroBannerProps) => {
       <div className="relative w-full">
         <div className="container mx-auto px-4">
           <div
-            className={`flex min-h-238 w-full py-10 lg:w-1/2 lg:items-center ${reverseLayout ? 'lg:mr-auto' : 'lg:ml-auto'}`}
+            className={`flex min-h-[30rem] w-full py-10 lg:min-h-[34rem] lg:w-1/2 lg:items-center ${reverseLayout ? 'lg:mr-auto' : 'lg:ml-auto'}`}
           >
             <div className="max-w-182">
               <div className={clsx({ shim: screenLayer })}>
                 {/* Title */}
-                <h1 className="text-center text-5xl leading-[110%] font-bold capitalize md:text-7xl md:leading-[130%] lg:text-left xl:text-[80px]">
+                <h1 className="text-center text-5xl leading-[110%] font-bold text-white capitalize md:text-7xl md:leading-[130%] lg:text-left xl:text-[80px]">
                   <ContentSdkText field={fields.Title} />
                   {!hideAccentLine && <AccentLine className="mx-auto !h-5 w-[9ch] lg:mx-0" />}
                 </h1>
 
                 {/* Description */}
-                <div className="mt-7 text-xl md:text-2xl">
+                <div className="mt-7 text-xl text-white md:text-2xl [&_*]:text-white">
                   <ContentSdkRichText
                     field={fields.Description}
                     className="text-center lg:text-left"
@@ -144,19 +144,19 @@ export const TopContent = ({ params, fields, rendering }: HeroBannerProps) => {
     <HeroBannerCommon params={params} fields={fields} rendering={rendering}>
       {/* Content Container */}
       <div className="relative w-full">
-        <div className="container mx-auto flex min-h-238 justify-center px-4">
+        <div className="container mx-auto flex min-h-[30rem] justify-center px-4 lg:min-h-[34rem]">
           <div
-            className={`flex flex-col items-center py-10 lg:py-44 ${reverseLayout ? 'justify-end' : 'justify-start'}`}
+            className={`flex flex-col items-center py-10 lg:py-28 ${reverseLayout ? 'justify-end' : 'justify-start'}`}
           >
             <div className={clsx({ shim: screenLayer })}>
               {/* Title */}
-              <h1 className="text-center text-5xl leading-[110%] font-bold capitalize md:text-7xl md:leading-[130%] xl:text-[80px]">
+              <h1 className="text-center text-5xl leading-[110%] font-bold text-white capitalize md:text-7xl md:leading-[130%] xl:text-[80px]">
                 <ContentSdkText field={fields.Title} />
                 {!hideAccentLine && <AccentLine className="mx-auto !h-5 w-[9ch]" />}
               </h1>
 
               {/* Description */}
-              <div className="mt-7 text-xl md:text-2xl">
+              <div className="mt-7 text-xl text-white md:text-2xl [&_*]:text-white">
                 <ContentSdkRichText field={fields.Description} className="text-center" />
               </div>
 

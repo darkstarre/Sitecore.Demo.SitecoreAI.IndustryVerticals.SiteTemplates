@@ -44,18 +44,18 @@ export const LittelfuseNav = (
         id: 'products',
         label: 'Products',
         children: [
-          { id: 'prod-1', label: 'New Arrivals' },
-          { id: 'prod-2', label: 'Best Sellers' },
-          { id: 'prod-3', label: 'Sale' },
+          { id: 'prod-1', label: 'Circuit Protection' },
+          { id: 'prod-2', label: 'Power Semiconductors' },
+          { id: 'prod-3', label: 'Relays & Sensors' },
         ],
       },
       {
         id: 'services',
-        label: 'Services',
+        label: 'Solutions',
         children: [
-          { id: 'svc-1', label: 'Consulting' },
-          { id: 'svc-2', label: 'Implementation' },
-          { id: 'svc-3', label: 'Support' },
+          { id: 'svc-1', label: 'Automotive' },
+          { id: 'svc-2', label: 'Industrial' },
+          { id: 'svc-3', label: 'Electronics' },
         ],
       },
       {
@@ -64,7 +64,7 @@ export const LittelfuseNav = (
         children: [
           { id: 'abt-1', label: 'Company' },
           { id: 'abt-2', label: 'Careers' },
-          { id: 'abt-3', label: 'Press' },
+          { id: 'abt-3', label: 'Investor Relations' },
         ],
       },
       { id: 'contact', label: 'Contact' },
@@ -97,7 +97,7 @@ export const LittelfuseNav = (
               <li key={child.id} role="none">
                 <a
                   href="#"
-                  className="block px-3 py-2 text-sm text-green-700 hover:text-green-800 focus:ring-2 focus:ring-green-500 focus:outline-none"
+                  className="text-foreground hover:text-accent focus:ring-accent block px-3 py-2 text-sm focus:ring-2 focus:outline-none"
                   role="menuitem"
                   aria-label={child.label}
                 >
@@ -112,7 +112,7 @@ export const LittelfuseNav = (
             <div className="flex items-center" role="none">
               <a
                 href="#"
-                className="px-3 py-2 text-green-700 hover:text-green-800 focus:ring-2 focus:ring-green-500 focus:outline-none"
+                className="text-foreground hover:text-accent focus:ring-accent px-3 py-2 text-sm font-semibold tracking-[0.04em] uppercase focus:ring-2 focus:outline-none"
                 role="menuitem"
                 aria-label={item.label}
               >
@@ -124,7 +124,7 @@ export const LittelfuseNav = (
                   aria-haspopup="true"
                   aria-expanded={isOpen}
                   aria-controls={`submenu-${item.id}`}
-                  className="ml-1 rounded p-1 text-green-700 hover:text-green-800 focus:ring-2 focus:ring-green-500 focus:outline-none"
+                  className="text-foreground hover:text-accent focus:ring-accent ml-1 rounded p-1 focus:ring-2 focus:outline-none"
                   onClick={() => onToggleSubmenu(item.id)}
                 >
                   <span className="sr-only">Toggle submenu</span>
@@ -147,7 +147,7 @@ export const LittelfuseNav = (
               <ul
                 id={`submenu-${item.id}`}
                 role="menu"
-                className={`mt-2 space-y-1 rounded-md border border-green-200 bg-white p-2 shadow-md lg:absolute lg:left-0 lg:min-w-56 dark:bg-zinc-900 ${isOpen ? 'block' : 'hidden'}`}
+                className={`border-border bg-background mt-2 space-y-1 rounded-sm border p-2 shadow-md lg:absolute lg:left-0 lg:min-w-56 ${isOpen ? 'block' : 'hidden'}`}
               >
                 {childList}
               </ul>
@@ -160,13 +160,17 @@ export const LittelfuseNav = (
 
   return (
     <nav
-      className={`${styles} bg-white p-4 dark:bg-zinc-900`}
+      className={`${styles} border-accent bg-background border-b-2 p-4 shadow-sm`}
       id={id}
       aria-label="Primary Navigation"
     >
       <div className="component-content">
         <div className="flex items-center justify-between">
-          <Text tag="h2" field={titleField} className="text-xl font-semibold text-green-800" />
+          <Text
+            tag="h2"
+            field={titleField}
+            className="font-heading text-accent text-lg font-bold tracking-[0.06em] uppercase"
+          />
           <div className="flex items-center gap-3">
             <form
               role="search"
@@ -184,11 +188,11 @@ export const LittelfuseNav = (
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search..."
-                className="w-40 rounded-l-md border border-green-300 px-3 py-2 text-green-800 placeholder-green-400 focus:border-green-500 focus:ring-2 focus:ring-green-500 focus:outline-none md:w-64"
+                className="border-border bg-background text-foreground placeholder-foreground-muted focus:border-accent focus:ring-accent w-40 rounded-l-sm border px-3 py-2 focus:ring-2 focus:outline-none md:w-64"
               />
               <button
                 type="submit"
-                className="rounded-r-md border border-l-0 border-green-300 bg-green-600 px-3 py-2 text-white hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:outline-none"
+                className="border-accent bg-accent hover:bg-accent-hover focus:ring-accent rounded-r-sm border border-l-0 px-3 py-2 text-white focus:ring-2 focus:outline-none"
                 aria-label="Submit search"
               >
                 Go
@@ -196,7 +200,7 @@ export const LittelfuseNav = (
             </form>
             <button
               type="button"
-              className="block rounded p-2 text-green-700 hover:text-green-800 focus:ring-2 focus:ring-green-500 focus:outline-none lg:hidden"
+              className="text-foreground hover:text-accent focus:ring-accent block rounded p-2 focus:ring-2 focus:outline-none lg:hidden"
               aria-label="Toggle navigation menu"
               aria-expanded={mobileOpen}
               onClick={toggleMobile}

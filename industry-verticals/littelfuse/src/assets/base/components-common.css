@@ -31,7 +31,7 @@
 }
 
 .arrow-btn {
-  @apply border-b-accent text-accent inline-flex items-center justify-start gap-3 border-b leading-8;
+  @apply border-b-accent text-accent inline-flex items-center justify-start gap-3 border-b leading-8 font-semibold tracking-wide uppercase;
 
   &::after {
     @apply bg-accent inline-block h-3 w-11 mask-[url('./images/arrow.svg')] bg-contain bg-no-repeat mask-contain mask-center mask-no-repeat content-[''];
@@ -55,11 +55,11 @@
 }
 
 .action-btn {
-  @apply text-accent hover:text-accent/80 hover:border-accent/80 border-accent flex h-10 items-center gap-3 border-b bg-transparent text-lg font-semibold;
+  @apply text-accent border-accent hover:text-accent-hover hover:border-accent-hover flex h-10 items-center gap-3 border-b bg-transparent text-base font-semibold tracking-wide uppercase;
 }
 
 .main-btn {
-  @apply bg-accent text-background hover:bg-accent/95 flex w-full items-center justify-center rounded-md p-3 text-center text-lg font-semibold transition-all hover:shadow-md;
+  @apply bg-accent text-background hover:bg-accent-hover flex w-full items-center justify-center rounded-sm border border-transparent p-3 text-center text-base font-bold tracking-wide uppercase transition-all hover:shadow-md;
 
   &[disabled] {
     @apply pointer-events-none opacity-60;

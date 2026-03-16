@@ -1,26 +1,32 @@
 @theme {
-  --color-foreground: #1e1e1e;
-  --color-foreground-light: #505050;
-  --color-foreground-muted: #9f9f9f;
+  --color-foreground: #17212f;
+  --color-foreground-light: #425365;
+  --color-foreground-muted: #64758b;
 
-  --color-background: #fff;
-  --color-background-accent: #faf3ea;
-  --color-background-muted: #f7f7f7;
-  --color-background-muted-light: #7a7a7a;
-  --color-background-muted-dark: #666;
-  --color-background-surface: #fafafa;
+  --color-background: #ffffff;
+  --color-background-accent: #f7f9fc;
+  --color-background-muted: #edf2f7;
+  --color-background-muted-light: #c8d2df;
+  --color-background-muted-dark: #4a5d73;
+  --color-background-surface: #f4f7fb;
 
-  --color-accent: #c1a25f;
+  --color-surface-dark: #121b2a;
+  --color-surface-dark-muted: #1d2a3e;
+  --color-on-dark: #f8fafc;
+  --color-on-dark-muted: #c8d2df;
 
-  --color-success: #2ec1ac;
-  --color-danger: #e97171;
+  --color-accent: #4e8f2f;
+  --color-accent-hover: #3f7625;
 
-  --color-border: #e8e8e8;
+  --color-success: #1f7a3b;
+  --color-danger: #b4232e;
 
-  --font-heading: 'Manrope', sans-serif;
-  --font-body: 'Manrope', sans-serif;
+  --color-border: #d7e0ea;
 
-  --radius-base: 0.5rem;
+  --font-heading: 'Roboto Condensed', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --radius-base: 0.25rem;
 
   /*
   This does not show in the theme editor
