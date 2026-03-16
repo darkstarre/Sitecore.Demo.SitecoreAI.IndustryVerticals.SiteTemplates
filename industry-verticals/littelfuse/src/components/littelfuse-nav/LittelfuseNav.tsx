@@ -181,7 +181,7 @@ export const LittelfuseNav = (
               <ul
                 id={`submenu-${item.id}`}
                 role="menu"
-                className={`border-border bg-background mt-2 space-y-1 rounded-sm border p-2 shadow-md lg:absolute lg:left-0 lg:min-w-56 ${isOpen ? 'block' : 'hidden'}`}
+                className={`border-border bg-background z-50 mt-2 space-y-1 rounded-sm border p-2 shadow-md lg:absolute lg:left-0 lg:min-w-56 ${isOpen ? 'block' : 'hidden'}`}
               >
                 {childList}
               </ul>
@@ -194,7 +194,7 @@ export const LittelfuseNav = (
 
   return (
     <nav
-      className={`${styles} bg-background border-border border-b`}
+      className={`${styles} bg-background border-border relative z-40 border-b`}
       id={id}
       aria-label="Primary Navigation"
     >

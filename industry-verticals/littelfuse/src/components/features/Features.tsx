@@ -18,6 +18,27 @@ const FEATURED_PRODUCT_IMAGES = [
   '/featuredproduct3.webp',
 ];
 
+const FEATURED_PRODUCT_COPY = [
+  {
+    title: 'IX4352NEAU Gate Driver',
+    subtitle: 'Automotive Gate Driver with Negative Gate Bias & Protections',
+    description:
+      'AEC-Q100 qualified gate driver with separate 9 A source/sink outputs, integrated protections, and an internal charge pump delivering -10 V bias for robust, high-dv/dt EV inverter designs.',
+  },
+  {
+    title: 'Residual Current Protection',
+    subtitle: 'EV Charging Protection',
+    description:
+      'Compact and reliable, these monitors detect AC and DC leakage in EV charging systems in real time-preventing hazards and ensuring continuous safety.',
+  },
+  {
+    title: '59150 Flange-Mount Reed Sensor',
+    subtitle: 'Compact, Sealed Sensor for Harsh or Concealed Environments',
+    description:
+      'Compact, IP67-sealed reed sensor rated to 265 Vac/300 Vdc. Enables reliable non-contact sensing in space-constrained designs requiring low power operation and resistance to moisture and contaminants.',
+  },
+];
+
 interface Fields {
   data: {
     datasource: {
@@ -101,7 +122,6 @@ export const Default = (props: FeaturesProps) => {
 
 export const ImageGrid = (props: FeaturesProps) => {
   const results = props.fields?.data?.datasource?.children?.results || [];
-  const hideAccentLine = props.params.styles?.includes(CommonStyles.HideAccentLine);
   const featureSectionTitle = props.fields?.data?.datasource?.title;
 
   return (
@@ -114,17 +134,19 @@ export const ImageGrid = (props: FeaturesProps) => {
             ) : (
               'Featured Products'
             )}
-            {!hideAccentLine && <AccentLine className="w-full max-w-xs" />}
           </h2>
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {results.slice(0, 3).map((item, index) => {
+            const contentOverride = FEATURED_PRODUCT_COPY[index];
             const title = item?.featureTitle?.jsonValue;
             const description = item?.featureDescription?.jsonValue;
             const link = item?.featureLink?.jsonValue;
             const image = item?.featureImage?.jsonValue;
             const featuredImageSrc = FEATURED_PRODUCT_IMAGES[index] || image?.value?.src;
+            const linkHref = link?.value?.href || '#';
+            const titleText = contentOverride?.title || title?.value || 'Product';
 
             return (
               <article
@@ -141,6 +163,11 @@ export const ImageGrid = (props: FeaturesProps) => {
                         className="object-cover object-center"
                         sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                       />
+                      <div className="absolute inset-x-0 top-0 bg-gradient-to-b from-accent/80 to-transparent p-4">
+                        <h3 className="text-center text-lg leading-tight font-bold text-white">
+                          {titleText}
+                        </h3>
+                      </div>
                     </div>
                   ) : (
                     <div className="text-foreground-muted flex h-full w-full items-center justify-center text-sm">
@@ -150,13 +177,21 @@ export const ImageGrid = (props: FeaturesProps) => {
                 </div>
 
                 <div className="flex flex-1 flex-col p-6">
-                  <h3 className="text-foreground mb-3 text-2xl font-bold">
-                    {title ? <Text field={title} /> : 'Product'}
-                  </h3>
+                  {contentOverride?.subtitle ? (
+                    <p className="text-foreground mb-2 text-sm font-semibold">
+                      {contentOverride.subtitle}
+                    </p>
+                  ) : null}
                   <div className="text-foreground-light mb-5 flex-auto leading-7">
-                    {description ? <Text field={description} /> : null}
+                    {contentOverride?.description ? (
+                      contentOverride.description
+                    ) : description ? (
+                      <Text field={description} />
+                    ) : null}
                   </div>
-                  {link ? <Link field={link} className="arrow-btn" /> : null}
+                  <a href={linkHref} className="arrow-btn mt-auto" aria-label="Learn more">
+                    Learn More
+                  </a>
                 </div>
               </article>
             );
