@@ -20,6 +20,7 @@ import * as Promo from 'src/components/promo/Promo';
 import * as ProductListing from 'src/components/product-listing/ProductListing';
 import * as ProductDetails from 'src/components/product-details/ProductDetails';
 import * as PartialDesignDynamicPlaceholder from 'src/components/partial-design-dynamic-placeholder/PartialDesignDynamicPlaceholder';
+import * as PageHeader from 'src/components/page-header/PageHeader';
 import * as PageContent from 'src/components/page-content/PageContent';
 import * as Offers from 'src/components/offers/Offers';
 import * as SuggestionBlock from 'src/components/non-sitecore/search/SuggestionBlock';
@@ -74,6 +75,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['ProductListing', { ...ProductListing }],
   ['ProductDetails', { ...ProductDetails }],
   ['PartialDesignDynamicPlaceholder', { ...PartialDesignDynamicPlaceholder }],
+  ['PageHeader', { ...PageHeader }],
   ['PageContent', { ...PageContent }],
   ['Offers', { ...Offers }],
   ['SuggestionBlock', { ...SuggestionBlock }],
