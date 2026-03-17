@@ -155,15 +155,11 @@ export const ImageGrid = (props: FeaturesProps) => {
               className="border-border bg-background flex h-full flex-col gap-3 rounded-md border p-3 sm:flex-row sm:items-start"
             >
               <div className="relative h-24 w-full shrink-0 overflow-hidden rounded sm:h-20 sm:w-28">
-                <div className="relative h-full w-full">
-                  <NextImage
-                    src={item.imageSrc}
-                    alt={item.title}
-                    fill
-                    className="object-cover object-center"
-                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                  />
-                </div>
+                <img
+                  src={item.imageSrc}
+                  alt={item.title}
+                  className="h-full w-full object-cover object-center"
+                />
               </div>
 
               <div className="flex flex-1 flex-col">
