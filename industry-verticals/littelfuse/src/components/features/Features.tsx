@@ -135,6 +135,9 @@ export const ImageGrid = (props: FeaturesProps) => {
             const title = item?.featureTitle?.jsonValue;
             const description = item?.featureDescription?.jsonValue;
             const link = item?.featureLink?.jsonValue;
+            const titleText = title?.value;
+            const descriptionText = description?.value;
+            const linkHref = link?.value?.href || '#';
             const localImageSrc = MINI_GRID_IMAGES[index];
 
             return (
@@ -146,25 +149,23 @@ export const ImageGrid = (props: FeaturesProps) => {
                   {localImageSrc ? (
                     <img
                       src={localImageSrc}
-                      alt={title?.value || `Feature ${index + 1}`}
+                      alt={titleText || `Feature ${index + 1}`}
                       className="h-full w-full object-cover object-center"
                     />
                   ) : null}
                 </div>
 
                 <div className="flex flex-1 flex-col">
-                  <h3 className="text-foreground text-base font-semibold">
-                    {title ? <Text field={title} /> : 'Feature'}
-                  </h3>
+                  <h3 className="text-foreground text-base font-semibold">{titleText || 'Feature'}</h3>
                   <p className="text-foreground-light mt-1 flex-auto text-sm leading-6">
-                    {description ? <Text field={description} /> : null}
+                    {descriptionText || ''}
                   </p>
-                  <Link
-                    field={link}
+                  <a
+                    href={linkHref}
                     className="text-foreground-light hover:text-accent mt-2 inline-flex text-sm font-medium transition-colors hover:underline"
                   >
                     More Info
-                  </Link>
+                  </a>
                 </div>
               </article>
             );
