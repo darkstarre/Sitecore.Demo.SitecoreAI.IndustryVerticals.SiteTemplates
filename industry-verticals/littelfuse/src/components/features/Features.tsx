@@ -156,7 +156,9 @@ export const ImageGrid = (props: FeaturesProps) => {
                 </div>
 
                 <div className="flex flex-1 flex-col">
-                  <h3 className="text-foreground text-base font-semibold">{titleText || 'Feature'}</h3>
+                  <h3 className="text-foreground text-base font-semibold">
+                    {titleText || 'Feature'}
+                  </h3>
                   <p className="text-foreground-light mt-1 flex-auto text-sm leading-6">
                     {descriptionText || ''}
                   </p>
