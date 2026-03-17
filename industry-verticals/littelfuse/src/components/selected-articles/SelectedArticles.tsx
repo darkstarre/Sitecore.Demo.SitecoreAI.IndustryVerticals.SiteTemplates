@@ -31,11 +31,107 @@ export type CarouselProps = ComponentProps & {
   fields: Fields;
 };
 
+const CAROUSEL_2_EXTERNAL_ARTICLES: Article[] = [
+  {
+    id: 'littelfuse-external-article-board-appointment',
+    name: 'littelfuse-board-appointment',
+    displayName: 'Littelfuse Appoints Holly B. Paeper to Board of Directors',
+    url: 'https://investor.littelfuse.com/news/news-details/2026/Littelfuse-Appoints-Holly-B--Paeper-to-Board-of-Directors/default.aspx',
+    fields: {
+      Title: { value: 'Littelfuse Appoints Holly B. Paeper to Board of Directors' },
+      ShortDescription: {
+        value:
+          'Littelfuse announced Holly B. Paeper joined the Board of Directors and Technology Committee effective March 4, 2026.',
+      },
+      Content: { value: '' },
+      Image: {
+        value: {
+          src: '/featuredproduct1.webp',
+          alt: 'Littelfuse board of directors announcement',
+        },
+      },
+      PublishedDate: { value: '2026-03-05' },
+      Author: {
+        id: 'littelfuse-external-author',
+        name: 'littelfuse',
+        displayName: 'Littelfuse',
+        url: '',
+        fields: { AuthorName: { value: 'Littelfuse' } },
+      },
+      Tags: [],
+      Category: {
+        id: 'littelfuse-external-category',
+        name: 'news',
+        displayName: 'News',
+        url: '',
+        fields: { Category: { value: 'Press Release' } },
+      },
+    },
+  },
+  {
+    id: 'littelfuse-external-article-relay-launch',
+    name: 'littelfuse-cpc1343g-relay-launch',
+    displayName: 'Littelfuse Launches CPC1343G OptoMOS Solid-State Relay',
+    url: 'https://www.littelfuse.com/company/news-and-events/in-the-news/newspages-articles/press-releases/2026/littelfuse-launches-cpc1343g-optomos-solid-state-relay-for-high-current-high-isolation-applications',
+    fields: {
+      Title: {
+        value:
+          'Littelfuse Launches CPC1343G OptoMOS Solid-State Relay for High-Current, High-Isolation Applications',
+      },
+      ShortDescription: {
+        value:
+          'Littelfuse introduced the CPC1343G OptoMOS relay for high-current and high-isolation designs in demanding applications.',
+      },
+      Content: { value: '' },
+      Image: {
+        value: {
+          src: '/featuredproduct2.webp',
+          alt: 'Littelfuse CPC1343G relay press release',
+        },
+      },
+      PublishedDate: { value: '2026-01-01' },
+      Author: {
+        id: 'littelfuse-external-author',
+        name: 'littelfuse',
+        displayName: 'Littelfuse',
+        url: '',
+        fields: { AuthorName: { value: 'Littelfuse' } },
+      },
+      Tags: [],
+      Category: {
+        id: 'littelfuse-external-category',
+        name: 'news',
+        displayName: 'News',
+        url: '',
+        fields: { Category: { value: 'Press Release' } },
+      },
+    },
+  },
+];
+
+const mergeUniqueArticlesByUrl = (items: Article[]) => {
+  const seenUrls = new Set<string>();
+
+  return items.filter((item) => {
+    if (!item?.url || seenUrls.has(item.url)) {
+      return false;
+    }
+
+    seenUrls.add(item.url);
+    return true;
+  });
+};
+
 export const Default = (props: CarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const id = props.params.RenderingIdentifier;
-  const articles = props.fields?.Articles || [];
+  const dataSourceTitle = props.fields?.Title?.value?.toLowerCase() || '';
+  const isHomeArticleCarousel2 = dataSourceTitle.includes('carousel 2');
+  const sitecoreArticles = props.fields?.Articles || [];
+  const articles = isHomeArticleCarousel2
+    ? mergeUniqueArticlesByUrl([...CAROUSEL_2_EXTERNAL_ARTICLES, ...sitecoreArticles])
+    : sitecoreArticles;
   const slidesPerViewByArticleSize = articles.length <= 2 ? 1 : 2;
   const multipleArticles = articles.length > 1;
   const isReversed = props?.params?.styles?.includes(LayoutStyles.Reversed);
