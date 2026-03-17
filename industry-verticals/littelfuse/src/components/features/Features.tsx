@@ -18,6 +18,8 @@ const FEATURED_PRODUCT_IMAGES = [
   '/featuredproduct3.webp',
 ];
 
+const MINI_GRID_IMAGES = ['/drill%20copy.webp', '/usb-c%20copy.webp', '/flosser%20copy.webp'];
+
 const FEATURED_PRODUCT_COPY = [
   {
     title: 'IX4352NEAU Gate Driver',
@@ -36,27 +38,6 @@ const FEATURED_PRODUCT_COPY = [
     subtitle: 'Compact, Sealed Sensor for Harsh or Concealed Environments',
     description:
       'Compact, IP67-sealed reed sensor rated to 265 Vac/300 Vdc. Enables reliable non-contact sensing in space-constrained designs requiring low power operation and resistance to moisture and contaminants.',
-  },
-];
-
-const INTERMEDIATE_FEATURES = [
-  {
-    title: 'Luxury Facilities',
-    imageSrc: '/drill%20copy.webp',
-    description:
-      'The advantage of hiring a workspace with us is that gives you comfortable service and all-around facilities.',
-  },
-  {
-    title: 'Affordable Price',
-    imageSrc: '/usb-c%20copy.webp',
-    description:
-      'You can get a workspace of the highest quality at an affordable price and still enjoy premium capabilities.',
-  },
-  {
-    title: 'Many Choices',
-    imageSrc: '/flosser%20copy.webp',
-    description:
-      'We provide many unique work space choices so that you can choose the workspace to your liking.',
   },
 ];
 
@@ -143,39 +124,51 @@ export const Default = (props: FeaturesProps) => {
 
 export const ImageGrid = (props: FeaturesProps) => {
   const results = props.fields?.data?.datasource?.children?.results || [];
+  const upperCards = results.slice(0, 3);
   const featuredCards = [results[0], results[1], results[2]];
 
   return (
     <FeatureWrapper props={props}>
       <div className="container py-16 lg:py-20">
         <div className="border-border bg-background-accent mb-14 grid grid-cols-1 gap-4 rounded-md border p-4 md:grid-cols-2 lg:grid-cols-3">
-          {INTERMEDIATE_FEATURES.map((item) => (
-            <article
-              key={item.title}
-              className="border-border bg-background flex h-full flex-col gap-3 rounded-md border p-3 sm:flex-row sm:items-start"
-            >
-              <div className="relative h-24 w-full shrink-0 overflow-hidden rounded sm:h-20 sm:w-28">
-                <img
-                  src={item.imageSrc}
-                  alt={item.title}
-                  className="h-full w-full object-cover object-center"
-                />
-              </div>
+          {upperCards.map((item, index) => {
+            const title = item?.featureTitle?.jsonValue;
+            const description = item?.featureDescription?.jsonValue;
+            const link = item?.featureLink?.jsonValue;
+            const localImageSrc = MINI_GRID_IMAGES[index];
 
-              <div className="flex flex-1 flex-col">
-                <h3 className="text-foreground text-base font-semibold">{item.title}</h3>
-                <p className="text-foreground-light mt-1 flex-auto text-sm leading-6">
-                  {item.description}
-                </p>
-                <a
-                  href="#"
-                  className="text-foreground-light hover:text-accent mt-2 inline-flex text-sm font-medium transition-colors hover:underline"
-                >
-                  More Info
-                </a>
-              </div>
-            </article>
-          ))}
+            return (
+              <article
+                key={item?.featureTitle?.jsonValue?.value || index}
+                className="border-border bg-background flex h-full flex-col gap-3 rounded-md border p-3 sm:flex-row sm:items-start"
+              >
+                <div className="relative h-24 w-full shrink-0 overflow-hidden rounded sm:h-20 sm:w-28">
+                  {localImageSrc ? (
+                    <img
+                      src={localImageSrc}
+                      alt={title?.value || `Feature ${index + 1}`}
+                      className="h-full w-full object-cover object-center"
+                    />
+                  ) : null}
+                </div>
+
+                <div className="flex flex-1 flex-col">
+                  <h3 className="text-foreground text-base font-semibold">
+                    {title ? <Text field={title} /> : 'Feature'}
+                  </h3>
+                  <p className="text-foreground-light mt-1 flex-auto text-sm leading-6">
+                    {description ? <Text field={description} /> : null}
+                  </p>
+                  <Link
+                    field={link}
+                    className="text-foreground-light hover:text-accent mt-2 inline-flex text-sm font-medium transition-colors hover:underline"
+                  >
+                    More Info
+                  </Link>
+                </div>
+              </article>
+            );
+          })}
         </div>
 
         <div className="border-border mb-12 border-t pt-10 lg:mb-14">
