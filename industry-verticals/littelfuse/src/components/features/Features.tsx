@@ -7,58 +7,9 @@ import {
   Link,
   Text,
 } from '@sitecore-content-sdk/nextjs';
-import NextImage from 'next/image';
 import React from 'react';
 import AccentLine from '@/assets/icons/accent-line/AccentLine';
 import { CommonStyles } from '@/types/styleFlags';
-
-const FEATURED_PRODUCT_IMAGES = [
-  '/featuredproduct1.webp',
-  '/featuredproduct2.webp',
-  '/featuredproduct3.webp',
-];
-
-const FEATURED_PRODUCT_COPY = [
-  {
-    title: 'IX4352NEAU Gate Driver',
-    subtitle: 'Automotive Gate Driver with Negative Gate Bias & Protections',
-    description:
-      'AEC-Q100 qualified gate driver with separate 9 A source/sink outputs, integrated protections, and an internal charge pump delivering -10 V bias for robust, high-dv/dt EV inverter designs.',
-  },
-  {
-    title: 'Residual Current Protection',
-    subtitle: 'EV Charging Protection',
-    description:
-      'Compact and reliable, these monitors detect AC and DC leakage in EV charging systems in real time-preventing hazards and ensuring continuous safety.',
-  },
-  {
-    title: '59150 Flange-Mount Reed Sensor',
-    subtitle: 'Compact, Sealed Sensor for Harsh or Concealed Environments',
-    description:
-      'Compact, IP67-sealed reed sensor rated to 265 Vac/300 Vdc. Enables reliable non-contact sensing in space-constrained designs requiring low power operation and resistance to moisture and contaminants.',
-  },
-];
-
-const INTERMEDIATE_FEATURES = [
-  {
-    title: 'Luxury Facilities',
-    imageSrc: '/drill%20copy.webp',
-    description:
-      'The advantage of hiring a workspace with us is that gives you comfortable service and all-around facilities.',
-  },
-  {
-    title: 'Affordable Price',
-    imageSrc: '/usb-c%20copy.webp',
-    description:
-      'You can get a workspace of the highest quality at an affordable price and still enjoy premium capabilities.',
-  },
-  {
-    title: 'Many Choices',
-    imageSrc: '/flosser%20copy.webp',
-    description:
-      'We provide many unique work space choices so that you can choose the workspace to your liking.',
-  },
-];
 
 interface Fields {
   data: {
@@ -143,59 +94,69 @@ export const Default = (props: FeaturesProps) => {
 
 export const ImageGrid = (props: FeaturesProps) => {
   const results = props.fields?.data?.datasource?.children?.results || [];
-  const featuredCards = [results[0], results[1], results[2]];
+  const upperCards = results.slice(0, 3);
+  const lowerCards = results.slice(3, 6);
+  const featuredCards = lowerCards.length ? lowerCards : upperCards;
+  const sectionTitle = props.fields?.data?.datasource?.title;
 
   return (
     <FeatureWrapper props={props}>
       <div className="container py-16 lg:py-20">
         <div className="border-border bg-background-accent mb-14 grid grid-cols-1 gap-4 rounded-md border p-4 md:grid-cols-2 lg:grid-cols-3">
-          {INTERMEDIATE_FEATURES.map((item) => (
-            <article
-              key={item.title}
-              className="border-border bg-background flex h-full flex-col gap-3 rounded-md border p-3 sm:flex-row sm:items-start"
-            >
-              <div className="relative h-24 w-full shrink-0 overflow-hidden rounded sm:h-20 sm:w-28">
-                <div className="relative h-full w-full">
-                  <NextImage
-                    src={item.imageSrc}
-                    alt={item.title}
-                    fill
-                    className="object-cover object-center"
-                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                  />
-                </div>
-              </div>
+          {upperCards.map((item, index) => {
+            const title = item?.featureTitle?.jsonValue;
+            const description = item?.featureDescription?.jsonValue;
+            const image = item?.featureImage?.jsonValue;
+            const link = item?.featureLink?.jsonValue;
 
-              <div className="flex flex-1 flex-col">
-                <h3 className="text-foreground text-base font-semibold">{item.title}</h3>
-                <p className="text-foreground-light mt-1 flex-auto text-sm leading-6">
-                  {item.description}
-                </p>
-                <a
-                  href="#"
-                  className="text-foreground-light hover:text-accent mt-2 inline-flex text-sm font-medium transition-colors hover:underline"
-                >
-                  More Info
-                </a>
-              </div>
-            </article>
-          ))}
+            return (
+              <article
+                key={item?.featureTitle?.jsonValue?.value || index}
+                className="border-border bg-background flex h-full flex-col gap-3 rounded-md border p-3 sm:flex-row sm:items-start"
+              >
+                <div className="relative h-24 w-full shrink-0 overflow-hidden rounded sm:h-20 sm:w-28">
+                  {image ? (
+                    <Image field={image} className="h-full w-full object-cover object-center" />
+                  ) : null}
+                </div>
+
+                <div className="flex flex-1 flex-col">
+                  <h3 className="text-foreground text-base font-semibold">
+                    {title ? <Text field={title} /> : 'Feature'}
+                  </h3>
+                  <p className="text-foreground-light mt-1 flex-auto text-sm leading-6">
+                    {description ? <Text field={description} /> : null}
+                  </p>
+                  <Link
+                    field={link}
+                    className="text-foreground-light hover:text-accent mt-2 inline-flex text-sm font-medium transition-colors hover:underline"
+                  >
+                    More Info
+                  </Link>
+                </div>
+              </article>
+            );
+          })}
         </div>
 
         <div className="border-border mb-12 border-t pt-10 lg:mb-14">
-          <h2 className="inline-block max-w-2xl font-bold max-lg:text-[42px]">Featured Products</h2>
+          <h2 className="inline-block max-w-2xl font-bold max-lg:text-[42px]">
+            {sectionTitle?.jsonValue ? (
+              <Text field={sectionTitle.jsonValue} />
+            ) : (
+              'Featured Products'
+            )}
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {featuredCards.map((item, index) => {
-            const contentOverride = FEATURED_PRODUCT_COPY[index];
             const title = item?.featureTitle?.jsonValue;
             const description = item?.featureDescription?.jsonValue;
             const link = item?.featureLink?.jsonValue;
             const image = item?.featureImage?.jsonValue;
-            const featuredImageSrc = FEATURED_PRODUCT_IMAGES[index] || image?.value?.src;
             const linkHref = link?.value?.href || '#';
-            const titleText = contentOverride?.title || title?.value || 'Product';
+            const titleText = title?.value || 'Product';
 
             return (
               <article
@@ -203,15 +164,9 @@ export const ImageGrid = (props: FeaturesProps) => {
                 key={index}
               >
                 <div className="aspect-[16/10] overflow-hidden bg-white">
-                  {featuredImageSrc ? (
+                  {image ? (
                     <div className="relative h-full w-full">
-                      <NextImage
-                        src={featuredImageSrc}
-                        alt={title?.value || `Featured product ${index + 1}`}
-                        fill
-                        className="object-cover object-center"
-                        sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                      />
+                      <Image field={image} className="h-full w-full object-cover object-center" />
                       <div className="from-accent/80 absolute inset-x-0 top-0 bg-gradient-to-b to-transparent p-4">
                         <h3 className="text-center text-lg leading-tight font-bold text-white">
                           {titleText}
@@ -226,17 +181,8 @@ export const ImageGrid = (props: FeaturesProps) => {
                 </div>
 
                 <div className="flex flex-1 flex-col p-6">
-                  {contentOverride?.subtitle ? (
-                    <p className="text-foreground mb-2 text-sm font-semibold">
-                      {contentOverride.subtitle}
-                    </p>
-                  ) : null}
                   <div className="text-foreground-light mb-5 flex-auto leading-7">
-                    {contentOverride?.description ? (
-                      contentOverride.description
-                    ) : description ? (
-                      <Text field={description} />
-                    ) : null}
+                    {description ? <Text field={description} /> : null}
                   </div>
                   <a href={linkHref} className="arrow-btn mt-auto" aria-label="Learn more">
                     Learn More
