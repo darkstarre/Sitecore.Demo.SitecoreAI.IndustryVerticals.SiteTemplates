@@ -39,6 +39,27 @@ const FEATURED_PRODUCT_COPY = [
   },
 ];
 
+const INTERMEDIATE_FEATURES = [
+  {
+    title: 'Luxury Facilities',
+    imageSrc: '/drill%20copy.webp',
+    description:
+      'The advantage of hiring a workspace with us is that gives you comfortable service and all-around facilities.',
+  },
+  {
+    title: 'Affordable Price',
+    imageSrc: '/usb-c%20copy.webp',
+    description:
+      'You can get a workspace of the highest quality at an affordable price and still enjoy premium capabilities.',
+  },
+  {
+    title: 'Many Choices',
+    imageSrc: '/flosser%20copy.webp',
+    description:
+      'We provide many unique work space choices so that you can choose the workspace to your liking.',
+  },
+];
+
 interface Fields {
   data: {
     datasource: {
@@ -122,23 +143,51 @@ export const Default = (props: FeaturesProps) => {
 
 export const ImageGrid = (props: FeaturesProps) => {
   const results = props.fields?.data?.datasource?.children?.results || [];
-  const featureSectionTitle = props.fields?.data?.datasource?.title;
+  const featuredCards = [results[0], results[1], results[2]];
 
   return (
     <FeatureWrapper props={props}>
       <div className="container py-16 lg:py-20">
-        <div className="mb-12 lg:mb-14">
-          <h2 className="inline-block max-w-2xl font-bold max-lg:text-[42px]">
-            {featureSectionTitle?.jsonValue ? (
-              <Text field={featureSectionTitle.jsonValue} />
-            ) : (
-              'Featured Products'
-            )}
-          </h2>
+        <div className="border-border bg-background-accent mb-14 grid grid-cols-1 gap-4 rounded-md border p-4 md:grid-cols-2 lg:grid-cols-3">
+          {INTERMEDIATE_FEATURES.map((item) => (
+            <article
+              key={item.title}
+              className="border-border bg-background flex h-full flex-col gap-3 rounded-md border p-3 sm:flex-row sm:items-start"
+            >
+              <div className="relative h-24 w-full shrink-0 overflow-hidden rounded sm:h-20 sm:w-28">
+                <div className="relative h-full w-full">
+                  <NextImage
+                    src={item.imageSrc}
+                    alt={item.title}
+                    fill
+                    className="object-cover object-center"
+                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-1 flex-col">
+                <h3 className="text-foreground text-base font-semibold">{item.title}</h3>
+                <p className="text-foreground-light mt-1 flex-auto text-sm leading-6">
+                  {item.description}
+                </p>
+                <a
+                  href="#"
+                  className="text-foreground-light hover:text-accent mt-2 inline-flex text-sm font-medium transition-colors hover:underline"
+                >
+                  More Info
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div className="border-border mb-12 border-t pt-10 lg:mb-14">
+          <h2 className="inline-block max-w-2xl font-bold max-lg:text-[42px]">Featured Products</h2>
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {results.slice(0, 3).map((item, index) => {
+          {featuredCards.map((item, index) => {
             const contentOverride = FEATURED_PRODUCT_COPY[index];
             const title = item?.featureTitle?.jsonValue;
             const description = item?.featureDescription?.jsonValue;
@@ -163,7 +212,7 @@ export const ImageGrid = (props: FeaturesProps) => {
                         className="object-cover object-center"
                         sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                       />
-                      <div className="absolute inset-x-0 top-0 bg-gradient-to-b from-accent/80 to-transparent p-4">
+                      <div className="from-accent/80 absolute inset-x-0 top-0 bg-gradient-to-b to-transparent p-4">
                         <h3 className="text-center text-lg leading-tight font-bold text-white">
                           {titleText}
                         </h3>
