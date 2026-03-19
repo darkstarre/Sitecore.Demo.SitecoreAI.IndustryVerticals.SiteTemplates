@@ -6,6 +6,7 @@ import Head from 'next/head';
 import { Placeholder, Field, Page, ImageField } from '@sitecore-content-sdk/nextjs';
 import Scripts from 'src/Scripts';
 import SitecoreStyles from 'src/components/content-sdk/SitecoreStyles';
+import InternalPortalExample from 'src/components/non-sitecore/InternalPortalExample';
 import { DesignLibraryLayout } from './DesignLibraryLayout';
 
 interface LayoutProps {
@@ -26,6 +27,11 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
   const { layout, mode } = page;
   const { route } = layout.sitecore;
   const fields = route?.fields as RouteFields;
+  const routeName = route?.name?.toLowerCase?.() || '';
+  const pageTitle = fields?.Title?.value?.toString()?.toLowerCase?.() || '';
+  const mainRenderings = (route?.placeholders?.['headless-main'] as unknown[]) || [];
+  const shouldRenderPortalFallback =
+    (routeName === 'portal' || pageTitle === 'portal') && mainRenderings.length === 0;
   const mainClassPageEditing = mode.isEditing ? 'editing-mode' : 'prod-mode';
 
   const metaDescription =
@@ -65,6 +71,7 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
             <main>
               <div id="content">
                 {route && <Placeholder name="headless-main" rendering={route} />}
+                {shouldRenderPortalFallback && <InternalPortalExample />}
               </div>
             </main>
             <footer>
