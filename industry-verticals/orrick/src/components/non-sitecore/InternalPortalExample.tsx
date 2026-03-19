@@ -47,9 +47,24 @@ const myTasks = [
 ];
 
 const myApprovals = [
-  { request: 'Outside Counsel Guideline Exception', owner: 'J. Rivera', due: 'Today', href: '/portal?view=approval-ocg' },
-  { request: 'Vendor DPA - Analytics Platform', owner: 'S. Patel', due: 'Tomorrow', href: '/portal?view=approval-dpa' },
-  { request: 'Marketing Terms Update', owner: 'A. Lee', due: 'Fri', href: '/portal?view=approval-terms' },
+  {
+    request: 'Outside Counsel Guideline Exception',
+    owner: 'J. Rivera',
+    due: 'Today',
+    href: '/portal?view=approval-ocg',
+  },
+  {
+    request: 'Vendor DPA - Analytics Platform',
+    owner: 'S. Patel',
+    due: 'Tomorrow',
+    href: '/portal?view=approval-dpa',
+  },
+  {
+    request: 'Marketing Terms Update',
+    owner: 'A. Lee',
+    due: 'Fri',
+    href: '/portal?view=approval-terms',
+  },
 ];
 
 const documents = [
@@ -75,7 +90,8 @@ const InternalPortalExample = () => {
             Welcome back, Orrick Legal Operations
           </h1>
           <p className="text-foreground-light mt-3 max-w-3xl">
-            Centralize legal workflows, policy updates, approvals, and shared resources in one place.
+            Centralize legal workflows, policy updates, approvals, and shared resources in one
+            place.
           </p>
           <div className="mt-5 flex flex-col gap-3 sm:flex-row">
             <input
