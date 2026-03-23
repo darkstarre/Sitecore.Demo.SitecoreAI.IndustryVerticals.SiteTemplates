@@ -7,6 +7,7 @@ import { Placeholder, Field, Page, ImageField } from '@sitecore-content-sdk/next
 import Scripts from 'src/Scripts';
 import SitecoreStyles from 'src/components/content-sdk/SitecoreStyles';
 import { PortalDashboardFallback } from 'src/components/portal-dashboard/PortalDashboard';
+import { TechStudioDashboardFallback } from 'src/components/tech-studio-dashboard/TechStudioDashboard';
 import { DesignLibraryLayout } from './DesignLibraryLayout';
 
 interface LayoutProps {
@@ -32,6 +33,14 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
   const mainRenderings = (route?.placeholders?.['headless-main'] as unknown[]) || [];
   const shouldRenderPortalFallback =
     (routeName === 'portal' || pageTitle === 'portal') && mainRenderings.length === 0;
+  const normalizedRouteSlug = routeName.replace(/\s+/g, '-').replace(/_/g, '-');
+  const shouldRenderTechStudioFallback =
+    !shouldRenderPortalFallback &&
+    mainRenderings.length === 0 &&
+    (normalizedRouteSlug === 'tech-studio' ||
+      normalizedRouteSlug === 'orrick-tech-studio' ||
+      pageTitle === 'tech studio' ||
+      pageTitle === 'orrick tech studio');
   const mainClassPageEditing = mode.isEditing ? 'editing-mode' : 'prod-mode';
 
   const metaDescription =
@@ -72,6 +81,7 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
               <div id="content">
                 {route && <Placeholder name="headless-main" rendering={route} />}
                 {shouldRenderPortalFallback && <PortalDashboardFallback />}
+                {shouldRenderTechStudioFallback && <TechStudioDashboardFallback />}
               </div>
             </main>
             <footer>

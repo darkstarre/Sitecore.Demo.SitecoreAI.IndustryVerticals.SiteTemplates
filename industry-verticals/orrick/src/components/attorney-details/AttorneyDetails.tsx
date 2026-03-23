@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import {
   Text as ContentSdkText,
   RichText as ContentSdkRichText,
@@ -9,6 +10,15 @@ import {
   useSitecore,
 } from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from '@/lib/component-props';
+
+/** Resolved item from Treelist / multilist fields (Layout / Edge shapes vary slightly). */
+export type LinkedContentItem = {
+  id?: string;
+  url?: string;
+  name?: string;
+  displayName?: string;
+  fields?: Record<string, Field<string> | undefined>;
+};
 
 export interface AttorneyFields {
   Title?: Field<string>;
@@ -21,13 +31,13 @@ export interface AttorneyFields {
   Photo?: ImageField;
   Bio?: RichTextField;
   Engagements?: RichTextField;
-  Insights?: RichTextField;
-  Events?: RichTextField;
   Practices?: RichTextField;
   AdmittedIn?: RichTextField;
   CourtAdmissions?: RichTextField;
   Education?: RichTextField;
   Honors?: RichTextField;
+  /** Treelist → Category Folder items (demo: taxonomy-driven practice list). */
+  LinkedPracticeCategories?: unknown;
 }
 
 interface AttorneyDetailsProps extends ComponentProps {
@@ -58,12 +68,6 @@ const ALI_ABUGHEIDA_DEFAULTS: AttorneyFields = {
   ),
   Engagements: richText(
     '<ul><li>Defended multiple PACE administrators in putative class actions, including a denial of class certification.</li><li>Defended a foreign bank in a $200M+ fraud action, resulting in dismissal at the pleading stage.</li><li>Represented financial institutions in enforcement matters involving CFPB, DFPI and District Attorneys.</li></ul>'
-  ),
-  Insights: richText(
-    '<ul><li>New 9th Circ. Rulings May Restrict Mcgill Rule&apos;s Scope (December 10, 2021)</li><li>Budding Decentralized Finance Industry Comes With Risks (August 21, 2020)</li></ul>'
-  ),
-  Events: richText(
-    '<ul><li>Litigation and Enforcement Developments in California (January 12, 2021)</li><li>American Financial Services Association Law Committee Meeting 2021 (October 14, 2020)</li></ul>'
   ),
   Practices: richText(
     '<ul><li>Financial &amp; Fintech Advisory</li><li>Strategic Advisory &amp; Government Enforcement (SAGE)</li><li>Fintech</li><li>Financial Services Investigations &amp; Enforcement</li></ul>'
@@ -124,9 +128,6 @@ const DANIEL_YOST_DEFAULTS: AttorneyFields = {
   Practices: richText(
     '<ul><li>Technology Transactions</li><li>Intellectual Property</li><li>Technology Companies Group</li></ul>'
   ),
-  Insights: richText(
-    '<ul><li>8 Intellectual Property and Commercial Questions to Ask Your Generative AI Tool Provider (2023)</li><li>17 Key Issues for Clean Tech Startups (2018)</li></ul>'
-  ),
 };
 
 const KYLE_ZHU_DEFAULTS: AttorneyFields = {
@@ -143,9 +144,6 @@ const KYLE_ZHU_DEFAULTS: AttorneyFields = {
   Practices: richText(
     '<ul><li>Mergers &amp; Acquisitions</li><li>Private Equity</li><li>Technology &amp; Innovation</li></ul>'
   ),
-  Insights: richText(
-    '<ul><li>Deducting Success Fees in M&amp;A Sell-Side Transactions (2024)</li><li>What to Look Out For in M&amp;A Agreements in a Volatile Crypto Market (2022)</li></ul>'
-  ),
 };
 
 const ATTORNEY_SEED_DATA: AttorneySeed[] = [
@@ -158,6 +156,58 @@ const ATTORNEY_SEED_DATA: AttorneySeed[] = [
   { keys: ['daniel-yost', 'daniel yost'], fields: DANIEL_YOST_DEFAULTS },
   { keys: ['kyle-zhu', 'kyle zhu'], fields: KYLE_ZHU_DEFAULTS },
 ];
+
+const getLinkedTargetItems = (field: unknown): LinkedContentItem[] => {
+  if (field === undefined || field === null) return [];
+  if (typeof field !== 'object') return [];
+  const f = field as {
+    targetItems?: LinkedContentItem[];
+    jsonValue?: { targetItems?: LinkedContentItem[] };
+    value?: unknown;
+  };
+  if (Array.isArray(f.targetItems) && f.targetItems.length > 0) {
+    return f.targetItems;
+  }
+  if (f.jsonValue && Array.isArray(f.jsonValue.targetItems) && f.jsonValue.targetItems.length > 0) {
+    return f.jsonValue.targetItems;
+  }
+  if (Array.isArray(f.value)) {
+    return f.value as LinkedContentItem[];
+  }
+  return [];
+};
+
+const getItemTitle = (item: LinkedContentItem): string => {
+  const raw = item.fields;
+  const titleField =
+    raw?.Title?.value ?? raw?.title?.value ?? raw?.Headline?.value ?? raw?.headline?.value;
+  const fromFields =
+    titleField !== undefined && titleField !== null ? String(titleField).trim() : '';
+  return fromFields || item.displayName || item.name || 'Untitled';
+};
+
+const ItemHref = ({ href, children }: { href?: string; children: React.ReactNode }) => {
+  if (!href?.trim()) {
+    return <span>{children}</span>;
+  }
+  if (href.startsWith('http://') || href.startsWith('https://')) {
+    return (
+      <a
+        href={href}
+        className="underline underline-offset-2 hover:opacity-80"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {children}
+      </a>
+    );
+  }
+  return (
+    <Link href={href} className="underline underline-offset-2 hover:opacity-80">
+      {children}
+    </Link>
+  );
+};
 
 const hasFieldTextValue = (field?: Field<string>): boolean => {
   const value = field?.value;
@@ -227,13 +277,12 @@ const mergeAttorneyFieldsWithSeed = (
     Photo: mergeImageField(props.Photo, s.Photo),
     Bio: mergeRichTextField(props.Bio, s.Bio),
     Engagements: mergeRichTextField(props.Engagements, s.Engagements),
-    Insights: mergeRichTextField(props.Insights, s.Insights),
-    Events: mergeRichTextField(props.Events, s.Events),
     Practices: mergeRichTextField(props.Practices, s.Practices),
     AdmittedIn: mergeRichTextField(props.AdmittedIn, s.AdmittedIn),
     CourtAdmissions: mergeRichTextField(props.CourtAdmissions, s.CourtAdmissions),
     Education: mergeRichTextField(props.Education, s.Education),
     Honors: mergeRichTextField(props.Honors, s.Honors),
+    LinkedPracticeCategories: props.LinkedPracticeCategories,
   };
 };
 
@@ -261,6 +310,66 @@ const DetailSection = ({
     )}
   </section>
 );
+
+/** Rich text and/or linked Sitecore items (Treelist) for demo-friendly “data-driven” sections. */
+const LinkedDetailSection = ({
+  title,
+  linkedField,
+  linkedCaption,
+  richTextField,
+  isPageEditing,
+}: {
+  title: string;
+  linkedField?: unknown;
+  linkedCaption: string;
+  richTextField?: RichTextField;
+  isPageEditing: boolean;
+}) => {
+  const linked = getLinkedTargetItems(linkedField);
+  const hasLinks = linked.length > 0;
+  const hasRich = hasRichTextValue(richTextField);
+
+  return (
+    <section className="space-y-3">
+      <h3 className="text-xl font-semibold">{title}</h3>
+      {hasLinks ? (
+        <div className="space-y-2">
+          <p className="text-muted dark:text-foreground-dark/70 text-sm italic">{linkedCaption}</p>
+          <ul className="list-disc space-y-1 pl-5 text-base">
+            {linked.map((item, index) => (
+              <li key={item.id || `${getItemTitle(item)}-${index}`}>
+                <ItemHref href={item.url}>{getItemTitle(item)}</ItemHref>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+      {hasRich ? (
+        <div
+          className={
+            hasLinks ? 'border-border dark:border-border-dark mt-4 border-t pt-4' : undefined
+          }
+        >
+          {hasLinks ? (
+            <p className="text-muted dark:text-foreground-dark/70 mb-2 text-xs font-semibold tracking-wide uppercase">
+              Additional detail
+            </p>
+          ) : null}
+          <ContentSdkRichText field={richTextField} />
+        </div>
+      ) : null}
+      {!hasLinks && !hasRich ? (
+        <p
+          className={`text-base ${
+            isPageEditing ? 'text-foreground/80 dark:text-foreground-dark/80' : 'text-muted'
+          }`}
+        >
+          {isPageEditing ? `[${title} content]` : 'Content coming soon.'}
+        </p>
+      ) : null}
+    </section>
+  );
+};
 
 export const Default = (props: AttorneyDetailsProps) => {
   const { page } = useSitecore();
@@ -357,17 +466,13 @@ export const Default = (props: AttorneyDetailsProps) => {
               field={fields?.Engagements}
               isPageEditing={isPageEditing}
             />
-            <DetailSection
-              title="Insights"
-              field={fields?.Insights}
-              isPageEditing={isPageEditing}
-            />
-            <DetailSection title="Events" field={fields?.Events} isPageEditing={isPageEditing} />
           </div>
           <div className="space-y-8 lg:col-span-4">
-            <DetailSection
+            <LinkedDetailSection
               title="Practices"
-              field={fields?.Practices}
+              linkedField={fields?.LinkedPracticeCategories}
+              linkedCaption="Linked practice areas — picked from the shared Category folder (taxonomy), not free‑typed lists."
+              richTextField={fields?.Practices}
               isPageEditing={isPageEditing}
             />
             <DetailSection

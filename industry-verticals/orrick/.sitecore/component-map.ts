@@ -7,6 +7,9 @@ import { Form } from '@sitecore-content-sdk/nextjs';
 import * as Title from 'src/components/title/Title';
 import * as ThemeSwitcher from 'src/components/theme-switcher/ThemeSwitcher';
 import * as ThemeEditor from 'src/components/theme-editor/ThemeEditor';
+import * as TechStudioExperience from 'src/components/tech-studio-dashboard/TechStudioExperience';
+import * as TechStudioDashboard from 'src/components/tech-studio-dashboard/TechStudioDashboard';
+import * as TechStudioBackdropLayers from 'src/components/tech-studio-dashboard/TechStudioBackdropLayers';
 import * as SocialFollow from 'src/components/social-follow/SocialFollow';
 import * as SectionWrapper from 'src/components/section-wrapper/SectionWrapper';
 import * as RowSplitter from 'src/components/row-splitter/RowSplitter';
@@ -39,6 +42,9 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['Title', { ...Title }],
   ['ThemeSwitcher', { ...ThemeSwitcher }],
   ['ThemeEditor', { ...ThemeEditor }],
+  ['TechStudioExperience', { ...TechStudioExperience, componentType: 'client' }],
+  ['TechStudioDashboard', { ...TechStudioDashboard }],
+  ['TechStudioBackdropLayers', { ...TechStudioBackdropLayers, componentType: 'client' }],
   ['SocialFollow', { ...SocialFollow }],
   ['SectionWrapper', { ...SectionWrapper, componentType: 'client' }],
   ['RowSplitter', { ...RowSplitter }],

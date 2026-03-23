@@ -56,3 +56,29 @@ export const AttorneyDetails: Story = {
     );
   },
 };
+
+/** Demonstrates Treelist-driven Practices (no pasted HTML for the list body). */
+export const LinkedPractices: Story = {
+  render: (args) => {
+    return (
+      <Default
+        fields={{
+          ...baseFields,
+          FullName: createTextField('Demo Attorney'),
+          LinkedPracticeCategories: {
+            targetItems: [
+              { id: 'cat-1', url: '/People', fields: { Title: { value: 'Financial Services' } } },
+              { id: 'cat-2', fields: { Title: { value: 'Technology Transactions' } } },
+            ],
+          },
+          Practices: createRichTextField(1),
+        }}
+        rendering={baseRendering}
+        params={{
+          ...baseParams,
+          styles: `${baseParams.styles} ${args.BackgroundColor}`,
+        }}
+      />
+    );
+  },
+};
