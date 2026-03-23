@@ -34,7 +34,9 @@ interface AttorneyDetailsProps extends ComponentProps {
   fields: AttorneyFields;
 }
 
-const richText = (html: string): RichTextField => ({ value: `<div class="ck-content">${html}</div>` });
+const richText = (html: string): RichTextField => ({
+  value: `<div class="ck-content">${html}</div>`,
+});
 
 type AttorneySeed = {
   keys: string[];
@@ -148,7 +150,10 @@ const KYLE_ZHU_DEFAULTS: AttorneyFields = {
 
 const ATTORNEY_SEED_DATA: AttorneySeed[] = [
   { keys: ['ali-abugheida', 'ali abugheida'], fields: ALI_ABUGHEIDA_DEFAULTS },
-  { keys: ['richard-gallagher', 'richard gallagher', 'rick gallagher'], fields: RICHARD_GALLAGHER_DEFAULTS },
+  {
+    keys: ['richard-gallagher', 'richard gallagher', 'rick gallagher'],
+    fields: RICHARD_GALLAGHER_DEFAULTS,
+  },
   { keys: ['zachary-finley', 'zachary finley', 'zach finley'], fields: ZACHARY_FINLEY_DEFAULTS },
   { keys: ['daniel-yost', 'daniel yost'], fields: DANIEL_YOST_DEFAULTS },
   { keys: ['kyle-zhu', 'kyle zhu'], fields: KYLE_ZHU_DEFAULTS },
@@ -294,11 +299,7 @@ export const Default = (props: AttorneyDetailsProps) => {
               field={fields?.Insights}
               isPageEditing={isPageEditing}
             />
-            <DetailSection
-              title="Events"
-              field={fields?.Events}
-              isPageEditing={isPageEditing}
-            />
+            <DetailSection title="Events" field={fields?.Events} isPageEditing={isPageEditing} />
           </div>
           <div className="space-y-8 lg:col-span-4">
             <DetailSection
@@ -321,11 +322,7 @@ export const Default = (props: AttorneyDetailsProps) => {
               field={fields?.Education}
               isPageEditing={isPageEditing}
             />
-            <DetailSection
-              title="Honors"
-              field={fields?.Honors}
-              isPageEditing={isPageEditing}
-            />
+            <DetailSection title="Honors" field={fields?.Honors} isPageEditing={isPageEditing} />
           </div>
         </div>
       </div>

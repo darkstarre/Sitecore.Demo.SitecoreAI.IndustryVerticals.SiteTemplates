@@ -32,7 +32,9 @@ type PortalDashboardProps = ComponentProps & {
   fields: PortalDashboardFields;
 };
 
-const richTextFallback = (html: string): RichTextField => ({ value: `<div class="ck-content">${html}</div>` });
+const richTextFallback = (html: string): RichTextField => ({
+  value: `<div class="ck-content">${html}</div>`,
+});
 
 const fallbackFields: Required<PortalDashboardFields> = {
   PortalLabel: { value: 'Internal Portal' },
@@ -178,6 +180,8 @@ const PortalDashboardBase = ({ fields }: { fields?: PortalDashboardFields }) => 
 
 export const PortalDashboardFallback = () => <PortalDashboardBase />;
 
-export const Default = (props: PortalDashboardProps) => <PortalDashboardBase fields={props.fields} />;
+export const Default = (props: PortalDashboardProps) => (
+  <PortalDashboardBase fields={props.fields} />
+);
 
 export default withDatasourceCheck()<PortalDashboardProps>(Default);

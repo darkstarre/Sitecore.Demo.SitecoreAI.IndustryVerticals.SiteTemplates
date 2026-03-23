@@ -24,7 +24,8 @@ interface AttorneysListingProps extends ComponentProps {
 const PEOPLE_PAGE_SEED = [
   {
     fullName: 'Ali Abugheida',
-    jobTitle: 'Partner, Financial & Fintech Advisory, Strategic Advisory & Government Enforcement (SAGE)',
+    jobTitle:
+      'Partner, Financial & Fintech Advisory, Strategic Advisory & Government Enforcement (SAGE)',
     url: '/People/Ali-Abugheida',
   },
   {
