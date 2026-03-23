@@ -1,7 +1,12 @@
 import { useId } from 'react';
 import React from 'react';
 import Link from 'next/link';
-import { Text as ContentSdkText, NextImage as ContentSdkImage } from '@sitecore-content-sdk/nextjs';
+import {
+  Text as ContentSdkText,
+  NextImage as ContentSdkImage,
+  useSitecore,
+  ImageField,
+} from '@sitecore-content-sdk/nextjs';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Keyboard, Navigation, Pagination } from 'swiper/modules';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -15,6 +20,51 @@ interface AttorneysListingProps extends ComponentProps {
     items: SitecoreItem<Attorney>[];
   };
 }
+
+const PEOPLE_PAGE_SEED = [
+  {
+    fullName: 'Ali Abugheida',
+    jobTitle: 'Partner, Financial & Fintech Advisory, Strategic Advisory & Government Enforcement (SAGE)',
+    url: '/People/Ali-Abugheida',
+  },
+  {
+    fullName: 'Richard Gallagher',
+    jobTitle: 'Chief Practice Officer Lit&IP',
+    url: '/People/Richard-Gallagher',
+  },
+  {
+    fullName: 'Zachary Finley',
+    jobTitle: 'Partner',
+    url: '/People/Zachary-Finley',
+  },
+  {
+    fullName: 'Daniel Yost',
+    jobTitle: 'Partner',
+    url: '/People/Daniel-Yost',
+  },
+  {
+    fullName: 'Kyle Zhu',
+    jobTitle: 'Senior Associate',
+    url: '/People/Kyle-Zhu',
+  },
+];
+
+const buildSeedAttorney = (
+  seed: (typeof PEOPLE_PAGE_SEED)[number],
+  index: number,
+  fallbackPhoto?: ImageField
+): SitecoreItem<Attorney> => ({
+  id: `seed-attorney-${index}`,
+  name: seed.fullName.toLowerCase().replace(/\s+/g, '-'),
+  displayName: seed.fullName,
+  url: seed.url,
+  fields: {
+    FullName: { value: seed.fullName },
+    JobTitle: { value: seed.jobTitle },
+    Photo: fallbackPhoto || { value: {} },
+    Bio: { value: '' },
+  },
+});
 
 const AttorneyCard = ({ url, fields }: { url: string; fields: Attorney }) => {
   return (
@@ -39,7 +89,27 @@ const AttorneyCard = ({ url, fields }: { url: string; fields: Attorney }) => {
 
 export const Default = (props: AttorneysListingProps) => {
   const id = props.params.RenderingIdentifier;
-  const attorneys = props.fields.items.filter((item) => item.fields?.FullName);
+  const { page } = useSitecore();
+  const routeName = page?.layout?.sitecore?.route?.name?.toLowerCase() || '';
+  const sitecoreAttorneys = props.fields.items.filter((item) => item.fields?.FullName);
+  const isPeoplePage = routeName === 'people';
+  const fallbackPhoto = sitecoreAttorneys[0]?.fields?.Photo;
+  const attorneys = isPeoplePage
+    ? PEOPLE_PAGE_SEED.map((seed, index) => {
+        const existing = sitecoreAttorneys[index];
+        return existing
+          ? {
+              ...existing,
+              url: seed.url,
+              fields: {
+                ...existing.fields,
+                FullName: { value: seed.fullName },
+                JobTitle: { value: seed.jobTitle },
+              },
+            }
+          : buildSeedAttorney(seed, index, fallbackPhoto);
+      })
+    : sitecoreAttorneys;
 
   return (
     <section className={`relative py-16 ${props.params.styles}`} id={id || undefined}>
@@ -57,7 +127,27 @@ export const Default = (props: AttorneysListingProps) => {
 export const Slider = (props: AttorneysListingProps) => {
   const uid = useId();
   const id = props.params.RenderingIdentifier;
-  const attorneys = props.fields.items.filter((item) => item.fields?.FullName);
+  const { page } = useSitecore();
+  const routeName = page?.layout?.sitecore?.route?.name?.toLowerCase() || '';
+  const sitecoreAttorneys = props.fields.items.filter((item) => item.fields?.FullName);
+  const isPeoplePage = routeName === 'people';
+  const fallbackPhoto = sitecoreAttorneys[0]?.fields?.Photo;
+  const attorneys = isPeoplePage
+    ? PEOPLE_PAGE_SEED.map((seed, index) => {
+        const existing = sitecoreAttorneys[index];
+        return existing
+          ? {
+              ...existing,
+              url: seed.url,
+              fields: {
+                ...existing.fields,
+                FullName: { value: seed.fullName },
+                JobTitle: { value: seed.jobTitle },
+              },
+            }
+          : buildSeedAttorney(seed, index, fallbackPhoto);
+      })
+    : sitecoreAttorneys;
 
   return (
     <section

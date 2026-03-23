@@ -6,7 +6,7 @@ import Head from 'next/head';
 import { Placeholder, Field, Page, ImageField } from '@sitecore-content-sdk/nextjs';
 import Scripts from 'src/Scripts';
 import SitecoreStyles from 'src/components/content-sdk/SitecoreStyles';
-import InternalPortalExample from 'src/components/non-sitecore/InternalPortalExample';
+import { PortalDashboardFallback } from 'src/components/portal-dashboard/PortalDashboard';
 import { DesignLibraryLayout } from './DesignLibraryLayout';
 
 interface LayoutProps {
@@ -71,7 +71,7 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
             <main>
               <div id="content">
                 {route && <Placeholder name="headless-main" rendering={route} />}
-                {shouldRenderPortalFallback && <InternalPortalExample />}
+                {shouldRenderPortalFallback && <PortalDashboardFallback />}
               </div>
             </main>
             <footer>
