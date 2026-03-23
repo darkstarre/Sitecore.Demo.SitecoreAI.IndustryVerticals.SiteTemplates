@@ -169,6 +169,74 @@ const hasRichTextValue = (field?: RichTextField): boolean => {
   return value !== undefined && value !== null && String(value).trim().length > 0;
 };
 
+const hasImageValue = (field?: ImageField): boolean => {
+  const v = field?.value;
+  if (v === undefined || v === null) return false;
+  if (typeof v === 'string') return String(v).trim().length > 0;
+  const src = (v as { src?: string }).src;
+  return src !== undefined && String(src).trim().length > 0;
+};
+
+/**
+ * Prefer non-empty CMS values; fill from seed without dropping Sitecore field metadata
+ * (so empty `{ value: '' }` from layout does not wipe demo defaults or break inline edit).
+ */
+const mergeStringField = (
+  incoming: Field<string> | undefined,
+  seed: Field<string> | undefined
+): Field<string> | undefined => {
+  if (hasFieldTextValue(incoming)) return incoming;
+  if (!seed) return incoming;
+  if (!incoming) return seed;
+  return { ...incoming, value: seed.value } as Field<string>;
+};
+
+const mergeRichTextField = (
+  incoming: RichTextField | undefined,
+  seed: RichTextField | undefined
+): RichTextField | undefined => {
+  if (hasRichTextValue(incoming)) return incoming;
+  if (!seed) return incoming;
+  if (!incoming) return seed;
+  return { ...incoming, value: seed.value } as RichTextField;
+};
+
+const mergeImageField = (
+  incoming: ImageField | undefined,
+  seed: ImageField | undefined
+): ImageField | undefined => {
+  if (hasImageValue(incoming)) return incoming;
+  if (!seed) return incoming;
+  if (!incoming) return seed;
+  return { ...incoming, value: seed.value } as ImageField;
+};
+
+const mergeAttorneyFieldsWithSeed = (
+  seed: AttorneyFields | undefined,
+  props: AttorneyFields
+): AttorneyFields => {
+  const s = seed ?? {};
+  return {
+    Title: mergeStringField(props.Title, s.Title),
+    FullName: mergeStringField(props.FullName, s.FullName),
+    JobTitle: mergeStringField(props.JobTitle, s.JobTitle),
+    OfficeLocation: mergeStringField(props.OfficeLocation, s.OfficeLocation),
+    PhoneNumber: mergeStringField(props.PhoneNumber, s.PhoneNumber),
+    Email: mergeStringField(props.Email, s.Email),
+    Address: mergeRichTextField(props.Address, s.Address),
+    Photo: mergeImageField(props.Photo, s.Photo),
+    Bio: mergeRichTextField(props.Bio, s.Bio),
+    Engagements: mergeRichTextField(props.Engagements, s.Engagements),
+    Insights: mergeRichTextField(props.Insights, s.Insights),
+    Events: mergeRichTextField(props.Events, s.Events),
+    Practices: mergeRichTextField(props.Practices, s.Practices),
+    AdmittedIn: mergeRichTextField(props.AdmittedIn, s.AdmittedIn),
+    CourtAdmissions: mergeRichTextField(props.CourtAdmissions, s.CourtAdmissions),
+    Education: mergeRichTextField(props.Education, s.Education),
+    Honors: mergeRichTextField(props.Honors, s.Honors),
+  };
+};
+
 const DetailSection = ({
   title,
   field,
@@ -206,12 +274,7 @@ export const Default = (props: AttorneyDetailsProps) => {
   const matchedSeed = ATTORNEY_SEED_DATA.find((seed) =>
     seed.keys.some((key) => matchText.includes(key))
   );
-  const fields: AttorneyFields = matchedSeed
-    ? {
-        ...matchedSeed.fields,
-        ...props.fields,
-      }
-    : props.fields;
+  const fields: AttorneyFields = mergeAttorneyFieldsWithSeed(matchedSeed?.fields, props.fields);
 
   if (!fields?.Title && !fields?.FullName) {
     return isPageEditing ? (
