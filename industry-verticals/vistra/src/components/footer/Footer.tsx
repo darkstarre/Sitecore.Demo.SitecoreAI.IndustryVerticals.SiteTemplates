@@ -44,6 +44,7 @@ const Footer = (props: FooterProps): JSX.Element => {
   const phKeyTwo = `footer-list-second-${props?.params?.DynamicPlaceholderId}`;
   const phKeyThree = `footer-list-third-${props?.params?.DynamicPlaceholderId}`;
   const phKeyFour = `footer-list-fourth-${props?.params?.DynamicPlaceholderId}`;
+  const footerLogoSrc = props.fields.Logo?.value?.src;
 
   const sections = [
     {
@@ -65,13 +66,18 @@ const Footer = (props: FooterProps): JSX.Element => {
 
   return (
     <div className={`bg-foreground py-12 text-white ${sxaStyles}`} id={id}>
+      <div className="bg-accent mb-10 h-1 w-full" />
       <div className="container mx-auto">
         {/* content section */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {/* footer content data */}
           <div>
             <div className="mb-4 flex max-w-40 space-x-2">
-              <ContentSdkImage field={props.fields.Logo} width={200} />
+              {footerLogoSrc ? (
+                <ContentSdkImage field={props.fields.Logo} width={200} />
+              ) : (
+                <img src="/Vistra-Energy-logo.png" alt="Vistra logo" className="h-auto w-40" />
+              )}
             </div>
             <div className="**:text-foreground-secondary mb-4">
               <RichText field={props.fields.Description} />
@@ -82,7 +88,7 @@ const Footer = (props: FooterProps): JSX.Element => {
           {/* footer link lists */}
           {sections.map(({ key, title, content }) => (
             <div key={key}>
-              <div className="mb-4 text-lg font-semibold">{title}</div>
+              <div className="text-background mb-4 text-lg font-semibold">{title}</div>
               <div className="text-foreground-secondary">{content}</div>
             </div>
           ))}
@@ -98,19 +104,19 @@ const Footer = (props: FooterProps): JSX.Element => {
           </p>
           <div className="mt-4 grid grid-cols-2 justify-between gap-6 md:order-2 md:mt-0 md:flex">
             <ContentSdkLink
-              className="text-foreground-secondary hover:text-background text-sm"
+              className="text-foreground-secondary hover:text-accent text-sm transition-colors"
               field={props.fields.PolicyText}
             />
             <ContentSdkLink
-              className="text-foreground-secondary hover:text-background text-sm"
+              className="text-foreground-secondary hover:text-accent text-sm transition-colors"
               field={props.fields.TermsText}
             />
             <ContentSdkLink
-              className="text-foreground-secondary hover:text-background text-sm"
+              className="text-foreground-secondary hover:text-accent text-sm transition-colors"
               field={props.fields.CookiesText}
             />
             <ContentSdkLink
-              className="text-foreground-secondary hover:text-background text-sm"
+              className="text-foreground-secondary hover:text-accent text-sm transition-colors"
               field={props.fields.ContactText}
             />
           </div>

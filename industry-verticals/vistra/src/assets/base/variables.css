@@ -1,26 +1,26 @@
 @theme {
-  --color-foreground: #111828;
-  --color-foreground-light: #4a5565;
-  --color-foreground-muted: #384354;
-  --color-foreground-secondary: #99a1af;
+  --color-foreground: #0f1f3d;
+  --color-foreground-light: #3e4f71;
+  --color-foreground-muted: #2b3c5f;
+  --color-foreground-secondary: #7d8ead;
 
   --color-background: #fff;
-  --color-background-accent: #dbf3f5;
-  --color-background-muted: #f5f5f5;
+  --color-background-accent: #e6ecf6;
+  --color-background-muted: #f4f7fc;
 
-  --color-accent: #3cbed1;
-  --color-accent-dark: #228091;
+  --color-accent: #003f6e;
+  --color-accent-dark: #002c4d;
 
-  --color-success: #2ec1ac;
-  --color-warning: #f5a623;
-  --color-danger: #e7000b;
+  --color-success: #1a9f6d;
+  --color-warning: #d58a00;
+  --color-danger: #c72c2c;
 
-  --color-border: #e5e5e5;
+  --color-border: #d8e0ef;
 
-  --font-heading: 'Open Sans', sans-serif;
-  --font-body: 'Open Sans', sans-serif;
+  --font-heading: 'Segoe UI', 'Open Sans', sans-serif;
+  --font-body: 'Segoe UI', 'Open Sans', sans-serif;
 
-  --radius-base: 0.5rem;
+  --radius-base: 0.625rem;
 
   /*
   This does not show in the theme editor

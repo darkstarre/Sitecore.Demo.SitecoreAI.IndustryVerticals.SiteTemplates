@@ -1,24 +1,24 @@
 .grid-load-status {
-  @apply inline-flex items-center gap-2 rounded-md border px-2 py-1 text-xs font-bold uppercase;
+  @apply inline-flex items-center gap-2 rounded-full border px-2.5 py-1 text-xs font-semibold uppercase tracking-wide;
 
   &[data-status='normal'] {
-    @apply text-success bg-success/5 border-success/50;
+    @apply text-success bg-success/10 border-success/45;
   }
 
   &[data-status='warning'] {
-    @apply text-warning bg-warning/5 border-warning/50;
+    @apply text-warning bg-warning/10 border-warning/45;
   }
 
   &[data-status='critical'] {
-    @apply text-danger bg-danger/5 border-danger/50;
+    @apply text-danger bg-danger/10 border-danger/45;
   }
 }
 
 .grid-outage-status {
-  @apply inline-flex items-center gap-2 rounded-md px-2 py-1 text-xs font-bold;
+  @apply inline-flex items-center gap-2 rounded-full px-2.5 py-1 text-xs font-semibold tracking-wide;
 
   &[data-status='restored'] {
-    @apply text-foreground-light bg-background-muted;
+    @apply text-foreground-light bg-background-muted border border-border;
   }
 
   &[data-status='active'] {
