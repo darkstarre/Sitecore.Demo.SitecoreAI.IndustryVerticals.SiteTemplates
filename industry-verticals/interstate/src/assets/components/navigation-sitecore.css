@@ -2,6 +2,27 @@
  * Primary nav — Sitecore Experience Editor uses this same markup/classes locally (npm run dev).
  * Tweak the variables (or rules) below; save and the nav updates immediately via HMR.
  */
+
+/*
+ * Header row uses `items-center`, so columns default to content height only.
+ * This slot wraps the nav placeholder and stretches to the row’s line height (e.g. logo height).
+ */
+.component.header .nav-header-slot {
+  /* Override .header-block items-center so the nav column matches row line height */
+  align-self: stretch;
+  align-items: stretch !important;
+}
+
+/* Placeholder may wrap renderings in a direct child — make it fill the slot */
+.component.header .nav-header-slot > * {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-self: stretch;
+  width: 100%;
+  min-height: 100%;
+}
+
 .component.navigation {
   --sitecore-nav-bg: #117737;
   --sitecore-nav-item-color: #ffffff;
@@ -14,10 +35,10 @@
 
   background-color: var(--sitecore-nav-bg);
 
-  /* Stretch to header height (so the green bar reaches the top/bottom). */
-  height: 100%;
+  /* Fill stretched nav slot (see .nav-header-slot). */
+  flex: 1 1 auto;
   width: 100%;
-  align-self: stretch;
+  min-height: 100%;
   display: flex;
   align-items: center;
 

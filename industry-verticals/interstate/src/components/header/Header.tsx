@@ -23,7 +23,8 @@ export const Default = (props: HeaderProps): JSX.Element => {
         <div className="header-block *:shrink max-lg:w-full max-lg:justify-between">
           <Placeholder name={`header-left-${DynamicPlaceholderId}`} rendering={props.rendering} />
         </div>
-        <div className="header-block !hidden lg:ml-auto lg:!flex">
+        {/* Stretch to full header row height so nav background matches logo/taller siblings */}
+        <div className="header-block nav-header-slot !hidden lg:ml-auto lg:!flex">
           <Placeholder name={`header-nav-${DynamicPlaceholderId}`} rendering={props.rendering} />
         </div>
         <div className="header-block">
