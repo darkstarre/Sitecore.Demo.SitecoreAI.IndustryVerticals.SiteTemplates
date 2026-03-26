@@ -25,6 +25,16 @@
   background-color: var(--sitecore-nav-bg, #117737);
 }
 
+/*
+ * Header container uses `py-3` (0.75rem). On desktop, let the nav bar extend through
+ * that padding so it visually snaps to the top/bottom of the header.
+ */
+@media (min-width: 1024px) {
+  .component.header .nav-header-slot {
+    margin-block: -0.75rem;
+  }
+}
+
 .component.navigation {
   --sitecore-nav-bg: #117737;
   --sitecore-nav-item-color: #ffffff;
