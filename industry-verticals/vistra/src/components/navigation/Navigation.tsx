@@ -6,7 +6,6 @@ import { ComponentProps } from 'lib/component-props';
 import { ArrowLeft, X } from 'lucide-react';
 import { useClickAway } from '@/hooks/useClickAway';
 import { useStopResponsiveTransition } from '@/hooks/useStopResponsiveTransition';
-import { extractMediaUrl } from '@/helpers/extractMediaUrl';
 import {
   getLinkContent,
   getLinkField,
@@ -154,7 +153,7 @@ const NavigationListItem: React.FC<NavigationListItemProps> = ({
 export const Default = ({ params, fields }: NavigationProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { page } = useSitecore();
-  const { styles, RenderingIdentifier: id, Logo: logoImage, SimpleLayout: simpleLayout } = params;
+  const { styles, RenderingIdentifier: id, SimpleLayout: simpleLayout } = params;
 
   useStopResponsiveTransition();
 
