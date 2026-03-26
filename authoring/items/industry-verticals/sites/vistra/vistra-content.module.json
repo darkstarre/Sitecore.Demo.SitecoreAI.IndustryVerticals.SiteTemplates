@@ -1,0 +1,39 @@
+{
+  "$schema": "../.sitecore/schemas/ModuleFile.schema.json",
+  "namespace": "Project.Vistra-Content",
+  "references": ["Project.IndustryVerticals"],
+  "items": {
+    "includes": [
+      {
+        "name": "vistra-home",
+        "path": "/sitecore/content/industry-verticals/vistra/home",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "vistra-content-media",
+        "path": "/sitecore/content/industry-verticals/vistra/Media",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "vistra-data",
+        "path": "/sitecore/content/industry-verticals/vistra/Data",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "vistra-dictionary",
+        "path": "/sitecore/content/industry-verticals/vistra/Dictionary",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "vistra-presentation",
+        "path": "/sitecore/content/industry-verticals/vistra/Presentation",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      }
+    ]
+  }
+}
