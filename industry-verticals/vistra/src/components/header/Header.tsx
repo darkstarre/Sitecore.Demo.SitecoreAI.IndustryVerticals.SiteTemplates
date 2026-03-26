@@ -18,6 +18,7 @@ export const Default = (props: HeaderProps): JSX.Element => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const localLogoSrc = '/Vistra-Energy-logo.png';
 
   // Close search when route changes
   useEffect(() => {
@@ -29,7 +30,7 @@ export const Default = (props: HeaderProps): JSX.Element => {
       <div className="bg-accent h-1 w-full" />
       <div className="container flex items-center gap-4 py-4 lg:gap-6">
         <div className="header-block *:shrink max-lg:w-full max-lg:justify-between lg:shrink-0">
-          <Placeholder name={`header-left-${DynamicPlaceholderId}`} rendering={props.rendering} />
+          <img src={localLogoSrc} alt="Vistra logo" className="h-auto w-44" />
         </div>
         <div className="hidden! lg:flex! lg:shrink lg:basis-full">
           <Placeholder name={`header-nav-${DynamicPlaceholderId}`} rendering={props.rendering} />

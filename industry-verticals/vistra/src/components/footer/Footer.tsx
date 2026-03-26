@@ -10,7 +10,6 @@ import {
   Text as ContentSdkText,
   Link as ContentSdkLink,
   RichText,
-  NextImage as ContentSdkImage,
 } from '@sitecore-content-sdk/nextjs';
 
 interface Fields {
@@ -44,7 +43,6 @@ const Footer = (props: FooterProps): JSX.Element => {
   const phKeyTwo = `footer-list-second-${props?.params?.DynamicPlaceholderId}`;
   const phKeyThree = `footer-list-third-${props?.params?.DynamicPlaceholderId}`;
   const phKeyFour = `footer-list-fourth-${props?.params?.DynamicPlaceholderId}`;
-  const footerLogoSrc = props.fields.Logo?.value?.src;
 
   const sections = [
     {
@@ -73,11 +71,7 @@ const Footer = (props: FooterProps): JSX.Element => {
           {/* footer content data */}
           <div>
             <div className="mb-4 flex max-w-40 space-x-2">
-              {footerLogoSrc ? (
-                <ContentSdkImage field={props.fields.Logo} width={200} />
-              ) : (
-                <img src="/Vistra-Energy-logo.png" alt="Vistra logo" className="h-auto w-40" />
-              )}
+              <img src="/Vistra-Energy-logo.png" alt="Vistra logo" className="h-auto w-40" />
             </div>
             <div className="**:text-foreground-secondary mb-4">
               <RichText field={props.fields.Description} />
