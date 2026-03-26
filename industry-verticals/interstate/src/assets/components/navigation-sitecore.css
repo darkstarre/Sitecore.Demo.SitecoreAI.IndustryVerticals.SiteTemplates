@@ -44,6 +44,9 @@
   --sitecore-nav-item-size: 0.9375rem;
   --sitecore-nav-menu-gap-x: 2rem;
   --sitecore-nav-menu-gap-y: 1rem;
+  --sitecore-nav-min-height: 3.25rem;
+  --sitecore-nav-pad-y: 0.85rem;
+  --sitecore-nav-pad-x: 1rem;
 
   background-color: var(--sitecore-nav-bg);
 
@@ -54,8 +57,10 @@
   display: flex;
   align-items: center;
 
-  /* Let the inner layout handle spacing; we don't want inset/rounded edges. */
-  padding: 0;
+  /* Make the bar feel substantial (not “thin”). */
+  min-height: var(--sitecore-nav-min-height);
+  padding-block: var(--sitecore-nav-pad-y);
+  padding-inline: var(--sitecore-nav-pad-x);
   border-radius: 0;
 }
 
@@ -83,6 +88,7 @@
   column-gap: var(--sitecore-nav-menu-gap-x);
   row-gap: var(--sitecore-nav-menu-gap-y);
   width: 100%;
+  min-height: 100%;
 }
 
 /* Drawer / mobile sheet — match desktop nav treatment */
