@@ -11,6 +11,7 @@
   /* Override .header-block items-center so the nav column matches row line height */
   align-self: stretch;
   align-items: stretch !important;
+  background-color: var(--sitecore-nav-bg, #117737);
 }
 
 /* Placeholder may wrap renderings in a direct child — make it fill the slot */
@@ -21,6 +22,7 @@
   align-self: stretch;
   width: 100%;
   min-height: 100%;
+  background-color: var(--sitecore-nav-bg, #117737);
 }
 
 .component.navigation {
