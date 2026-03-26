@@ -1,0 +1,63 @@
+/*
+ * Primary nav — Sitecore Experience Editor uses this same markup/classes locally (npm run dev).
+ * Tweak the variables (or rules) below; save and the nav updates immediately via HMR.
+ */
+.component.navigation {
+  --sitecore-nav-bg: #117737;
+  --sitecore-nav-item-color: #ffffff;
+  --sitecore-nav-item-hover: var(--color-accent);
+  --sitecore-nav-item-weight: 600;
+  --sitecore-nav-item-tracking: 0.08em;
+  --sitecore-nav-item-size: 0.9375rem;
+  --sitecore-nav-menu-gap-x: 2rem;
+  --sitecore-nav-menu-gap-y: 1rem;
+
+  background-color: var(--sitecore-nav-bg);
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  border-radius: var(--radius-md);
+}
+
+.component.navigation .navigation-item,
+.component.navigation .navigation-item-primary,
+.component.navigation button.navigation-item,
+.component.navigation button.navigation-item-primary {
+  color: var(--sitecore-nav-item-color);
+  font-weight: var(--sitecore-nav-item-weight);
+  letter-spacing: var(--sitecore-nav-item-tracking);
+  font-size: var(--sitecore-nav-item-size);
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.component.navigation .navigation-item:hover,
+.component.navigation .navigation-item-primary:hover,
+.component.navigation button.navigation-item:hover,
+.component.navigation button.navigation-item-primary:hover {
+  color: var(--sitecore-nav-item-hover);
+  text-decoration: none;
+}
+
+.component.navigation .navigation-menu {
+  column-gap: var(--sitecore-nav-menu-gap-x);
+  row-gap: var(--sitecore-nav-menu-gap-y);
+}
+
+/* Drawer / mobile sheet — match desktop nav treatment */
+.drawer-content .component.navigation {
+  background-color: var(--sitecore-nav-bg);
+}
+
+.drawer-content .component.navigation .navigation-item,
+.drawer-content .component.navigation .navigation-item-primary,
+.drawer-content .component.navigation button.navigation-item,
+.drawer-content .component.navigation button.navigation-item-primary {
+  color: var(--sitecore-nav-item-color);
+}
+
+.drawer-content .component.navigation .navigation-item:hover,
+.drawer-content .component.navigation .navigation-item-primary:hover,
+.drawer-content .component.navigation button.navigation-item:hover,
+.drawer-content .component.navigation button.navigation-item-primary:hover {
+  color: var(--sitecore-nav-item-hover);
+}

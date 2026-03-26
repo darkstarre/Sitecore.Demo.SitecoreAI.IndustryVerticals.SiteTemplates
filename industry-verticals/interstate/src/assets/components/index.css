@@ -7,3 +7,5 @@
 @import './rich-text.css';
 @import './sitecore-forms.css';
 @import './title.css';
+/* Last: overrides shared nav tokens; same DOM as Sitecore EE — edit for live nav styling */
+@import './navigation-sitecore.css';

@@ -42,6 +42,12 @@ export interface NavigationProps extends ComponentProps {
 
 const INTERSTATE_LOGO_FALLBACK = '/interstate-logo-classic.jpg';
 
+/* Nav look & feel: src/assets/components/navigation-sitecore.css (HMR while authoring) */
+
+/** Classes from Sitecore Presentation → Styles (params.styles); Placeholder merges selected style item `Value` here. */
+const navItemInteractiveClass = (fields: NavItemFields) =>
+  clsx('navigation-item navigation-item-primary', fields?.Styles?.join(' '));
+
 const NavigationListItem: React.FC<NavigationListItemProps> = ({
   fields,
   handleClick,
@@ -83,8 +89,8 @@ const NavigationListItem: React.FC<NavigationListItemProps> = ({
       tabIndex={0}
       role="menuitem"
       className={clsx(
+        'nav-item-root relative flex flex-col gap-x-8 gap-y-4 xl:gap-x-14',
         fields?.Styles?.join(' '),
-        'relative flex flex-col gap-x-8 gap-y-4 xl:gap-x-14',
         isRootItem && 'lg:flex-row',
         isLogoRootItem && 'shrink-0 max-lg:hidden',
         isLogoRootItem && isSimpleLayout && 'lg:mr-auto'
@@ -101,7 +107,7 @@ const NavigationListItem: React.FC<NavigationListItemProps> = ({
               <button
                 type="button"
                 aria-label={`Open submenu for ${fields.DisplayName}`}
-                className="navigation-item navigation-item-primary"
+                className={navItemInteractiveClass(fields)}
                 onClick={(e) => {
                   e.preventDefault();
                   setIsActiveLocal((a) => !a);
@@ -141,7 +147,7 @@ const NavigationListItem: React.FC<NavigationListItemProps> = ({
             field={getLinkField(fields)}
             editable={page.mode.isEditing}
             onClick={clickHandler}
-            className="navigation-item navigation-item-primary"
+            className={navItemInteractiveClass(fields)}
           >
             {getLinkContent(fields, logoSrc)}
           </Link>
@@ -155,12 +161,13 @@ export const Default = ({ params, fields }: NavigationProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { page } = useSitecore();
   const { styles, RenderingIdentifier: id, Logo: logoImage, SimpleLayout: simpleLayout } = params;
+  const renderingStyles = clsx(styles);
 
   useStopResponsiveTransition();
 
   if (!Object.values(fields).some((v) => !!v)) {
     return (
-      <div className={`component navigation ${styles}`} id={id}>
+      <div className={clsx('component navigation', renderingStyles)} id={id}>
         <div className="component-content">[Navigation]</div>
       </div>
     );
@@ -192,7 +199,7 @@ export const Default = ({ params, fields }: NavigationProps) => {
     ));
 
   return (
-    <div className={`component navigation ${styles}`} id={id}>
+    <div className={clsx('component navigation', renderingStyles)} id={id}>
       {logoSrc && (
         <img
           src={logoSrc}
@@ -205,7 +212,7 @@ export const Default = ({ params, fields }: NavigationProps) => {
         <ul
           role="menubar"
           className={clsx(
-            'container flex flex-row items-center gap-x-8 gap-y-4 text-lg lg:justify-center [.component.header_&]:px-0 [.drawer-content_&]:flex-col [.drawer-content_&]:items-start [.drawer-content_&]:px-0',
+            'navigation-menu container flex flex-row items-center gap-x-8 gap-y-4 text-lg lg:justify-center [.component.header_&]:px-0 [.drawer-content_&]:flex-col [.drawer-content_&]:items-start [.drawer-content_&]:px-0',
             isSimpleLayout && !hasLogoRootItem && 'lg:justify-end'
           )}
         >

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { JSX } from 'react';
+import clsx from 'clsx';
 import { ComponentProps } from '@/lib/component-props';
 import { Placeholder } from '@sitecore-content-sdk/nextjs';
 import { Drawer, DrawerTrigger, DrawerContent, DrawerClose } from '@/shadcn/components/ui/drawer';
@@ -15,7 +16,7 @@ export const Default = (props: HeaderProps): JSX.Element => {
 
   return (
     <div
-      className={`component header border-b-4 border-[#f6c700] bg-white shadow-sm ${styles}`}
+      className={clsx('component header border-b-4 border-[#f6c700] bg-white shadow-sm', styles)}
       id={id}
     >
       <div className="container flex items-center gap-3 py-3 lg:gap-6">

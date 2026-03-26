@@ -70,3 +70,37 @@
 .drawer-heading {
   @apply mt-7 mb-18 text-2xl;
 }
+
+/*
+ * Navigation — Sitecore Experience Editor styles (Presentation / Styles / Navigation).
+ * Style items set a `Value` field (space-separated classes) merged into rendering `params.styles`
+ * on the root `.component.navigation` element.
+ */
+.component.navigation.navigation-main .navigation-menu {
+  @apply gap-x-6 gap-y-3;
+}
+
+.component.navigation.navigation-main-vertical .navigation-menu {
+  @apply max-lg:flex-col max-lg:items-center max-lg:gap-y-5 lg:flex-row lg:items-center lg:justify-center lg:gap-x-8;
+}
+
+.component.navigation.navigation-main-horizontal .navigation-menu {
+  @apply flex-row flex-wrap items-center justify-center gap-x-8 gap-y-3;
+}
+
+.component.navigation.navigation-fat .navigation-item,
+.component.navigation.navigation-fat .navigation-item-primary {
+  @apply text-base font-bold md:text-lg;
+}
+
+.component.navigation.navigation-mobile .navigation-menu {
+  @apply flex-col items-stretch gap-3 text-base;
+}
+
+.component.navigation.navigation-sidebar .navigation-menu {
+  @apply flex-col items-start gap-2 border-l-4 border-[#f6c700]/50 pl-5;
+}
+
+.component.navigation.sitemap-navigation .navigation-menu {
+  @apply flex-col flex-wrap gap-x-6 gap-y-2 text-sm lg:flex-row lg:items-center;
+}
