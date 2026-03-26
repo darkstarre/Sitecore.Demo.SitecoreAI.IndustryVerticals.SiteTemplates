@@ -104,7 +104,12 @@ export const WithPlaceholderData: Story = {
               {
                 ...CommonRendering,
                 componentName: 'NavigationIcons',
-                params: CommonParams,
+                params: {
+                  ...CommonParams,
+                  HideCartIcon: '1',
+                  HideWishlistIcon: '1',
+                  HideAccountIcon: '1',
+                },
               },
             ],
           },

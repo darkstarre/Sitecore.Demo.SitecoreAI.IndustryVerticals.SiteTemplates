@@ -19,6 +19,10 @@ interface HeroBannerProps extends ComponentProps {
   fields: Fields;
 }
 
+/** Default looping technology video when no video is configured in Sitecore */
+const DEFAULT_HERO_VIDEO =
+  'https://assets.mixkit.co/videos/preview/mixkit-close-up-of-computer-screen-with-programming-code-2467.mp4';
+
 const HeroBannerCommon = ({
   params,
   fields,
@@ -47,7 +51,7 @@ const HeroBannerCommon = ({
     >
       {/* Background Media */}
       <div className="absolute inset-0 z-0">
-        {!isPageEditing && fields?.Video?.value?.src ? (
+        {!isPageEditing ? (
           <video
             className="h-full w-full object-cover"
             autoPlay
@@ -56,7 +60,14 @@ const HeroBannerCommon = ({
             playsInline
             poster={fields.Image?.value?.src}
           >
-            <source src={fields.Video?.value?.src} type="video/webm" />
+            <source
+              src={fields?.Video?.value?.src || DEFAULT_HERO_VIDEO}
+              type={
+                (fields?.Video?.value?.src || '').endsWith('.webm')
+                  ? 'video/webm'
+                  : 'video/mp4'
+              }
+            />
           </video>
         ) : (
           <ContentSdkImage
@@ -93,11 +104,11 @@ export const Default = ({ params, fields, rendering }: HeroBannerProps) => {
             }`}
           >
             <div>
-              <h1 className="font-heading text-background-muted text-4xl tracking-tight capitalize lg:text-7xl">
+              <h1 className="font-heading text-on-dark text-4xl tracking-tight capitalize lg:text-7xl drop-shadow-lg">
                 <ContentSdkText field={fields.Title} />
               </h1>
 
-              <div className="text-background-muted text-md lg:text-xl">
+              <div className="text-on-dark-muted text-md lg:text-xl drop-shadow-md [&_*]:text-on-dark-muted">
                 <ContentSdkRichText field={fields.Description} />
               </div>
             </div>
@@ -123,11 +134,11 @@ export const TopContent = ({ params, fields, rendering }: HeroBannerProps) => {
             }`}
           >
             <div className="">
-              <h1 className="font-heading text-background-muted text-4xl tracking-tight capitalize lg:text-7xl">
+              <h1 className="font-heading text-on-dark text-4xl tracking-tight capitalize lg:text-7xl drop-shadow-lg">
                 <ContentSdkText field={fields.Title} />
               </h1>
 
-              <div className="text-background-muted text-md lg:text-xl">
+              <div className="text-on-dark-muted text-md lg:text-xl drop-shadow-md [&_*]:text-on-dark-muted">
                 <ContentSdkRichText field={fields.Description} />
               </div>
             </div>

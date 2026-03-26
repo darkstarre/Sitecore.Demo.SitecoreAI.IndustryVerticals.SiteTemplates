@@ -13,9 +13,17 @@
   --sitecore-nav-menu-gap-y: 1rem;
 
   background-color: var(--sitecore-nav-bg);
-  padding-inline: 1rem;
-  padding-block: 0.5rem;
-  border-radius: var(--radius-md);
+
+  /* Stretch to header height (so the green bar reaches the top/bottom). */
+  height: 100%;
+  width: 100%;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+
+  /* Let the inner layout handle spacing; we don't want inset/rounded edges. */
+  padding: 0;
+  border-radius: 0;
 }
 
 .component.navigation .navigation-item,
@@ -41,6 +49,7 @@
 .component.navigation .navigation-menu {
   column-gap: var(--sitecore-nav-menu-gap-x);
   row-gap: var(--sitecore-nav-menu-gap-y);
+  width: 100%;
 }
 
 /* Drawer / mobile sheet — match desktop nav treatment */

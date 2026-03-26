@@ -58,6 +58,14 @@
   @apply text-foreground hover:text-foreground-light font-light transition-colors hover:!no-underline lg:whitespace-nowrap;
 }
 
+/* Cooley-style: light nav text when inside dark header/footer */
+.bg-surface-dark .navigation-item,
+.bg-surface-dark .navigation-item-primary,
+[class*='bg-surface-dark'] .navigation-item,
+[class*='bg-surface-dark'] .navigation-item-primary {
+  @apply text-on-dark hover:text-on-dark-muted;
+}
+
 .navigation-item-primary {
   @apply [.drawer-content_&]:text-xl;
 }

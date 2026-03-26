@@ -25,46 +25,77 @@ export const navRoot = {
   Styles: ['level0', 'submenu', 'item0', 'odd', 'first', 'last', 'active'],
 };
 
+/* Orrick-style navigation: People, Practices, Insights, Careers, About */
 export const topLevelPages = [
   {
-    ...createNavItem('Shop'),
+    ...createNavItem('People'),
     Styles: ['level1', 'item0', 'odd', 'first'],
+  },
+  {
+    ...createNavItem('Practices'),
+    Styles: ['level1', 'item1', 'even'],
     Children: [
       {
-        ...createNavItem('Furniture'),
+        ...createNavItem('Technology & Innovation'),
         Styles: ['level2', 'item0', 'odd', 'first'],
       },
       {
-        ...createNavItem('Lighting'),
+        ...createNavItem('Energy & Infrastructure'),
         Styles: ['level2', 'item1', 'even'],
       },
       {
-        ...createNavItem('Accessories'),
+        ...createNavItem('Finance'),
         Styles: ['level2', 'item2', 'odd', 'last'],
       },
     ],
   },
   {
-    ...createNavItem('Inspiration'),
-    Styles: ['level1', 'item1', 'even'],
-  },
-  {
-    ...createNavItem('Offers'),
+    ...createNavItem('Insights'),
     Styles: ['level1', 'item1', 'even'],
     Children: [
       {
-        ...createNavItem('Seasonal Picks'),
+        ...createNavItem('Technology & Innovation'),
         Styles: ['level2', 'item0', 'odd', 'first'],
       },
       {
-        ...createNavItem('Bundles'),
+        ...createNavItem('Energy & Infrastructure'),
         Styles: ['level2', 'item1', 'even'],
       },
       {
-        ...createNavItem('Outlet'),
+        ...createNavItem('Finance'),
+        Styles: ['level2', 'item2', 'odd'],
+      },
+      {
+        ...createNavItem('Life Sciences & HealthTech'),
+        Styles: ['level2', 'item3', 'odd', 'last'],
+      },
+    ],
+  },
+  {
+    ...createNavItem('Careers'),
+    Styles: ['level1', 'item1', 'even'],
+  },
+  {
+    ...createNavItem('About'),
+    Styles: ['level1', 'item1', 'even'],
+    Children: [
+      {
+        ...createNavItem('About Us'),
+        Styles: ['level2', 'item0', 'odd', 'first'],
+      },
+      {
+        ...createNavItem('News'),
+        Styles: ['level2', 'item1', 'even'],
+      },
+      {
+        ...createNavItem('Locations'),
         Styles: ['level2', 'item2', 'odd', 'last'],
       },
     ],
+  },
+  {
+    ...createNavItem('Orrick Tech Studio'),
+    Styles: ['level1', 'item1', 'even', 'last'],
   },
 ];
 

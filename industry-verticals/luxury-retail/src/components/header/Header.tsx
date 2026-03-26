@@ -43,7 +43,11 @@ export const Default = (props: HeaderProps): JSX.Element => {
               <div className="flex h-full flex-col">
                 <div className="mb-14 flex items-center justify-between self-end">
                   <DrawerClose asChild>
-                    <button type="button" aria-label="Close menu">
+                    <button
+                      type="button"
+                      aria-label="Close menu"
+                      className="text-on-dark hover:text-on-dark-muted transition-colors"
+                    >
                       <X className="h-5 w-5" />
                     </button>
                   </DrawerClose>
