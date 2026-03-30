@@ -64,7 +64,11 @@ export const Default = ({ params, fields }: HeroBannerProps) => {
   const vimeoHeroId = getVimeoHeroVideoId();
   const cmsVideoSrc = fields?.Video?.value?.src;
   const useCmsVideo = !isPageEditing && Boolean(cmsVideoSrc) && preferCmsHeroVideo();
-  const useVimeo = !isPageEditing && Boolean(vimeoHeroId) && !useCmsVideo;
+  /** Vimeo in EE when CMS video is not the chosen live source, so authors see the same hero as visitors. */
+  const useVimeo =
+    Boolean(vimeoHeroId) &&
+    !useCmsVideo &&
+    (!isPageEditing || !preferCmsHeroVideo() || !cmsVideoSrc);
 
   const hasMedia =
     Boolean(cmsVideoSrc) || Boolean(fields?.Image?.value?.src) || Boolean(vimeoHeroId);
@@ -80,9 +84,12 @@ export const Default = ({ params, fields }: HeroBannerProps) => {
   }
 
   return (
-    <div className={`component hero-banner relative flex items-center py-24 ${styles}`} id={id}>
-      {/* Background Media */}
-      <div className="absolute inset-0 z-1 overflow-hidden">
+    <div
+      className={`component hero-banner relative flex min-h-[min(520px,70vh)] items-center py-24 ${styles}`}
+      id={id}
+    >
+      {/* Background media: explicit z-stack (z-1/z-3 are not default Tailwind utilities). */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
         {useCmsVideo ? (
           <video
             className="h-full w-full object-cover"
@@ -101,16 +108,21 @@ export const Default = ({ params, fields }: HeroBannerProps) => {
             src={vimeoBackgroundSrc(vimeoHeroId!)}
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen
+            loading="eager"
+            referrerPolicy="strict-origin-when-cross-origin"
           />
         ) : (
           <ContentSdkImage field={fields.Image} className="h-full w-full object-cover" priority />
         )}
       </div>
-      {/* Gradient Overlay using primary color */}
-      <div className="from-accent-dark to-accent absolute inset-0 z-0 bg-linear-to-r"></div>
+      {/* Tint over video so text stays readable; opacity keeps the loop visible. */}
+      <div
+        className="from-accent-dark/90 to-accent/75 pointer-events-none absolute inset-0 z-10 bg-linear-to-r"
+        aria-hidden
+      />
 
-      {/* Content Container */}
-      <div className="relative z-3 container mx-auto flex flex-col items-center justify-center">
+      {/* Content */}
+      <div className="relative z-20 container mx-auto flex flex-col items-center justify-center">
         {/* Title - styled in accent/primary color */}
         <h1 className={`${hasMedia ? 'text-accent' : 'text-background'} text-center`}>
           <ContentSdkText field={fields.Title} />
