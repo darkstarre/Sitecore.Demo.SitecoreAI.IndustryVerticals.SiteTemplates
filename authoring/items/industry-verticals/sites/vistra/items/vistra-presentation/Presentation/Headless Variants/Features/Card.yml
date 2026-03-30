@@ -1,15 +1,15 @@
 ---
-ID: "22780913-c362-4695-a56f-a04ff48c6e80"
-Parent: "934c656e-fede-4c08-801a-f4d1b314b5f4"
+ID: "95e19fda-715e-48e4-9eb6-9a417b7f21bb"
+Parent: "30caa9e4-a109-4b1e-9a98-873ddca8f75c"
 Template: "4d50cdae-c2d9-4de8-b080-8f992bfb1b55"
-Path: "/sitecore/content/industry-verticals/gridwell/Presentation/Headless Variants/Features/KeyFigures"
+Path: "/sitecore/content/industry-verticals/vistra/Presentation/Headless Variants/Features/Card"
 SharedFields:
 - ID: "087c0553-9162-41f5-98d3-87eb0d80edbb"
   Hint: Compatible Renderings
   Value: "{E3CCF1D0-7855-4898-8BDE-77F83C6A487C}"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 300
+  Value: 100
 Languages:
 - Language: en
   Versions:
@@ -17,7 +17,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20260330T010000Z
+      Value: 20260330T160000Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "a1c2e3f4-5678-90ab-cdef-1234567890ab"
+      Value: "3bdbbae4-6904-490d-a01b-98a75354d2d6"

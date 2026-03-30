@@ -1,0 +1,16 @@
+---
+ID: "86165358-c32b-4d05-9886-96eb1a11cf6d"
+Parent: "14e8f1a9-6efb-48da-950c-66f6e3d204f0"
+Template: "fe5dd826-48c6-436d-b87a-7c4210c7413b"
+Path: "/sitecore/media library/Project/industry-verticals/vistra"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20260330T160000Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "b415b6a2-3675-490e-9355-b03e4e040d62"

@@ -51,6 +51,11 @@
             "path": "/gridwell",
             "scope": "SingleItem",
             "allowedPushOperations": "CreateOnly"
+          },
+          {
+            "path": "/vistra",
+            "scope": "SingleItem",
+            "allowedPushOperations": "CreateOnly"
           }
         ]
       },

@@ -1,0 +1,20 @@
+---
+ID: "30caa9e4-a109-4b1e-9a98-873ddca8f75c"
+Parent: "ed66b3a0-79e5-469b-9bbf-f83e49e6537a"
+Template: "49c111d0-6867-4798-a724-1f103166e6e9"
+Path: "/sitecore/content/industry-verticals/vistra/Presentation/Headless Variants/Features"
+SharedFields:
+- ID: "087c0553-9162-41f5-98d3-87eb0d80edbb"
+  Hint: Compatible Renderings
+  Value: "{E3CCF1D0-7855-4898-8BDE-77F83C6A487C}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20260330T160000Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "b415b6a2-3675-490e-9355-b03e4e040d62"

@@ -5,6 +5,12 @@
   "items": {
     "includes": [
       {
+        "name": "vistra-site-root",
+        "path": "/sitecore/content/industry-verticals/vistra",
+        "scope": "SingleItem",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
         "name": "vistra-home",
         "path": "/sitecore/content/industry-verticals/vistra/home",
         "scope": "DescendantsOnly",
