@@ -37,6 +37,12 @@ function vimeoBackgroundSrc(videoId: string): string {
   return `https://player.vimeo.com/video/${videoId}?${params.toString()}`;
 }
 
+/** When true, Sitecore Video field wins over Vimeo. Default false so Vimeo replaces legacy CMS video/image on live pages. */
+function preferCmsHeroVideo(): boolean {
+  const v = process.env.NEXT_PUBLIC_VISTRA_HERO_PREFER_CMS_VIDEO?.trim().toLowerCase();
+  return v === '1' || v === 'true' || v === 'yes';
+}
+
 interface Fields {
   Image: ImageField;
   Video: ImageField;
@@ -56,10 +62,13 @@ export const Default = ({ params, fields }: HeroBannerProps) => {
   const isPageEditing = page.mode.isEditing;
 
   const vimeoHeroId = getVimeoHeroVideoId();
+  const cmsVideoSrc = fields?.Video?.value?.src;
+  const useCmsVideo =
+    !isPageEditing && Boolean(cmsVideoSrc) && preferCmsHeroVideo();
+  const useVimeo = !isPageEditing && Boolean(vimeoHeroId) && !useCmsVideo;
+
   const hasMedia =
-    Boolean(fields?.Video?.value?.src) ||
-    Boolean(fields?.Image?.value?.src) ||
-    Boolean(vimeoHeroId);
+    Boolean(cmsVideoSrc) || Boolean(fields?.Image?.value?.src) || Boolean(vimeoHeroId);
 
   if (!fields) {
     return isPageEditing ? (
@@ -75,7 +84,7 @@ export const Default = ({ params, fields }: HeroBannerProps) => {
     <div className={`component hero-banner relative flex items-center py-24 ${styles}`} id={id}>
       {/* Background Media */}
       <div className="absolute inset-0 z-1 overflow-hidden">
-        {!isPageEditing && fields?.Video?.value?.src ? (
+        {useCmsVideo ? (
           <video
             className="h-full w-full object-cover"
             autoPlay
@@ -84,19 +93,16 @@ export const Default = ({ params, fields }: HeroBannerProps) => {
             playsInline
             poster={fields.Image?.value?.src}
           >
-            <source src={fields.Video?.value?.src} type="video/webm" />
+            <source src={cmsVideoSrc} type="video/webm" />
           </video>
-        ) : !isPageEditing && vimeoHeroId ? (
-          <>
-            {/* Full-bleed cover (16:9) — matches Vistra Corp homepage Vimeo hero */}
-            <iframe
-              title="Hero background video"
-              className="pointer-events-none absolute top-1/2 left-1/2 h-[56.25vw] min-h-full w-[100vw] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 border-0"
-              src={vimeoBackgroundSrc(vimeoHeroId)}
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-            />
-          </>
+        ) : useVimeo ? (
+          <iframe
+            title="Hero background video"
+            className="pointer-events-none absolute top-1/2 left-1/2 h-[56.25vw] min-h-full w-[100vw] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 border-0"
+            src={vimeoBackgroundSrc(vimeoHeroId!)}
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+          />
         ) : (
           <ContentSdkImage field={fields.Image} className="h-full w-full object-cover" priority />
         )}
