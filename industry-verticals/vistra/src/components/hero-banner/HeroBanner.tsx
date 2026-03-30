@@ -63,8 +63,7 @@ export const Default = ({ params, fields }: HeroBannerProps) => {
 
   const vimeoHeroId = getVimeoHeroVideoId();
   const cmsVideoSrc = fields?.Video?.value?.src;
-  const useCmsVideo =
-    !isPageEditing && Boolean(cmsVideoSrc) && preferCmsHeroVideo();
+  const useCmsVideo = !isPageEditing && Boolean(cmsVideoSrc) && preferCmsHeroVideo();
   const useVimeo = !isPageEditing && Boolean(vimeoHeroId) && !useCmsVideo;
 
   const hasMedia =
