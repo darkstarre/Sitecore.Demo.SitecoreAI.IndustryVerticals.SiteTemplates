@@ -10,6 +10,33 @@ import {
 } from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from '@/lib/component-props';
 
+/** Same looping Vimeo hero as https://vistracorp.com/ (data-vimeo-video-id="441098050"). Override via NEXT_PUBLIC_VISTRA_HERO_VIMEO_ID. */
+const DEFAULT_VISTRA_HERO_VIMEO_ID = '441098050';
+
+function getVimeoHeroVideoId(): string | undefined {
+  const fromEnv = process.env.NEXT_PUBLIC_VISTRA_HERO_VIMEO_ID?.trim();
+  if (fromEnv === '0' || fromEnv?.toLowerCase() === 'false') {
+    return undefined;
+  }
+  return fromEnv || DEFAULT_VISTRA_HERO_VIMEO_ID;
+}
+
+function vimeoBackgroundSrc(videoId: string): string {
+  const params = new URLSearchParams({
+    background: '1',
+    autoplay: '1',
+    loop: '1',
+    muted: '1',
+    playsinline: '1',
+    controls: '0',
+    dnt: '1',
+    title: '0',
+    byline: '0',
+    portrait: '0',
+  });
+  return `https://player.vimeo.com/video/${videoId}?${params.toString()}`;
+}
+
 interface Fields {
   Image: ImageField;
   Video: ImageField;
@@ -28,7 +55,11 @@ export const Default = ({ params, fields }: HeroBannerProps) => {
   const { styles, RenderingIdentifier: id } = params;
   const isPageEditing = page.mode.isEditing;
 
-  const hasMedia = fields?.Video?.value?.src || fields?.Image?.value?.src;
+  const vimeoHeroId = getVimeoHeroVideoId();
+  const hasMedia =
+    Boolean(fields?.Video?.value?.src) ||
+    Boolean(fields?.Image?.value?.src) ||
+    Boolean(vimeoHeroId);
 
   if (!fields) {
     return isPageEditing ? (
@@ -43,7 +74,7 @@ export const Default = ({ params, fields }: HeroBannerProps) => {
   return (
     <div className={`component hero-banner relative flex items-center py-24 ${styles}`} id={id}>
       {/* Background Media */}
-      <div className="absolute inset-0 z-1">
+      <div className="absolute inset-0 z-1 overflow-hidden">
         {!isPageEditing && fields?.Video?.value?.src ? (
           <video
             className="h-full w-full object-cover"
@@ -55,6 +86,17 @@ export const Default = ({ params, fields }: HeroBannerProps) => {
           >
             <source src={fields.Video?.value?.src} type="video/webm" />
           </video>
+        ) : !isPageEditing && vimeoHeroId ? (
+          <>
+            {/* Full-bleed cover (16:9) — matches Vistra Corp homepage Vimeo hero */}
+            <iframe
+              title="Hero background video"
+              className="pointer-events-none absolute top-1/2 left-1/2 h-[56.25vw] min-h-full w-[100vw] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 border-0"
+              src={vimeoBackgroundSrc(vimeoHeroId)}
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+            />
+          </>
         ) : (
           <ContentSdkImage field={fields.Image} className="h-full w-full object-cover" priority />
         )}
