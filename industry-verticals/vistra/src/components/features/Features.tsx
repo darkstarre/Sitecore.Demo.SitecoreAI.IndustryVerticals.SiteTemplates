@@ -170,7 +170,9 @@ const KeyFiguresFeatures = ({ fields, params }: FeaturesProps) => {
           </header>
         )}
         <ul className="grid grid-cols-1 gap-14 md:gap-12 lg:grid-cols-3 lg:gap-10">
-          {features?.map((feature) => <KeyFigureItem key={feature.id} feature={feature} />)}
+          {features?.map((feature) => (
+            <KeyFigureItem key={feature.id} feature={feature} />
+          ))}
         </ul>
       </div>
     </section>
