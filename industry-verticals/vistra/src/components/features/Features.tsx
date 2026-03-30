@@ -51,6 +51,9 @@ function isNumericStatTitle(titlePlain: string): boolean {
   return /^[\d,.]+$/.test(titlePlain.trim());
 }
 
+const keyFigureIconFrame =
+  'bg-accent/8 ring-accent/12 flex items-center justify-center rounded-2xl p-3 ring-1';
+
 const KeyFigureItem = ({ feature }: { feature: FeatureFields }) => {
   const titlePlain = plainFieldValue(feature.featureTitle?.jsonValue?.value);
   const descPlain = plainFieldValue(feature.featureDescription?.jsonValue?.value);
@@ -62,13 +65,15 @@ const KeyFigureItem = ({ feature }: { feature: FeatureFields }) => {
   const imageBelow = hasImage && descPlain.length > 70;
 
   const imageEl = hasImage ? (
-    <div className="flex shrink-0 justify-center lg:justify-start">
+    <div
+      className={`flex shrink-0 justify-center lg:justify-start ${imageBelow ? '' : keyFigureIconFrame}`}
+    >
       <ContentSdkImage
         field={feature.featureImage.jsonValue}
         className={
           imageBelow
-            ? 'max-h-36 w-auto max-w-full object-contain md:max-h-44'
-            : 'h-14 w-14 object-contain lg:h-20 lg:w-auto lg:max-w-[180px]'
+            ? 'max-h-40 w-auto max-w-full object-contain md:max-h-48'
+            : 'size-12 object-contain md:size-16 lg:size-[4.5rem]'
         }
       />
     </div>
@@ -78,7 +83,7 @@ const KeyFigureItem = ({ feature }: { feature: FeatureFields }) => {
     <ContentSdkText
       field={feature.featureTitle.jsonValue}
       tag="p"
-      className="text-accent text-4xl leading-none font-bold tracking-tight md:text-5xl"
+      className="text-accent text-[2.75rem] leading-[0.95] font-bold tracking-tight md:text-6xl lg:text-[3.35rem]"
     />
   );
 
@@ -86,16 +91,24 @@ const KeyFigureItem = ({ feature }: { feature: FeatureFields }) => {
     <ContentSdkText
       field={feature.featureDescription.jsonValue}
       tag="p"
-      className="text-accent max-w-md text-xs leading-snug font-semibold tracking-[0.2em] uppercase"
+      className={
+        rowStat
+          ? 'text-accent max-w-[15rem] text-[0.65rem] leading-snug font-bold tracking-[0.18em] uppercase sm:max-w-xs sm:text-xs'
+          : 'text-accent mt-3 max-w-[16.5rem] text-[0.65rem] leading-snug font-bold tracking-[0.18em] uppercase md:max-w-xs md:text-xs'
+      }
     />
   );
 
   if (rowStat) {
     return (
-      <li className="flex flex-col gap-4">
-        <div className="flex flex-row flex-wrap items-start gap-4">
+      <li className="relative flex min-h-0 flex-col gap-5 lg:min-h-[11rem]">
+        <div
+          className="bg-accent absolute top-0 left-0 hidden h-1 w-10 rounded-full lg:block"
+          aria-hidden
+        />
+        <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-start sm:gap-6 lg:flex-col lg:items-start">
           {imageEl}
-          <div className="flex min-w-0 flex-wrap items-baseline gap-x-4 gap-y-2">
+          <div className="flex min-w-0 flex-wrap items-baseline justify-center gap-x-3 gap-y-2 sm:justify-start">
             {statEl}
             {labelEl}
           </div>
@@ -108,19 +121,24 @@ const KeyFigureItem = ({ feature }: { feature: FeatureFields }) => {
     <div
       className={
         iconLeft
-          ? 'flex min-w-0 flex-1 flex-col gap-3 text-center lg:text-left'
-          : 'flex flex-col gap-3 text-center lg:items-start lg:text-left'
+          ? 'flex min-w-0 flex-1 flex-col gap-1 text-center sm:text-left'
+          : 'flex flex-col gap-1 text-center sm:items-start sm:text-left'
       }
     >
+      <div className="bg-accent mx-auto h-1 w-10 rounded-full sm:mx-0 lg:hidden" aria-hidden />
       {statEl}
       {labelEl}
     </div>
   );
 
   return (
-    <li className="flex flex-col gap-6 lg:gap-8">
+    <li className="relative flex min-h-0 flex-col gap-6 lg:min-h-[11rem] lg:gap-8">
+      <div
+        className="bg-accent absolute top-0 left-0 hidden h-1 w-10 rounded-full lg:block"
+        aria-hidden
+      />
       {hasImage && !imageBelow && iconLeft ? (
-        <div className="flex flex-col items-center gap-6 lg:flex-row lg:items-start">
+        <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-start sm:gap-6 lg:flex-col lg:items-start">
           {imageEl}
           {body}
         </div>
@@ -130,10 +148,10 @@ const KeyFigureItem = ({ feature }: { feature: FeatureFields }) => {
           {body}
         </>
       ) : hasImage && imageBelow ? (
-        <>
+        <div className="flex flex-col gap-6">
           {body}
-          {imageEl}
-        </>
+          <div className="flex justify-center sm:justify-start">{imageEl}</div>
+        </div>
       ) : (
         body
       )}
@@ -151,29 +169,40 @@ const KeyFiguresFeatures = ({ fields, params }: FeaturesProps) => {
 
   return (
     <section
-      className={`bg-background relative py-14 lg:py-20 ${params?.styles || ''}`}
+      className={`relative py-12 md:py-16 lg:py-[4.5rem] ${params?.styles || ''}`}
       id={id || undefined}
     >
       <div className="container">
-        {(hasSectionTitle || hasSectionIntro) && (
-          <header className="mb-12 max-w-3xl lg:mb-16">
-            {hasSectionTitle && (
-              <h2 className="text-foreground text-3xl font-bold tracking-tight md:text-4xl">
-                <ContentSdkText field={sectionTitle} />
-              </h2>
-            )}
-            {hasSectionIntro && (
-              <div className="text-foreground-light mt-4 text-lg leading-relaxed">
-                <ContentSdkRichText field={sectionIntro} />
-              </div>
-            )}
-          </header>
-        )}
-        <ul className="grid grid-cols-1 gap-14 md:gap-12 lg:grid-cols-3 lg:gap-10">
-          {features?.map((feature) => (
-            <KeyFigureItem key={feature.id} feature={feature} />
-          ))}
-        </ul>
+        <div className="from-background-accent/35 border-border/55 via-background to-background-accent/25 relative overflow-hidden rounded-2xl border bg-linear-to-br px-6 py-10 shadow-[0_1px_0_rgba(15,31,61,0.06)] md:px-10 md:py-12 lg:px-14 lg:py-14">
+          <div
+            className="bg-accent/8 pointer-events-none absolute -top-24 -right-16 size-56 rounded-full blur-3xl"
+            aria-hidden
+          />
+          <div
+            className="bg-warning/10 pointer-events-none absolute -bottom-20 -left-10 size-48 rounded-full blur-2xl"
+            aria-hidden
+          />
+
+          {(hasSectionTitle || hasSectionIntro) && (
+            <header className="relative mb-10 max-w-3xl md:mb-12 lg:mb-14">
+              {hasSectionTitle && (
+                <h2 className="text-foreground text-2xl font-bold tracking-tight md:text-3xl lg:text-4xl">
+                  <ContentSdkText field={sectionTitle} />
+                </h2>
+              )}
+              {hasSectionIntro && (
+                <div className="text-foreground-light mt-3 max-w-2xl text-base leading-relaxed md:text-lg">
+                  <ContentSdkRichText field={sectionIntro} />
+                </div>
+              )}
+            </header>
+          )}
+          <ul className="divide-border/40 lg:divide-border/35 relative grid grid-cols-1 gap-12 divide-y sm:grid-cols-2 sm:gap-x-10 sm:gap-y-12 sm:divide-y-0 lg:auto-cols-fr lg:grid-flow-col lg:grid-cols-none lg:grid-rows-1 lg:gap-0 lg:divide-x lg:divide-y-0 [&>li]:py-6 sm:[&>li]:py-0 lg:[&>li]:px-8 lg:[&>li]:py-2 xl:[&>li]:px-10">
+            {features?.map((feature) => (
+              <KeyFigureItem key={feature.id} feature={feature} />
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );
