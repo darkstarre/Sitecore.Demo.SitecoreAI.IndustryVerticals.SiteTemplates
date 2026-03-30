@@ -5,6 +5,7 @@ import {
   Text as ContentSdkText,
   NextImage as ContentSdkImage,
   Link as ContentSdkLink,
+  RichText as ContentSdkRichText,
   withDatasourceCheck,
   ComponentRendering,
   ComponentParams,
@@ -35,6 +36,145 @@ type FeaturesProps = {
   rendering: ComponentRendering & { params: ComponentParams };
   params: { [key: string]: string };
   fields: Fields;
+};
+
+function plainFieldValue(value: unknown): string {
+  if (value == null) return '';
+  return String(value)
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/** Stat is mostly digits (e.g. 14, 7,000) for side-by-side label layout. */
+function isNumericStatTitle(titlePlain: string): boolean {
+  return /^[\d,.]+$/.test(titlePlain.trim());
+}
+
+const KeyFigureItem = ({ feature }: { feature: FeatureFields }) => {
+  const titlePlain = plainFieldValue(feature.featureTitle?.jsonValue?.value);
+  const descPlain = plainFieldValue(feature.featureDescription?.jsonValue?.value);
+  const src = feature.featureImage?.jsonValue?.value?.src;
+  const hasImage = Boolean(src);
+
+  const rowStat = isNumericStatTitle(titlePlain) && descPlain.length > 30;
+  const iconLeft = hasImage && descPlain.length <= 55 && !rowStat;
+  const imageBelow = hasImage && descPlain.length > 70;
+
+  const imageEl = hasImage ? (
+    <div className="flex shrink-0 justify-center lg:justify-start">
+      <ContentSdkImage
+        field={feature.featureImage.jsonValue}
+        className={
+          imageBelow
+            ? 'max-h-36 w-auto max-w-full object-contain md:max-h-44'
+            : 'h-14 w-14 object-contain lg:h-20 lg:w-auto lg:max-w-[180px]'
+        }
+      />
+    </div>
+  ) : null;
+
+  const statEl = (
+    <ContentSdkText
+      field={feature.featureTitle.jsonValue}
+      tag="p"
+      className="text-accent text-4xl leading-none font-bold tracking-tight md:text-5xl"
+    />
+  );
+
+  const labelEl = (
+    <ContentSdkText
+      field={feature.featureDescription.jsonValue}
+      tag="p"
+      className="text-accent max-w-md text-xs leading-snug font-semibold tracking-[0.2em] uppercase"
+    />
+  );
+
+  if (rowStat) {
+    return (
+      <li className="flex flex-col gap-4">
+        <div className="flex flex-row flex-wrap items-start gap-4">
+          {imageEl}
+          <div className="flex min-w-0 flex-wrap items-baseline gap-x-4 gap-y-2">
+            {statEl}
+            {labelEl}
+          </div>
+        </div>
+      </li>
+    );
+  }
+
+  const body = (
+    <div
+      className={
+        iconLeft
+          ? 'flex min-w-0 flex-1 flex-col gap-3 text-center lg:text-left'
+          : 'flex flex-col gap-3 text-center lg:items-start lg:text-left'
+      }
+    >
+      {statEl}
+      {labelEl}
+    </div>
+  );
+
+  return (
+    <li className="flex flex-col gap-6 lg:gap-8">
+      {hasImage && !imageBelow && iconLeft ? (
+        <div className="flex flex-col items-center gap-6 lg:flex-row lg:items-start">
+          {imageEl}
+          {body}
+        </div>
+      ) : hasImage && !imageBelow ? (
+        <>
+          {imageEl}
+          {body}
+        </>
+      ) : hasImage && imageBelow ? (
+        <>
+          {body}
+          {imageEl}
+        </>
+      ) : (
+        body
+      )}
+    </li>
+  );
+};
+
+const KeyFiguresFeatures = ({ fields, params }: FeaturesProps) => {
+  const id = params?.RenderingIdentifier;
+  const features = fields?.data?.datasource?.children?.results;
+  const sectionTitle = fields?.data?.datasource?.title?.jsonValue;
+  const sectionIntro = fields?.data?.datasource?.description?.jsonValue;
+  const hasSectionTitle = Boolean(plainFieldValue(sectionTitle?.value));
+  const hasSectionIntro = Boolean(plainFieldValue(sectionIntro?.value));
+
+  return (
+    <section
+      className={`bg-background relative py-14 lg:py-20 ${params?.styles || ''}`}
+      id={id || undefined}
+    >
+      <div className="container">
+        {(hasSectionTitle || hasSectionIntro) && (
+          <header className="mb-12 max-w-3xl lg:mb-16">
+            {hasSectionTitle && (
+              <h2 className="text-foreground text-3xl font-bold tracking-tight md:text-4xl">
+                <ContentSdkText field={sectionTitle} />
+              </h2>
+            )}
+            {hasSectionIntro && (
+              <div className="text-foreground-light mt-4 text-lg leading-relaxed">
+                <ContentSdkRichText field={sectionIntro} />
+              </div>
+            )}
+          </header>
+        )}
+        <ul className="grid grid-cols-1 gap-14 md:gap-12 lg:grid-cols-3 lg:gap-10">
+          {features?.map((feature) => <KeyFigureItem key={feature.id} feature={feature} />)}
+        </ul>
+      </div>
+    </section>
+  );
 };
 
 const FeatureItem = ({
@@ -138,3 +278,5 @@ const CardFeatures = ({ fields, params }: FeaturesProps) => {
 
 export const Default = withDatasourceCheck()<FeaturesProps>(DefaultFeatures);
 export const Card = withDatasourceCheck()<FeaturesProps>(CardFeatures);
+/** Corporate “key figures” strip: large stat in Title, caption in Description, optional icon or illustration in Image. */
+export const KeyFigures = withDatasourceCheck()<FeaturesProps>(KeyFiguresFeatures);

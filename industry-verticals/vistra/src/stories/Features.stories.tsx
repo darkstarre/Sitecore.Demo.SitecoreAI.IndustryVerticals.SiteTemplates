@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { Default, Card } from '../components/features/Features';
+import { Default, Card, KeyFigures } from '../components/features/Features';
 import { ComponentProps } from 'react';
 import { CommonParams, CommonRendering } from './common/commonData';
 import {
@@ -9,7 +9,13 @@ import {
 } from './common/commonControls';
 import { createFeatureItems } from './helpers/createItems';
 import { createIGQLData } from './helpers/createIGQLData';
-import { createRichTextField, createTextField, createIGQLField } from './helpers/createFields';
+import {
+  createRichTextField,
+  createTextField,
+  createIGQLField,
+  createLinkField,
+  createImageField,
+} from './helpers/createFields';
 import clsx from 'clsx';
 
 type StoryProps = ComponentProps<typeof Default> &
@@ -18,6 +24,53 @@ type StoryProps = ComponentProps<typeof Default> &
   };
 
 type FieldsType = ComponentProps<typeof Default>['fields'];
+
+const keyFiguresMockFields = {
+  data: {
+    datasource: {
+      title: createIGQLField(createTextField('')),
+      description: createIGQLField({ value: '' }),
+      children: {
+        results: [
+          {
+            id: 'kf-1',
+            featureTitle: createIGQLField(createTextField('7,000')),
+            featureDescription: createIGQLField(createTextField('Employees')),
+            featureImage: createIGQLField(createImageField('placeholder')),
+            featureImageDark: createIGQLField(createImageField('placeholder')),
+            featureLink: createIGQLField(createLinkField('')),
+          },
+          {
+            id: 'kf-2',
+            featureTitle: createIGQLField(createTextField('14')),
+            featureDescription: createIGQLField(
+              createTextField(
+                'Facilities with OSHA VPP Star rating across our operations footprint.',
+                1
+              )
+            ),
+            featureImage: createIGQLField(createImageField('placeholder')),
+            featureImageDark: createIGQLField(createImageField('placeholder')),
+            featureLink: createIGQLField(createLinkField('')),
+          },
+          {
+            id: 'kf-3',
+            featureTitle: createIGQLField(createTextField('44,000 MW')),
+            featureDescription: createIGQLField(
+              createTextField(
+                'One of the largest competitive power generators in the U.S., with approximately this nameplate capacity.',
+                2
+              )
+            ),
+            featureImage: createIGQLField(createImageField('placeholder')),
+            featureImageDark: createIGQLField(createImageField('placeholder')),
+            featureLink: createIGQLField(createLinkField('')),
+          },
+        ],
+      },
+    },
+  },
+} as unknown as FieldsType;
 
 const meta = {
   title: 'Page Content/Features',
@@ -74,6 +127,26 @@ export const DefaultFeatures: Story = {
         }
         params={params}
         rendering={baseRendering}
+      />
+    );
+  },
+};
+
+export const KeyFiguresBand: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  render: (args) => {
+    const featureStyles = clsx(baseParams.styles, args.BackgroundColor);
+    const params = {
+      ...baseParams,
+      styles: featureStyles,
+    };
+    return (
+      <KeyFigures
+        fields={keyFiguresMockFields}
+        params={params}
+        rendering={{ ...baseRendering, params }}
       />
     );
   },
