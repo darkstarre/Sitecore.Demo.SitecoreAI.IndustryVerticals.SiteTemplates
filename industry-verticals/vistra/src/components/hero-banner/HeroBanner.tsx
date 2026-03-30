@@ -115,16 +115,15 @@ export const Default = ({ params, fields }: HeroBannerProps) => {
           <ContentSdkImage field={fields.Image} className="h-full w-full object-cover" priority />
         )}
       </div>
-      {/* Tint over video so text stays readable; opacity keeps the loop visible. */}
+      {/* Light tint so video stays visible; text uses text-background for contrast. */}
       <div
-        className="from-accent-dark/90 to-accent/75 pointer-events-none absolute inset-0 z-10 bg-linear-to-r"
+        className="from-accent-dark/45 to-accent/35 pointer-events-none absolute inset-0 z-10 bg-linear-to-r"
         aria-hidden
       />
 
       {/* Content */}
       <div className="relative z-20 container mx-auto flex flex-col items-center justify-center">
-        {/* Title - styled in accent/primary color */}
-        <h1 className={`${hasMedia ? 'text-accent' : 'text-background'} text-center`}>
+        <h1 className={`${hasMedia ? 'text-background' : 'text-foreground'} text-center`}>
           <ContentSdkText field={fields.Title} />
         </h1>
 
