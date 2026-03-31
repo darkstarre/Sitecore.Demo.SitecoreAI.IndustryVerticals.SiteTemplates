@@ -16,6 +16,10 @@ This directory contains AI coding agent guidance files to help maintain consiste
 - **`nextjs.mdc`** - Next.js specific patterns, routing, and API development
 - **`testing.mdc`** - Testing strategies for XM Cloud components and integrations
 
+## Agent skills (optional)
+
+- **`skills/new-vertical-demo/`** — Step-by-step scaffold for a new industry-vertical demo (Next.js app + authoring modules + `xmcloud.build.json`). Open `SKILL.md` for the workflow; `reference.md` has paths and naming.
+
 ## Usage
 
 When using AI coding assistants like Cursor:
