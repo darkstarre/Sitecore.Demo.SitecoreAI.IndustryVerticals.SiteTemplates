@@ -5,6 +5,12 @@
   "items": {
     "includes": [
       {
+        "name": "interstate-site-root",
+        "path": "/sitecore/content/industry-verticals/interstate",
+        "scope": "SingleItem",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
         "name": "interstate-home",
         "path": "/sitecore/content/industry-verticals/interstate/home",
         "scope": "DescendantsOnly",

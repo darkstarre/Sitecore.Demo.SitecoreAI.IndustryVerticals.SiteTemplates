@@ -3,7 +3,7 @@
 import React, { JSX } from 'react';
 import clsx from 'clsx';
 import { ComponentProps } from '@/lib/component-props';
-import { Placeholder } from '@sitecore-content-sdk/nextjs';
+import { Placeholder, useSitecore } from '@sitecore-content-sdk/nextjs';
 import { Drawer, DrawerTrigger, DrawerContent, DrawerClose } from '@/shadcn/components/ui/drawer';
 import { Menu, X } from 'lucide-react';
 
@@ -13,6 +13,8 @@ export type HeaderProps = ComponentProps & {
 
 export const Default = (props: HeaderProps): JSX.Element => {
   const { styles, RenderingIdentifier: id, DynamicPlaceholderId } = props.params;
+  const { page } = useSitecore();
+  const showCmsHeaderLeft = page.mode.isEditing;
 
   return (
     <div
@@ -20,7 +22,12 @@ export const Default = (props: HeaderProps): JSX.Element => {
       id={id}
     >
       <div className="container flex items-center gap-3 py-3 lg:gap-6">
-        <div className="header-block *:shrink max-lg:w-full max-lg:justify-between">
+        <div
+          className={clsx(
+            'header-block max-lg:w-full max-lg:justify-between *:shrink',
+            !showCmsHeaderLeft && '[&_.component.image]:hidden [&_.component.title]:hidden'
+          )}
+        >
           <Placeholder name={`header-left-${DynamicPlaceholderId}`} rendering={props.rendering} />
         </div>
         {/* Stretch to full header row height so nav background matches logo/taller siblings */}

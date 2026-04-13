@@ -17,7 +17,7 @@ Create a **new demo Next.js app** under `industry-verticals/<app-folder>/` and w
 | `appFolder` | `acme` | Usually same as `renderingHostKey`; use a different folder only if intentional (e.g. shared app). |
 | `contentFolder` | `acme` | CM path segment: `/sitecore/content/industry-verticals/<contentFolder>`. Often same as app. |
 | `modulePascal` | `Acme` | For `Project.<Pascal>-Content` / `Project.<Pascal>-Media`. |
-| `baseApp` | `vistra` \| `retail` \| `starter` | Which existing app to copy as template. Prefer **vistra** for recent patterns (middleware static files, `outputFileTracingRoot`). |
+| `baseApp` | `vistra` \| `healthcare` \| `retail` \| `starter` | Which existing app to copy as template. Use **healthcare** for Nova Medical–style sites (`/sitecore/content/.../nova-medical`). Prefer **vistra** for energy/corporate demos. Both include `outputFileTracingRoot` + static middleware patterns once aligned. |
 | `displayName` | `Acme Corp` | Human label for Site Grouping / docs. |
 | `siteName` (CM) | `acme` | `SiteName` field on Site Grouping; often matches `contentFolder`. |
 

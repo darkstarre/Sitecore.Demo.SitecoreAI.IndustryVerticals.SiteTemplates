@@ -1,7 +1,6 @@
 import {
   ComponentParams,
   ComponentRendering,
-  Image,
   ImageField,
   Link,
   LinkField,
@@ -12,6 +11,7 @@ import {
   TextField,
 } from '@sitecore-content-sdk/nextjs';
 import React from 'react';
+import { INTERSTATE_BRAND_LOGO_ALT, INTERSTATE_BRAND_LOGO_SRC } from '@/constants/brandLogo';
 
 interface Fields {
   TitleOne: TextField;
@@ -76,8 +76,12 @@ export const Default = (props: FooterProps) => {
       <div className="bg-surface-dark text-on-dark">
         <div className="container grid gap-12 py-28.5 lg:grid-cols-[1fr_3fr]">
           <div className="flex flex-col gap-7">
-            <div className="sm:max-w-34 [&_img]:invert">
-              <Image field={props.fields.Logo} />
+            <div className="sm:max-w-34">
+              <img
+                src={INTERSTATE_BRAND_LOGO_SRC}
+                alt={INTERSTATE_BRAND_LOGO_ALT}
+                className="h-auto w-36 max-w-full brightness-0 invert"
+              />
             </div>
             <RichText
               field={props.fields.Description}

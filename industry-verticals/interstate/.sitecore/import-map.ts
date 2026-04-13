@@ -46,7 +46,7 @@ import ShortArrow from '@/assets/icons/arrow-short/ArrowShort';
 import { MiniCart } from 'src/components/non-sitecore/MiniCart';
 import { useClickAway } from '@/hooks/useClickAway';
 import { useStopResponsiveTransition } from '@/hooks/useStopResponsiveTransition';
-import { extractMediaUrl } from '@/helpers/extractMediaUrl';
+import { INTERSTATE_BRAND_LOGO_ALT, INTERSTATE_BRAND_LOGO_SRC } from '@/constants/brandLogo';
 import { getLinkContent, getLinkField, isNavLevel, isNavRootItem, prepareFields } from '@/helpers/navHelpers';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
@@ -57,6 +57,7 @@ import * as FEAAS from '@sitecore-feaas/clientside/react';
 import nextConfig from 'next.config';
 import { pageView } from '@sitecore-cloudsdk/events/browser';
 import config from 'sitecore.config';
+import { extractMediaUrl } from '@/helpers/extractMediaUrl';
 import ProductCarousel from 'src/components/non-sitecore/ProductCarousel';
 
 const importMap = [
@@ -328,9 +329,10 @@ const importMap = [
     ]
   },
   {
-    module: '@/helpers/extractMediaUrl',
+    module: '@/constants/brandLogo',
     exports: [
-      { name: 'extractMediaUrl', value: extractMediaUrl },
+      { name: 'INTERSTATE_BRAND_LOGO_ALT', value: INTERSTATE_BRAND_LOGO_ALT },
+      { name: 'INTERSTATE_BRAND_LOGO_SRC', value: INTERSTATE_BRAND_LOGO_SRC },
     ]
   },
   {
@@ -395,6 +397,12 @@ const importMap = [
     module: 'sitecore.config',
     exports: [
       { name: 'default', value: config },
+    ]
+  },
+  {
+    module: '@/helpers/extractMediaUrl',
+    exports: [
+      { name: 'extractMediaUrl', value: extractMediaUrl },
     ]
   },
   {

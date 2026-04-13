@@ -45,7 +45,6 @@ import Image_5d8ce56058442d94361877e28c501c951a554a6a from 'next/image';
 import SuggestionBlock from 'src/components/non-sitecore/search/SuggestionBlock';
 import { useClickAway } from '@/hooks/useClickAway';
 import { useStopResponsiveTransition } from '@/hooks/useStopResponsiveTransition';
-import { extractMediaUrl } from '@/helpers/extractMediaUrl';
 import { getLinkContent, getLinkField, isNavLevel, isNavRootItem, prepareFields } from '@/helpers/navHelpers';
 import clsx from 'clsx';
 import { isParamEnabled } from '@/helpers/isParamEnabled';
@@ -61,6 +60,7 @@ import * as FEAAS from '@sitecore-feaas/clientside/react';
 import nextConfig from 'next.config';
 import { pageView } from '@sitecore-cloudsdk/events/browser';
 import config from 'sitecore.config';
+import { extractMediaUrl } from '@/helpers/extractMediaUrl';
 import { getArticlesCountsByCategory } from '@/helpers/articleHelpers';
 import InfiniteScroll from '@/shadcn/components/ui/infiniteScroll';
 import ArticleCard_2b7ae43f25929cd39fbab4486697d9aba5387223 from 'src/components/non-sitecore/ArticleCard';
@@ -378,12 +378,6 @@ const importMap = [
     ]
   },
   {
-    module: '@/helpers/extractMediaUrl',
-    exports: [
-      { name: 'extractMediaUrl', value: extractMediaUrl },
-    ]
-  },
-  {
     module: '@/helpers/navHelpers',
     exports: [
       { name: 'getLinkContent', value: getLinkContent },
@@ -480,6 +474,12 @@ const importMap = [
     module: 'sitecore.config',
     exports: [
       { name: 'default', value: config },
+    ]
+  },
+  {
+    module: '@/helpers/extractMediaUrl',
+    exports: [
+      { name: 'extractMediaUrl', value: extractMediaUrl },
     ]
   },
   {

@@ -18,7 +18,7 @@ What it does:
   - Clones industry-verticals/retail to industry-verticals/<vertical-slug>
   - Updates prepare hook path in cloned package.json
   - Creates Sitecore content/media serialization module files
-  - Adds rendering host + SCS module entries in xmcloud.build.json
+  - Adds rendering host + SCS module entries in xmcloud.build.json and root build.json
 
 Notes:
   - Intended for lowercase-kebab-case slugs (e.g. "interstate", "acme-energy")
@@ -169,9 +169,10 @@ cat >"$MEDIA_MODULE_FILE" <<EOF
 }
 EOF
 
-echo "4/5 Updating xmcloud.build.json..."
+echo "4/5 Updating xmcloud.build.json and build.json..."
 node - "$XM_BUILD_FILE" "$SLUG" "$CONTENT_NAMESPACE" "$MEDIA_NAMESPACE" <<'NODE'
 const fs = require('fs');
+const path = require('path');
 
 const filePath = process.argv[2];
 const slug = process.argv[3];
@@ -209,7 +210,9 @@ if (!modules.includes(contentNamespace)) {
   modules.push(contentNamespace);
 }
 
-fs.writeFileSync(filePath, JSON.stringify(json, null, 2) + '\n');
+const serialized = JSON.stringify(json, null, 2) + '\n';
+fs.writeFileSync(filePath, serialized);
+fs.writeFileSync(path.join(path.dirname(filePath), 'build.json'), serialized);
 NODE
 
 echo "5/5 Done."
@@ -218,7 +221,7 @@ echo "Created vertical: $SLUG"
 echo " - app folder:       industry-verticals/$SLUG"
 echo " - content module:   authoring/items/industry-verticals/sites/$SLUG/${SLUG}-content.module.json"
 echo " - media module:     authoring/items/industry-verticals/sites/$SLUG/${SLUG}-media.module.json"
-echo " - rendering host:   xmcloud.build.json -> renderingHosts.$SLUG"
+echo " - rendering host:   xmcloud.build.json + build.json -> renderingHosts.$SLUG"
 echo ""
 echo "Next:"
 echo "  1) Set $SLUG env vars (.env.local and XM Cloud host envs)"

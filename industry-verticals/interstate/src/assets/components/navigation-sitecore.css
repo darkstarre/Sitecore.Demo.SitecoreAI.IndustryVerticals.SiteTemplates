@@ -64,6 +64,22 @@
   border-radius: 0;
 }
 
+/* Interstate: taller green bar + room for a slightly larger logo in-nav */
+.component.navigation.navigation-interstate-brand {
+  --sitecore-nav-min-height: 3.85rem;
+  --sitecore-nav-pad-y: 1rem;
+}
+
+.component.navigation.navigation-interstate-brand .interstate-nav-logo-img {
+  max-height: 3.35rem;
+}
+
+@media (min-width: 1024px) {
+  .component.navigation.navigation-interstate-brand .interstate-nav-logo-img {
+    max-height: 3.6rem;
+  }
+}
+
 .component.navigation .navigation-item,
 .component.navigation .navigation-item-primary,
 .component.navigation button.navigation-item,

@@ -1,0 +1,16 @@
+---
+ID: "a2f9d8c7-6e41-5b3d-9a2f-1c4e8d7b6a50"
+Parent: "14e8f1a9-6efb-48da-950c-66f6e3d204f0"
+Template: "fe5dd826-48c6-436d-b87a-7c4210c7413b"
+Path: "/sitecore/media library/Project/industry-verticals/interstate"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20260331T120000Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "c1d2e3f4-a5b6-7890-abcd-ef1234567890"

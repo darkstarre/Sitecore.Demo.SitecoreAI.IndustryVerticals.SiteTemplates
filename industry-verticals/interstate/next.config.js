@@ -7,6 +7,9 @@ const nextConfig = {
   // Allow specifying a distinct distDir when concurrently running app in a container
   distDir: process.env.NEXTJS_DIST_DIR || '.next',
 
+  // Pin tracing to this app when another lockfile exists higher up (avoids ChunkLoadError / bad vendor chunks in prod).
+  outputFileTracingRoot: path.join(__dirname),
+
   i18n: {
     // These are all the locales you want to support in your application.
     // These should generally match (or at least be a subset of) those in Sitecore.
@@ -40,6 +43,11 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'starter-verticals-v2.sitecoresandbox.cloud',
+        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'starter-verticals.sitecoresandbox.cloud',
         port: '',
       },
     ],

@@ -20,6 +20,20 @@ interface ImageProps extends ComponentProps {
   fields: ImageFields;
 }
 
+function getImageSrc(field: ImageField | undefined): string | undefined {
+  if (!field) return undefined;
+  const fromValue = field.value?.src;
+  if (typeof fromValue === 'string' && fromValue.trim().length > 0) {
+    return fromValue;
+  }
+  const json = field as { jsonValue?: { value?: { src?: string } } };
+  const fromJson = json.jsonValue?.value?.src;
+  if (typeof fromJson === 'string' && fromJson.trim().length > 0) {
+    return fromJson;
+  }
+  return undefined;
+}
+
 const ImageWrapper: React.FC<{ className: string; id?: string; children: React.ReactNode }> = ({
   className,
   id,
@@ -43,6 +57,16 @@ export const Default: React.FC<ImageProps> = (props) => {
 
   if (!fields) {
     return <ImageDefault {...props} />;
+  }
+
+  const imageSrc = getImageSrc(fields.Image);
+  if (!imageSrc) {
+    return (
+      <ImageWrapper className={`component image ${styles}`} id={id}>
+        {page.mode.isEditing ? <span className="is-empty-hint">Image</span> : null}
+        <Text tag="span" className="image-caption" field={fields.ImageCaption} />
+      </ImageWrapper>
+    );
   }
 
   const Image = () => <ContentSdkImage field={fields.Image} />;

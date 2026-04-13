@@ -6,7 +6,7 @@ import { ComponentProps } from 'lib/component-props';
 import { ArrowLeft, X } from 'lucide-react';
 import { useClickAway } from '@/hooks/useClickAway';
 import { useStopResponsiveTransition } from '@/hooks/useStopResponsiveTransition';
-import { extractMediaUrl } from '@/helpers/extractMediaUrl';
+import { INTERSTATE_BRAND_LOGO_ALT, INTERSTATE_BRAND_LOGO_SRC } from '@/constants/brandLogo';
 import {
   getLinkContent,
   getLinkField,
@@ -39,8 +39,6 @@ interface NavigationListItemProps {
 export interface NavigationProps extends ComponentProps {
   fields: Record<string, NavItemFields>;
 }
-
-const INTERSTATE_LOGO_FALLBACK = '/interstate-logo-classic.jpg';
 
 /* Nav look & feel: src/assets/components/navigation-sitecore.css (HMR while authoring) */
 
@@ -157,18 +155,77 @@ const NavigationListItem: React.FC<NavigationListItemProps> = ({
   );
 };
 
+const InterstateNavBrandLogo = ({
+  isSimpleLayout,
+  showMobileStackedLogo,
+}: {
+  isSimpleLayout: boolean;
+  showMobileStackedLogo: boolean;
+}) => (
+  <>
+    {showMobileStackedLogo && (
+      <li className="list-none lg:hidden">
+        <Link href="/" className="block py-1">
+          <img
+            src={INTERSTATE_BRAND_LOGO_SRC}
+            alt={INTERSTATE_BRAND_LOGO_ALT}
+            className="interstate-nav-logo-img h-auto w-40 max-w-full object-contain object-left"
+          />
+        </Link>
+      </li>
+    )}
+    <li
+      className={clsx(
+        'nav-item-root relative flex shrink-0 list-none flex-col gap-x-8 gap-y-4 max-lg:hidden lg:flex-row xl:gap-x-14',
+        isSimpleLayout && 'lg:mr-auto'
+      )}
+    >
+      <Link href="/" className="flex min-h-[2.5rem] items-center self-stretch py-0.5">
+        <img
+          src={INTERSTATE_BRAND_LOGO_SRC}
+          alt={INTERSTATE_BRAND_LOGO_ALT}
+          className="interstate-nav-logo-img h-auto w-[10.5rem] max-w-none object-contain object-left sm:w-[11.5rem]"
+        />
+      </Link>
+    </li>
+  </>
+);
+
 export const Default = ({ params, fields }: NavigationProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { page } = useSitecore();
-  const { styles, RenderingIdentifier: id, Logo: logoImage, SimpleLayout: simpleLayout } = params;
+  const { styles, RenderingIdentifier: id, SimpleLayout: simpleLayout } = params;
   const renderingStyles = clsx(styles);
 
   useStopResponsiveTransition();
 
-  if (!Object.values(fields).some((v) => !!v)) {
+  const hasNavData = Object.values(fields).some((v) => !!v);
+  const logoSrc = INTERSTATE_BRAND_LOGO_SRC;
+  const hasBrandLogoInGreenBar = Boolean(logoSrc);
+  const isSimpleLayout = isParamEnabled(simpleLayout);
+
+  if (!hasNavData) {
     return (
-      <div className={clsx('component navigation', renderingStyles)} id={id}>
-        <div className="component-content">[Navigation]</div>
+      <div
+        className={clsx('component navigation navigation-interstate-brand', renderingStyles)}
+        id={id}
+      >
+        <nav className="min-h-full min-w-0 flex-1">
+          <ul
+            role="menubar"
+            className="navigation-menu container flex min-h-full flex-col items-start gap-4 px-4 py-3 text-lg lg:flex-row lg:items-center lg:justify-center lg:gap-x-8 lg:px-0 lg:py-0"
+          >
+            {hasBrandLogoInGreenBar && (
+              <InterstateNavBrandLogo
+                isSimpleLayout={isSimpleLayout}
+                showMobileStackedLogo
+              />
+            )}
+          </ul>
+        </nav>
+        {page.mode.isEditing && (
+          <div className="component-content px-4 text-sm text-white/80">[Navigation]</div>
+        )}
       </div>
     );
   }
@@ -180,14 +237,13 @@ export const Default = ({ params, fields }: NavigationProps) => {
     setIsMenuOpen(forceState ?? !isMenuOpen);
   };
 
-  const isSimpleLayout = isParamEnabled(simpleLayout);
   const preparedFields = prepareFields(fields, !isSimpleLayout);
   const rootItem = Object.values(preparedFields).find((item) => isNavRootItem(item));
-  const logoSrc = extractMediaUrl(logoImage) || INTERSTATE_LOGO_FALLBACK;
   const hasLogoRootItem = rootItem && logoSrc;
 
   const navigationItems = Object.values(preparedFields)
     .filter((item): item is NavItemFields => !!item)
+    .filter((item) => !isNavRootItem(item))
     .map((item) => (
       <NavigationListItem
         key={item.Id}
@@ -199,23 +255,24 @@ export const Default = ({ params, fields }: NavigationProps) => {
     ));
 
   return (
-    <div className={clsx('component navigation', renderingStyles)} id={id}>
-      {logoSrc && (
-        <img
-          src={logoSrc}
-          alt={'logo'}
-          className="mb-18 hidden h-auto w-36 [.drawer-content_&]:block"
-        />
-      )}
-
-      <nav>
+    <div
+      className={clsx('component navigation navigation-interstate-brand', renderingStyles)}
+      id={id}
+    >
+      <nav className="min-h-full min-w-0 flex-1">
         <ul
           role="menubar"
           className={clsx(
-            'navigation-menu container flex flex-row items-center gap-x-8 gap-y-4 text-lg lg:justify-center [.component.header_&]:px-0 [.drawer-content_&]:flex-col [.drawer-content_&]:items-start [.drawer-content_&]:px-0',
-            isSimpleLayout && !hasLogoRootItem && 'lg:justify-end'
+            'navigation-menu container flex min-h-full flex-row items-center gap-x-8 gap-y-4 text-lg lg:justify-center [.component.header_&]:px-0 max-lg:flex-col max-lg:items-start max-lg:px-4 max-lg:py-3 [.drawer-content_&]:flex-col [.drawer-content_&]:items-start [.drawer-content_&]:px-4',
+            isSimpleLayout && !hasLogoRootItem && !hasBrandLogoInGreenBar && 'lg:justify-end'
           )}
         >
+          {hasBrandLogoInGreenBar && (
+            <InterstateNavBrandLogo
+              isSimpleLayout={isSimpleLayout}
+              showMobileStackedLogo
+            />
+          )}
           {navigationItems}
         </ul>
       </nav>

@@ -5,6 +5,12 @@
   "items": {
     "includes": [
       {
+        "name": "nova-medical-site-root",
+        "path": "/sitecore/content/industry-verticals/nova-medical",
+        "scope": "SingleItem",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
         "name": "healthcare-home",
         "path": "/sitecore/content/industry-verticals/nova-medical/home",
         "scope": "DescendantsOnly",

@@ -26,6 +26,7 @@ Here's a quick overview of the major folders and their purpose:
 
 - `xmcloud.build.json`:
   This is the primary configuration file for building and deploying rendering hosts in your SitecoreAI environment.
+  Root `build.json` is a copy of this file so SitecoreAI Deploy (and other tooling) that validate `build.json` see the same `renderingHosts` keys as editing/rendering hosts. Keep them in step when you change hosts (the `create-vertical-from-retail` script updates both).
   Key Sections:
   - renderingHosts: Defines one or more front-end apps to build. Each entry includes:
   - path: where the app is located (e.g., ./industry-verticals/<industry-vertical>)

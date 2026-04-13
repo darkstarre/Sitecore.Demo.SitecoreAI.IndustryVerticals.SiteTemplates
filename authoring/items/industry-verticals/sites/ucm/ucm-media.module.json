@@ -1,0 +1,15 @@
+{
+  "$schema": "../.sitecore/schemas/ModuleFile.schema.json",
+  "namespace": "Project.ucm-Media",
+  "references": ["Project.IndustryVerticals"],
+  "items": {
+    "includes": [
+      {
+        "name": "ucm-media",
+        "path": "/sitecore/Media Library/Project/industry-verticals/ucm",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      }
+    ]
+  }
+}
