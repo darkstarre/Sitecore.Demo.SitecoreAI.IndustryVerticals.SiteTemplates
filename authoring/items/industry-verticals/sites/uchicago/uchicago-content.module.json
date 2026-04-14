@@ -1,0 +1,47 @@
+{
+  "$schema": "../.sitecore/schemas/ModuleFile.schema.json",
+  "namespace": "Project.Uchicago-Content",
+  "references": [
+    "Project.IndustryVerticals"
+  ],
+  "items": {
+    "includes": [
+      {
+        "name": "uchicago-site-root",
+        "path": "/sitecore/content/industry-verticals/uchicago",
+        "scope": "SingleItem",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "uchicago-home",
+        "path": "/sitecore/content/industry-verticals/uchicago/Home",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "uchicago-content-media",
+        "path": "/sitecore/content/industry-verticals/uchicago/Media",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "uchicago-data",
+        "path": "/sitecore/content/industry-verticals/uchicago/Data",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "uchicago-dictionary",
+        "path": "/sitecore/content/industry-verticals/uchicago/Dictionary",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "uchicago-presentation",
+        "path": "/sitecore/content/industry-verticals/uchicago/Presentation",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      }
+    ]
+  }
+}
