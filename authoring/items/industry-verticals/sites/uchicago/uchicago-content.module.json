@@ -15,7 +15,7 @@
       {
         "name": "healthcare-home",
         "path": "/sitecore/content/industry-verticals/uchicago/home",
-        "scope": "ItemAndDescendants",
+        "scope": "DescendantsOnly",
         "allowedPushOperations": "CreateAndUpdate"
       },
       {
