@@ -90,7 +90,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props = {
       page,
       dictionary: await client.getDictionary({
-        site: page.siteName,
+        site: resolveEdgeSiteName(),
         locale: page.locale,
       }),
       componentProps: await client.getComponentData(page.layout, context, components),
