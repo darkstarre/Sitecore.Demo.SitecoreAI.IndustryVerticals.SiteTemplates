@@ -4,6 +4,7 @@ import { BYOCWrapper, NextjsContentSdkComponent, FEaaSWrapper } from '@sitecore-
 import { Form } from '@sitecore-content-sdk/nextjs';
 
 // end of built-in components
+import * as UChicagoLocalChrome from 'src/components/uchicago-chrome/UChicagoLocalChrome';
 import * as Title from 'src/components/title/Title';
 import * as ThemeSwitcher from 'src/components/theme-switcher/ThemeSwitcher';
 import * as ThemeEditor from 'src/components/theme-editor/ThemeEditor';
@@ -20,6 +21,7 @@ import * as LinkList from 'src/components/link-list/LinkList';
 import * as Image from 'src/components/image/Image';
 import * as HeroBanner from 'src/components/hero-banner/HeroBanner';
 import * as HeaderExtended from 'src/components/header-extended/HeaderExtended';
+import * as Header from 'src/components/header/Header';
 import * as Footer from 'src/components/footer/Footer';
 import * as Features from 'src/components/features/Features';
 import * as DoctorsListing from 'src/components/doctors-listing/DoctorsListing';
@@ -32,6 +34,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['BYOCWrapper', BYOCWrapper],
   ['FEaaSWrapper', FEaaSWrapper],
   ['Form', Form],
+  ['UChicagoLocalChrome', { ...UChicagoLocalChrome }],
   ['Title', { ...Title }],
   ['ThemeSwitcher', { ...ThemeSwitcher }],
   ['ThemeEditor', { ...ThemeEditor }],
@@ -48,6 +51,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['Image', { ...Image }],
   ['HeroBanner', { ...HeroBanner, componentType: 'client' }],
   ['HeaderExtended', { ...HeaderExtended }],
+  ['Header', { ...Header, componentType: 'client' }],
   ['Footer', { ...Footer, componentType: 'client' }],
   ['Features', { ...Features, componentType: 'client' }],
   ['DoctorsListing', { ...DoctorsListing }],

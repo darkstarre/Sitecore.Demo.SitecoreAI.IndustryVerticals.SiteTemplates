@@ -2,6 +2,13 @@ import { defineConfig } from '@sitecore-content-sdk/nextjs/config';
 import { resolveEdgeSiteName } from './resolve-edge-site-name';
 
 export default defineConfig({
+  defaultLanguage: process.env.NEXT_PUBLIC_DEFAULT_LANGUAGE || 'en',
+  multisite: {
+    enabled: true,
+    // All industry demos use hostName "*"; a leftover sc_site cookie from another vertical
+    // (e.g. vistra) otherwise wins and SCAI / preview opens the wrong site.
+    useCookieResolution: () => false,
+  },
   api: {
     edge: {
       // Keep config validation from crashing local builds before env vars are set.

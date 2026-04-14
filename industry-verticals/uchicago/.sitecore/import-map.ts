@@ -17,13 +17,13 @@ import BlobAccent from 'src/assets/shapes/BlobAccent';
 import CurvedClip from 'src/assets/shapes/CurvedClip';
 import { CommonStyles, FeatureStyles } from '@/types/styleFlags';
 import BlobAccent_ff719d36323bb13e49440edf42521225aa8ecaa1 from '@/assets/shapes/BlobAccent';
-import { faArrowRight, faBars, faChevronDown, faChevronUp, faTimes, faEnvelope, faPhone, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faBars, faChevronDown, faChevronUp, faTimes, faEnvelope, faPhone, faSearch, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import BlobAccent_c450f25c63b00a2e370305e155038c473dbb9c49 from 'src/components/non-sitecore/BlobAccent';
 import CurvedClip_6089ba18dc7000eae1dc64c54178a20f58206b41 from 'src/components/non-sitecore/CurvedClip';
+import NextLink from 'next/link';
 import { getLinkField, getNavigationText } from '@/helpers/navHelpers';
 import { useI18n } from 'next-localization';
 import HeroClip from '@/assets/shapes/HeroClip';
-import Link_a258c208ba01265ca0aa9c7abae745cc7141aa63 from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Keyboard, Navigation, Pagination } from 'swiper/modules';
 import client from 'lib/sitecore-client';
@@ -113,6 +113,7 @@ const importMap = [
       { name: 'faTimes', value: faTimes },
       { name: 'faEnvelope', value: faEnvelope },
       { name: 'faPhone', value: faPhone },
+      { name: 'faSearch', value: faSearch },
       { name: 'faArrowLeft', value: faArrowLeft },
     ]
   },
@@ -126,6 +127,12 @@ const importMap = [
     module: 'src/components/non-sitecore/CurvedClip',
     exports: [
       { name: 'default', value: CurvedClip_6089ba18dc7000eae1dc64c54178a20f58206b41 },
+    ]
+  },
+  {
+    module: 'next/link',
+    exports: [
+      { name: 'default', value: NextLink },
     ]
   },
   {
@@ -145,12 +152,6 @@ const importMap = [
     module: '@/assets/shapes/HeroClip',
     exports: [
       { name: 'default', value: HeroClip },
-    ]
-  },
-  {
-    module: 'next/link',
-    exports: [
-      { name: 'default', value: Link_a258c208ba01265ca0aa9c7abae745cc7141aa63 },
     ]
   },
   {

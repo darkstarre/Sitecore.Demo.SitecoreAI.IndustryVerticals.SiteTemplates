@@ -6,6 +6,8 @@ import Head from 'next/head';
 import { Placeholder, Field, Page, ImageField } from '@sitecore-content-sdk/nextjs';
 import Scripts from 'src/Scripts';
 import SitecoreStyles from 'src/components/content-sdk/SitecoreStyles';
+import { UChicagoLocalChrome } from 'src/components/uchicago-chrome/UChicagoLocalChrome';
+import { shouldShowUChicagoLocalChrome } from 'src/lib/uchicago-local-chrome';
 import { DesignLibraryLayout } from './DesignLibraryLayout';
 
 interface LayoutProps {
@@ -59,6 +61,7 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
           <>
             <header>
               <div id="header">
+                {shouldShowUChicagoLocalChrome(route) ? <UChicagoLocalChrome /> : null}
                 {route && <Placeholder name="headless-header" rendering={route} />}
               </div>
             </header>
