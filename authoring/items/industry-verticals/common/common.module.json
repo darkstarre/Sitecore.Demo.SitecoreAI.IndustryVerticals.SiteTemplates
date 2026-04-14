@@ -63,11 +63,6 @@
             "allowedPushOperations": "CreateOnly"
           },
           {
-            "path": "/ucm",
-            "scope": "SingleItem",
-            "allowedPushOperations": "CreateOnly"
-          },
-          {
             "path": "/uchicago",
             "scope": "SingleItem",
             "allowedPushOperations": "CreateOnly"
@@ -226,59 +221,9 @@
         ]
       },
       {
-        "name": "sites-ucm",
-        "path": "/sitecore/content/industry-verticals/ucm",
-        "rules": [
-          {
-            "path": "/home",
-            "scope": "SingleItem",
-            "allowedPushOperations": "CreateOnly"
-          },
-          {
-            "path": "/Media",
-            "scope": "SingleItem",
-            "allowedPushOperations": "CreateAndUpdate"
-          },
-          {
-            "path": "/Data",
-            "scope": "SingleItem",
-            "allowedPushOperations": "CreateOnly"
-          },
-          {
-            "path": "/Dictionary",
-            "scope": "SingleItem",
-            "allowedPushOperations": "CreateOnly"
-          },
-          {
-            "path": "/Presentation",
-            "scope": "SingleItem",
-            "allowedPushOperations": "CreateOnly"
-          },
-          {
-            "path": "/Settings/Site Grouping",
-            "scope": "ItemAndDescendants",
-            "allowedPushOperations": "CreateOnly"
-          },
-          {
-            "path": "/Settings",
-            "scope": "ItemAndChildren",
-            "allowedPushOperations": "CreateAndUpdate"
-          },
-          {
-            "path": "*",
-            "scope": "Ignored"
-          }
-        ]
-      },
-      {
         "name": "sites-uchicago",
         "path": "/sitecore/content/industry-verticals/uchicago",
         "rules": [
-          {
-            "path": "/home",
-            "scope": "SingleItem",
-            "allowedPushOperations": "CreateOnly"
-          },
           {
             "path": "/Media",
             "scope": "SingleItem",
