@@ -24,7 +24,7 @@ interface RouteFields {
 
 const Layout = ({ page }: LayoutProps): JSX.Element => {
   const { layout, mode } = page;
-  const { route } = layout.sitecore;
+  const route = layout?.sitecore?.route;
   const fields = route?.fields as RouteFields;
   const mainClassPageEditing = mode.isEditing ? 'editing-mode' : 'prod-mode';
 
@@ -55,21 +55,44 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
       <div className={mainClassPageEditing}>
         {mode.isDesignLibrary ? (
           <DesignLibraryLayout />
+        ) : !route ? (
+          <main className="mx-auto max-w-2xl p-6 text-neutral-900 dark:text-neutral-100">
+            <h1 className="mb-2 text-xl font-semibold">No layout data from Sitecore</h1>
+            <p className="mb-3 text-sm leading-relaxed">
+              The page loaded but there is no route / placeholder data (often a wrong or missing site, or an item
+              without the headless layout). Check:
+            </p>
+            <ul className="list-inside list-disc space-y-1 text-sm">
+              <li>
+                <code className="rounded bg-neutral-100 px-1 dark:bg-neutral-800">NEXT_PUBLIC_DEFAULT_SITE_NAME</code>{' '}
+                in <code className="rounded bg-neutral-100 px-1 dark:bg-neutral-800">.env.local</code> — use{' '}
+                <code className="rounded bg-neutral-100 px-1 dark:bg-neutral-800">nova-medical</code> to match Nova
+                Medical until a <code className="rounded bg-neutral-100 px-1 dark:bg-neutral-800">ucm</code> site exists
+                in CM.
+              </li>
+              <li>
+                Try <code className="rounded bg-neutral-100 px-1 dark:bg-neutral-800">?site=nova-medical</code> or clear
+                the <code className="rounded bg-neutral-100 px-1 dark:bg-neutral-800">sc_site</code> cookie if another
+                site was selected earlier.
+              </li>
+              <li>Edge context id must be for an environment that includes the Nova Medical site.</li>
+            </ul>
+          </main>
         ) : (
           <>
             <header>
               <div id="header">
-                {route && <Placeholder name="headless-header" rendering={route} />}
+                <Placeholder name="headless-header" rendering={route} />
               </div>
             </header>
             <main>
               <div id="content">
-                {route && <Placeholder name="headless-main" rendering={route} />}
+                <Placeholder name="headless-main" rendering={route} />
               </div>
             </main>
             <footer>
               <div id="footer">
-                {route && <Placeholder name="headless-footer" rendering={route} />}
+                <Placeholder name="headless-footer" rendering={route} />
               </div>
             </footer>
           </>

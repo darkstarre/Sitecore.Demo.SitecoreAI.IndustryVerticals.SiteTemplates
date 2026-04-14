@@ -1,3 +1,4 @@
+import './sitecore-env-bootstrap';
 import scConfig from './sitecore.config';
 import { defineCliConfig } from '@sitecore-content-sdk/nextjs/config-cli';
 import {

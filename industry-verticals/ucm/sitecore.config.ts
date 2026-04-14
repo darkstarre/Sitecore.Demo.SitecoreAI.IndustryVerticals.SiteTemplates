@@ -1,7 +1,30 @@
 import { defineConfig } from '@sitecore-content-sdk/nextjs/config';
+
 /**
  * @type {import('@sitecore-content-sdk/nextjs/config').SitecoreConfig}
- * See the documentation for `defineConfig`:
- * https://doc.sitecore.com/xmc/en/developers/content-sdk/the-sitecore-configuration-file.html
+ * See: https://doc.sitecore.com/xmc/en/developers/content-sdk/the-sitecore-configuration-file.html
+ *
+ * Env: Next.js loads .env* during `next dev` / `next build`. For `sitecore-tools`, see sitecore.cli.config.ts.
  */
-export default defineConfig({});
+export default defineConfig({
+  api: {
+    edge: {
+      contextId:
+        process.env.SITECORE_EDGE_CONTEXT_ID ||
+        process.env.NEXT_PUBLIC_SITECORE_EDGE_CONTEXT_ID ||
+        '',
+      clientContextId: process.env.NEXT_PUBLIC_SITECORE_EDGE_CONTEXT_ID || '',
+      edgeUrl: process.env.SITECORE_EDGE_URL || process.env.NEXT_PUBLIC_SITECORE_EDGE_URL,
+    },
+    local: {
+      apiKey:
+        process.env.SITECORE_API_KEY || process.env.NEXT_PUBLIC_SITECORE_API_KEY || '',
+      apiHost:
+        process.env.SITECORE_API_HOST || process.env.NEXT_PUBLIC_SITECORE_API_HOST || '',
+    },
+  },
+  // Until a dedicated CM site exists, default to Nova Medical (same as industry-verticals/healthcare).
+  defaultSite: process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME || 'nova-medical',
+  defaultLanguage: process.env.NEXT_PUBLIC_DEFAULT_LANGUAGE || 'en',
+  editingSecret: process.env.SITECORE_EDITING_SECRET,
+});

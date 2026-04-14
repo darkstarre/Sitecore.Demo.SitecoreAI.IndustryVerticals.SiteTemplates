@@ -20,8 +20,8 @@ function App({ Component, pageProps }: AppProps<SitecorePageProps>): JSX.Element
       */}
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         <I18nProvider
-          lngDict={dictionary}
-          locale={pageProps.page?.locale || scConfig.defaultLanguage}
+          lngDict={dictionary ?? {}}
+          locale={pageProps.page?.locale || scConfig.defaultLanguage || 'en'}
         >
           <Component {...rest} />
         </I18nProvider>

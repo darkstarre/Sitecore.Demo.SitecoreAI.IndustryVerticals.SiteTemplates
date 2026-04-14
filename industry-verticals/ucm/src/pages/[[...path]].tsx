@@ -1,6 +1,6 @@
 import { useEffect, JSX } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import sites from '.sitecore/sites.json';
+import { multisiteSites } from 'lib/multisite-sites';
 import NotFound from 'src/NotFound';
 import Layout from 'src/Layout';
 import {
@@ -53,7 +53,7 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
   if (process.env.NODE_ENV !== 'development' && scConfig.generateStaticPaths) {
     try {
       paths = await client.getPagePaths(
-        sites.map((site: SiteInfo) => site.name),
+        multisiteSites.map((site: SiteInfo) => site.name),
         context?.locales || []
       );
     } catch (error) {
