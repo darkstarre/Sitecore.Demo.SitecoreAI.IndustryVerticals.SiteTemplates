@@ -1,6 +1,6 @@
 import { SitemapMiddleware } from '@sitecore-content-sdk/nextjs/middleware';
 import scClient from 'lib/sitecore-client';
-import { multisiteSites } from 'lib/multisite-sites';
+import { ucmVerticalSites } from 'lib/ucm-vertical-sites';
 
 /**
  * API route for generating sitemap.xml
@@ -10,6 +10,6 @@ import { multisiteSites } from 'lib/multisite-sites';
  */
 
 // Wire up the SitemapMiddleware handler
-const handler = new SitemapMiddleware(scClient, multisiteSites).getHandler();
+const handler = new SitemapMiddleware(scClient, ucmVerticalSites).getHandler();
 
 export default handler;

@@ -30,6 +30,19 @@ const nextConfig = {
   // see https://nextjs.org/docs/app/api-reference/components/image#remotepatterns
   images: {
     remotePatterns: [
+      // XM Cloud delivery / CM hosts (single label like xmc-tenant-env-...sitecorecloud.io does not match `xmc-*.**`)
+      {
+        protocol: 'https',
+        hostname: '**.sitecorecloud.io',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.sitecoresandbox.cloud',
+        port: '',
+        pathname: '/**',
+      },
       {
         protocol: 'https',
         hostname: 'edge*.**',
@@ -44,11 +57,13 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'starter-verticals.sitecoresandbox.cloud',
         port: '',
+        pathname: '/**',
       },
       {
         protocol: 'https',
         hostname: 'starter-verticals-v2.sitecoresandbox.cloud',
         port: '',
+        pathname: '/**',
       },
     ],
   },

@@ -12,9 +12,10 @@
 4. `npm run dev`
 5. Open http://localhost:3000 (middleware usually sends you to a locale path such as `/en`).
 
-### White or blank page locally
+### White or blank page locally / in SCAI
 
-- Use **`NEXT_PUBLIC_DEFAULT_SITE_NAME=nova-medical`** (default in `.env.container.example`) so you load the same site as the healthcare app. After CM has a **ucm** site, switch to **`ucm`**.
+- **Deploy mistake:** the rendering host is often named **`ucm`**, so teams set **`NEXT_PUBLIC_DEFAULT_SITE_NAME=ucm`**. Edge then asks for a Sitecore **site** named `ucm`, which usually has **no layout yet** → blank. This app **maps `ucm` to `nova-medical`** for Edge until you set **`NEXT_PUBLIC_UCM_SITE_READY=true`** and a real **`ucm`** site exists in CM.
+- Prefer **`NEXT_PUBLIC_DEFAULT_SITE_NAME=nova-medical`** on the **`ucm`** host until Nova Medical parity is no longer needed.
 - Confirm Edge **`SITECORE_EDGE_CONTEXT_ID`** / **`NEXT_PUBLIC_SITECORE_EDGE_CONTEXT_ID`** match the environment that includes Nova Medical.
 - Clear the **`sc_site`** cookie or try **`?site=nova-medical`** if you previously hit the app with another default site.
 

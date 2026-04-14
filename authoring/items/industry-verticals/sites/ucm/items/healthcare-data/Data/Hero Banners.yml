@@ -1,0 +1,31 @@
+﻿---
+ID: "bd3cb3e4-f5ac-48c2-b7e0-9fc36e49d5aa"
+Parent: "9d5a9028-becb-47bc-a71e-4eff71ab31b7"
+Template: "38001de0-6d0b-4bc5-bf95-f616cfe0e281"
+Path: "/sitecore/content/industry-verticals/ucm/Data/Hero Banners"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20251112T152806Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\movin.tilakaratne@sitecore.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\movin.tilakaratne@sitecore.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "ffa1d511-b581-4713-bbde-ffc5d49d884e"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\movin.tilakaratne@sitecore.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20251112T152806Z

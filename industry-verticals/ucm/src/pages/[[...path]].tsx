@@ -1,6 +1,6 @@
 import { useEffect, JSX } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { multisiteSites } from 'lib/multisite-sites';
+import { ucmVerticalSites } from 'lib/ucm-vertical-sites';
 import NotFound from 'src/NotFound';
 import Layout from 'src/Layout';
 import {
@@ -8,13 +8,13 @@ import {
   ComponentPropsContext,
   SitecorePageProps,
   StaticPath,
-  SiteInfo,
 } from '@sitecore-content-sdk/nextjs';
 import { extractPath, handleEditorFastRefresh } from '@sitecore-content-sdk/nextjs/utils';
 import { isDesignLibraryPreviewData } from '@sitecore-content-sdk/nextjs/editing';
 import client from 'lib/sitecore-client';
 import components from '.sitecore/component-map';
 import scConfig from 'sitecore.config';
+import { resolveEdgeSiteName } from '../../resolve-edge-site-name';
 
 const SitecorePage = ({ page, notFound, componentProps }: SitecorePageProps): JSX.Element => {
   useEffect(() => {
@@ -53,7 +53,7 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
   if (process.env.NODE_ENV !== 'development' && scConfig.generateStaticPaths) {
     try {
       paths = await client.getPagePaths(
-        multisiteSites.map((site: SiteInfo) => site.name),
+        ucmVerticalSites.map((site) => site.name),
         context?.locales || []
       );
     } catch (error) {
@@ -83,7 +83,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
   } else {
     page = context.preview
       ? await client.getPreview(context.previewData)
-      : await client.getPage(path, { locale: context.locale });
+      : await client.getPage(path, {
+          locale: context.locale,
+          site: resolveEdgeSiteName(),
+        });
   }
   if (page) {
     props = {

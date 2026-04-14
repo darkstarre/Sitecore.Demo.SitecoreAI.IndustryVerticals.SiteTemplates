@@ -1,6 +1,6 @@
 import { RobotsMiddleware } from '@sitecore-content-sdk/nextjs/middleware';
 import scClient from 'lib/sitecore-client';
-import { multisiteSites } from 'lib/multisite-sites';
+import { ucmVerticalSites } from 'lib/ucm-vertical-sites';
 
 /**
  * API route for serving robots.txt
@@ -11,6 +11,6 @@ import { multisiteSites } from 'lib/multisite-sites';
  */
 
 // Wire up the RobotsMiddleware handler
-const handler = new RobotsMiddleware(scClient, multisiteSites).getHandler();
+const handler = new RobotsMiddleware(scClient, ucmVerticalSites).getHandler();
 
 export default handler;

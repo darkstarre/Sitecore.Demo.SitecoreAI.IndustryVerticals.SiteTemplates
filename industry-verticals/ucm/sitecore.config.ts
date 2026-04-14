@@ -1,4 +1,5 @@
 import { defineConfig } from '@sitecore-content-sdk/nextjs/config';
+import { resolveEdgeSiteName } from './resolve-edge-site-name';
 
 /**
  * @type {import('@sitecore-content-sdk/nextjs/config').SitecoreConfig}
@@ -17,14 +18,12 @@ export default defineConfig({
       edgeUrl: process.env.SITECORE_EDGE_URL || process.env.NEXT_PUBLIC_SITECORE_EDGE_URL,
     },
     local: {
-      apiKey:
-        process.env.SITECORE_API_KEY || process.env.NEXT_PUBLIC_SITECORE_API_KEY || '',
-      apiHost:
-        process.env.SITECORE_API_HOST || process.env.NEXT_PUBLIC_SITECORE_API_HOST || '',
+      apiKey: process.env.SITECORE_API_KEY || process.env.NEXT_PUBLIC_SITECORE_API_KEY || '',
+      apiHost: process.env.SITECORE_API_HOST || process.env.NEXT_PUBLIC_SITECORE_API_HOST || '',
     },
   },
-  // Until a dedicated CM site exists, default to Nova Medical (same as industry-verticals/healthcare).
-  defaultSite: process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME || 'nova-medical',
+  // Sitecore site name for Edge (not the Deploy rendering-host slug). See resolve-edge-site-name.ts.
+  defaultSite: resolveEdgeSiteName(),
   defaultLanguage: process.env.NEXT_PUBLIC_DEFAULT_LANGUAGE || 'en',
   editingSecret: process.env.SITECORE_EDITING_SECRET,
 });

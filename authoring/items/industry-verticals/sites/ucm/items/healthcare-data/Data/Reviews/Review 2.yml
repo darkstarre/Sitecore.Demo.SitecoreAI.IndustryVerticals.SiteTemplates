@@ -1,0 +1,48 @@
+﻿---
+ID: "8b56a5d3-7af1-4ecf-a9ae-961dde06ef24"
+Parent: "299443b5-1649-4aad-a5cf-ea27f5a01dab"
+Template: "58a32680-fc59-49bc-890c-fd69f7a9cf1a"
+Path: "/sitecore/content/industry-verticals/ucm/Data/Reviews/Review 2"
+SharedFields:
+- ID: "9f389762-fc1e-4bb1-9fc9-5ae25a3e1f38"
+  Hint: Avatar
+  Value: |
+    <Image src="https://starter-verticals-v2.sitecoresandbox.cloud/api/public/content/62174-HomepagePromoCTAs-1100x740?v=1055df0e" dam-id="N_JUx9YbTpGmHo02nRIX2g" width="1100" height="740" alt="Tarik Beltran.jpg" dam-content-type="Image" thumbnailsrc="https://starter-verticals-v2.sitecoresandbox.cloud/api/gateway/62174/thumbnail" />
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "22d33d48-cf3b-4014-b50d-05cb1244a012"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20251121T112655Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\isuru.bandara@sitecore.com
+    - ID: "52f7ed6b-3e64-453f-9499-1a7281a05dc9"
+      Hint: Description
+      Value: From the free ambulance service to the friendly staff, Nova Medical truly goes above and beyond for their patients.
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\isuru.bandara@sitecore.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "423966e7-c255-4be1-b733-77af7d369b97"
+    - ID: "997e5f9c-d7b6-4704-9add-8e2ffcd15c2c"
+      Hint: ReviewerName
+      Value: James L.
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\ranula.gamage@sitecore.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260129T105919Z

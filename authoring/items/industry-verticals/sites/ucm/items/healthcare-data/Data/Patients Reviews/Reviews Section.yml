@@ -1,0 +1,40 @@
+﻿---
+ID: "e2aad244-fb4c-4eec-af40-1e76fa4acb02"
+Parent: "67c0c91b-9fea-4edb-b088-03d2542f2818"
+Template: "4aeaa1d5-0823-461d-8d2d-94286a5de0a6"
+Path: "/sitecore/content/industry-verticals/ucm/Data/Patients Reviews/Reviews Section"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20251118T101437Z
+    - ID: "4952a853-becb-4896-95db-c32559e99f99"
+      Hint: Reviews
+      Value: |
+        {224e462e-d0e0-4ace-a0fc-1b657a8996d0}
+        {8b56a5d3-7af1-4ecf-a9ae-961dde06ef24}
+        {bb9e4c78-1a0c-459f-8985-5c9a736a6b0f}
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\isuru.bandara@sitecore.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\isuru.bandara@sitecore.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "377c2ec0-4915-41a7-bfd9-845a5be665b2"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\isuru.bandara@sitecore.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20251125T095511Z

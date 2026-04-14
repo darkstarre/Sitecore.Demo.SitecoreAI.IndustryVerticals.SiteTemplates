@@ -69,19 +69,16 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
                 </code>{' '}
                 in{' '}
                 <code className="rounded bg-neutral-100 px-1 dark:bg-neutral-800">.env.local</code>{' '}
-                — use{' '}
+                — use <code className="rounded bg-neutral-100 px-1 dark:bg-neutral-800">ucm</code>{' '}
+                in CM and{' '}
                 <code className="rounded bg-neutral-100 px-1 dark:bg-neutral-800">
-                  nova-medical
-                </code>{' '}
-                to match Nova Medical until a{' '}
-                <code className="rounded bg-neutral-100 px-1 dark:bg-neutral-800">ucm</code> site
-                exists in CM.
+                  NEXT_PUBLIC_DEFAULT_SITE_NAME=ucm
+                </code>
+                .
               </li>
               <li>
                 Try{' '}
-                <code className="rounded bg-neutral-100 px-1 dark:bg-neutral-800">
-                  ?site=nova-medical
-                </code>{' '}
+                <code className="rounded bg-neutral-100 px-1 dark:bg-neutral-800">?site=ucm</code>{' '}
                 or clear the{' '}
                 <code className="rounded bg-neutral-100 px-1 dark:bg-neutral-800">sc_site</code>{' '}
                 cookie if another site was selected earlier.

@@ -5,14 +5,14 @@ import {
   PersonalizeMiddleware,
   RedirectsMiddleware,
 } from '@sitecore-content-sdk/nextjs/middleware';
-import { multisiteSites } from 'lib/multisite-sites';
+import { ucmVerticalSites } from 'lib/ucm-vertical-sites';
 import scConfig from 'sitecore.config';
 
 const multisite = new MultisiteMiddleware({
   /**
    * List of sites for site resolver to work with
    */
-  sites: multisiteSites,
+  sites: ucmVerticalSites,
   ...scConfig.api.edge,
   ...scConfig.multisite,
   // This function determines if the middleware should be turned off on per-request basis.
@@ -24,7 +24,7 @@ const redirects = new RedirectsMiddleware({
   /**
    * List of sites for site resolver to work with
    */
-  sites: multisiteSites,
+  sites: ucmVerticalSites,
   ...scConfig.api.edge,
   ...scConfig.redirects,
   // This function determines if the middleware should be turned off on per-request basis.
@@ -38,7 +38,7 @@ const personalize = new PersonalizeMiddleware({
   /**
    * List of sites for site resolver to work with
    */
-  sites: multisiteSites,
+  sites: ucmVerticalSites,
   ...scConfig.api.edge,
   ...scConfig.personalize,
   // This function determines if the middleware should be turned off on per-request basis.
