@@ -7,7 +7,8 @@ import {
 } from '@sitecore-content-sdk/nextjs/codegen';
 // end of built-in imports
 
-import { Link, Text, useSitecore, RichText, withDatasourceCheck, Placeholder, NextImage, CdpHelper } from '@sitecore-content-sdk/nextjs';
+import Link from 'next/link';
+import { Link as Link_8a80e63291fea86e0744df19113dc44bec187216, Text, useSitecore, RichText, withDatasourceCheck, Placeholder, NextImage, CdpHelper } from '@sitecore-content-sdk/nextjs';
 import { useEffect, useMemo, useState, useId } from 'react';
 import React from 'react';
 import { useTheme } from 'next-themes';
@@ -20,7 +21,6 @@ import BlobAccent_ff719d36323bb13e49440edf42521225aa8ecaa1 from '@/assets/shapes
 import { faArrowRight, faBars, faChevronDown, faChevronUp, faTimes, faEnvelope, faPhone, faSearch, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import BlobAccent_c450f25c63b00a2e370305e155038c473dbb9c49 from 'src/components/non-sitecore/BlobAccent';
 import CurvedClip_6089ba18dc7000eae1dc64c54178a20f58206b41 from 'src/components/non-sitecore/CurvedClip';
-import NextLink from 'next/link';
 import { getLinkField, getNavigationText } from '@/helpers/navHelpers';
 import { useI18n } from 'next-localization';
 import HeroClip from '@/assets/shapes/HeroClip';
@@ -36,9 +36,15 @@ import { extractMediaUrl } from '@/helpers/extractMediaUrl';
 
 const importMap = [
   {
+    module: 'next/link',
+    exports: [
+      { name: 'default', value: Link },
+    ]
+  },
+  {
     module: '@sitecore-content-sdk/nextjs',
     exports: [
-      { name: 'Link', value: Link },
+      { name: 'Link', value: Link_8a80e63291fea86e0744df19113dc44bec187216 },
       { name: 'Text', value: Text },
       { name: 'useSitecore', value: useSitecore },
       { name: 'RichText', value: RichText },
@@ -127,12 +133,6 @@ const importMap = [
     module: 'src/components/non-sitecore/CurvedClip',
     exports: [
       { name: 'default', value: CurvedClip_6089ba18dc7000eae1dc64c54178a20f58206b41 },
-    ]
-  },
-  {
-    module: 'next/link',
-    exports: [
-      { name: 'default', value: NextLink },
     ]
   },
   {

@@ -166,7 +166,7 @@ const NavigationList = (props: NavigationListProps) => {
   }
 
   return (
-       <li
+    <li
       className={`${classNameList} group relative flex flex-col ${active ? 'active' : ''}`}
       key={props.fields.Id}
       tabIndex={0}
@@ -176,7 +176,7 @@ const NavigationList = (props: NavigationListProps) => {
           field={getLinkField(props)}
           editable={page.mode.isEditing}
           onClick={props.handleClick}
-          className={`whitespace-nowrap rounded px-3 py-2 text-[0.9375rem] font-medium text-neutral-800 hover:bg-neutral-100 hover:text-[#6d1325] lg:py-1 ${
+          className={`rounded px-3 py-2 text-[0.9375rem] font-medium whitespace-nowrap text-neutral-800 hover:bg-neutral-100 hover:text-[#6d1325] lg:py-1 ${
             isRootItem ? 'tracking-normal' : ''
           }`}
         >
@@ -204,7 +204,7 @@ const NavigationList = (props: NavigationListProps) => {
         <ul
           className={`z-[110] flex min-w-[12rem] flex-col gap-0.5 ${
             isRootItem
-              ? 'lg:absolute lg:top-full lg:left-0 lg:mt-1 lg:hidden lg:rounded-md lg:border lg:border-neutral-200 lg:bg-white lg:p-2 lg:shadow-lg lg:group-hover:flex lg:group-focus-within:flex'
+              ? 'lg:absolute lg:top-full lg:left-0 lg:mt-1 lg:hidden lg:rounded-md lg:border lg:border-neutral-200 lg:bg-white lg:p-2 lg:shadow-lg lg:group-focus-within:flex lg:group-hover:flex'
               : `bg-neutral-50 py-1 pl-2 lg:absolute lg:top-0 lg:left-full lg:ml-1 lg:rounded-md lg:border lg:border-neutral-200 lg:bg-white lg:p-2 lg:shadow-md ${
                   active ? 'flex' : 'hidden'
                 }`

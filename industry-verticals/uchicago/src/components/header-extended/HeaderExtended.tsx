@@ -55,7 +55,10 @@ export const Default = (props: HeaderProps) => {
   const phId = props.params?.DynamicPlaceholderId ?? '3';
 
   return (
-    <section className={`ucm-header text-neutral-900 ${props.params.styles ?? ''}`} id={id ? id : undefined}>
+    <section
+      className={`ucm-header text-neutral-900 ${props.params.styles ?? ''}`}
+      id={id ? id : undefined}
+    >
       <div className="bg-[#3d3d3d] text-[0.8125rem] text-white">
         <div className="container flex flex-col gap-2 py-2 sm:flex-row sm:items-center sm:justify-between">
           <div className="-mx-1 flex max-w-full flex-wrap items-center gap-x-0 gap-y-1 overflow-x-auto px-1 sm:flex-nowrap sm:overflow-visible">
@@ -113,7 +116,7 @@ export const Default = (props: HeaderProps) => {
                 )}
               </Link>
             </div>
-            <p className="hidden max-w-[12.5rem] text-xs font-semibold leading-snug tracking-wide text-neutral-600 sm:block lg:text-[0.8125rem]">
+            <p className="hidden max-w-[12.5rem] text-xs leading-snug font-semibold tracking-wide text-neutral-600 sm:block lg:text-[0.8125rem]">
               At the Forefront of Medicine
             </p>
           </div>
@@ -131,7 +134,10 @@ export const Default = (props: HeaderProps) => {
                 <FontAwesomeIcon icon={faSearch} className="h-4 w-4" />
               </button>
               <div className="hidden sm:block">
-                <Placeholder name={`header-extended-theme-switcher-${phId}`} rendering={props.rendering} />
+                <Placeholder
+                  name={`header-extended-theme-switcher-${phId}`}
+                  rendering={props.rendering}
+                />
               </div>
               <div className="flex items-center gap-2 border-l border-neutral-200 pl-3">
                 {linkHasHref(f?.MailLink) ? (
