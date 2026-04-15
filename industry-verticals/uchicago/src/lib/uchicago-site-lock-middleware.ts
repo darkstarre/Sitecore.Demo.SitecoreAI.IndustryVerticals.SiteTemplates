@@ -15,7 +15,7 @@ function matchesOurSite(value: string | undefined | null): boolean {
  * serves UChicago — normalize URL and preview cookie so rewrites and layout stay on uchicago.
  */
 export const uchicagoSiteLockMiddleware = {
-  handle(req: NextRequest, res: NextResponse): NextResponse {
+  async handle(req: NextRequest, res: NextResponse): Promise<NextResponse> {
     const url = req.nextUrl.clone();
     let dirty = false;
 
@@ -64,7 +64,7 @@ const isProd = process.env.NODE_ENV === 'production';
  * persist. This host only serves UChicago — always emit the correct `sc_site` on the response.
  */
 export const uchicagoPinnedScSiteMiddleware = {
-  handle(_req: NextRequest, res: NextResponse): NextResponse {
+  async handle(_req: NextRequest, res: NextResponse): Promise<NextResponse> {
     res.cookies.set('sc_site', UCHICAGO_EDGE_SITE_NAME, {
       path: '/',
       httpOnly: true,
