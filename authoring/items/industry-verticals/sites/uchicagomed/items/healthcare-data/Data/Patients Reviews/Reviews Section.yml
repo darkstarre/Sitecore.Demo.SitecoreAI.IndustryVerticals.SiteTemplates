@@ -1,0 +1,40 @@
+﻿---
+ID: "3aa3fe27-4e1a-4173-aedc-a7a8e66faa57"
+Parent: "c2f6e429-a29b-4b5d-8d36-56e960a4a01e"
+Template: "4aeaa1d5-0823-461d-8d2d-94286a5de0a6"
+Path: "/sitecore/content/industry-verticals/uchicagomed/Data/Patients Reviews/Reviews Section"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20251118T101437Z
+    - ID: "4952a853-becb-4896-95db-c32559e99f99"
+      Hint: Reviews
+      Value: |
+        {224E3B04-7F2F-4303-941C-A723BFFF2BA7}
+        {9FB49175-EF13-4D89-B2C7-207ED58B3FA6}
+        {BC6250A0-8B12-43F0-91EF-76BB86DB35A5}
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\isuru.bandara@sitecore.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\isuru.bandara@sitecore.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "377c2ec0-4915-41a7-bfd9-845a5be665b2"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\isuru.bandara@sitecore.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20251125T095511Z

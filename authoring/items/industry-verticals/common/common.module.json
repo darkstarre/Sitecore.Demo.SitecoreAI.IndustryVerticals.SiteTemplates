@@ -63,7 +63,7 @@
             "allowedPushOperations": "CreateOnly"
           },
           {
-            "path": "/ucm",
+            "path": "/uchicagomed",
             "scope": "SingleItem",
             "allowedPushOperations": "CreateOnly"
           }
@@ -221,8 +221,8 @@
         ]
       },
       {
-        "name": "sites-ucm",
-        "path": "/sitecore/content/industry-verticals/ucm",
+        "name": "sites-uchicagomed",
+        "path": "/sitecore/content/industry-verticals/uchicagomed",
         "rules": [
           {
             "path": "/home",

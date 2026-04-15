@@ -1,0 +1,45 @@
+{
+  "$schema": "../.sitecore/schemas/ModuleFile.schema.json",
+  "namespace": "Project.Uchicagomed-Content",
+  "references": ["Project.IndustryVerticals"],
+  "items": {
+    "includes": [
+      {
+        "name": "uchicagomed-site-root",
+        "path": "/sitecore/content/industry-verticals/uchicagomed",
+        "scope": "SingleItem",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "uchicagomed-home",
+        "path": "/sitecore/content/industry-verticals/uchicagomed/home",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "uchicagomed-media",
+        "path": "/sitecore/content/industry-verticals/uchicagomed/Media",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "uchicagomed-data",
+        "path": "/sitecore/content/industry-verticals/uchicagomed/Data",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "uchicagomed-dictionary",
+        "path": "/sitecore/content/industry-verticals/uchicagomed/Dictionary",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "uchicagomed-presentation",
+        "path": "/sitecore/content/industry-verticals/uchicagomed/Presentation",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      }
+    ]
+  }
+}
