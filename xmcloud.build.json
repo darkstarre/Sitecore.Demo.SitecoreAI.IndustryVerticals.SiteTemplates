@@ -89,15 +89,6 @@
       "type": "sxa",
       "buildCommand": "build",
       "runCommand": "next:start"
-    },
-    "uchicago": {
-      "path": "./industry-verticals/uchicago",
-      "nodeVersion": "22.11.0",
-      "jssDeploymentSecret": "110F1C44A496B45478640DD36F80C18C9",
-      "enabled": true,
-      "type": "sxa",
-      "buildCommand": "build",
-      "runCommand": "next:start"
     }
   },
   "deployItems": {
@@ -124,9 +115,7 @@
           "Project.Interstate-Media",
           "Project.Interstate-Content",
           "Project.Littelfuse-Media",
-          "Project.Littelfuse-Content",
-          "Project.Uchicago-Media",
-          "Project.Uchicago-Content"
+          "Project.Littelfuse-Content"
         ]
       },
       "warmUpCm": {
