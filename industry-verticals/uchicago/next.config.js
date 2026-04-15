@@ -29,6 +29,8 @@ const nextConfig = {
   // can be served from the Next.js Image Optimization API
   // see https://nextjs.org/docs/app/api-reference/components/image#remotepatterns
   images: {
+    // Sitecore DAM / Edge often serves logos as SVG; Next.js blocks them unless explicitly allowed.
+    dangerouslyAllowSVG: true,
     remotePatterns: [
       {
         protocol: 'https',
