@@ -5,7 +5,7 @@
   "items": {
     "includes": [
       {
-        "name": "uchicagomed-media",
+        "name": "nova-media",
         "path": "/sitecore/Media Library/Project/industry-verticals/uchicagomed",
         "scope": "DescendantsOnly",
         "allowedPushOperations": "CreateUpdateAndDelete"
