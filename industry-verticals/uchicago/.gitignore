@@ -26,6 +26,7 @@
 # except for component-map
 !.sitecore/component-map.ts
 !.sitecore/import-map.ts
+!.sitecore/sites.json
 
 *storybook.log
 storybook-static

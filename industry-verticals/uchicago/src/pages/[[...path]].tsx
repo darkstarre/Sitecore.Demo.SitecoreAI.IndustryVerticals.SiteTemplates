@@ -1,6 +1,6 @@
 import { useEffect, JSX } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { uchicagoVerticalSites } from 'lib/uchicago-vertical-sites';
+import sites from '.sitecore/sites.json';
 import NotFound from 'src/NotFound';
 import Layout from 'src/Layout';
 import {
@@ -15,7 +15,6 @@ import { isDesignLibraryPreviewData } from '@sitecore-content-sdk/nextjs/editing
 import client from 'lib/sitecore-client';
 import components from '.sitecore/component-map';
 import scConfig from 'sitecore.config';
-import { resolveEdgeSiteName } from '../../resolve-edge-site-name';
 
 const SitecorePage = ({ page, notFound, componentProps }: SitecorePageProps): JSX.Element => {
   useEffect(() => {
@@ -54,7 +53,7 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
   if (process.env.NODE_ENV !== 'development' && scConfig.generateStaticPaths) {
     try {
       paths = await client.getPagePaths(
-        uchicagoVerticalSites.map((site: SiteInfo) => site.name),
+        sites.map((site: SiteInfo) => site.name),
         context?.locales || []
       );
     } catch (error) {
@@ -73,7 +72,7 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
 
 // This function gets called at build time on server-side.
 // It may be called again, on a serverless function, if
-// revalidation (or fallback) is enabled and a new request comes in.
+// revalidation is enabled and a new request comes in.
 export const getStaticProps: GetStaticProps = async (context) => {
   let props = {};
   const path = extractPath(context);
@@ -84,13 +83,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
   } else {
     page = context.preview
       ? await client.getPreview(context.previewData)
-      : await client.getPage(path, { locale: context.locale, site: resolveEdgeSiteName() });
+      : await client.getPage(path, { locale: context.locale });
   }
   if (page) {
     props = {
       page,
       dictionary: await client.getDictionary({
-        site: resolveEdgeSiteName(),
+        site: page.siteName,
         locale: page.locale,
       }),
       componentProps: await client.getComponentData(page.layout, context, components),
@@ -98,9 +97,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
   return {
     props,
-    // Next.js will attempt to re-generate the page:
-    // - When a request comes in
-    // - At most once every 5 seconds
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
     // - At most once every 5 seconds

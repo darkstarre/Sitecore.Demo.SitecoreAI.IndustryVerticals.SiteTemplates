@@ -1,6 +1,6 @@
 import { RobotsMiddleware } from '@sitecore-content-sdk/nextjs/middleware';
 import scClient from 'lib/sitecore-client';
-import { uchicagoVerticalSites } from 'lib/uchicago-vertical-sites';
+import sites from '.sitecore/sites.json';
 
 /**
  * API route for serving robots.txt
@@ -11,6 +11,6 @@ import { uchicagoVerticalSites } from 'lib/uchicago-vertical-sites';
  */
 
 // Wire up the RobotsMiddleware handler
-const handler = new RobotsMiddleware(scClient, uchicagoVerticalSites).getHandler();
+const handler = new RobotsMiddleware(scClient, sites).getHandler();
 
 export default handler;

@@ -1,6 +1,6 @@
 import { SitemapMiddleware } from '@sitecore-content-sdk/nextjs/middleware';
 import scClient from 'lib/sitecore-client';
-import { uchicagoVerticalSites } from 'lib/uchicago-vertical-sites';
+import sites from '.sitecore/sites.json';
 
 /**
  * API route for generating sitemap.xml
@@ -10,6 +10,6 @@ import { uchicagoVerticalSites } from 'lib/uchicago-vertical-sites';
  */
 
 // Wire up the SitemapMiddleware handler
-const handler = new SitemapMiddleware(scClient, uchicagoVerticalSites).getHandler();
+const handler = new SitemapMiddleware(scClient, sites).getHandler();
 
 export default handler;
