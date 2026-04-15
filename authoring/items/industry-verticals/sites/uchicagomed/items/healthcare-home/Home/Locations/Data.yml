@@ -1,0 +1,13 @@
+---
+ID: "8f6cc2e2-9f88-4fc1-aaf4-6ad9a8cd7e21"
+Parent: "5f4a8f8e-4d69-4a8a-b8f7-f2cf8bce9d11"
+Template: "1c82e550-ebcd-4e5d-8abd-d50d0809541e"
+Path: "/sitecore/content/industry-verticals/uchicagomed/Home/Locations/Data"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20260415T173600Z
