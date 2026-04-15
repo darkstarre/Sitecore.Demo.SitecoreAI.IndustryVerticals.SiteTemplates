@@ -1,22 +1,12 @@
 import './sitecore-env-bootstrap';
 import scConfig from './sitecore.config';
 import { defineCliConfig } from '@sitecore-content-sdk/nextjs/config-cli';
-import {
-  generateSites,
-  generateMetadata,
-  extractFiles,
-  writeImportMap,
-} from '@sitecore-content-sdk/nextjs/tools';
-
-const hasEdgeContext =
-  !!process.env.SITECORE_EDGE_CONTEXT_ID || !!process.env.NEXT_PUBLIC_SITECORE_EDGE_CONTEXT_ID;
-const hasLocalApi =
-  (!!process.env.SITECORE_API_HOST || !!process.env.NEXT_PUBLIC_SITECORE_API_HOST) &&
-  (!!process.env.SITECORE_API_KEY || !!process.env.NEXT_PUBLIC_SITECORE_API_KEY);
+import { generateMetadata, extractFiles, writeImportMap } from '@sitecore-content-sdk/nextjs/tools';
 
 const buildCommands = [
   generateMetadata(),
-  ...(hasEdgeContext || hasLocalApi ? [generateSites()] : []),
+  // Omit generateSites(): it overwrites .sitecore/sites.json with every Edge tenant and blows up
+  // getStaticPaths / multisite for this single-site app. sites.json is committed for uchicago only.
   extractFiles(),
   writeImportMap({
     paths: ['src/components'],

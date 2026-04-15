@@ -8,50 +8,5 @@
     "name": "uchicago",
     "hostName": "*",
     "language": "en"
-  },
-  {
-    "name": "vistra",
-    "hostName": "*",
-    "language": "en"
-  },
-  {
-    "name": "gridwell",
-    "hostName": "*",
-    "language": "en"
-  },
-  {
-    "name": "forma-lux",
-    "hostName": "*",
-    "language": "en"
-  },
-  {
-    "name": "nova-medical",
-    "hostName": "*",
-    "language": "en"
-  },
-  {
-    "name": "orrick",
-    "hostName": "*",
-    "language": "en"
-  },
-  {
-    "name": "littelfuse",
-    "hostName": "*",
-    "language": "en"
-  },
-  {
-    "name": "interstate",
-    "hostName": "*",
-    "language": "en"
-  },
-  {
-    "name": "essential-living",
-    "hostName": "*",
-    "language": "en"
-  },
-  {
-    "name": "skywings",
-    "hostName": "*",
-    "language": "en"
   }
 ]
