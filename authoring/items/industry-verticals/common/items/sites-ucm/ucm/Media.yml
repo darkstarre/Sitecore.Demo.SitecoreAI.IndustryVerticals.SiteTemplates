@@ -1,6 +1,6 @@
----
-ID: "289f1095-2b97-450a-b96c-20d60f9350f5"
-Parent: "673dd45c-2b25-45e4-8de0-55ac146a3b26"
+﻿---
+ID: "85c6b7b7-33c0-4037-bec4-827760571c68"
+Parent: "c4bed94e-b2da-4602-90ef-1064c56223ab"
 Template: "e8e8c94f-4248-43c3-a79f-99fbb49d78e6"
 Path: "/sitecore/content/industry-verticals/ucm/Media"
 BranchID: "45cf9f42-b3ac-4412-aab9-f8441c7e448e"
@@ -14,7 +14,7 @@ SharedFields:
 - ID: "de8257d9-43aa-4eff-a2f4-2e9fbbd20e79"
   Hint: AdditionalChildren
   Value: |
-    {7EDD6892-5114-4163-944D-E103E06EFA0A}
+    {37EE9EFF-D32E-4C57-9173-43219B93B0BC}
     {D6CFA4C3-B639-4C22-BFD9-24F71C3F50D7}
 - ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
   Hint: __Originator

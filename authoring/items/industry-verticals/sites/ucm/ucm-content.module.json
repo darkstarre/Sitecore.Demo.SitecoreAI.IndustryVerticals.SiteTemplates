@@ -1,6 +1,6 @@
 {
   "$schema": "../.sitecore/schemas/ModuleFile.schema.json",
-  "namespace": "Project.ucm-Content",
+  "namespace": "Project.Ucm-Content",
   "references": ["Project.IndustryVerticals"],
   "items": {
     "includes": [
@@ -12,7 +12,7 @@
       },
       {
         "name": "ucm-home",
-        "path": "/sitecore/content/industry-verticals/ucm/Home",
+        "path": "/sitecore/content/industry-verticals/ucm/home",
         "scope": "DescendantsOnly",
         "allowedPushOperations": "CreateAndUpdate"
       },

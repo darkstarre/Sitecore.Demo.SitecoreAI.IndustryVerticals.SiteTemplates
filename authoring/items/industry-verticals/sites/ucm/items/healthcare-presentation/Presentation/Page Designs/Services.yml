@@ -1,12 +1,12 @@
 ﻿---
-ID: "17a903d6-46c5-4720-8de6-792282f625ce"
-Parent: "30be9a6b-5d93-47cf-8eaa-5f86c4ee88c0"
+ID: "cef217bb-6371-4e2b-9949-5c99f88b6c5a"
+Parent: "d3a099e3-944a-4134-8e3f-7f9359b15dbd"
 Template: "1105b8f8-1e00-426b-bf1f-c840742d827b"
 Path: "/sitecore/content/industry-verticals/ucm/Presentation/Page Designs/Services"
 SharedFields:
 - ID: "0966b999-0d0e-4278-acc9-9da69d461fe6"
   Hint: PartialDesigns
-  Value: "2325c2bf-c0eb-47a3-baf1-b34c91589b98|8f896623-4161-4080-858e-c67888ee768b|ab51bac4-4fb4-4ba1-8267-a2e8c0c3b1fe"
+  Value: "6bc5ecb1-2407-4fd6-885f-e6b94331ca07|1331aa30-3ecf-4ace-bad0-bd3fd751b983|97516906-c297-4c97-a5ca-c3926b23da1f"
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |

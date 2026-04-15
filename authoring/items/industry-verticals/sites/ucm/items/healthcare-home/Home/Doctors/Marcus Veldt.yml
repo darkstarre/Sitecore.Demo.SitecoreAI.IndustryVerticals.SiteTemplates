@@ -1,6 +1,6 @@
 ﻿---
-ID: "1a95545e-8fb5-43c0-bc53-fcb481cd722c"
-Parent: "9a7640f0-61e3-484e-bf81-3d20324dbc1b"
+ID: "7274be66-b409-4cf0-beda-0038309ffbb0"
+Parent: "6dd4c27e-9c20-41ba-8aeb-081766df083c"
 Template: "2f814f03-c3ef-4229-854c-cbced6d24704"
 Path: "/sitecore/content/industry-verticals/ucm/Home/Doctors/Marcus Veldt"
 SharedFields:
@@ -10,7 +10,7 @@ SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{33e00a8f-1504-47f7-8c22-c7de5abd49b6}" />
+    <image mediaid="{E8899367-B6D5-465E-8117-F192E6556AB0}" />
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
   Value: "ee4da141-0719-40ee-bfa1-9bf7110f0ce8"

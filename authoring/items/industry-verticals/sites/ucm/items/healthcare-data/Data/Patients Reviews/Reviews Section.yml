@@ -1,6 +1,6 @@
 ﻿---
-ID: "e2aad244-fb4c-4eec-af40-1e76fa4acb02"
-Parent: "67c0c91b-9fea-4edb-b088-03d2542f2818"
+ID: "17d5c54d-b829-4b7c-8504-f646a7b3a220"
+Parent: "b11f6a0f-e3d7-433f-8dad-f89b09f1ad3a"
 Template: "4aeaa1d5-0823-461d-8d2d-94286a5de0a6"
 Path: "/sitecore/content/industry-verticals/ucm/Data/Patients Reviews/Reviews Section"
 Languages:
@@ -17,9 +17,9 @@ Languages:
     - ID: "4952a853-becb-4896-95db-c32559e99f99"
       Hint: Reviews
       Value: |
-        {224e462e-d0e0-4ace-a0fc-1b657a8996d0}
-        {8b56a5d3-7af1-4ecf-a9ae-961dde06ef24}
-        {bb9e4c78-1a0c-459f-8985-5c9a736a6b0f}
+        {438483EE-84FA-4CB9-AFB1-05437FC07486}
+        {EB1767F1-E1D3-479F-8816-1E80B51157FD}
+        {F2EB988F-E810-4311-8BF2-CE7E0F807092}
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |

@@ -1,13 +1,13 @@
 ﻿---
-ID: "6eb6970d-31f7-4398-ae82-ff0ef79053f6"
-Parent: "f58f120c-5508-445e-b409-bc63bf3793eb"
+ID: "564ae823-bafe-4a6f-b8b8-3f3051014722"
+Parent: "fa6c49cb-b708-4d82-9eef-cc7afd05338b"
 Template: "c0274e9d-2974-4766-a29a-0c4f9faf8c86"
 Path: "/sitecore/content/industry-verticals/ucm/Home/Services/Telehealth"
 SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{73e5e8cb-246b-41ce-af50-462aeaa743b5}" />
+    <image mediaid="{0C8D7B58-22B8-442E-8B1D-26A209C9026D}" />
 Languages:
 - Language: en
   Versions:

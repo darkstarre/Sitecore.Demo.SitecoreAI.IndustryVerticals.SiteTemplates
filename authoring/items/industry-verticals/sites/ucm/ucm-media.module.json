@@ -1,6 +1,6 @@
 {
   "$schema": "../.sitecore/schemas/ModuleFile.schema.json",
-  "namespace": "Project.ucm-Media",
+  "namespace": "Project.Ucm-Media",
   "references": ["Project.IndustryVerticals"],
   "items": {
     "includes": [

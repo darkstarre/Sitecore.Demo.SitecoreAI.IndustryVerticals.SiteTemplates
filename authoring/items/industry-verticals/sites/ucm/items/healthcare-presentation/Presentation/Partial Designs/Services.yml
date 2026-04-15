@@ -1,6 +1,6 @@
 ﻿---
-ID: "8f896623-4161-4080-858e-c67888ee768b"
-Parent: "c31c11e0-1b4e-4e22-96e5-f4eabf203b80"
+ID: "1331aa30-3ecf-4ace-bad0-bd3fd751b983"
+Parent: "20c0428d-0985-49d1-b32c-99fd8ba30366"
 Template: "fd2059fd-6043-4dfe-8c04-e2437ce87634"
 Path: "/sitecore/content/industry-verticals/ucm/Presentation/Partial Designs/Services"
 SharedFields:
@@ -24,7 +24,7 @@ SharedFields:
         <r
           uid="{9528BC3D-56EB-496B-9326-8E5920BB5FFE}"
           s:id="{3836D951-BB14-43AC-9231-649B7F245DC5}"
-          s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7Bf0ac086b-2c86-450a-a906-56af6165dd75%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+          s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B1544D8F3-5CF9-4683-9F39-D613C78CB8DA%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
           s:ph="headless-main" />
       </d>
     </r>

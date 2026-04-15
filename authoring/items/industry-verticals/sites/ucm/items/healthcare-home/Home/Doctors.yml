@@ -1,6 +1,6 @@
 ﻿---
-ID: "9a7640f0-61e3-484e-bf81-3d20324dbc1b"
-Parent: "1db09628-306f-4ddf-ba50-8a9aa472c3f0"
+ID: "6dd4c27e-9c20-41ba-8aeb-081766df083c"
+Parent: "cf8ad06b-f85d-4e9d-9dce-e01f9beb051c"
 Template: "98e60957-0783-4a9a-85cc-77dad30e9711"
 Path: "/sitecore/content/industry-verticals/ucm/Home/Doctors"
 SharedFields:
@@ -13,7 +13,7 @@ SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{bfac7119-527d-45cd-b426-61b00d0fff8b}" />
+    <image mediaid="{FDF744C5-0F95-4372-9B62-AB3B17A683D6}" />
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
   Value: "84d7b81d-a31d-4af9-af6a-f3f43e3a6737"
@@ -26,9 +26,9 @@ SharedFields:
         id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
         <r
           uid="{13B102E6-4BE4-4355-B9F7-AC170770A8EC}"
-          s:ds="9a7640f0-61e3-484e-bf81-3d20324dbc1b"
+          s:ds="6dd4c27e-9c20-41ba-8aeb-081766df083c"
           s:id="{810E5B86-932A-4160-8672-C126B545F034}"
-          s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B87ea8b0b-8a25-4b8d-8fb0-7debff1a2de7%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+          s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B435B4D67-D892-4709-9F22-FDF662570073%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
           s:ph="headless-main" />
       </d>
     </r>

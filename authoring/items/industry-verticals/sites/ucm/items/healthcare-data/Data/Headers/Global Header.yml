@@ -1,17 +1,17 @@
 ﻿---
-ID: "0c847d41-71eb-4e5f-9dc9-b0d149d053c1"
-Parent: "edf6c1c4-5144-414a-96a0-290e2765b535"
+ID: "f8d2ea82-2a78-4c4f-8681-8d790fd21867"
+Parent: "86148a7b-c4cd-4ad4-88c2-ab6e2c2db25f"
 Template: "6b107fcc-05d3-4193-be89-f025632bd8b6"
 Path: "/sitecore/content/industry-verticals/ucm/Data/Headers/Global Header"
 SharedFields:
 - ID: "d53d7eee-4d9a-46a9-afcf-bc46d0e6974d"
   Hint: LogoLight
   Value: |
-    <image mediaid="912146b0-a4be-42b2-bf75-9c463e765d27" />
+    <image mediaid="9cf474e2-0dc9-4673-ad72-e7e8c785ca34" />
 - ID: "fe72d918-559d-4a56-bc6d-1c108017d768"
   Hint: LogoDark
   Value: |
-    <image mediaid="ace23500-6c78-4703-bfef-4eeabbc06036" />
+    <image mediaid="3d9c4288-0f16-4ffd-b227-b413cf9e3355" />
 Languages:
 - Language: en
   Versions:

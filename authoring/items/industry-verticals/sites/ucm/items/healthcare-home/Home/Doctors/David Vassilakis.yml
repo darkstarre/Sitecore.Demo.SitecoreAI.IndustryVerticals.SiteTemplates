@@ -1,6 +1,6 @@
 ﻿---
-ID: "b75923c4-5c5d-4c73-8b9d-5a565fbf95a3"
-Parent: "9a7640f0-61e3-484e-bf81-3d20324dbc1b"
+ID: "3e146a1b-d4a4-4468-8a9c-3a07c8303260"
+Parent: "6dd4c27e-9c20-41ba-8aeb-081766df083c"
 Template: "2f814f03-c3ef-4229-854c-cbced6d24704"
 Path: "/sitecore/content/industry-verticals/ucm/Home/Doctors/David Vassilakis"
 SharedFields:
@@ -10,7 +10,7 @@ SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{0b151ac0-f49c-49ce-ba85-c80c96485153}" />
+    <image mediaid="{44FADF27-B5E5-4774-9B9F-39E5F9E7F6F4}" />
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
   Value: "f127920f-4b28-45de-aaff-874a73812eda"

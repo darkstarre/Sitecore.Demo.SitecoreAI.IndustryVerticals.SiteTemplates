@@ -1,6 +1,6 @@
 ﻿---
-ID: "ec37063e-fb95-45c6-88d9-32c341418a53"
-Parent: "9a7640f0-61e3-484e-bf81-3d20324dbc1b"
+ID: "91d14757-7c22-4cb6-a338-61e96c1b006b"
+Parent: "6dd4c27e-9c20-41ba-8aeb-081766df083c"
 Template: "2f814f03-c3ef-4229-854c-cbced6d24704"
 Path: "/sitecore/content/industry-verticals/ucm/Home/Doctors/Angelina Serzila"
 SharedFields:
@@ -17,7 +17,7 @@ SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{d6bf30b2-c997-4c61-9678-18a14a7546e0}" />
+    <image mediaid="{170B5F87-A045-4A97-A38E-C030FB7C77F5}" />
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
   Value: "cb0d89df-d412-41ff-b315-a3f06032b155"

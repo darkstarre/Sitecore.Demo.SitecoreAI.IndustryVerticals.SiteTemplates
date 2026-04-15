@@ -1,13 +1,13 @@
 ﻿---
-ID: "f46202e0-6dbd-4a81-9c43-ce5ea354feeb"
-Parent: "f58f120c-5508-445e-b409-bc63bf3793eb"
+ID: "0774accb-9356-4e5b-b9f1-e68e7fe6f014"
+Parent: "fa6c49cb-b708-4d82-9eef-cc7afd05338b"
 Template: "c0274e9d-2974-4766-a29a-0c4f9faf8c86"
 Path: "/sitecore/content/industry-verticals/ucm/Home/Services/Oncology"
 SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{c49b1428-ae6a-443b-8bee-cd00d0ebe0ba}" />
+    <image mediaid="{416274F8-40FA-428B-A0FC-3C2E623034DF}" />
 Languages:
 - Language: en
   Versions:

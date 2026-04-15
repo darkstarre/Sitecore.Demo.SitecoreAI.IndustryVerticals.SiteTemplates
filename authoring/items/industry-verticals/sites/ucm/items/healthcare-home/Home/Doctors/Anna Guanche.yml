@@ -1,6 +1,6 @@
 ﻿---
-ID: "7b2b040e-2fff-4365-92fa-24bbc5b0a5d8"
-Parent: "9a7640f0-61e3-484e-bf81-3d20324dbc1b"
+ID: "c1d5a42a-54ea-4d3f-a7b6-e7fab0a76d92"
+Parent: "6dd4c27e-9c20-41ba-8aeb-081766df083c"
 Template: "2f814f03-c3ef-4229-854c-cbced6d24704"
 Path: "/sitecore/content/industry-verticals/ucm/Home/Doctors/Anna Guanche"
 SharedFields:
@@ -10,7 +10,7 @@ SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{4a53ce22-4bd8-4874-bd51-62203a253b0c}" />
+    <image mediaid="{E7425E7E-4324-4DF0-AB51-E0B584767C1B}" />
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
   Value: "77ce9d90-5d32-4d13-b2ec-5d4b83c2f3ba"

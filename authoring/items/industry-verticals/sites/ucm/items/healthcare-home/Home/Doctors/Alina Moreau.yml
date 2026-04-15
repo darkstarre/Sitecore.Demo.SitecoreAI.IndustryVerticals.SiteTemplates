@@ -1,6 +1,6 @@
 ﻿---
-ID: "7c04debe-9526-42be-a6e7-27822e9dc4df"
-Parent: "9a7640f0-61e3-484e-bf81-3d20324dbc1b"
+ID: "24ee1cce-3905-4af2-9df0-3d52e3aa7b15"
+Parent: "6dd4c27e-9c20-41ba-8aeb-081766df083c"
 Template: "2f814f03-c3ef-4229-854c-cbced6d24704"
 Path: "/sitecore/content/industry-verticals/ucm/Home/Doctors/Alina Moreau"
 SharedFields:
@@ -10,7 +10,7 @@ SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{f110576d-8d4b-43e1-8329-8dc938ddd98e}" />
+    <image mediaid="{8233AD2F-91D6-476D-A607-A923DCC4B813}" />
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
   Value: "2f6b319e-e5cf-404b-8117-a1e2535ce2be"

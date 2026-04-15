@@ -1,13 +1,13 @@
 ﻿---
-ID: "899624b0-3def-449b-aede-281f2e9af6f5"
-Parent: "f58f120c-5508-445e-b409-bc63bf3793eb"
+ID: "dafbafae-7985-47b6-bc38-cb734c558a2a"
+Parent: "fa6c49cb-b708-4d82-9eef-cc7afd05338b"
 Template: "c0274e9d-2974-4766-a29a-0c4f9faf8c86"
 Path: "/sitecore/content/industry-verticals/ucm/Home/Services/Family Medicine"
 SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{0f20c686-b41a-44b9-926f-197c7d948fb5}" />
+    <image mediaid="{2D657E8C-AD12-4613-BE9D-28E77F48FB33}" />
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
   Value: "f42d9caa-c698-49e9-8d07-07f7b68c7246"

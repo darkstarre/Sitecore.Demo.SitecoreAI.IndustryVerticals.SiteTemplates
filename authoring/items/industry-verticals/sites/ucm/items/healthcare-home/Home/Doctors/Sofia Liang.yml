@@ -1,6 +1,6 @@
 ﻿---
-ID: "d20930ca-688c-4ebe-86de-98d7d7e81061"
-Parent: "9a7640f0-61e3-484e-bf81-3d20324dbc1b"
+ID: "9dccf34f-4e34-4856-bad0-878f6aa44da7"
+Parent: "6dd4c27e-9c20-41ba-8aeb-081766df083c"
 Template: "2f814f03-c3ef-4229-854c-cbced6d24704"
 Path: "/sitecore/content/industry-verticals/ucm/Home/Doctors/Sofia Liang"
 SharedFields:
@@ -10,7 +10,7 @@ SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{8631425f-3834-48e3-85e3-646fd8dbf7ee}" />
+    <image mediaid="{E186612E-644F-4C62-9FF9-2468CC1ABC89}" />
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
   Value: "131ec185-e9dd-4ce0-8346-1bd055e92730"

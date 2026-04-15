@@ -1,5 +1,5 @@
----
-ID: "673dd45c-2b25-45e4-8de0-55ac146a3b26"
+﻿---
+ID: "c4bed94e-b2da-4602-90ef-1064c56223ab"
 Parent: "07194d9b-c0d3-4b3a-9fd2-06c42800b5cf"
 Template: "e5b045ab-fadd-4e52-8168-4b4e5c489e36"
 Path: "/sitecore/content/industry-verticals/ucm"
@@ -25,16 +25,16 @@ SharedFields:
     {1F35559F-2140-4774-8BC1-525BB722BAA2}
 - ID: "2b2fe9fd-78a6-40eb-b9f9-28409d8d3700"
   Hint: SitemapMediaItems
-  Value: "{c619069d-133e-4c67-9de0-5119dbf1072e}"
+  Value: "{38AEF90F-781E-4A7F-957B-8BB7741D028C}"
 - ID: "33d9005e-1f71-415f-b107-53b965c3b037"
   Hint: SiteMediaLibrary
-  Value: "{7EDD6892-5114-4163-944D-E103E06EFA0A}"
+  Value: "{37EE9EFF-D32E-4C57-9173-43219B93B0BC}"
 - ID: "85a7501a-86d9-4243-9075-0b727c3a6db4"
   Hint: Name
-  Value: UCM
+  Value: Nova Medical
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
-  Value: "<image mediaid='a9bd94ad-6969-456c-8890-5c5b981b5145' />"
+  Value: "<image mediaid='c6cf1234-6008-48a2-a8ef-1acc05f91073' />"
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
   Value: "e40cf226-9088-4708-9f29-81d73fd4c5af"

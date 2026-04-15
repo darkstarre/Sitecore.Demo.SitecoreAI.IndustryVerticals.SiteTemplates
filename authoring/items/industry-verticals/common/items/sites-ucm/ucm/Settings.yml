@@ -1,13 +1,13 @@
 ﻿---
-ID: "de45d9db-aefa-4b2a-993c-26a42899fad4"
-Parent: "673dd45c-2b25-45e4-8de0-55ac146a3b26"
+ID: "3ebf8e1e-26aa-41a2-8261-9fa9c67f8625"
+Parent: "c4bed94e-b2da-4602-90ef-1064c56223ab"
 Template: "4628b2c8-d026-4251-b85e-5987e09d56ef"
 Path: "/sitecore/content/industry-verticals/ucm/Settings"
 BranchID: "45cf9f42-b3ac-4412-aab9-f8441c7e448e"
 SharedFields:
 - ID: "0129da3f-8c86-4591-ae32-6ec923413923"
   Hint: DictionaryDomain
-  Value: "{6de186fa-8b44-46af-b1ec-320735802bea}"
+  Value: "{D757F2C3-DEC1-4982-996D-A577A9BFDE43}"
 - ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
   Hint: __Masters
   Value: "{C2DC4690-AF44-48C7-BB21-90D1AD246732}"
@@ -19,22 +19,22 @@ SharedFields:
   Value: "{E5B045AB-FADD-4E52-8168-4B4E5C489E36}"
 - ID: "3e4f559f-8e59-4405-b50d-619811371f6c"
   Hint: Name
-  Value: ucm
+  Value: healthcare
 - ID: "5764d2d4-724d-4313-a81b-9246c911faff"
   Hint: AppDatasourcesPath
-  Value: "{9d5a9028-becb-47bc-a71e-4eff71ab31b7}"
+  Value: "{2632E29E-ECFA-4155-8BFF-7D80D8EC81A6}"
 - ID: "5ca117eb-8782-4a4f-9f2f-30de31fc2e34"
   Hint: PlaceholdersPath
   Value: "{18FD624C-9E2D-41B4-9F08-B420B71717F2}"
 - ID: "72e83c8d-3578-4e50-b4c0-93a78a1729f2"
   Hint: FilesystemPath
-  Value: /dist/ucm
+  Value: /dist/healthcare
 - ID: "9016141c-ff51-40f2-9135-40f5161b9784"
   Hint: ServerSideRenderingEngine
   Value: http
 - ID: "a7bbad73-b933-49ff-95c8-1c269cb35e7c"
   Hint: DictionaryPath
-  Value: "{6de186fa-8b44-46af-b1ec-320735802bea}"
+  Value: "{D757F2C3-DEC1-4982-996D-A577A9BFDE43}"
 - ID: "af332c24-fe17-41e7-8caf-8e64c588fe72"
   Hint: EditingTheme
   Value: "{3BCAB9EF-1E4F-4C23-B452-783BB82AA686}"

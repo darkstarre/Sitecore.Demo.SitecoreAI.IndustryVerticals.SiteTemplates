@@ -1,13 +1,13 @@
 ﻿---
-ID: "54331ae2-7ea2-417a-ad5a-44177ea9ac5b"
-Parent: "75229afb-9f65-4e05-9149-4ebc71a78fbc"
+ID: "f2634881-8a5c-4eea-90b4-164ca72d8d5a"
+Parent: "6b4c8fd7-64da-4fc8-8c40-f5f9fcd4d462"
 Template: "0a39f168-834c-46c5-8866-65a60764c0a4"
 Path: "/sitecore/content/industry-verticals/ucm/Data/Features/Special Service Features/Feature 1"
 SharedFields:
 - ID: "83bc80ee-e97a-474b-8c05-a2559394eebe"
   Hint: FeatureImage
   Value: |
-    <image mediaid="83177db1-815f-4382-84e3-db7e3695ec23" />
+    <image mediaid="8bf87138-112d-4d7d-a176-971398eb0b6d" />
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
   Value: "425c5648-3aaf-49f0-94ae-016ee8e9f0c2"
