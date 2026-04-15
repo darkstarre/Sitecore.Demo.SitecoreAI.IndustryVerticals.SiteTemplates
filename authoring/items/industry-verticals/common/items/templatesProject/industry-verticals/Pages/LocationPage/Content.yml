@@ -1,0 +1,26 @@
+---
+ID: "ebec0d90-23ad-4637-90b4-5e99ab6f8a87"
+Parent: "a00094dd-19f5-4478-afbe-3ffc0eb03db6"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: "/sitecore/templates/Project/industry-verticals/Pages/LocationPage/Content"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20260415T180600Z
+---
+ID: "ebec0d90-23ad-4637-90b4-5e99ab6f8a87"
+Parent: "a00094dd-19f5-4478-afbe-3ffc0eb03db6"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: "/sitecore/templates/Project/industry-verticals/Pages/LocationPage/Content"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20260415T180600Z
