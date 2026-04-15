@@ -6,6 +6,7 @@ import {
   RedirectsMiddleware,
 } from '@sitecore-content-sdk/nextjs/middleware';
 import { uchicagoVerticalSites } from 'lib/uchicago-vertical-sites';
+import { uchicagoSiteLockMiddleware } from 'lib/uchicago-site-lock-middleware';
 import scConfig from 'sitecore.config';
 
 const multisite = new MultisiteMiddleware({
@@ -49,7 +50,12 @@ const personalize = new PersonalizeMiddleware({
 });
 
 export function middleware(req: NextRequest, ev: NextFetchEvent) {
-  return defineMiddleware(multisite, redirects, personalize).exec(req, ev);
+  // Force uchicago before multisite: query `site` / `sc_site`, `/_site_*` path segment, and
+  // `sc_site` cookie during Sitecore preview can otherwise pin another vertical (e.g. gridwell).
+  return defineMiddleware(uchicagoSiteLockMiddleware, multisite, redirects, personalize).exec(
+    req,
+    ev
+  );
 }
 
 export const config = {
