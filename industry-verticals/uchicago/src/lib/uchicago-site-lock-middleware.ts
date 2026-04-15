@@ -55,3 +55,22 @@ export const uchicagoSiteLockMiddleware = {
     return res;
   },
 };
+
+const isProd = process.env.NODE_ENV === 'production';
+
+/**
+ * Runs immediately after {@link MultisiteMiddleware}. That middleware always sets `sc_site` from
+ * whatever site name it resolved; combined with browser caching, another vertical's value can
+ * persist. This host only serves UChicago — always emit the correct `sc_site` on the response.
+ */
+export const uchicagoPinnedScSiteMiddleware = {
+  handle(_req: NextRequest, res: NextResponse): NextResponse {
+    res.cookies.set('sc_site', UCHICAGO_EDGE_SITE_NAME, {
+      path: '/',
+      httpOnly: true,
+      sameSite: isProd ? 'none' : 'lax',
+      secure: isProd,
+    });
+    return res;
+  },
+};
