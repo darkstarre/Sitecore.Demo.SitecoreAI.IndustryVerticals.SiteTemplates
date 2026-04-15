@@ -81,6 +81,18 @@ export const getStaticProps: GetStaticProps = async (context) => {
       ? await client.getPreview(context.previewData)
       : await client.getPage(path, { locale: context.locale, site: UCHICAGO_SITE_NAME });
   }
+
+  if (
+    process.env.NODE_ENV === 'development' &&
+    page?.siteName &&
+    page.siteName !== UCHICAGO_SITE_NAME
+  ) {
+    console.warn(
+      `[uchicago] Layout resolved as site "${page.siteName}" but this app is pinned to "${UCHICAGO_SITE_NAME}". ` +
+        'Use an Edge context / tenant that includes the uchicago site, and verify NEXT_PUBLIC_DEFAULT_SITE_NAME / SITECORE_EDGE_CONTEXT_ID.'
+    );
+  }
+
   if (page) {
     props = {
       page,

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, TextField, useSitecore } from '@sitecore-content-sdk/nextjs';
 import NextLink from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -40,6 +40,28 @@ const FALLBACK_PRIMARY: { href: string; label: string }[] = [
 export const Default = (props: NavigationProps) => {
   const [isOpenMenu, openMenu] = useState(false);
   const { page } = useSitecore();
+  const warnedForeignLogo = useRef(false);
+
+  useEffect(() => {
+    if (
+      process.env.NODE_ENV !== 'development' ||
+      warnedForeignLogo.current ||
+      !props.params?.Logo
+    ) {
+      return;
+    }
+    try {
+      const raw = decodeURIComponent(props.params.Logo);
+      if (/gridwell/i.test(raw)) {
+        warnedForeignLogo.current = true;
+        console.warn(
+          '[uchicago] Navigation `Logo` parameter still references Gridwell — fix the Header partial or published content for this site in Sitecore.'
+        );
+      }
+    } catch {
+      /* ignore malformed Logo param */
+    }
+  }, [props.params?.Logo]);
   const styles =
     props.params != null
       ? `${props.params.GridParameters ?? ''} ${props?.params?.Styles ?? ''}`.trimEnd()

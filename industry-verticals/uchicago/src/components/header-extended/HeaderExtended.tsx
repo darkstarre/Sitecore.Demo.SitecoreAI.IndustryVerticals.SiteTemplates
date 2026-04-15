@@ -37,6 +37,13 @@ function logoHasSrc(field: ImageField | undefined): boolean {
   return typeof v?.src === 'string' && v.src.length > 0;
 }
 
+/** Wrong-tenant logos sometimes leak via shared Edge tenants or CM overrides — never show them here. */
+function logoFieldIsForeignVertical(field: ImageField | undefined): boolean {
+  const v = field?.value as { src?: string; alt?: string } | undefined;
+  const haystack = `${v?.src ?? ''} ${v?.alt ?? ''}`.toLowerCase();
+  return haystack.includes('gridwell');
+}
+
 function linkHasHref(field: LinkField | undefined): boolean {
   const v = field?.value as { href?: string } | undefined;
   return typeof v?.href === 'string' && v.href.length > 0;
@@ -51,6 +58,8 @@ export const Default = (props: HeaderProps) => {
   const f = props.fields ?? (props.rendering?.fields as Partial<Fields> | undefined);
   const logoLight = f?.LogoLight;
   const logoDark = f?.LogoDark;
+  const showLogoLight = logoHasSrc(logoLight) && !logoFieldIsForeignVertical(logoLight);
+  const showLogoDark = logoHasSrc(logoDark) && !logoFieldIsForeignVertical(logoDark);
   /** Matches serialized partial design keys `header-extended-nav-3` when CM omits params. */
   const phId = props.params?.DynamicPlaceholderId ?? '3';
 
@@ -88,7 +97,7 @@ export const Default = (props: HeaderProps) => {
           <div className="flex min-w-0 flex-1 flex-col gap-3 sm:flex-row sm:items-center lg:max-w-[28rem]">
             <div className="shrink-0">
               <Link href={'/'} className="block">
-                {logoHasSrc(logoLight) ? (
+                {showLogoLight ? (
                   <ContentSdkImage
                     field={logoLight!}
                     width={320}
@@ -101,7 +110,7 @@ export const Default = (props: HeaderProps) => {
                     UChicago Medicine
                   </span>
                 )}
-                {logoHasSrc(logoDark) ? (
+                {showLogoDark ? (
                   <ContentSdkImage
                     field={logoDark!}
                     width={320}
