@@ -24,10 +24,10 @@ import { getLinkField, getNavigationText } from '@/helpers/navHelpers';
 import { useI18n } from 'next-localization';
 import HeroClip from '@/assets/shapes/HeroClip';
 import Link_a258c208ba01265ca0aa9c7abae745cc7141aa63 from 'next/link';
+import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Keyboard, Navigation, Pagination } from 'swiper/modules';
 import client from 'lib/sitecore-client';
-import Image from 'next/image';
 import * as FEAAS from '@sitecore-feaas/clientside/react';
 import nextConfig from 'next.config';
 import { pageView } from '@sitecore-cloudsdk/events/browser';
@@ -154,6 +154,12 @@ const importMap = [
     ]
   },
   {
+    module: 'next/image',
+    exports: [
+      { name: 'default', value: Image },
+    ]
+  },
+  {
     module: 'swiper/react',
     exports: [
       { name: 'Swiper', value: Swiper },
@@ -172,12 +178,6 @@ const importMap = [
     module: 'lib/sitecore-client',
     exports: [
       { name: 'default', value: client },
-    ]
-  },
-  {
-    module: 'next/image',
-    exports: [
-      { name: 'default', value: Image },
     ]
   },
   {

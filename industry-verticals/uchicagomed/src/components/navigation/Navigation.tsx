@@ -69,9 +69,12 @@ export const Default = (props: NavigationProps) => {
     ));
 
   return (
-    <div className={`component navigation font-heading text-lg ${styles}`} id={id ? id : undefined}>
+    <div
+      className={`component navigation font-heading text-base ${styles}`}
+      id={id ? id : undefined}
+    >
       <div
-        className="z-50 flex h-6 w-6 cursor-pointer items-center justify-center lg:hidden"
+        className="z-50 flex h-9 w-9 cursor-pointer items-center justify-center rounded-md border border-slate-300 lg:hidden"
         onClick={() => handleToggleMenu()}
       >
         <FontAwesomeIcon icon={isOpenMenu ? faTimes : faBars} width={16} height={16} />
@@ -81,9 +84,11 @@ export const Default = (props: NavigationProps) => {
         <nav
           className={`${
             isOpenMenu ? 'flex' : 'hidden'
-          } bg-background dark:bg-background-dark absolute top-full right-0 left-0 z-100 lg:static lg:flex`}
+          } bg-background dark:bg-background-dark absolute top-full right-0 left-0 z-100 border-t border-slate-200 shadow-md lg:static lg:flex lg:border-0 lg:shadow-none`}
         >
-          <ul className={`container flex flex-col gap-x-8 pb-8 lg:flex-row lg:pb-0 xl:gap-x-14`}>
+          <ul
+            className={`container flex flex-col gap-2 py-4 lg:flex-row lg:items-center lg:gap-6 lg:py-0 xl:gap-8`}
+          >
             {list}
           </ul>
         </nav>
@@ -115,7 +120,7 @@ const NavigationList = (props: NavigationListProps) => {
 
   return (
     <li
-      className={`${classNameList} relative flex flex-col ${isRootItem ? 'lg:flex-row' : ''} gap-x-8 gap-y-4 xl:gap-x-14 ${active ? 'active' : ''} uppercase`}
+      className={`${classNameList} relative flex flex-col ${isRootItem ? 'lg:flex-row' : ''} gap-x-4 gap-y-2 ${active ? 'active' : ''}`}
       key={props.fields.Id}
       tabIndex={0}
     >
@@ -124,7 +129,7 @@ const NavigationList = (props: NavigationListProps) => {
           field={getLinkField(props)}
           editable={page.mode.isEditing}
           onClick={props.handleClick}
-          className="whitespace-nowrap"
+          className={`rounded-sm px-2 py-1 font-medium whitespace-nowrap text-slate-800 transition-colors hover:text-[#8c1515] dark:text-slate-100 ${isRootItem ? 'lg:px-1' : ''}`}
         >
           {getNavigationText(props)}
         </Link>
@@ -146,10 +151,10 @@ const NavigationList = (props: NavigationListProps) => {
       </div>
       {children.length > 0 ? (
         <ul
-          className={`flex flex-col gap-x-8 gap-y-4 xl:gap-x-14 ${
+          className={`flex flex-col gap-y-2 ${
             isRootItem
-              ? 'lg:flex-row'
-              : `bg-background dark:bg-background-dark top-full -left-4 pl-4 lg:absolute lg:p-4 ${
+              ? 'lg:flex-row lg:gap-4'
+              : `bg-background dark:bg-background-dark top-full left-0 rounded-md border border-slate-200 p-3 shadow-md lg:absolute lg:min-w-56 ${
                   active ? 'block' : 'hidden'
                 } z-100`
           }`}
