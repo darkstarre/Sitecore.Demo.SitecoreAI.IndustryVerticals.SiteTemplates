@@ -2,7 +2,7 @@
 ID: "08a45e80-48ce-4cde-8705-8cb004118a85"
 Parent: "ddb3ef52-0c38-4ae8-bea2-84963a66864d"
 Template: "2f814f03-c3ef-4229-854c-cbced6d24704"
-Path: "/sitecore/content/industry-verticals/uchicagomed/Home/Doctors/Marcus Veldt"
+Path: "/sitecore/content/industry-verticals/uchicagomed/Home/Doctors/Rishi Arora"
 SharedFields:
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
@@ -27,24 +27,24 @@ Languages:
       Value: 20251114T112330Z
     - ID: "3ac1a186-26b7-4845-9048-443c0dd0e487"
       Hint: Bio
-      Value: "<p>As an otolaryngologist, Dr. Marcus Veldt specializes in diagnosing and treating ear, nose, and throat conditions. He is dedicated to improving patient quality of life through advanced procedures and individualized care, ensuring long-term relief and wellness. His approach balances clinical expertise with compassion, creating a supportive environment where patients feel confident in their treatment. Dr. Veldt works with both common and complex conditions, tailoring solutions to meet the specific needs of each patient. His ongoing commitment to research and continuous learning allows him to integrate new techniques and technologies into his practice, always with the goal of achieving better outcomes and greater comfort for his patients.</p>"
+      Value: "<p>Rishi Arora is a physician at UChicago Medicine. Please update this biography in Sitecore with current profile details, subspecialties, and credentials.</p>"
     - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
       Hint: NavigationTitle
-      Value: Marcus Veldt
+      Value: Rishi Arora
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
         sitecore\movin.tilakaratne@sitecore.com
     - ID: "58a94784-3297-4c4a-a2b4-e4f87d015f50"
       Hint: JobTitle
-      Value: Otolaryngologist
+      Value: Cardiac Electrophysiologist
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
         sitecore\movin.tilakaratne@sitecore.com
     - ID: "65d340d2-4eb3-4593-9bdd-9a66c4dcfab7"
       Hint: FullName
-      Value: Marcus Veldt
+      Value: Rishi Arora
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
       Value: "63a8d023-f188-4da8-b853-c54eef31c0b2"
@@ -59,6 +59,15 @@ Languages:
       Hint: Photo
       Value: |
         <Image src="https://starter-verticals-v2.sitecoresandbox.cloud/api/public/content/78937-LandingPageHero-2000x600?v=6f25b00e" dam-id="111rkZFFS-68ykAO1osMKA" width="2000" height="600" alt="MarcusVeldt.jpg" dam-content-type="Image" thumbnailsrc="https://starter-verticals-v2.sitecoresandbox.cloud/api/gateway/78937/thumbnail" />
+    - ID: "3be3b98e-d73e-45d2-8ab9-a61f12f5dd71"
+      Hint: OfficeLocation
+      Value: River East Center
+    - ID: "b7362e39-4204-4692-a2e1-dc4a0da31e6f"
+      Hint: PhoneNumber
+      Value: (773) 702-1000
+    - ID: "b9a6aa57-76c2-4f9b-92ab-d265f40f1fd9"
+      Hint: Address
+      Value: <p>355 E Grand Ave<br/>Chicago, IL 60611</p>
     - ID: "fb359b0f-3087-41f2-aae3-2dd492eb2c60"
       Hint: Title
-      Value: Marcus Veldt
+      Value: Rishi Arora

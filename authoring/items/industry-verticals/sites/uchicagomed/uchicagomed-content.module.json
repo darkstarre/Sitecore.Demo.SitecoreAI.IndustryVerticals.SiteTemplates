@@ -1,12 +1,11 @@
 {
   "$schema": "../.sitecore/schemas/ModuleFile.schema.json",
   "namespace": "Project.Uchicagomed-Content",
-  "references": ["Project.IndustryVerticals"],
   "items": {
     "includes": [
       {
         "name": "healthcare-home",
-        "path": "/sitecore/content/industry-verticals/uchicagomed/home",
+        "path": "/sitecore/content/industry-verticals/uchicagomed/Home",
         "scope": "DescendantsOnly",
         "allowedPushOperations": "CreateAndUpdate"
       },

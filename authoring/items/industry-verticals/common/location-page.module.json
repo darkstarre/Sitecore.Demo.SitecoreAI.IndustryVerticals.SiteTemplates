@@ -4,24 +4,10 @@
   "items": {
     "includes": [
       {
-        "name": "templatesProject",
-        "path": "/sitecore/templates/Project/industry-verticals",
-        "rules": [
-          {
-            "path": "/Pages",
-            "scope": "SingleItem",
-            "allowedPushOperations": "CreateAndUpdate"
-          },
-          {
-            "path": "/Pages/LocationPage",
-            "scope": "ItemAndDescendants",
-            "allowedPushOperations": "CreateAndUpdate"
-          },
-          {
-            "path": "*",
-            "scope": "Ignored"
-          }
-        ]
+        "name": "location-page-template",
+        "path": "/sitecore/templates/Project/industry-verticals/Pages/LocationPage",
+        "scope": "ItemAndDescendants",
+        "allowedPushOperations": "CreateAndUpdate"
       }
     ]
   }

@@ -2,7 +2,7 @@
 ID: "f57eb150-2b52-44df-99de-e3f38718bb94"
 Parent: "ddb3ef52-0c38-4ae8-bea2-84963a66864d"
 Template: "2f814f03-c3ef-4229-854c-cbced6d24704"
-Path: "/sitecore/content/industry-verticals/uchicagomed/Home/Doctors/Sofia Liang"
+Path: "/sitecore/content/industry-verticals/uchicagomed/Home/Doctors/Mark Belkin"
 SharedFields:
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
@@ -27,24 +27,24 @@ Languages:
       Value: 20251114T112447Z
     - ID: "3ac1a186-26b7-4845-9048-443c0dd0e487"
       Hint: Bio
-      Value: "<p>Guided by a commitment to patient well-being, Dr. Sofia Liang helps individuals manage complex hormonal and metabolic conditions. She tailors treatment plans with both clinical expertise and compassion, empowering patients to achieve healthier, balanced lives. Her work emphasizes the importance of understanding each patient’s unique journey, ensuring they feel supported throughout the process of diagnosis, treatment, and long-term care. Dr. Liang is passionate about educating patients on their conditions, fostering collaboration and trust in the management of their health. She also remains actively engaged in the evolving field of endocrinology, continuously seeking new approaches that can enhance outcomes and improve quality of life for those she serves.</p>"
+      Value: "<p>Mark Belkin is a physician at UChicago Medicine. Please update this biography in Sitecore with current profile details, subspecialties, and credentials.</p>"
     - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
       Hint: NavigationTitle
-      Value: Sofia Liang
+      Value: Mark Belkin
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
         sitecore\movin.tilakaratne@sitecore.com
     - ID: "58a94784-3297-4c4a-a2b4-e4f87d015f50"
       Hint: JobTitle
-      Value: Endocrinologist
+      Value: Cardiologist
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
         sitecore\movin.tilakaratne@sitecore.com
     - ID: "65d340d2-4eb3-4593-9bdd-9a66c4dcfab7"
       Hint: FullName
-      Value: Sofia Liang
+      Value: Mark Belkin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
       Value: "e450974a-c663-4704-b3d3-051a895408ad"
@@ -59,6 +59,15 @@ Languages:
       Hint: Photo
       Value: |
         <Image src="https://starter-verticals-v2.sitecoresandbox.cloud/api/public/content/78939-HomepagePromoCTAs-1100x740?v=b0fc83a7" dam-id="A2gweQtHSriYzpRfDU5fNQ" width="1100" height="740" alt="SofiaLiang.jpg" dam-content-type="Image" thumbnailsrc="https://starter-verticals-v2.sitecoresandbox.cloud/api/gateway/78939/thumbnail" />
+    - ID: "3be3b98e-d73e-45d2-8ab9-a61f12f5dd71"
+      Hint: OfficeLocation
+      Value: River East Center
+    - ID: "b7362e39-4204-4692-a2e1-dc4a0da31e6f"
+      Hint: PhoneNumber
+      Value: (773) 702-1000
+    - ID: "b9a6aa57-76c2-4f9b-92ab-d265f40f1fd9"
+      Hint: Address
+      Value: <p>355 E Grand Ave<br/>Chicago, IL 60611</p>
     - ID: "fb359b0f-3087-41f2-aae3-2dd492eb2c60"
       Hint: Title
-      Value: Sofia Liang
+      Value: Mark Belkin
