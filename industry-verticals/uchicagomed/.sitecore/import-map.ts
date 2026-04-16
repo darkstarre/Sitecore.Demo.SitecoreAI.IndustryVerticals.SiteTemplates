@@ -18,8 +18,8 @@ import CurvedClip from 'src/assets/shapes/CurvedClip';
 import { CommonStyles, FeatureStyles } from '@/types/styleFlags';
 import BlobAccent_ff719d36323bb13e49440edf42521225aa8ecaa1 from '@/assets/shapes/BlobAccent';
 import { faArrowRight, faBars, faChevronDown, faChevronUp, faTimes, faEnvelope, faPhone, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { getLinkField, getNavigationText } from '@/helpers/navHelpers';
 import Link_a258c208ba01265ca0aa9c7abae745cc7141aa63 from 'next/link';
+import { getLinkField, getNavigationText } from '@/helpers/navHelpers';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Keyboard, Navigation, Pagination } from 'swiper/modules';
@@ -113,16 +113,16 @@ const importMap = [
     ]
   },
   {
+    module: 'next/link',
+    exports: [
+      { name: 'default', value: Link_a258c208ba01265ca0aa9c7abae745cc7141aa63 },
+    ]
+  },
+  {
     module: '@/helpers/navHelpers',
     exports: [
       { name: 'getLinkField', value: getLinkField },
       { name: 'getNavigationText', value: getNavigationText },
-    ]
-  },
-  {
-    module: 'next/link',
-    exports: [
-      { name: 'default', value: Link_a258c208ba01265ca0aa9c7abae745cc7141aa63 },
     ]
   },
   {
