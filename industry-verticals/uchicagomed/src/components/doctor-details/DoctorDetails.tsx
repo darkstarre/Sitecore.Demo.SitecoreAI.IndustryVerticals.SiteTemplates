@@ -16,6 +16,9 @@ export interface DoctorFields {
   JobTitle: Field<string>;
   Photo: ImageField;
   Bio: RichTextField;
+  OfficeLocation?: Field<string>;
+  PhoneNumber?: Field<string>;
+  Address?: RichTextField;
 }
 
 interface DoctorDetailsProps extends ComponentProps {
@@ -28,6 +31,10 @@ export const Default = (props: DoctorDetailsProps) => {
   const id = props.params.RenderingIdentifier;
   const styles = `${props?.params?.styles || ''}`.trim();
   const isPageEditing = page.mode.isEditing;
+  const officeLocation = props.fields?.OfficeLocation?.value?.toString() || '';
+  const phoneNumber = props.fields?.PhoneNumber?.value?.toString() || '';
+  const hasAddress = Boolean(props.fields?.Address?.value);
+  const hasLocationInfo = Boolean(officeLocation || phoneNumber || hasAddress);
 
   if (!props.fields?.Title) {
     return isPageEditing ? (
@@ -55,6 +62,25 @@ export const Default = (props: DoctorDetailsProps) => {
           <div className="text-lg">
             <ContentSdkRichText field={props.fields?.Bio} />
           </div>
+
+          {(hasLocationInfo || isPageEditing) && (
+            <div className="border-border mt-10 border-t pt-8">
+              <h4 className="mb-6">Locations</h4>
+              {hasLocationInfo ? (
+                <article className="border-border bg-background-secondary border p-5">
+                  {officeLocation && <h6 className="mb-2">{officeLocation}</h6>}
+                  {hasAddress && (
+                    <div className="text-base">
+                      <ContentSdkRichText field={props.fields?.Address} />
+                    </div>
+                  )}
+                  {phoneNumber && <p className="mt-2 font-semibold">Phone: {phoneNumber}</p>}
+                </article>
+              ) : (
+                <p>Add location information for this physician.</p>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </section>

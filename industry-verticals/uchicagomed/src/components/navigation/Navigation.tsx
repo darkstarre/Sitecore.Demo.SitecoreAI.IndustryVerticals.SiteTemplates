@@ -74,7 +74,7 @@ export const Default = (props: NavigationProps) => {
       id={id ? id : undefined}
     >
       <div
-        className="z-50 flex h-9 w-9 cursor-pointer items-center justify-center rounded-md border border-slate-300 lg:hidden"
+        className="border-border bg-background z-50 flex h-9 w-9 cursor-pointer items-center justify-center border lg:hidden"
         onClick={() => handleToggleMenu()}
       >
         <FontAwesomeIcon icon={isOpenMenu ? faTimes : faBars} width={16} height={16} />
@@ -84,10 +84,10 @@ export const Default = (props: NavigationProps) => {
         <nav
           className={`${
             isOpenMenu ? 'flex' : 'hidden'
-          } bg-background dark:bg-background-dark absolute top-full right-0 left-0 z-100 border-t border-slate-200 shadow-md lg:static lg:flex lg:border-0 lg:shadow-none`}
+          } bg-background dark:bg-background-dark border-border absolute top-full right-0 left-0 z-100 border-t shadow-md lg:static lg:flex lg:border-0 lg:shadow-none`}
         >
           <ul
-            className={`container flex flex-col gap-2 py-4 lg:flex-row lg:items-center lg:gap-6 lg:py-0 xl:gap-8`}
+            className={`container flex flex-col gap-1 py-4 lg:flex-row lg:items-center lg:gap-5 lg:py-0 xl:gap-6`}
           >
             {list}
           </ul>
@@ -129,7 +129,7 @@ const NavigationList = (props: NavigationListProps) => {
           field={getLinkField(props)}
           editable={page.mode.isEditing}
           onClick={props.handleClick}
-          className={`rounded-sm px-2 py-1 font-medium whitespace-nowrap text-slate-800 transition-colors hover:text-[#8c1515] dark:text-slate-100 ${isRootItem ? 'lg:px-1' : ''}`}
+          className={`text-foreground hover:text-accent rounded-sm px-2 py-1.5 font-semibold whitespace-nowrap transition-colors ${isRootItem ? 'lg:px-1' : ''}`}
         >
           {getNavigationText(props)}
         </Link>
@@ -154,7 +154,7 @@ const NavigationList = (props: NavigationListProps) => {
           className={`flex flex-col gap-y-2 ${
             isRootItem
               ? 'lg:flex-row lg:gap-4'
-              : `bg-background dark:bg-background-dark top-full left-0 rounded-md border border-slate-200 p-3 shadow-md lg:absolute lg:min-w-56 ${
+              : `bg-background dark:bg-background-dark border-border top-full left-0 border p-3 shadow-md lg:absolute lg:min-w-56 ${
                   active ? 'block' : 'hidden'
                 } z-100`
           }`}

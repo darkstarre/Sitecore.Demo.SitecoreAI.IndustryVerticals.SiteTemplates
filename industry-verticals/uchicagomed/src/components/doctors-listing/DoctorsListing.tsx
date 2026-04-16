@@ -20,16 +20,19 @@ const DoctorCard = ({ url, fields }: { url: string; fields: Doctor }) => {
   return (
     <Link
       href={url}
-      className="bg-background-secondary dark:bg-background-secondary-dark shadow-soft block overflow-hidden rounded-lg"
+      className="group border-border block overflow-hidden border bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
     >
-      <div className="placeholder-pattern-background aspect-square">
-        <ContentSdkImage field={fields.Photo} className="h-full w-full rounded-t-lg object-cover" />
+      <div className="placeholder-pattern-background aspect-[4/5]">
+        <ContentSdkImage
+          field={fields.Photo}
+          className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+        />
       </div>
-      <div className="p-7 text-center">
-        <h5>
+      <div className="border-accent border-t-4 p-6 text-left">
+        <h5 className="mb-1">
           <ContentSdkText field={fields.FullName} />
         </h5>
-        <p className="text-accent text-lg lg:text-xl">
+        <p className="text-accent text-sm font-semibold tracking-wide uppercase">
           <ContentSdkText field={fields.JobTitle} />
         </p>
       </div>
@@ -44,7 +47,7 @@ export const Default = (props: DoctorsListingProps) => {
   return (
     <section className={`relative py-16 ${props.params.styles}`} id={id || undefined}>
       <div className="container">
-        <div className="grid gap-12 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {doctors.map((doc) => (
             <DoctorCard key={doc.id} url={doc.url} fields={doc.fields} />
           ))}

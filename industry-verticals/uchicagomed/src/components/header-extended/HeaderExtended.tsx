@@ -36,21 +36,21 @@ export const DefaultHeaderExtended = (props: HeaderProps) => {
 
   return (
     <section
-      className={`bg-background dark:bg-background-dark relative border-b border-slate-200 py-0 dark:border-slate-700 ${props.params.styles}`}
+      className={`bg-background dark:bg-background-dark border-border relative border-b py-0 ${props.params.styles}`}
       id={id ? id : undefined}
     >
-      <div className="border-b border-slate-200 bg-slate-50 py-2 text-xs dark:border-slate-700 dark:bg-slate-900">
+      <div className="border-border bg-background-secondary border-b py-2 text-xs">
         <div className="container hidden items-center justify-between gap-4 lg:flex">
-          <ul className="flex flex-wrap items-center gap-4 text-slate-700 dark:text-slate-200">
+          <ul className="text-foreground/80 flex flex-wrap items-center gap-4">
             {utilityLinks.map((item) => (
               <li key={item.label}>
-                <Link href={item.href} className="hover:text-brand-primary transition-colors">
+                <Link href={item.href} className="hover:text-accent transition-colors">
                   {item.label}
                 </Link>
               </li>
             ))}
           </ul>
-          <div className="flex items-center gap-4 text-slate-700 dark:text-slate-200">
+          <div className="text-foreground/80 flex items-center gap-4">
             <ContentSdkLink
               field={props.fields.MailLink}
               className="inline-flex items-center gap-2"
@@ -68,7 +68,7 @@ export const DefaultHeaderExtended = (props: HeaderProps) => {
           </div>
         </div>
       </div>
-      <div className="container flex items-center gap-3 py-5 lg:gap-6">
+      <div className="container flex items-center gap-3 py-4 lg:gap-6">
         <div className="mr-auto max-w-58">
           <Link href={'/'}>
             <Image
@@ -90,7 +90,7 @@ export const DefaultHeaderExtended = (props: HeaderProps) => {
         <div className="hidden items-center gap-2 lg:flex">
           <ContentSdkLink
             field={props.fields.PhoneLink}
-            className="rounded-sm bg-[#8c1515] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#7b1212]"
+            className="bg-accent border-accent hover:bg-accent/90 px-5 py-2.5 text-xs font-semibold tracking-[0.08em] text-white uppercase transition-colors"
           >
             Schedule an Appointment
           </ContentSdkLink>

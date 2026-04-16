@@ -21,15 +21,15 @@
 /* Spacing */
 /* Using padding for the sides so it doesn't break the grid widths */
 .indent {
-  @apply px-12;
+  @apply px-6 lg:px-12;
 }
 
 .indent-top {
-  @apply mt-6;
+  @apply mt-10;
 }
 
 .indent-bottom {
-  @apply mb-6;
+  @apply mb-10;
 }
 
 /* Content alignment */
@@ -67,12 +67,12 @@
 
 .container-color-background > .component-content,
 .component-color-background {
-  @apply !bg-background-secondary dark:!bg-background-secondary-dark;
+  @apply !bg-background-secondary dark:!bg-background-secondary-dark border-y border-border;
 }
 
 .container-dark-background > .component-content,
 .component-dark-background {
-  @apply !bg-background-tertiary dark:!bg-background-tertiary-dark;
+  @apply !bg-background-tertiary dark:!bg-background-tertiary-dark border-y border-border;
 }
 
 .container-gray-background > .component-content,

@@ -79,9 +79,9 @@ const DefaultFooter = (props: FooterProps) => {
     <section className={`relative ${props.params.styles} overflow-hidden`} id={id ? id : undefined}>
       {/* footer top section */}
       {!hideTopSection && (
-        <div className="bg-background-secondary dark:bg-background-secondary-dark pt-24 pb-16">
+        <div className="border-border bg-background-secondary dark:bg-background-secondary-dark border-t py-12 lg:py-14">
           {/* svg accent background */}
-          <div className="text-background dark:text-background-dark pointer-events-none absolute -top-px -right-px left-0 leading-none">
+          <div className="text-background dark:text-background-dark pointer-events-none absolute -top-px -right-px left-0 hidden leading-none">
             <svg
               viewBox="0 0 1613.26 511.77"
               xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +97,7 @@ const DefaultFooter = (props: FooterProps) => {
           {/* footer top section */}
           <div className="relative z-20 container">
             {/* logo section */}
-            <Link href={'/'} className="mb-12 inline-block max-w-50">
+            <Link href={'/'} className="mb-10 inline-block max-w-56">
               <ContentSdkImage
                 field={props.fields.Logo}
                 width={345}
@@ -114,10 +114,12 @@ const DefaultFooter = (props: FooterProps) => {
               />
             </Link>
             {/* content section */}
-            <div className="grid gap-x-4 gap-y-12 lg:grid-cols-4">
+            <div className="grid gap-x-8 gap-y-8 lg:grid-cols-4">
               {sections.map(({ key, title, content }) => (
                 <div key={key}>
-                  <div className="mb-8 text-lg font-bold">{title}</div>
+                  <div className="border-border mb-4 border-b pb-2 text-xs font-semibold tracking-[0.09em] uppercase">
+                    {title}
+                  </div>
                   <div>{content}</div>
                 </div>
               ))}
@@ -127,24 +129,26 @@ const DefaultFooter = (props: FooterProps) => {
       )}
       {/* footer bottom section */}
       {!hideBottomSection && (
-        <div className="container py-4">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
-            {/* copyright section */}
-            <div className="mr-auto">
-              <p>
-                <ContentSdkText field={props.fields.CopyrightText} />
-              </p>
-            </div>
+        <div className="border-border bg-background dark:bg-background-dark border-t py-5">
+          <div className="container">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
+              {/* copyright section */}
+              <div className="mr-auto">
+                <p>
+                  <ContentSdkText field={props.fields.CopyrightText} />
+                </p>
+              </div>
 
-            {/* policy and terms section */}
-            <div className="flex flex-wrap gap-4 lg:mx-8">
-              <ContentSdkLink field={props.fields.TermsText} />
-              <ContentSdkLink field={props.fields.PolicyText} />
-            </div>
+              {/* policy and terms section */}
+              <div className="flex flex-wrap gap-4 text-xs font-semibold tracking-[0.08em] uppercase lg:mx-8">
+                <ContentSdkLink field={props.fields.TermsText} />
+                <ContentSdkLink field={props.fields.PolicyText} />
+              </div>
 
-            {/* social icons section */}
-            <div>
-              <Placeholder name={phKeyFive} rendering={props.rendering} />
+              {/* social icons section */}
+              <div>
+                <Placeholder name={phKeyFive} rendering={props.rendering} />
+              </div>
             </div>
           </div>
         </div>

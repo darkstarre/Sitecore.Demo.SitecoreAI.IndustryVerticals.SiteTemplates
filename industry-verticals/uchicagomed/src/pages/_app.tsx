@@ -18,7 +18,12 @@ function App({ Component, pageProps }: AppProps<SitecorePageProps>): JSX.Element
         // Note Next.js does not (currently) provide anything for translation, only i18n routing.
         // If your app is not multilingual, next-localization and references to it can be removed.
       */}
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <ThemeProvider
+        attribute="class"
+        forcedTheme="light"
+        defaultTheme="light"
+        enableSystem={false}
+      >
         <I18nProvider
           lngDict={dictionary}
           locale={pageProps.page?.locale || scConfig.defaultLanguage}

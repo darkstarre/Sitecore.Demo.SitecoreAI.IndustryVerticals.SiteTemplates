@@ -17,9 +17,6 @@ import {
 } from '@sitecore-content-sdk/nextjs';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import BlobAccent from '../non-sitecore/BlobAccent';
-import CurvedClip from '../non-sitecore/CurvedClip';
-import { CommonStyles } from '@/types/styleFlags';
 
 interface Fields {
   PromoImageOne: ImageField;
@@ -36,29 +33,18 @@ type PromoProps = {
 
 const PromoWrapper = ({ children, props }: { children: React.ReactNode; props: PromoProps }) => {
   const id = props.params.RenderingIdentifier;
-  const hideBlobAccent = props.params.styles?.includes(CommonStyles.HideBlobAccent);
-  const curvedTop = props.params.styles?.includes(CommonStyles.CurvedTop);
-  const curvedBottom = props.params.styles?.includes(CommonStyles.CurvedBottom);
 
   return (
     <section
-      className={`component promo bg-background-secondary dark:bg-background-secondary-dark relative py-12 sm:py-20 lg:py-32 ${props?.params?.styles}`}
+      className={`component promo border-border bg-background-secondary relative border-y py-12 sm:py-16 lg:py-20 ${props?.params?.styles}`}
       id={id ? id : undefined}
     >
-      {curvedTop && <CurvedClip className="top-0" pos="top" />}
-      {curvedBottom && <CurvedClip className="bottom-0" pos="bottom" />}
-      {!hideBlobAccent && (
-        <BlobAccent
-          size="lg"
-          className="absolute top-0 left-0 z-0 lg:left-4 lg:[.promo-reversed_&]:right-4 lg:[.promo-reversed_&]:left-auto"
-        />
-      )}
       <div className="relative z-10 container">
-        <div className="grid items-center gap-x-24 gap-y-12 lg:grid-cols-2">
-          <div className="shadow-soft aspect-square overflow-hidden rounded-lg">
+        <div className="grid items-center gap-x-14 gap-y-10 lg:grid-cols-2">
+          <div className="border-border aspect-[4/3] overflow-hidden border bg-white shadow-md">
             <ContentSdkImage
               field={props.fields.PromoImageOne}
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover transition duration-500 hover:scale-105"
             />
           </div>
           <div className="lg:[.promo-reversed_&]:order-first">{children}</div>
@@ -71,12 +57,15 @@ const PromoWrapper = ({ children, props }: { children: React.ReactNode; props: P
 const DefaultPromo = (props: PromoProps) => {
   return (
     <PromoWrapper props={props}>
-      <h2>
+      <h2 className="max-w-2xl">
         <ContentSdkText field={props.fields.PromoTitle} />
       </h2>
-      <ContentSdkRichText className="mb-10 text-lg" field={props.fields.PromoDescription} />
+      <ContentSdkRichText
+        className="mb-8 max-w-2xl text-base lg:text-lg"
+        field={props.fields.PromoDescription}
+      />
 
-      <ContentSdkLink field={props.fields.PromoMoreInfo} className="btn btn-icon">
+      <ContentSdkLink field={props.fields.PromoMoreInfo} className="main-btn btn-icon">
         {props.fields?.PromoMoreInfo?.value?.text}
         <FontAwesomeIcon icon={faArrowRight} />
       </ContentSdkLink>

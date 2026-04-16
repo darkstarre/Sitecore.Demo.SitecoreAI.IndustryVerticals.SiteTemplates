@@ -9,8 +9,7 @@ import {
   ComponentRendering,
   ComponentParams,
 } from '@sitecore-content-sdk/nextjs';
-import BlobAccent from '../../assets/shapes/BlobAccent';
-import { FeatureStyles, CommonStyles } from '@/types/styleFlags';
+import { FeatureStyles } from '@/types/styleFlags';
 
 interface Fields {
   data: {
@@ -47,19 +46,21 @@ const FeatureItem = ({
   useAccentColor: boolean;
   layout: 'vertical' | 'horizontal';
 }) => {
-  const borderStyles = `border-2 rounded-lg ${
-    useAccentColor ? 'border-accent' : 'border-foreground dark:border-foreground-dark'
+  const borderStyles = `border ${
+    useAccentColor ? 'border-accent/30' : 'border-border dark:border-border-dark'
   }`;
 
   return (
     <li
       key={feature?.id}
-      className={`flex flex-col gap-6 ${
-        layout === 'horizontal' ? 'lg:flex-row lg:items-center' : ''
+      className={`bg-white p-6 shadow-md transition hover:-translate-y-1 hover:shadow-lg ${borderStyles} ${
+        layout === 'horizontal'
+          ? 'flex flex-col gap-5 lg:flex-row lg:items-center'
+          : 'flex flex-col gap-5'
       }`}
     >
       <div
-        className={`flex h-20 w-20 shrink-0 items-center justify-center p-3 lg:h-26 lg:w-26 ${borderStyles}`}
+        className={`flex h-18 w-18 shrink-0 items-center justify-center p-3 lg:h-20 lg:w-20 ${borderStyles}`}
       >
         <ContentSdkImage
           field={feature?.featureImage?.jsonValue}
@@ -73,10 +74,10 @@ const FeatureItem = ({
         )}
       </div>
       <div>
-        <h5>
+        <h5 className="mb-2">
           <ContentSdkText field={feature?.featureTitle?.jsonValue} />
         </h5>
-        <p className="text-lg">
+        <p className="text-base">
           <ContentSdkText field={feature?.featureDescription?.jsonValue} />
         </p>
       </div>
@@ -87,23 +88,24 @@ const FeatureItem = ({
 const DefaultFeatures = ({ fields, params }: FeaturesProps) => {
   const id = params?.RenderingIdentifier;
   const features = fields?.data?.datasource?.children?.results;
-  const hideBlobAccent = params?.styles.includes(CommonStyles.HideBlobAccent);
   const useAccentColor = params?.styles.includes(FeatureStyles.UseAccentColor);
 
   return (
-    <section className={`relative py-16 ${params?.styles}`} id={id || undefined}>
-      {!hideBlobAccent && <BlobAccent className="absolute top-16 right-4 z-0" />}
+    <section
+      className={`border-border relative border-t py-14 lg:py-16 ${params?.styles}`}
+      id={id || undefined}
+    >
       <div className="relative z-10 container">
-        <div className="max-w-4xl">
+        <div className="border-accent max-w-4xl border-l-4 pl-5">
           <h2>
             <ContentSdkText field={fields?.data?.datasource?.title?.jsonValue} />
           </h2>
           <ContentSdkRichText
-            className="text-lg"
+            className="text-base lg:text-lg"
             field={fields?.data?.datasource?.description?.jsonValue}
           />
         </div>
-        <ul className="mt-16 grid gap-12 lg:grid-cols-3">
+        <ul className="mt-10 grid gap-5 lg:mt-12 lg:grid-cols-3">
           {features?.map((feature) => (
             <FeatureItem
               key={feature.id}
@@ -125,7 +127,7 @@ const SimpleFeatures = ({ fields, params }: FeaturesProps) => {
 
   return (
     <div className={`relative ${params?.styles}`} id={id || undefined}>
-      <ul className="grid gap-6">
+      <ul className="grid gap-4">
         {features?.map((feature) => (
           <FeatureItem
             key={feature.id}

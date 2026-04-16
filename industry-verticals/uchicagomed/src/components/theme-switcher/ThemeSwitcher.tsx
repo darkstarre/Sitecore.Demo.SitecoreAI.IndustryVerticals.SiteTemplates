@@ -2,15 +2,13 @@ import React from 'react';
 import { useTheme } from 'next-themes';
 
 export const Default = () => {
-  const { setTheme, resolvedTheme } = useTheme();
-
-  const isDark = resolvedTheme === 'dark';
+  const { setTheme } = useTheme();
 
   return (
-    <div className="flex">
+    <div className="hidden">
       <button
-        aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
-        onClick={() => setTheme(isDark ? 'light' : 'dark')}
+        aria-label="Theme switcher disabled"
+        onClick={() => setTheme('light')}
         className={`bg-foreground dark:bg-foreground-dark h-6 w-12 rounded-full p-0.5 text-left transition-colors duration-300`}
       >
         <span

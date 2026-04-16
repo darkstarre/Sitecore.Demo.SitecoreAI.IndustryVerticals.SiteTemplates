@@ -31,7 +31,7 @@
 }
 
 .main-btn {
-  @apply bg-accent text-background hover:bg-accent/95 flex items-center justify-center rounded-md p-3 text-center text-lg font-semibold transition-all hover:shadow-md;
+  @apply bg-accent text-background hover:bg-accent/90 inline-flex items-center justify-center rounded-none border border-accent px-6 py-3 text-center text-sm font-semibold tracking-[0.08em] uppercase transition-all hover:shadow-md;
 
   &[disabled] {
     @apply pointer-events-none opacity-60;
@@ -39,7 +39,7 @@
 }
 
 .btn {
-  @apply text-background font-heading bg-foreground inline-flex items-center gap-4 rounded-lg px-6 py-2 text-lg font-bold lg:text-xl;
+  @apply text-background font-body bg-accent inline-flex items-center gap-3 rounded-none border border-accent px-6 py-3 text-sm font-semibold tracking-[0.08em] uppercase;
 }
 
 .btn-icon {
@@ -49,11 +49,11 @@
 }
 
 .social-icon {
-  @apply border-foreground dark:border-foreground-dark flex h-8 w-8 items-center justify-center rounded-full border;
+  @apply border-foreground/40 dark:border-foreground-dark flex h-9 w-9 items-center justify-center rounded-none border bg-background;
 }
 
 .form-input {
-  @apply bg-background w-full rounded-lg px-6 py-4 shadow-md;
+  @apply bg-background w-full rounded-none border border-border px-4 py-3.5 text-base shadow-none focus:border-accent focus:outline-none;
 }
 
 .placeholder-pattern-background {

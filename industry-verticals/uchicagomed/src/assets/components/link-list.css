@@ -5,15 +5,15 @@
   h4,
   h5,
   h6 {
-    @apply text-accent mb-4.5 text-lg;
+    @apply text-foreground mb-4 border-b border-border pb-2 text-base font-semibold tracking-[0.08em] uppercase;
   }
 
   ul {
-    @apply flex flex-row flex-wrap;
+    @apply flex flex-row flex-wrap gap-x-5 gap-y-2;
   }
 
   a:hover {
-    @apply underline;
+    @apply text-accent underline underline-offset-4;
   }
 }
 
