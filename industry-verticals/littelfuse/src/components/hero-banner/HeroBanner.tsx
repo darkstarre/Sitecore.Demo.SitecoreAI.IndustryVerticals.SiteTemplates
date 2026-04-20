@@ -14,7 +14,8 @@ import AccentLine from '@/assets/icons/accent-line/AccentLine';
 import { CommonStyles, HeroBannerStyles, LayoutStyles } from '@/types/styleFlags';
 import clsx from 'clsx';
 
-const LITTELFUSE_HERO_ELECTRONICS_FIELD: ImageField = {
+/** Fixed Littelfuse hero art (electronics / circuit board) — always used for normal/preview delivery. */
+const LITTELFUSE_HERO_IMAGE: ImageField = {
   value: {
     src: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1920&h=1280&fit=crop&q=85&auto=format',
     width: 1920,
@@ -62,19 +63,18 @@ const HeroBannerCommon = ({
     );
   }
 
-  /** Edge often still serves cloned retail/room photos; URL heuristics miss many. Force on-brand art for normal/preview. */
-  const useLittelfuseElectronicsHero = !isPageEditing && isLittelfuseSite(page.siteName);
-  const heroImageField: ImageField = useLittelfuseElectronicsHero
+  const useFixedLittelfuseHero = !isPageEditing && isLittelfuseSite(page.siteName);
+  const heroImageField: ImageField = useFixedLittelfuseHero
     ? {
         ...fields.Image,
         value: {
-          ...LITTELFUSE_HERO_ELECTRONICS_FIELD.value,
-          alt: fields.Image?.value?.alt || LITTELFUSE_HERO_ELECTRONICS_FIELD.value?.alt,
+          ...LITTELFUSE_HERO_IMAGE.value,
+          alt: fields.Image?.value?.alt || LITTELFUSE_HERO_IMAGE.value.alt,
         },
       }
     : fields.Image;
   const useBackgroundVideo =
-    !isPageEditing && !!fields.Video?.value?.src && !useLittelfuseElectronicsHero;
+    !isPageEditing && !!fields.Video?.value?.src && !useFixedLittelfuseHero;
 
   return (
     <div className={`component hero-banner ${styles} relative flex items-center`} id={id}>
