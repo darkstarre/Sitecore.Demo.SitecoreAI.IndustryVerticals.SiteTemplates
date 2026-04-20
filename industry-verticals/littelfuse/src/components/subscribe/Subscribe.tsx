@@ -1,7 +1,38 @@
 import React, { JSX } from 'react';
 import { ComponentProps } from '@/lib/component-props';
-import { Text, Field, RichText, RichTextField } from '@sitecore-content-sdk/nextjs';
+import { Text, Field, RichText, RichTextField, useSitecore } from '@sitecore-content-sdk/nextjs';
 import { useI18n } from 'next-localization';
+
+function isLittelfuseSite(siteName?: string): boolean {
+  const envSite = (process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME ?? '').toLowerCase();
+  return envSite.includes('littelfuse') || (siteName ?? '').toLowerCase().includes('littelfuse');
+}
+
+/** Subscribe headline for Littelfuse delivery (replaces retail “offers on products” CMS copy). */
+function littelfuseSubscribeTitle(locale?: string): string {
+  const l = (locale ?? 'en').toLowerCase();
+  if (l.startsWith('es')) {
+    return 'Reciba actualizaciones técnicas, notas de aplicación y noticias de productos';
+  }
+  if (l.startsWith('fr')) {
+    return 'Recevez nos actualités techniques, notes d’application et nouveautés produits';
+  }
+  return 'Get technical updates, application notes, and product news';
+}
+
+function subscribeTitleField(
+  base: Field<string> | undefined,
+  useLittelfuseCopy: boolean,
+  locale: string | undefined
+): Field<string> | undefined {
+  if (!useLittelfuseCopy) {
+    return base;
+  }
+  return {
+    ...base,
+    value: littelfuseSubscribeTitle(locale),
+  };
+}
 
 export type SubscribeBannerProps = ComponentProps & {
   params: { [key: string]: string };
@@ -14,6 +45,9 @@ export type SubscribeBannerProps = ComponentProps & {
 export const Default = (props: SubscribeBannerProps): JSX.Element => {
   const { styles, RenderingIdentifier: id } = props.params;
   const { t } = useI18n();
+  const { page } = useSitecore();
+  const useLittelfuseCopy = !page.mode.isEditing && isLittelfuseSite(page.siteName);
+  const titleField = subscribeTitleField(props.fields?.Title, useLittelfuseCopy, page.locale);
 
   return (
     <section
@@ -24,7 +58,7 @@ export const Default = (props: SubscribeBannerProps): JSX.Element => {
         <div className="grid items-center gap-y-6 md:grid-cols-2 md:gap-x-12 md:gap-y-0">
           {/* Headline */}
           <h2 className="text-foreground text-2xl leading-tight font-medium xl:text-3xl">
-            <Text field={props.fields?.Title} />
+            <Text field={titleField} />
           </h2>
 
           {/* Form */}
@@ -63,6 +97,9 @@ export const WithConsent = (props: SubscribeBannerProps): JSX.Element => {
   const { styles, RenderingIdentifier: id } = props.params;
   const uid = props.rendering.uid;
   const { t } = useI18n();
+  const { page } = useSitecore();
+  const useLittelfuseCopy = !page.mode.isEditing && isLittelfuseSite(page.siteName);
+  const titleField = subscribeTitleField(props.fields?.Title, useLittelfuseCopy, page.locale);
 
   return (
     <section className={`component subscribe-banner group ${styles ?? ''}`} id={id || undefined}>
@@ -70,7 +107,7 @@ export const WithConsent = (props: SubscribeBannerProps): JSX.Element => {
       <div className="max-w-sm">
         <div className="mb-6">
           <h2 className="text-foreground text-lg leading-tight font-medium xl:text-xl">
-            <Text field={props.fields?.Title} />
+            <Text field={titleField} />
           </h2>
         </div>
 
