@@ -63,8 +63,7 @@ const HeroBannerCommon = ({
   }
 
   /** Edge often still serves cloned retail/room photos; URL heuristics miss many. Force on-brand art for normal/preview. */
-  const useLittelfuseElectronicsHero =
-    !isPageEditing && isLittelfuseSite(page.siteName);
+  const useLittelfuseElectronicsHero = !isPageEditing && isLittelfuseSite(page.siteName);
   const heroImageField: ImageField = useLittelfuseElectronicsHero
     ? {
         ...fields.Image,

@@ -3,6 +3,7 @@
 import { ComponentProps } from '@/lib/component-props';
 import {
   Field,
+  ImageField,
   LinkField,
   Link as ContentSskLink,
   RichTextField,
@@ -254,11 +255,18 @@ const mergeUniqueArticlesByUrl = (items: Article[]) => {
 
 const ARTICLE_CARD_IMAGE_FALLBACK = { width: 800, height: 800 };
 
-function hasValidImageDimensions(v: { width?: unknown; height?: unknown } | undefined): boolean {
+function hasValidImageDimensions(v: ImageField['value'] | undefined): boolean {
   if (!v) return false;
   const w = typeof v.width === 'string' ? parseFloat(v.width) : v.width;
   const h = typeof v.height === 'string' ? parseFloat(v.height) : v.height;
-  return typeof w === 'number' && !Number.isNaN(w) && w > 0 && typeof h === 'number' && !Number.isNaN(h) && h > 0;
+  return (
+    typeof w === 'number' &&
+    !Number.isNaN(w) &&
+    w > 0 &&
+    typeof h === 'number' &&
+    !Number.isNaN(h) &&
+    h > 0
+  );
 }
 
 function ensureArticleImageDimensions(item: Article): Article {
