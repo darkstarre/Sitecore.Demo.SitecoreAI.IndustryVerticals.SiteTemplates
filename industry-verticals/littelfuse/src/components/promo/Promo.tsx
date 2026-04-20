@@ -22,26 +22,26 @@ function isLittelfuseSite(siteName?: string): boolean {
 }
 
 /** Electronics imagery for Littelfuse delivery (replaces retail / furniture promo photos). */
-const LF_PROMO_IMG1_ALT = 'Electronic circuit board assembly';
-const LF_PROMO_IMG2_ALT = 'Industrial control and electronics';
-const LF_PROMO_IMG3_ALT = 'Semiconductor and PCB manufacturing';
+const LF_PROMO_IMG1_ALT = 'Industrial manufacturing and precision equipment';
+const LF_PROMO_IMG2_ALT = 'Electronic components and circuit assembly';
+const LF_PROMO_IMG3_ALT = 'Engineer reviewing electrical systems';
 
 const LF_PROMO_IMAGE_1: ImageField['value'] = {
-  src: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&h=800&fit=crop&q=85&auto=format',
+  src: 'https://images.unsplash.com/photo-1580584126903-c17d41830450?w=1200&h=800&fit=crop&q=85&auto=format',
   width: 1200,
   height: 800,
   alt: LF_PROMO_IMG1_ALT,
 };
 
 const LF_PROMO_IMAGE_2: ImageField['value'] = {
-  src: 'https://images.unsplash.com/photo-1581092160562-40aa08f2b256?w=800&h=800&fit=crop&q=85&auto=format',
+  src: 'https://images.unsplash.com/photo-1558346547-4439467d4cf7?w=800&h=800&fit=crop&q=85&auto=format',
   width: 800,
   height: 800,
   alt: LF_PROMO_IMG2_ALT,
 };
 
 const LF_PROMO_IMAGE_3: ImageField['value'] = {
-  src: 'https://images.unsplash.com/photo-1519389950473-47ba0277789c?w=800&h=1200&fit=crop&q=85&auto=format',
+  src: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=1200&fit=crop&q=85&auto=format',
   width: 800,
   height: 1200,
   alt: LF_PROMO_IMG3_ALT,
