@@ -15,12 +15,14 @@ import { CommonStyles, HeroBannerStyles, LayoutStyles } from '@/types/styleFlags
 import clsx from 'clsx';
 
 /** Fixed Littelfuse hero art (electronics / circuit board) — always used for normal/preview delivery. */
+const LITTELFUSE_HERO_IMAGE_ALT = 'Electronic components and circuit technology';
+
 const LITTELFUSE_HERO_IMAGE: ImageField = {
   value: {
     src: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1920&h=1280&fit=crop&q=85&auto=format',
     width: 1920,
     height: 1280,
-    alt: 'Electronic components and circuit technology',
+    alt: LITTELFUSE_HERO_IMAGE_ALT,
   },
 };
 
@@ -69,7 +71,7 @@ const HeroBannerCommon = ({
         ...fields.Image,
         value: {
           ...LITTELFUSE_HERO_IMAGE.value,
-          alt: fields.Image?.value?.alt || LITTELFUSE_HERO_IMAGE.value.alt,
+          alt: fields.Image?.value?.alt || LITTELFUSE_HERO_IMAGE_ALT,
         },
       }
     : fields.Image;
