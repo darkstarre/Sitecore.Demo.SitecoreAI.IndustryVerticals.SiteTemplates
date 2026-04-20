@@ -14,6 +14,20 @@ import AccentLine from '@/assets/icons/accent-line/AccentLine';
 import { CommonStyles, HeroBannerStyles, LayoutStyles } from '@/types/styleFlags';
 import clsx from 'clsx';
 
+const LITTELFUSE_HERO_ELECTRONICS_FIELD: ImageField = {
+  value: {
+    src: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1920&h=1280&fit=crop&q=85&auto=format',
+    width: 1920,
+    height: 1280,
+    alt: 'Electronic components and circuit technology',
+  },
+};
+
+function isLittelfuseSite(siteName?: string): boolean {
+  const envSite = (process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME ?? '').toLowerCase();
+  return envSite.includes('littelfuse') || (siteName ?? '').toLowerCase().includes('littelfuse');
+}
+
 interface Fields {
   Image: ImageField;
   Video: ImageField;
@@ -48,31 +62,44 @@ const HeroBannerCommon = ({
     );
   }
 
+  /** Edge often still serves cloned retail/room photos; URL heuristics miss many. Force on-brand art for normal/preview. */
+  const useLittelfuseElectronicsHero =
+    !isPageEditing && isLittelfuseSite(page.siteName);
+  const heroImageField: ImageField = useLittelfuseElectronicsHero
+    ? {
+        ...fields.Image,
+        value: {
+          ...LITTELFUSE_HERO_ELECTRONICS_FIELD.value,
+          alt: fields.Image?.value?.alt || LITTELFUSE_HERO_ELECTRONICS_FIELD.value?.alt,
+        },
+      }
+    : fields.Image;
+  const useBackgroundVideo =
+    !isPageEditing && !!fields.Video?.value?.src && !useLittelfuseElectronicsHero;
+
   return (
     <div className={`component hero-banner ${styles} relative flex items-center`} id={id}>
-      {/* Background Media */}
       <div className="absolute inset-0 z-0">
-        {!isPageEditing && fields?.Video?.value?.src ? (
+        {useBackgroundVideo ? (
           <video
             className="h-full w-full object-cover"
             autoPlay
             muted
             loop
             playsInline
-            poster={fields.Image?.value?.src}
+            poster={heroImageField?.value?.src}
           >
             <source src={fields.Video?.value?.src} type="video/webm" />
           </video>
         ) : (
           <>
             <ContentSdkImage
-              field={fields.Image}
+              field={heroImageField}
               className="h-full w-full object-cover md:object-bottom"
               priority
             />
           </>
         )}
-        {/* Gradient overlay to fade image/video at bottom */}
         {!hideGradientOverlay && (
           <div className="absolute inset-0 bg-gradient-to-b from-transparent from-85% to-white"></div>
         )}
@@ -93,7 +120,6 @@ export const Default = ({ params, fields, rendering }: HeroBannerProps) => {
 
   return (
     <HeroBannerCommon params={params} fields={fields} rendering={rendering}>
-      {/* Content Container */}
       <div className="relative w-full">
         <div className="container mx-auto px-4">
           <div
@@ -101,13 +127,11 @@ export const Default = ({ params, fields, rendering }: HeroBannerProps) => {
           >
             <div className="max-w-182">
               <div className={clsx({ shim: screenLayer })}>
-                {/* Title */}
                 <h1 className="text-center text-5xl leading-[110%] font-bold text-white capitalize md:text-7xl md:leading-[130%] lg:text-left xl:text-[80px]">
                   <ContentSdkText field={fields.Title} />
                   {!hideAccentLine && <AccentLine className="mx-auto !h-5 w-[9ch] lg:mx-0" />}
                 </h1>
 
-                {/* Description */}
                 <div className="mt-7 text-xl text-white md:text-2xl [&_*]:text-white">
                   <ContentSdkRichText
                     field={fields.Description}
@@ -115,7 +139,6 @@ export const Default = ({ params, fields, rendering }: HeroBannerProps) => {
                   />
                 </div>
 
-                {/* CTA Link or Placeholder */}
                 <div className="mt-6 flex w-full justify-center lg:justify-start">
                   {withPlaceholder ? (
                     <Placeholder name={searchBarPlaceholderKey} rendering={rendering} />
@@ -142,25 +165,21 @@ export const TopContent = ({ params, fields, rendering }: HeroBannerProps) => {
 
   return (
     <HeroBannerCommon params={params} fields={fields} rendering={rendering}>
-      {/* Content Container */}
       <div className="relative w-full">
         <div className="container mx-auto flex min-h-[30rem] justify-center px-4 lg:min-h-[34rem]">
           <div
             className={`flex flex-col items-center py-10 lg:py-28 ${reverseLayout ? 'justify-end' : 'justify-start'}`}
           >
             <div className={clsx({ shim: screenLayer })}>
-              {/* Title */}
               <h1 className="text-center text-5xl leading-[110%] font-bold text-white capitalize md:text-7xl md:leading-[130%] xl:text-[80px]">
                 <ContentSdkText field={fields.Title} />
                 {!hideAccentLine && <AccentLine className="mx-auto !h-5 w-[9ch]" />}
               </h1>
 
-              {/* Description */}
               <div className="mt-7 text-xl text-white md:text-2xl [&_*]:text-white">
                 <ContentSdkRichText field={fields.Description} className="text-center" />
               </div>
 
-              {/* CTA Link or Placeholder */}
               <div className="mt-6 flex w-full justify-center">
                 {withPlaceholder ? (
                   <Placeholder name={searchBarPlaceholderKey} rendering={rendering} />

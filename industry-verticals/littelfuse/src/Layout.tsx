@@ -67,9 +67,8 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
           <>
             <header>
               <div id="header">
-                {route && <Placeholder name="headless-header" rendering={route} />}
+                <LittelfuseNav />
               </div>
-              <LittelfuseNav />
             </header>
             <main>
               <div id="content">
