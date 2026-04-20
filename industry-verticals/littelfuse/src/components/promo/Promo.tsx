@@ -8,12 +8,121 @@ import {
   LinkField,
   RichTextField,
   Text,
+  useSitecore,
 } from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from 'lib/component-props';
 import clsx from 'clsx';
 import AccentLine from '@/assets/icons/accent-line/AccentLine';
 import { Quote } from '@/assets/icons/quote/Quote';
 import { CommonStyles, LayoutStyles, PromoFlags } from '@/types/styleFlags';
+
+function isLittelfuseSite(siteName?: string): boolean {
+  const envSite = (process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME ?? '').toLowerCase();
+  return envSite.includes('littelfuse') || (siteName ?? '').toLowerCase().includes('littelfuse');
+}
+
+/** Electronics imagery for Littelfuse delivery (replaces retail / furniture promo photos). */
+const LF_PROMO_IMG1_ALT = 'Electronic circuit board assembly';
+const LF_PROMO_IMG2_ALT = 'Industrial control and electronics';
+const LF_PROMO_IMG3_ALT = 'Semiconductor and PCB manufacturing';
+
+const LF_PROMO_IMAGE_1: ImageField['value'] = {
+  src: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&h=800&fit=crop&q=85&auto=format',
+  width: 1200,
+  height: 800,
+  alt: LF_PROMO_IMG1_ALT,
+};
+
+const LF_PROMO_IMAGE_2: ImageField['value'] = {
+  src: 'https://images.unsplash.com/photo-1581092160562-40aa08f2b256?w=800&h=800&fit=crop&q=85&auto=format',
+  width: 800,
+  height: 800,
+  alt: LF_PROMO_IMG2_ALT,
+};
+
+const LF_PROMO_IMAGE_3: ImageField['value'] = {
+  src: 'https://images.unsplash.com/photo-1519389950473-47ba0277789c?w=800&h=1200&fit=crop&q=85&auto=format',
+  width: 800,
+  height: 1200,
+  alt: LF_PROMO_IMG3_ALT,
+};
+
+function mergePromoImageField(
+  base: ImageField,
+  preset: ImageField['value'],
+  altFallback: string
+): ImageField {
+  return {
+    ...base,
+    value: {
+      ...preset,
+      alt: base?.value?.alt || altFallback,
+    },
+  };
+}
+
+type LittelfusePromoStrings = {
+  subtitle: string;
+  title: string;
+  descriptionHtml: string;
+};
+
+const LF_PROMO_COPY_ES: LittelfusePromoStrings = {
+  subtitle: 'Ingeniería primero',
+  title: 'Diseñado para aplicaciones críticas',
+  descriptionHtml:
+    '<p>Desde la protección de circuitos hasta el control de energía, explore herramientas y productos pensados para entornos exigentes y regulados.</p>',
+};
+
+const LF_PROMO_COPY_FR: LittelfusePromoStrings = {
+  subtitle: 'L’ingénierie d’abord',
+  title: 'Conçu pour les applications critiques',
+  descriptionHtml:
+    '<p>De la protection des circuits à la commande de l’énergie, découvrez des outils et produits pour environnements sévères et réglementés.</p>',
+};
+
+const LF_PROMO_COPY_EN: LittelfusePromoStrings = {
+  subtitle: 'Engineering first',
+  title: 'Built for critical applications',
+  descriptionHtml:
+    '<p>From circuit protection to power control, explore tools and products engineered for reliability in demanding, regulated environments.</p>',
+};
+
+function littelfusePromoStrings(locale?: string): LittelfusePromoStrings {
+  const l = (locale ?? 'en').toLowerCase();
+  if (l.startsWith('es')) {
+    return LF_PROMO_COPY_ES;
+  }
+  if (l.startsWith('fr')) {
+    return LF_PROMO_COPY_FR;
+  }
+  return LF_PROMO_COPY_EN;
+}
+
+function withLittelfusePromoFields(base: Fields, locale: string | undefined): Fields {
+  const s = littelfusePromoStrings(locale);
+  return {
+    ...base,
+    PromoImageOne: mergePromoImageField(base.PromoImageOne, LF_PROMO_IMAGE_1, LF_PROMO_IMG1_ALT),
+    PromoImageTwo: mergePromoImageField(base.PromoImageTwo, LF_PROMO_IMAGE_2, LF_PROMO_IMG2_ALT),
+    PromoImageThree: mergePromoImageField(
+      base.PromoImageThree,
+      LF_PROMO_IMAGE_3,
+      LF_PROMO_IMG3_ALT
+    ),
+    PromoSubTitle: { ...base.PromoSubTitle, value: s.subtitle },
+    PromoTitle: { ...base.PromoTitle, value: s.title },
+    PromoDescription: { ...base.PromoDescription, value: s.descriptionHtml },
+  };
+}
+
+function usePromoFields(props: PromoProps): Fields {
+  const { page } = useSitecore();
+  if (page.mode.isEditing || !isLittelfuseSite(page.siteName)) {
+    return props.fields;
+  }
+  return withLittelfusePromoFields(props.fields, page.locale);
+}
 
 interface Fields {
   PromoImageOne: ImageField;
@@ -139,6 +248,8 @@ export const MultipleImageContainer = ({
 };
 
 export const Default = (props: PromoProps): JSX.Element => {
+  const fields = usePromoFields(props);
+  const promoProps = { ...props, fields };
   const id = props.params.RenderingIdentifier;
   const isPromoReversed = !props?.params?.styles?.includes(LayoutStyles.Reversed)
     ? ''
@@ -157,15 +268,15 @@ export const Default = (props: PromoProps): JSX.Element => {
         <div className={`${isPromoReversed} col-span-full ${firstColumnSize} relative w-full`}>
           {showSingleImage ? (
             <SingleImageContainer
-              PromoImageOne={props.fields.PromoImageOne}
+              PromoImageOne={fields.PromoImageOne}
               withShapes={withShapes}
               withShadows={withShadows}
             />
           ) : (
             <MultipleImageContainer
-              PromoImageOne={props.fields.PromoImageOne}
-              PromoImageTwo={props.fields.PromoImageTwo}
-              PromoImageThree={props.fields.PromoImageThree}
+              PromoImageOne={fields.PromoImageOne}
+              PromoImageTwo={fields.PromoImageTwo}
+              PromoImageThree={fields.PromoImageThree}
               withShapes={withShapes}
               withShadows={withShadows}
             />
@@ -173,7 +284,7 @@ export const Default = (props: PromoProps): JSX.Element => {
         </div>
 
         <div className={`col-span-full ${secondColumnSize} ${justifyContentClass}`}>
-          <PromoContent {...props} />
+          <PromoContent {...promoProps} />
         </div>
       </div>
     </section>
@@ -181,6 +292,7 @@ export const Default = (props: PromoProps): JSX.Element => {
 };
 
 export const WithFullImage = (props: PromoProps): JSX.Element => {
+  const fields = usePromoFields(props);
   const id = props.params.RenderingIdentifier;
   const isPromoReversed = !props?.params?.styles?.includes(LayoutStyles.Reversed)
     ? ' flex-col'
@@ -190,26 +302,23 @@ export const WithFullImage = (props: PromoProps): JSX.Element => {
     <section className={`${props.params.styles} py-20`} id={id ? id : undefined}>
       <div className={`container flex ${isPromoReversed}`}>
         <div className="relative my-10 aspect-[1232/608] overflow-hidden rounded-2xl">
-          <ContentSdkImage
-            field={props.fields.PromoImageTwo}
-            className="h-full w-full object-cover"
-          />
+          <ContentSdkImage field={fields.PromoImageTwo} className="h-full w-full object-cover" />
         </div>
 
         <div className="space-y-5">
           <div className="text-foreground-light font-semibold uppercase">
-            <Text field={props.fields.PromoSubTitle} />
+            <Text field={fields.PromoSubTitle} />
           </div>
 
           <div className="grid-col-1 grid gap-5 md:grid-cols-2">
             <div className="font-bold">
               <h2 className="max-w-md">
-                <Text field={props.fields.PromoTitle} />
+                <Text field={fields.PromoTitle} />
               </h2>
             </div>
 
             <div className="flex max-w-md items-center">
-              <ContentSdkRichText className="promo-text" field={props.fields.PromoDescription} />
+              <ContentSdkRichText className="promo-text" field={fields.PromoDescription} />
             </div>
           </div>
         </div>
@@ -219,6 +328,8 @@ export const WithFullImage = (props: PromoProps): JSX.Element => {
 };
 
 export const WithQuote = (props: PromoProps): JSX.Element => {
+  const fields = usePromoFields(props);
+  const promoProps = { ...props, fields };
   const id = props.params.RenderingIdentifier;
   const withQuote = !props?.params?.styles?.includes(PromoFlags.HidePromoQuotes);
   const isReversed = !props?.params?.styles?.includes(LayoutStyles.Reversed);
@@ -251,7 +362,7 @@ export const WithQuote = (props: PromoProps): JSX.Element => {
               className={`relative mt-10 flex items-center justify-center lg:col-span-1 ${classesWhenReversed.contentOrder}`}
             >
               <div className="text-foreground! mb-5 max-w-sm">
-                <PromoContent {...props} />
+                <PromoContent {...promoProps} />
               </div>
             </div>
 
@@ -259,7 +370,7 @@ export const WithQuote = (props: PromoProps): JSX.Element => {
               className={`relative z-30 order-2 mb-2 aspect-2/1 w-full translate-y-[25%] scale-100 place-self-end lg:order-1 lg:col-span-2 lg:h-3/4 xl:scale-90 ${classesWhenReversed.imageTransform}`}
             >
               <ContentSdkImage
-                field={props.fields.PromoImageOne}
+                field={fields.PromoImageOne}
                 className="absolute inset-0 h-full w-full rounded-2xl object-cover"
               />
             </div>
