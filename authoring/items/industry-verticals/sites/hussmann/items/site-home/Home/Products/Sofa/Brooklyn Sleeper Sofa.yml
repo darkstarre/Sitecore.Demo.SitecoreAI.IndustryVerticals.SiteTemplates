@@ -1,0 +1,271 @@
+﻿---
+ID: "58b35318-5434-45d1-ac11-29a135849510"
+Parent: "b91453fa-a776-474f-9b0e-0b42b6140991"
+Template: "f6e44a9e-074a-4865-987e-0c2dc00b7af5"
+Path: "/sitecore/content/industry-verticals/hussmann/Home/Products/Sofa/Brooklyn Sleeper Sofa"
+SharedFields:
+- ID: "4194f0b1-8aac-49c1-8e93-129877fe4c79"
+  Hint: Tags
+  Value: |
+    {C1BB0F6C-74D7-49EA-8797-02FD87B1F61E}
+    {59BF61CB-66DA-423C-B150-40CD8C438667}
+    {583E3FB2-7221-4BED-A83C-A6347B3D3D9D}
+- ID: "58d111ab-b286-42ab-bb35-8daadd6ab480"
+  Hint: SKU
+  Value: SOF0002
+- ID: "6d624193-14b5-4076-b1d6-b6cac9888298"
+  Hint: Color
+  Value: "{4EC55919-F8E3-459E-8910-8119183DF11D}"
+- ID: "998ad31d-a023-4c69-8654-9b70de07a7f3"
+  Hint: Size
+  Value: "{68444B71-699B-4F63-89A4-71F5D1EEEACE}"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 425
+- ID: "bf3fd6d5-2930-40a0-9c22-b4fe37f6717f"
+  Hint: Image1
+  Value: |
+    <Image src="https://starter-verticals-v2.sitecoresandbox.cloud/api/public/content/c6156eff779d403d920bfaccc7b28c92?v=defd6b05" dam-id="Fe_iCLzrSXeYaCOjwYDrIQ" width="768" height="768" alt="brooklyn-sleeper-sofa.webp" dam-content-type="Image" thumbnailsrc="https://starter-verticals-v2.sitecoresandbox.cloud/api/gateway/79375/thumbnail" />
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{CD60182C-49C3-4C79-B62A-7940D2F8E6BD}" />
+- ID: "cef30aa1-3383-482a-9e55-9226ee7116bd"
+  Hint: Category
+  Value: "{B91453FA-A776-474F-9B0E-0B42B6140991}"
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "15739b94-cb19-4d9d-92e4-7e6c078e5b94"
+- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  Hint: __Renderings
+  Value: |
+    <r xmlns:p="p" xmlns:s="s"
+      p:p="1">
+      <d
+        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+        <r
+          uid="{54622116-B193-4882-BCB3-6654BE84287F}"
+          s:ds="6b8aa602-47ed-4f9d-9dc9-a36492cfad33"
+          s:id="{E874A406-4977-443B-8AFE-690812AFB5EF}"
+          s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;Autoplay&amp;Loop&amp;HideAccentLine&amp;FieldNames&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+          s:ph="/headless-main/sxa-productcontent/related-products-1" />
+      </d>
+    </r>
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20251016T131324Z
+    - ID: "2f1d30bc-161c-4474-8c72-c959c64a77d3"
+      Hint: metadataTitle
+      Value: Brooklyn Sleeper Sofa | Hussmann – Convertible Sofa Bed for Modern Living
+    - ID: "30b20e46-ce60-4993-a2d3-778a61e77331"
+      Hint: ShortDescription
+      Value: A convertible sofa that doubles as a bed.
+    - ID: "44690751-4b7b-4d8f-a4d5-06af6ce0ff68"
+      Hint: metadataKeywords
+      Value: Brooklyn Sleeper Sofa, convertible sofa bed, sleeper sofa, modern furniture, compact living, durable upholstery, Hussmann shop, multifunctional furniture
+    - ID: "4d1068af-ad2e-485a-8e61-031ea8464425"
+      Hint: Price
+      Value: 1099
+    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
+      Hint: NavigationTitle
+      Value: Brooklyn Sleeper Sofa
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\movin.tilakaratne@sitecore.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\movin.tilakaratne@sitecore.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "79c22f09-cb09-4c94-8f3e-cab27a04dcaf"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\ranula.gamage@sitecore.com
+    - ID: "c97b8c3c-2801-4b14-9bf8-f11ec7ab1d11"
+      Hint: Title
+      Value: Brooklyn Sleeper Sofa
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260129T163934Z
+    - ID: "e35644f6-b680-4f40-9c7a-def95adfedda"
+      Hint: LongDescription
+      Value: "<p>The Brooklyn Sleeper Sofa is perfect for small spaces. With a simple pull-out mechanism, it transforms into a comfortable bed. Upholstered in durable fabric, it’s ideal for overnight guests.</p>"
+    - ID: "e5b1f5b3-a36d-4fd3-8df7-c9878ebfb6cf"
+      Hint: pageSummary
+      Value: "Designed for flexibility without compromise, the Brooklyn Sleeper Sofa reflects Hussmann’s philosophy of purposeful design. With a smooth pull-out mechanism and soft, durable upholstery, it transitions effortlessly from daytime lounging to nighttime comfort. Ideal for apartments and guest rooms, Brooklyn balances practicality with refined aesthetics. Available in Indigo and Large size, it’s the perfect union of form, function, and quiet luxury — a true testament to how modern furniture can adapt beautifully to contemporary living."
+- Language: "es-ES"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20251016T131324Z
+    - ID: "2f1d30bc-161c-4474-8c72-c959c64a77d3"
+      Hint: metadataTitle
+      Value: Sofá Cama Brooklyn | Hussmann – Sofá Cama Convertible para Vida Moderna
+    - ID: "30b20e46-ce60-4993-a2d3-778a61e77331"
+      Hint: ShortDescription
+      Value: Un sofá convertible que también funciona como cama.
+    - ID: "44690751-4b7b-4d8f-a4d5-06af6ce0ff68"
+      Hint: metadataKeywords
+      Value: Sofá Cama Brooklyn, sofá cama convertible, sofá cama, muebles modernos, vida compacta, tapicería duradera, tienda Hussmann, muebles multifuncionales
+    - ID: "4d1068af-ad2e-485a-8e61-031ea8464425"
+      Hint: Price
+      Value: 1099
+    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
+      Hint: NavigationTitle
+      Value: Sofá Cama Brooklyn
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\movin.tilakaratne@sitecore.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\movin.tilakaratne@sitecore.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "40df7e4d-2055-411d-9f7e-07251df853c7"
+    - ID: "9857f526-390f-48df-b6d1-1a97cc328e8f"
+      Hint: __Version Name
+      Value: AI translated
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\movin.tilakaratne@sitecore.com
+    - ID: "c97b8c3c-2801-4b14-9bf8-f11ec7ab1d11"
+      Hint: Title
+      Value: Sofá Cama Brooklyn
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20251219T104435Z
+    - ID: "e35644f6-b680-4f40-9c7a-def95adfedda"
+      Hint: LongDescription
+      Value: <p>El Sofá Cama Brooklyn es perfecto para espacios pequeños. Con un simple mecanismo de extracción, se transforma en una cama cómoda. Tapizado en tela duradera, es ideal para invitados nocturnos.</p>
+    - ID: "e5b1f5b3-a36d-4fd3-8df7-c9878ebfb6cf"
+      Hint: pageSummary
+      Value: Diseñado para la flexibilidad sin comprometer, el Sofá Cama Brooklyn refleja la filosofía de diseño intencionado de Hussmann. Con un mecanismo de extracción suave y una tapicería suave y duradera, se transforma sin esfuerzo de un lugar de descanso diurno a un confort nocturno. Ideal para apartamentos y habitaciones de invitados, Brooklyn equilibra la practicidad con una estética refinada. Disponible en tamaño grande y color índigo, es la unión perfecta de forma, función y lujo discreto — un verdadero testimonio de cómo los muebles modernos pueden adaptarse bellamente a la vida contemporánea.
+- Language: "fr-CA"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20251016T131324Z
+    - ID: "2f1d30bc-161c-4474-8c72-c959c64a77d3"
+      Hint: metadataTitle
+      Value: "Canapé-lit Brooklyn | Hussmann – Canapé-lit convertible pour un mode de vie moderne"
+    - ID: "30b20e46-ce60-4993-a2d3-778a61e77331"
+      Hint: ShortDescription
+      Value: Un canapé convertible qui fait aussi office de lit.
+    - ID: "44690751-4b7b-4d8f-a4d5-06af6ce0ff68"
+      Hint: metadataKeywords
+      Value: "Canapé-lit Brooklyn, canapé-lit convertible, canapé-lit, mobilier moderne, vie compacte, revêtement durable, boutique Hussmann, mobilier multifonctionnel"
+    - ID: "4d1068af-ad2e-485a-8e61-031ea8464425"
+      Hint: Price
+      Value: 1099
+    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
+      Hint: NavigationTitle
+      Value: "Canapé-lit Brooklyn"
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\movin.tilakaratne@sitecore.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\movin.tilakaratne@sitecore.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "30b9c169-601b-451d-92dd-0eaab323f41a"
+    - ID: "9857f526-390f-48df-b6d1-1a97cc328e8f"
+      Hint: __Version Name
+      Value: AI translated
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\isuru.bandara@sitecore.com
+    - ID: "c97b8c3c-2801-4b14-9bf8-f11ec7ab1d11"
+      Hint: Title
+      Value: "Canapé-lit Brooklyn"
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20251217T110242Z
+    - ID: "e35644f6-b680-4f40-9c7a-def95adfedda"
+      Hint: LongDescription
+      Value: "<p>Le canapé-lit Brooklyn est parfait pour les petits espaces. Avec un simple mécanisme de déploiement, il se transforme en un lit confortable. Recouvert d'un tissu durable, il est idéal pour les invités de nuit.</p>"
+    - ID: "e5b1f5b3-a36d-4fd3-8df7-c9878ebfb6cf"
+      Hint: pageSummary
+      Value: "Conçu pour la flexibilité sans compromis, le canapé-lit Brooklyn reflète la philosophie de Hussmann en matière de design réfléchi. Avec un mécanisme de déploiement fluide et un revêtement doux et durable, il passe sans effort du salon de jour au confort nocturne. Idéal pour les appartements et les chambres d'amis, Brooklyn équilibre la praticité avec une esthétique raffinée. Disponible en Indigo et en grande taille, c'est l'union parfaite de la forme, de la fonction et du luxe discret — un véritable témoignage de la façon dont le mobilier moderne peut s'adapter magnifiquement à la vie contemporaine."
+- Language: "fr-FR"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20251016T131324Z
+    - ID: "2f1d30bc-161c-4474-8c72-c959c64a77d3"
+      Hint: metadataTitle
+      Value: "Canapé-lit Brooklyn | Hussmann – Canapé-lit convertible pour un mode de vie moderne"
+    - ID: "30b20e46-ce60-4993-a2d3-778a61e77331"
+      Hint: ShortDescription
+      Value: Un canapé convertible qui fait également office de lit.
+    - ID: "44690751-4b7b-4d8f-a4d5-06af6ce0ff68"
+      Hint: metadataKeywords
+      Value: "Canapé-lit Brooklyn, canapé-lit convertible, canapé-lit, mobilier moderne, vie compacte, revêtement durable, boutique Hussmann, mobilier multifonctionnel"
+    - ID: "4d1068af-ad2e-485a-8e61-031ea8464425"
+      Hint: Price
+      Value: 1099
+    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
+      Hint: NavigationTitle
+      Value: "Canapé-lit Brooklyn"
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\movin.tilakaratne@sitecore.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\movin.tilakaratne@sitecore.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "f47e739c-253a-4f6c-9b49-49f6bfda895a"
+    - ID: "9857f526-390f-48df-b6d1-1a97cc328e8f"
+      Hint: __Version Name
+      Value: AI translated
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\isuru.bandara@sitecore.com
+    - ID: "c97b8c3c-2801-4b14-9bf8-f11ec7ab1d11"
+      Hint: Title
+      Value: "Canapé-lit Brooklyn"
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20251217T104116Z
+    - ID: "e35644f6-b680-4f40-9c7a-def95adfedda"
+      Hint: LongDescription
+      Value: "<p>Le canapé-lit Brooklyn est parfait pour les petits espaces. Avec un simple mécanisme de déploiement, il se transforme en un lit confortable. Revêtu d'un tissu durable, il est idéal pour les invités de nuit.</p>"
+    - ID: "e5b1f5b3-a36d-4fd3-8df7-c9878ebfb6cf"
+      Hint: pageSummary
+      Value: "Conçu pour la flexibilité sans compromis, le canapé-lit Brooklyn reflète la philosophie de Hussmann en matière de design réfléchi. Avec un mécanisme de déploiement fluide et un revêtement doux et durable, il passe sans effort du salon de jour au confort nocturne. Idéal pour les appartements et les chambres d'amis, Brooklyn équilibre la praticité avec une esthétique raffinée. Disponible en Indigo et en grande taille, c'est l'union parfaite de la forme, de la fonction et du luxe discret — un véritable témoignage de la façon dont le mobilier moderne peut s'adapter magnifiquement à la vie contemporaine."

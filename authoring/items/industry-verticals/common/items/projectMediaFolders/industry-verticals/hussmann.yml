@@ -1,0 +1,16 @@
+---
+ID: "baf46563-dd1a-4bbe-b892-5dda4f62c37b"
+Parent: "14e8f1a9-6efb-48da-950c-66f6e3d204f0"
+Template: "fe5dd826-48c6-436d-b87a-7c4210c7413b"
+Path: "/sitecore/media library/Project/industry-verticals/hussmann"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20260420T230000Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "2bc85850-a8cf-4ff6-a4f1-4ca1f274f5d9"

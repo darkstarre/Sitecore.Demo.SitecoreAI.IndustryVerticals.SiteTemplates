@@ -1,0 +1,138 @@
+{
+  "$schema": "../.sitecore/schemas/ModuleFile.schema.json",
+  "namespace": "Project.Hussmann-Content",
+  "references": ["Project.IndustryVerticals"],
+  "items": {
+    "includes": [
+      {
+        "name": "hussmann-site-root",
+        "path": "/sitecore/content/industry-verticals/hussmann",
+        "scope": "SingleItem",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "hussmann-home-root",
+        "path": "/sitecore/content/industry-verticals/hussmann/Home",
+        "scope": "SingleItem",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "hussmann-data-root",
+        "path": "/sitecore/content/industry-verticals/hussmann/Data",
+        "scope": "SingleItem",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "hussmann-media-root",
+        "path": "/sitecore/content/industry-verticals/hussmann/Media",
+        "scope": "SingleItem",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "hussmann-dictionary-root",
+        "path": "/sitecore/content/industry-verticals/hussmann/Dictionary",
+        "scope": "SingleItem",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "hussmann-presentation-root",
+        "path": "/sitecore/content/industry-verticals/hussmann/Presentation",
+        "scope": "SingleItem",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "hussmann-settings-root",
+        "path": "/sitecore/content/industry-verticals/hussmann/Settings",
+        "scope": "SingleItem",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "hussmann-site-grouping-root",
+        "path": "/sitecore/content/industry-verticals/hussmann/Settings/Site Grouping",
+        "scope": "SingleItem",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "hussmann-site-grouping-item",
+        "path": "/sitecore/content/industry-verticals/hussmann/Settings/Site Grouping/hussmann",
+        "scope": "SingleItem",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "site-home",
+        "path": "/sitecore/content/industry-verticals/hussmann/Home",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "site-media",
+        "path": "/sitecore/content/industry-verticals/hussmann/Media",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "site-data",
+        "path": "/sitecore/content/industry-verticals/hussmann/Data",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "site-dictionary",
+        "path": "/sitecore/content/industry-verticals/hussmann/Dictionary",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "site-presentation",
+        "path": "/sitecore/content/industry-verticals/hussmann/Presentation",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      }
+    ]
+  }
+}
+{
+  "$schema": "../.sitecore/schemas/ModuleFile.schema.json",
+  "namespace": "Project.Hussmann-Content",
+  "references": ["Project.IndustryVerticals"],
+  "items": {
+    "includes": [
+      {
+        "name": "hussmann-site",
+        "path": "/sitecore/content/industry-verticals/hussmann",
+        "scope": "SingleItem",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "hussmann-home",
+        "path": "/sitecore/content/industry-verticals/hussmann/home",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "hussmann-content-media",
+        "path": "/sitecore/content/industry-verticals/hussmann/Media",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "hussmann-data",
+        "path": "/sitecore/content/industry-verticals/hussmann/Data",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "hussmann-dictionary",
+        "path": "/sitecore/content/industry-verticals/hussmann/Dictionary",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "hussmann-presentation",
+        "path": "/sitecore/content/industry-verticals/hussmann/Presentation",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      }
+    ]
+  }
+}

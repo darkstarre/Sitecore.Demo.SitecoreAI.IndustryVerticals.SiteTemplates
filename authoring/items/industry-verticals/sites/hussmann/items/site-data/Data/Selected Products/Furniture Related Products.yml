@@ -1,0 +1,187 @@
+﻿---
+ID: "211d4274-37eb-4fe3-bda6-8e047824a85b"
+Parent: "dd0eb72d-29d6-42c2-900b-2c93117522b7"
+Template: "0cb3fc95-fea8-40eb-9560-158e7d92a3a4"
+Path: "/sitecore/content/industry-verticals/hussmann/Data/Selected Products/Furniture Related Products"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20251128T093103Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\isuru.bandara@sitecore.com
+    - ID: "53d0df0a-b9c3-4a83-9150-37c68259f6ab"
+      Hint: Title
+      Value: Redefining the modern home
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\isuru.bandara@sitecore.com
+    - ID: "7a6784c9-46c6-4781-86c3-c482f3ef62e6"
+      Hint: ProductsLink
+      Value: |
+        <link linktype="external" url="" target="" text="View All" title="" class=""/>
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "727a0f92-d427-4fe5-a325-a6c393c9195d"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\isuru.bandara@sitecore.com
+    - ID: "c3fb8c52-2f64-45bc-9970-ea340d7271fa"
+      Hint: ProductsList
+      Value: |
+        {C0FBF234-5039-4ECB-88D9-8442E8E0F5FB}
+        {59BA23BF-6A30-4A16-85CF-B8A1E7EC89DC}
+        {68F3F8B3-ECF4-477B-8DD3-A67DD09B55A3}
+        {AC6DBD8A-0621-496E-8348-9A0481F7A3B3}
+        {41745A36-26F1-41EA-B7A5-D6B9C96740D2}
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20251201T113826Z
+- Language: "es-ES"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20251128T093103Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\isuru.bandara@sitecore.com
+    - ID: "53d0df0a-b9c3-4a83-9150-37c68259f6ab"
+      Hint: Title
+      Value: Redefiniendo el hogar moderno
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\isuru.bandara@sitecore.com
+    - ID: "7a6784c9-46c6-4781-86c3-c482f3ef62e6"
+      Hint: ProductsLink
+      Value: |
+        <link class="" target="" title="" linktype="external" text="Ver todo" url="" />
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "e820b4de-68c8-4519-9322-4405edf409d7"
+    - ID: "9857f526-390f-48df-b6d1-1a97cc328e8f"
+      Hint: __Version Name
+      Value: AI translated
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\movin.tilakaratne@sitecore.com
+    - ID: "c3fb8c52-2f64-45bc-9970-ea340d7271fa"
+      Hint: ProductsList
+      Value: |
+        {C0FBF234-5039-4ECB-88D9-8442E8E0F5FB}
+        {59BA23BF-6A30-4A16-85CF-B8A1E7EC89DC}
+        {68F3F8B3-ECF4-477B-8DD3-A67DD09B55A3}
+        {AC6DBD8A-0621-496E-8348-9A0481F7A3B3}
+        {41745A36-26F1-41EA-B7A5-D6B9C96740D2}
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20251219T104352Z
+- Language: "fr-CA"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20251128T093103Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\isuru.bandara@sitecore.com
+    - ID: "53d0df0a-b9c3-4a83-9150-37c68259f6ab"
+      Hint: Title
+      Value: Redéfinir la maison moderne
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\isuru.bandara@sitecore.com
+    - ID: "7a6784c9-46c6-4781-86c3-c482f3ef62e6"
+      Hint: ProductsLink
+      Value: |
+        <link class="" target="" title="" linktype="external" text="Voir tout" url="" />
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "c305a48a-a5c3-44f6-9a91-344d64427ede"
+    - ID: "9857f526-390f-48df-b6d1-1a97cc328e8f"
+      Hint: __Version Name
+      Value: AI translated
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\isuru.bandara@sitecore.com
+    - ID: "c3fb8c52-2f64-45bc-9970-ea340d7271fa"
+      Hint: ProductsList
+      Value: |
+        {C0FBF234-5039-4ECB-88D9-8442E8E0F5FB}
+        {59BA23BF-6A30-4A16-85CF-B8A1E7EC89DC}
+        {68F3F8B3-ECF4-477B-8DD3-A67DD09B55A3}
+        {AC6DBD8A-0621-496E-8348-9A0481F7A3B3}
+        {41745A36-26F1-41EA-B7A5-D6B9C96740D2}
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20251217T110201Z
+- Language: "fr-FR"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20251128T093103Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\isuru.bandara@sitecore.com
+    - ID: "53d0df0a-b9c3-4a83-9150-37c68259f6ab"
+      Hint: Title
+      Value: Redéfinir la maison moderne
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\isuru.bandara@sitecore.com
+    - ID: "7a6784c9-46c6-4781-86c3-c482f3ef62e6"
+      Hint: ProductsLink
+      Value: |
+        <link class="" target="" title="" linktype="external" text="Voir tout" url="" />
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "cfaf2657-699d-4195-9f86-33a120e30966"
+    - ID: "9857f526-390f-48df-b6d1-1a97cc328e8f"
+      Hint: __Version Name
+      Value: AI translated
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\isuru.bandara@sitecore.com
+    - ID: "c3fb8c52-2f64-45bc-9970-ea340d7271fa"
+      Hint: ProductsList
+      Value: |
+        {C0FBF234-5039-4ECB-88D9-8442E8E0F5FB}
+        {59BA23BF-6A30-4A16-85CF-B8A1E7EC89DC}
+        {68F3F8B3-ECF4-477B-8DD3-A67DD09B55A3}
+        {AC6DBD8A-0621-496E-8348-9A0481F7A3B3}
+        {41745A36-26F1-41EA-B7A5-D6B9C96740D2}
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20251217T104041Z

@@ -98,6 +98,15 @@
       "type": "sxa",
       "buildCommand": "build",
       "runCommand": "next:start"
+    },
+    "hussmann": {
+      "path": "./industry-verticals/hussmann",
+      "nodeVersion": "22.11.0",
+      "jssDeploymentSecret": "110F1C44A496B45478640DD36F80C18C9",
+      "enabled": true,
+      "type": "sxa",
+      "buildCommand": "build",
+      "runCommand": "next:start"
     }
   },
   "deployItems": {
@@ -126,7 +135,9 @@
           "Project.Littelfuse-Media",
           "Project.Littelfuse-Content",
           "Project.Uchicagomed-Media",
-          "Project.Uchicagomed-Content"
+          "Project.Uchicagomed-Content",
+          "Project.Hussmann-Media",
+          "Project.Hussmann-Content"
         ]
       },
       "warmUpCm": {

@@ -1,0 +1,23 @@
+---
+ID: "098f548b-1571-437e-84f0-516405d4cc8e"
+Parent: "862c8b9d-51bc-4606-9ca9-a439e1759a3d"
+Template: "4d50cdae-c2d9-4de8-b080-8f992bfb1b55"
+Path: "/sitecore/content/industry-verticals/hussmann/Presentation/Headless Variants/Features/KeyFigures"
+SharedFields:
+- ID: "087c0553-9162-41f5-98d3-87eb0d80edbb"
+  Hint: Compatible Renderings
+  Value: "{E3CCF1D0-7855-4898-8BDE-77F83C6A487C}"
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "ad2efa08-dfc8-45b4-849b-42bc0455b29f"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20260330T140000Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "ad2efa08-dfc8-45b4-849b-42bc0455b29f"
