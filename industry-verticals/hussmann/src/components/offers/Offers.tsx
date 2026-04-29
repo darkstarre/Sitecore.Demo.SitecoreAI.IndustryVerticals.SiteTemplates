@@ -32,6 +32,11 @@ export const Default = (props: OfferProps) => {
   const styles = `${props.params.styles || ''}`.trim();
   const autoPlay = isParamEnabled(props.params.Autoplay);
 
+  // Hussmann does not use the top ticker/offers bar.
+  if (!page.mode.isEditing) {
+    return <></>;
+  }
+
   if (!datasource.length) {
     return page.mode.isEditing ? (
       <div className={`component offers ${styles}`} id={id}>

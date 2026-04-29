@@ -1,4 +1,4 @@
-﻿---
+---
 ID: "15b74901-0db5-4963-9bad-6d369a17aa1a"
 Parent: "4712b0a8-40e1-432b-a578-bbda90cb85d3"
 Template: "98e60957-0783-4a9a-85cc-77dad30e9711"
@@ -78,7 +78,7 @@ Languages:
       Value: Decor
     - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
       Hint: NavigationTitle
-      Value: Decor
+      Value: Markets
     - ID: "4ff91248-33ab-4254-b6f7-2618fd0aebae"
       Hint: Title
       Value: Contact us

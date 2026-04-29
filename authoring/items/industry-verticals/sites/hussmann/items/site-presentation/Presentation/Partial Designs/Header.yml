@@ -1,4 +1,4 @@
-﻿---
+---
 ID: "0f4970a6-f146-4dd2-b64d-b9680eec458b"
 Parent: "e7e1ebc7-0a33-4cef-91e3-fcce9e6a23d4"
 Template: "fd2059fd-6043-4dfe-8c04-e2437ce87634"
@@ -22,15 +22,8 @@ SharedFields:
       <d
         id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
         <r
-          uid="{179E4BB3-022A-4996-9809-08C6E19830C4}"
-          p:before="*"
-          s:ds="b9241483-85fe-482f-a450-ba2b4b06492c"
-          s:id="{330F59E3-329C-4E5D-8A00-CF144B1E1A87}"
-          s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;Autoplay=1&amp;FieldNames&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles"
-          s:ph="headless-header" />
-        <r
           uid="{1F84053F-B53A-4FAC-8ECE-C06D1A03B3F2}"
-          p:after="r[@uid='{179E4BB3-022A-4996-9809-08C6E19830C4}']"
+          p:before="*"
           s:id="{32138D34-7434-4CD1-BF7F-64DA1CEB8F33}"
           s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
           s:ph="headless-header" />
@@ -52,7 +45,7 @@ SharedFields:
           p:after="r[@uid='{2FF900ED-9106-4949-8ED0-E6A6EA82B06F}']"
           s:ds="4712b0a8-40e1-432b-a578-bbda90cb85d3"
           s:id="{9F65621E-1102-461C-BBEE-3FADCE8E0509}"
-          s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B963CE413-291A-4AA4-B86E-5F04BE166742%7D&amp;Styles&amp;NavigationRoot&amp;LevelFrom=%7B1BB88840-5FB3-4353-AD8D-81136F6FF75A%7D&amp;LevelTo=%7BA59325BB-5A27-46F9-8110-9D499715F3BE%7D&amp;Filter=%7BD063E9D1-C7B5-4B1E-B31E-69886C9C59F5%7D&amp;Flattened&amp;AddRoot=1&amp;SerializerFieldNames&amp;SimpleLayout&amp;Logo=%3CImage%20src%3D%22https%3A%2F%2Fstarter-verticals-v2.sitecoresandbox.cloud%2Fapi%2Fpublic%2Fcontent%2Fe396484042124934a5d4e42d3919d4f4%3Fv%3D759210eb%22%20dam-id%3D%22BjmtfBn_QsuaXxnEkNc_MA%22%20width%3D%22139%22%20height%3D%2225%22%20alt%3D%22Forma%20Lux.svg%22%20dam-content-type%3D%22Image%22%20thumbnailsrc%3D%22https%3A%2F%2Fstarter-verticals-v2.sitecoresandbox.cloud%2Fapi%2Fgateway%2F76710%2Fthumbnail%22%20%2F%3E&amp;RenderingIdentifier&amp;CSSStyles"
+          s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B963CE413-291A-4AA4-B86E-5F04BE166742%7D&amp;Styles&amp;NavigationRoot&amp;LevelFrom=%7B1BB88840-5FB3-4353-AD8D-81136F6FF75A%7D&amp;LevelTo=%7BA59325BB-5A27-46F9-8110-9D499715F3BE%7D&amp;Filter=%7BD063E9D1-C7B5-4B1E-B31E-69886C9C59F5%7D&amp;Flattened&amp;AddRoot=1&amp;SerializerFieldNames&amp;SimpleLayout&amp;Logo=%3CImage%20src%3D%22https%3A%2F%2Fstarter-verticals-v2.sitecoresandbox.cloud%2Fapi%2Fpublic%2Fcontent%2Facf95690b0af4d3dbe7f589d55396d37%3Fv%3D01395091%22%20dam-id%3D%22BjmtfBn_QsuaXxnEkNc_MA%22%20width%3D%22139%22%20height%3D%2225%22%20alt%3D%22Hussmann.svg%22%20dam-content-type%3D%22Image%22%20thumbnailsrc%3D%22https%3A%2F%2Fstarter-verticals-v2.sitecoresandbox.cloud%2Fapi%2Fgateway%2F76710%2Fthumbnail%22%20%2F%3E&amp;RenderingIdentifier&amp;CSSStyles"
           s:ph="/headless-header/header-nav-1" />
         <r
           uid="{AF7D44CF-5B1F-4D08-B346-A0BB3E08D156}"

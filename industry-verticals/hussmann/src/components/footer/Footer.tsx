@@ -1,7 +1,6 @@
 import {
   ComponentParams,
   ComponentRendering,
-  Image,
   ImageField,
   Link,
   LinkField,
@@ -12,6 +11,7 @@ import {
   TextField,
 } from '@sitecore-content-sdk/nextjs';
 import React from 'react';
+import NextImage from 'next/image';
 
 interface Fields {
   TitleOne: TextField;
@@ -73,18 +73,25 @@ export const Default = (props: FooterProps) => {
 
   return (
     <section className={`component footer relative ${props.params.styles} overflow-hidden`} id={id}>
-      <div className="bg-background-muted">
+      <div className="bg-background-muted text-background">
         <div className="container grid gap-12 py-28.5 lg:grid-cols-[1fr_3fr]">
           <div className="flex flex-col gap-7">
             <div className="sm:max-w-34">
-              <Image field={props.fields.Logo} />
+              <NextImage
+                src="/hussmann-logo.png"
+                alt="Hussmann"
+                width={220}
+                height={96}
+                className="h-auto w-full max-w-44"
+                priority
+              />
             </div>
             <RichText field={props.fields.Description} />
           </div>
           <div className="grid gap-13 sm:grid-cols-3 lg:grid-cols-5 lg:gap-5 xl:gap-12">
             {sections.map(({ key, title, content }) => (
               <div key={key}>
-                <div className="text-accent mb-8 text-lg font-bold">{title}</div>
+                <div className="mb-8 text-lg font-bold text-accent">{title}</div>
                 <div className="space-y-4">{content}</div>
               </div>
             ))}
