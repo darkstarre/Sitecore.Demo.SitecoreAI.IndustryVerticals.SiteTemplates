@@ -91,7 +91,7 @@ export const Default = (props: FooterProps) => {
           <div className="grid gap-13 sm:grid-cols-3 lg:grid-cols-5 lg:gap-5 xl:gap-12">
             {sections.map(({ key, title, content }) => (
               <div key={key}>
-                <div className="mb-8 text-lg font-bold text-accent">{title}</div>
+                <div className="text-accent mb-8 text-lg font-bold">{title}</div>
                 <div className="space-y-4">{content}</div>
               </div>
             ))}
