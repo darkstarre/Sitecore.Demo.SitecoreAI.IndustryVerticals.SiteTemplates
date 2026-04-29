@@ -1,0 +1,46 @@
+﻿---
+ID: "7fec31bc-fcf5-48b7-9e7b-908f2b2cd774"
+Parent: "b1118780-e024-4732-b69b-4e6f5c954537"
+Template: "4d50cdae-c2d9-4de8-b080-8f992bfb1b55"
+Path: "/sitecore/content/industry-verticals/littelfuse/Presentation/Headless Variants/LinkList/LittelfuseNav"
+SharedFields:
+- ID: "2d81c857-74cd-4a35-ad3e-6d42f11676b7"
+  Hint: Content
+  Value: |
+    {"metadata":{"aiGenerated":true}}
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "eb3d24a1-60cd-499a-a760-38358b657e13"
+Languages:
+- Language: en
+  Fields:
+  - ID: "30e85e5d-e00a-4864-b358-7624d511deb4"
+    Hint: __Unversioned revision
+    Value: "7602152e-204e-4c4d-a821-ff5a3d3f511a"
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: littelfuse nav
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20260316T031401Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\megan.chavez@sitecore.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\megan.chavez@sitecore.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "62a53d4c-5c5a-4819-a31e-c4e6c06b12aa"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\megan.chavez@sitecore.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260316T031401Z

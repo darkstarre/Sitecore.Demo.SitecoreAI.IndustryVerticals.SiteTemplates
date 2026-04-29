@@ -5,32 +5,8 @@
   "items": {
     "includes": [
       {
-        "name": "littelfuse-home",
-        "path": "/sitecore/content/industry-verticals/littelfuse/home",
-        "scope": "DescendantsOnly",
-        "allowedPushOperations": "CreateAndUpdate"
-      },
-      {
-        "name": "littelfuse-content-media",
-        "path": "/sitecore/content/industry-verticals/littelfuse/Media",
-        "scope": "DescendantsOnly",
-        "allowedPushOperations": "CreateAndUpdate"
-      },
-      {
-        "name": "littelfuse-data",
+        "name": "site-data",
         "path": "/sitecore/content/industry-verticals/littelfuse/Data",
-        "scope": "DescendantsOnly",
-        "allowedPushOperations": "CreateAndUpdate"
-      },
-      {
-        "name": "littelfuse-dictionary",
-        "path": "/sitecore/content/industry-verticals/littelfuse/Dictionary",
-        "scope": "DescendantsOnly",
-        "allowedPushOperations": "CreateAndUpdate"
-      },
-      {
-        "name": "littelfuse-presentation",
-        "path": "/sitecore/content/industry-verticals/littelfuse/Presentation",
         "scope": "DescendantsOnly",
         "allowedPushOperations": "CreateAndUpdate"
       }
