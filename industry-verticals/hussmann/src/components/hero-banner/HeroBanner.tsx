@@ -26,6 +26,16 @@ interface HeroBannerProps extends ComponentProps {
   fields: Fields;
 }
 
+const FALLBACK_HERO_IMAGE: ImageField = {
+  value: {
+    src: '/hussmann-refresh/image-10.png',
+    alt: 'Hussmann refrigeration systems',
+  },
+};
+
+const shouldUseFallbackImage = (src?: string) =>
+  !src || src.includes('starter-verticals-v2.sitecoresandbox.cloud');
+
 const HeroBannerCommon = ({
   params,
   fields,
@@ -37,6 +47,8 @@ const HeroBannerCommon = ({
   const { styles, RenderingIdentifier: id } = params;
   const isPageEditing = page.mode.isEditing;
   const hideGradientOverlay = styles?.includes(HeroBannerStyles.HideGradientOverlay);
+  const useFallbackImage = shouldUseFallbackImage(fields?.Image?.value?.src);
+  const imageField = useFallbackImage ? FALLBACK_HERO_IMAGE : fields.Image;
 
   if (!fields) {
     return isPageEditing ? (
@@ -59,22 +71,31 @@ const HeroBannerCommon = ({
             muted
             loop
             playsInline
-            poster={fields.Image?.value?.src}
+            poster={imageField?.value?.src}
           >
             <source src={fields.Video?.value?.src} type="video/webm" />
           </video>
         ) : (
           <>
-            <ContentSdkImage
-              field={fields.Image}
-              className="h-full w-full object-cover md:object-bottom"
-              priority
-            />
+            {useFallbackImage ? (
+              <img
+                src={imageField?.value?.src || FALLBACK_HERO_IMAGE.value?.src || ''}
+                alt={imageField?.value?.alt || 'Hussmann refrigeration systems'}
+                className="h-full w-full object-cover object-center md:object-bottom"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
+            ) : (
+              <ContentSdkImage
+                field={imageField}
+                className="h-full w-full object-cover md:object-bottom"
+                priority
+              />
+            )}
           </>
         )}
         {/* Gradient overlay to fade image/video at bottom */}
         {!hideGradientOverlay && (
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent from-85% to-white"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent from-50% via-black/20 to-black/55" />
         )}
       </div>
 
@@ -101,17 +122,19 @@ export const Default = ({ params, fields, rendering }: HeroBannerProps) => {
           >
             <div className="max-w-182">
               <div className={clsx({ shim: screenLayer })}>
-                {/* Title */}
-                <h1 className="text-center text-5xl leading-[110%] font-bold capitalize md:text-7xl md:leading-[130%] lg:text-left xl:text-[80px]">
+                {/* Title — light text for dark hero imagery */}
+                <h1 className="text-center text-5xl leading-[110%] font-bold capitalize text-white md:text-7xl md:leading-[130%] lg:text-left xl:text-[80px]">
                   <ContentSdkText field={fields.Title} />
-                  {!hideAccentLine && <AccentLine className="mx-auto !h-5 w-[9ch] lg:mx-0" />}
+                  {!hideAccentLine && (
+                    <AccentLine className="mx-auto !h-5 w-[9ch] text-white lg:mx-0" />
+                  )}
                 </h1>
 
                 {/* Description */}
-                <div className="mt-7 text-xl md:text-2xl">
+                <div className="mt-7 text-xl text-white/90 md:text-2xl [&_a]:text-white [&_a]:underline [&_strong]:text-white">
                   <ContentSdkRichText
                     field={fields.Description}
-                    className="text-center lg:text-left"
+                    className="text-center text-white/90 lg:text-left [&_p]:text-white/90"
                   />
                 </div>
 
@@ -120,7 +143,7 @@ export const Default = ({ params, fields, rendering }: HeroBannerProps) => {
                   {withPlaceholder ? (
                     <Placeholder name={searchBarPlaceholderKey} rendering={rendering} />
                   ) : (
-                    <Link field={fields.CtaLink} className="arrow-btn" />
+                    <Link field={fields.CtaLink} className="arrow-btn hero-banner__cta--light" />
                   )}
                 </div>
               </div>
@@ -149,15 +172,18 @@ export const TopContent = ({ params, fields, rendering }: HeroBannerProps) => {
             className={`flex flex-col items-center py-10 lg:py-44 ${reverseLayout ? 'justify-end' : 'justify-start'}`}
           >
             <div className={clsx({ shim: screenLayer })}>
-              {/* Title */}
-              <h1 className="text-center text-5xl leading-[110%] font-bold capitalize md:text-7xl md:leading-[130%] xl:text-[80px]">
+              {/* Title — light text for dark hero imagery */}
+              <h1 className="text-center text-5xl leading-[110%] font-bold capitalize text-white md:text-7xl md:leading-[130%] xl:text-[80px]">
                 <ContentSdkText field={fields.Title} />
-                {!hideAccentLine && <AccentLine className="mx-auto !h-5 w-[9ch]" />}
+                {!hideAccentLine && <AccentLine className="mx-auto !h-5 w-[9ch] text-white" />}
               </h1>
 
               {/* Description */}
-              <div className="mt-7 text-xl md:text-2xl">
-                <ContentSdkRichText field={fields.Description} className="text-center" />
+              <div className="mt-7 text-xl text-white/90 md:text-2xl [&_a]:text-white [&_a]:underline [&_strong]:text-white">
+                <ContentSdkRichText
+                  field={fields.Description}
+                  className="text-center text-white/90 [&_p]:text-white/90"
+                />
               </div>
 
               {/* CTA Link or Placeholder */}
@@ -165,7 +191,7 @@ export const TopContent = ({ params, fields, rendering }: HeroBannerProps) => {
                 {withPlaceholder ? (
                   <Placeholder name={searchBarPlaceholderKey} rendering={rendering} />
                 ) : (
-                  <Link field={fields.CtaLink} className="arrow-btn" />
+                  <Link field={fields.CtaLink} className="arrow-btn hero-banner__cta--light" />
                 )}
               </div>
             </div>

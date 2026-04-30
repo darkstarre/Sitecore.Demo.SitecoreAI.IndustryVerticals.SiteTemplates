@@ -125,3 +125,8 @@
   background: rgba(255, 255, 255, 0.4);
   padding: 50px;
 }
+
+/* Hero uses light type on dark imagery; keep screen-layer readable */
+.component.hero-banner .shim {
+  background: rgba(0, 0, 0, 0.35);
+}

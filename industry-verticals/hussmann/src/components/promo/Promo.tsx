@@ -37,6 +37,50 @@ export type PromoProps = ComponentProps & {
   fields: Fields;
 };
 
+const FALLBACK_PROMO_IMAGES: ImageField[] = [
+  {
+    value: {
+      src: '/hussmann-refresh/image-04.png',
+      alt: 'A2L refrigeration technology',
+    },
+  },
+  {
+    value: {
+      src: '/hussmann-refresh/image-05.png',
+      alt: 'CO2 protocol refrigeration',
+    },
+  },
+  {
+    value: {
+      src: '/hussmann-refresh/image-14.png',
+      alt: 'R-290 microblock technology',
+    },
+  },
+];
+
+const shouldUseFallbackImage = (field?: ImageField) =>
+  !field?.value?.src || field.value.src.includes('starter-verticals-v2.sitecoresandbox.cloud');
+
+const resolvePromoImage = (field: ImageField | undefined, fallbackIndex: number): ImageField =>
+  shouldUseFallbackImage(field) ? FALLBACK_PROMO_IMAGES[fallbackIndex] : field!;
+
+const PromoImage = ({ field, className }: { field: ImageField; className: string }) => {
+  const src = field?.value?.src || '';
+  const alt = field?.value?.alt || 'Hussmann promo image';
+  if (src.startsWith('/hussmann-refresh/')) {
+    return (
+      <img
+        src={src}
+        alt={alt}
+        className={className}
+        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+      />
+    );
+  }
+
+  return <ContentSdkImage field={field} className={className} />;
+};
+
 const isShadowClassActive = (val: boolean) => (val ? 'shadow-2xl' : '');
 
 export const PromoContent = ({ ...props }) => {
@@ -68,6 +112,7 @@ export const SingleImageContainer = ({
   withShadows,
 }: PromoImageGroupProps): JSX.Element => {
   const shadowClass = isShadowClassActive(withShadows ?? false);
+  const promoImageOne = resolvePromoImage(PromoImageOne, 0);
   return (
     <>
       {withShapes && (
@@ -81,7 +126,7 @@ export const SingleImageContainer = ({
           <div
             className={`relative z-10 aspect-4/3 w-full max-w-4xl overflow-hidden rounded-2xl ${shadowClass}`}
           >
-            <ContentSdkImage field={PromoImageOne} className="h-full w-full object-cover" />
+            <PromoImage field={promoImageOne} className="h-full w-full object-cover object-center" />
           </div>
         </div>
       </div>
@@ -98,6 +143,9 @@ export const MultipleImageContainer = ({
 }: PromoImageGroupProps): JSX.Element => {
   const shadowClass = isShadowClassActive(withShadows ?? false);
   const marginClass = withShapes ? 'mr-4' : '';
+  const promoImageOne = resolvePromoImage(PromoImageOne, 0);
+  const promoImageTwo = resolvePromoImage(PromoImageTwo, 1);
+  const promoImageThree = resolvePromoImage(PromoImageThree, 2);
 
   return (
     <>
@@ -107,14 +155,20 @@ export const MultipleImageContainer = ({
             <div
               className={`relative z-10 h-full w-full overflow-hidden rounded-2xl ${shadowClass}`}
             >
-              <ContentSdkImage field={PromoImageTwo} className="h-full w-full object-cover" />
+              <PromoImage
+                field={promoImageTwo}
+                className="h-full w-full object-cover object-center"
+              />
             </div>
           </div>
           <div className="relative aspect-2/3 overflow-visible rounded-2xl">
             <div
               className={`relative z-10 h-full w-full overflow-hidden rounded-2xl ${shadowClass}`}
             >
-              <ContentSdkImage field={PromoImageThree} className="h-full w-full object-cover" />
+              <PromoImage
+                field={promoImageThree}
+                className="h-full w-full object-cover object-center"
+              />
             </div>
           </div>
         </div>
@@ -126,9 +180,9 @@ export const MultipleImageContainer = ({
             <div
               className={`relative z-10 h-full w-full overflow-hidden rounded-2xl ${shadowClass}`}
             >
-              <ContentSdkImage
-                field={PromoImageOne}
-                className="absolute inset-0 h-full w-full object-cover"
+              <PromoImage
+                field={promoImageOne}
+                className="absolute inset-0 h-full w-full object-cover object-center"
               />
             </div>
           </div>
@@ -185,14 +239,15 @@ export const WithFullImage = (props: PromoProps): JSX.Element => {
   const isPromoReversed = !props?.params?.styles?.includes(LayoutStyles.Reversed)
     ? ' flex-col'
     : 'flex-col-reverse';
+  const promoImageTwo = resolvePromoImage(props.fields.PromoImageTwo, 1);
 
   return (
     <section className={`${props.params.styles} py-20`} id={id ? id : undefined}>
       <div className={`container flex ${isPromoReversed}`}>
         <div className="relative my-10 aspect-[1232/608] overflow-hidden rounded-2xl">
-          <ContentSdkImage
-            field={props.fields.PromoImageTwo}
-            className="h-full w-full object-cover"
+          <PromoImage
+            field={promoImageTwo}
+            className="h-full w-full object-cover object-center"
           />
         </div>
 
@@ -222,6 +277,7 @@ export const WithQuote = (props: PromoProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
   const withQuote = !props?.params?.styles?.includes(PromoFlags.HidePromoQuotes);
   const isReversed = !props?.params?.styles?.includes(LayoutStyles.Reversed);
+  const promoImageOne = resolvePromoImage(props.fields.PromoImageOne, 0);
 
   const classesWhenReversed = {
     container: isReversed ? 'container-align-left' : 'container-align-right',
@@ -258,9 +314,9 @@ export const WithQuote = (props: PromoProps): JSX.Element => {
             <div
               className={`relative z-30 order-2 mb-2 aspect-2/1 w-full translate-y-[25%] scale-100 place-self-end lg:order-1 lg:col-span-2 lg:h-3/4 xl:scale-90 ${classesWhenReversed.imageTransform}`}
             >
-              <ContentSdkImage
-                field={props.fields.PromoImageOne}
-                className="absolute inset-0 h-full w-full rounded-2xl object-cover"
+              <PromoImage
+                field={promoImageOne}
+                className="absolute inset-0 h-full w-full rounded-2xl object-cover object-center"
               />
             </div>
           </div>

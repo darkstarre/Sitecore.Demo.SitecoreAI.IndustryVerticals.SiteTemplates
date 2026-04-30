@@ -18,7 +18,7 @@ SharedFields:
 - ID: "25f9b35b-0c2c-4f43-ae2f-1d30eb1f2b6b"
   Hint: ogImage
   Value: |
-    <Image src="https://starter-verticals-v2.sitecoresandbox.cloud/api/public/content/acf95690b0af4d3dbe7f589d55396d37?v=01395091" dam-id="BjmtfBn_QsuaXxnEkNc_MA" width="139" height="25" alt="Hussmann.svg" dam-content-type="Image" thumbnailsrc="https://starter-verticals-v2.sitecoresandbox.cloud/api/gateway/76710/thumbnail" />
+    <Image src="/hussmann-refresh/image-01.png" dam-id="BjmtfBn_QsuaXxnEkNc_MA" width="139" height="25" alt="Hussmann.svg" dam-content-type="Image" thumbnailsrc="https://starter-verticals-v2.sitecoresandbox.cloud/api/gateway/76710/thumbnail" />
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 0

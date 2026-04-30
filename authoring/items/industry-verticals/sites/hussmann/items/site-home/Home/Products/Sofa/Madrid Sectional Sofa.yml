@@ -30,7 +30,7 @@ SharedFields:
 - ID: "bf3fd6d5-2930-40a0-9c22-b4fe37f6717f"
   Hint: Image1
   Value: |
-    <Image src="https://starter-verticals-v2.sitecoresandbox.cloud/api/public/content/87b5cec2af9b486cbb80806784647324?v=31eb32ae" dam-id="nPgzhq_5QmKoqxrehJ-rvw" width="357" height="200" alt="madrid-sectional-sofa-1.webp" dam-content-type="Image" thumbnailsrc="https://starter-verticals-v2.sitecoresandbox.cloud/api/gateway/79471/thumbnail" />
+    <Image src="/hussmann-refresh/image-08.png" dam-id="nPgzhq_5QmKoqxrehJ-rvw" width="357" height="200" alt="madrid-sectional-sofa-1.webp" dam-content-type="Image" thumbnailsrc="https://starter-verticals-v2.sitecoresandbox.cloud/api/gateway/79471/thumbnail" />
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |

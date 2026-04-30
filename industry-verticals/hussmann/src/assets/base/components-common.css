@@ -38,6 +38,15 @@
   }
 }
 
+/* Hero on dark photography — matches light headline / body */
+.hero-banner__cta--light.arrow-btn {
+  @apply border-b-white text-white;
+
+  &::after {
+    @apply bg-white;
+  }
+}
+
 .carousel-btn {
   @apply text-foreground! bg-background z-10 size-12 content-center rounded-full shadow-md;
 }

@@ -40,6 +40,31 @@ type FeatureWrapperProps = {
   children: React.ReactNode;
 };
 
+const FALLBACK_FEATURE_IMAGES = [
+  '/hussmann-refresh/image-01.png',
+  '/hussmann-refresh/image-06.png',
+  '/hussmann-refresh/image-07.png',
+  '/hussmann-refresh/image-09.png',
+  '/hussmann-refresh/image-11.png',
+  '/hussmann-refresh/image-12.png',
+];
+
+const resolveFeatureImage = (image: { value: { src?: string; alt?: string } }, index: number) => {
+  const src = image?.value?.src;
+  if (src && !src.includes('starter-verticals-v2.sitecoresandbox.cloud')) {
+    return image;
+  }
+
+  return {
+    value: {
+      src: FALLBACK_FEATURE_IMAGES[index % FALLBACK_FEATURE_IMAGES.length],
+      alt: image?.value?.alt || 'Hussmann featured solution',
+      width: '1024',
+      height: '576',
+    },
+  };
+};
+
 const FeatureWrapper = (wrapperProps: FeatureWrapperProps) => {
   // rendering item id
   const id = wrapperProps.props.params.RenderingIdentifier;
@@ -100,7 +125,7 @@ export const ImageGrid = (props: FeaturesProps) => {
     <FeatureWrapper props={props}>
       <div className="container grid grid-cols-1 gap-4 py-9 md:grid-cols-2 lg:grid-cols-5">
         {results.map((item, index) => {
-          const imageField = item?.featureImage.jsonValue;
+          const imageField = resolveFeatureImage(item?.featureImage.jsonValue, index);
           return (
             <div className="flex items-center justify-center py-9 lg:py-2" key={index}>
               {imageField && <Image field={imageField} className="max-h-20 object-contain" />}
@@ -122,7 +147,7 @@ export const ThreeColGridCentered = (props: FeaturesProps) => {
         {results.map((item, index) => {
           const title = item.featureTitle.jsonValue;
           const description = item.featureDescription.jsonValue;
-          const image = item.featureImage.jsonValue;
+          const image = resolveFeatureImage(item.featureImage.jsonValue, index);
           return (
             <div className="flex flex-col items-center justify-start 2xl:w-80" key={index}>
               {/* Image */}
@@ -192,7 +217,7 @@ export const FourColGrid = (props: FeaturesProps) => {
         {results.map((item, index) => {
           const title = item.featureTitle.jsonValue;
           const description = item.featureDescription.jsonValue;
-          const image = item.featureImage.jsonValue;
+          const image = resolveFeatureImage(item.featureImage.jsonValue, index);
           return (
             <div className="grid grid-cols-[1fr_2fr] gap-2.5" key={index}>
               {/* Image */}
@@ -225,7 +250,7 @@ export const ImageCardGrid = (props: FeaturesProps) => {
         {results.map((item, index) => {
           const title = item.featureTitle.jsonValue;
           const description = item.featureDescription.jsonValue;
-          const image = item.featureImage.jsonValue;
+          const image = resolveFeatureImage(item.featureImage.jsonValue, index);
           return (
             <div key={index}>
               <div className="mb-7 aspect-4/3 w-full overflow-hidden rounded-lg bg-white">

@@ -77,7 +77,6 @@ import PreviewSearch_938f3b0320996fc3fe6ab3d953daf2e708e085ca from 'src/componen
 import HamburgerIcon from '@/components/non-sitecore/HamburgerIcon';
 import { useClickAway } from '@/hooks/useClickAway';
 import { useStopResponsiveTransition } from '@/hooks/useStopResponsiveTransition';
-import { extractMediaUrl } from '@/helpers/extractMediaUrl';
 import { getLinkContent, getLinkField, isNavLevel, isNavRootItem, prepareFields } from '@/helpers/navHelpers';
 import { useRouter as useRouter_0e8a928699f624a3ad05eb9c9906b0e7ce1a00be } from 'next/router';
 import { Select as Select_4a7098778d43a9b4dcd5871ec48ea51b5a246850, SelectContent, SelectItem, SelectTrigger, SelectValue } from 'src/shadcn/components/ui/select';
@@ -88,6 +87,7 @@ import * as FEAAS from '@sitecore-feaas/clientside/react';
 import nextConfig from 'next.config';
 import { pageView } from '@sitecore-cloudsdk/events/browser';
 import config from 'sitecore.config';
+import { extractMediaUrl } from '@/helpers/extractMediaUrl';
 import { faUser, faCalendar, faTag } from '@fortawesome/free-solid-svg-icons';
 import { sortByDateDesc, getCategoryCounts } from '@/helpers/articleUtils';
 
@@ -596,12 +596,6 @@ const importMap = [
     ]
   },
   {
-    module: '@/helpers/extractMediaUrl',
-    exports: [
-      { name: 'extractMediaUrl', value: extractMediaUrl },
-    ]
-  },
-  {
     module: '@/helpers/navHelpers',
     exports: [
       { name: 'getLinkContent', value: getLinkContent },
@@ -667,6 +661,12 @@ const importMap = [
     module: 'sitecore.config',
     exports: [
       { name: 'default', value: config },
+    ]
+  },
+  {
+    module: '@/helpers/extractMediaUrl',
+    exports: [
+      { name: 'extractMediaUrl', value: extractMediaUrl },
     ]
   },
   {

@@ -1,4 +1,4 @@
-﻿---
+---
 ID: "9da94fc5-8a36-42f7-b158-037420ef4ef2"
 Parent: "13f462d3-0ac3-40d0-945b-31fedff1eae5"
 Template: "0a39f168-834c-46c5-8866-65a60764c0a4"
@@ -23,7 +23,7 @@ Languages:
       Value: 20250904T103259Z
     - ID: "35b07fa2-ce95-4459-8dd6-074203dda9a7"
       Hint: FeatureDescription
-      Value: You can get a workspace of the highest quality at an affordable price and still enjoy the facilities that are only here.
+      Value: We are known for durable, efficient refrigeration performance that helps protect product quality and support long-term operations.
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -34,7 +34,7 @@ Languages:
         sitecore\jeral.sandeeptha@sitecore.com
     - ID: "5f507c84-84f9-4033-81a2-90bca3d12606"
       Hint: FeatureTitle
-      Value: Affordable Price
+      Value: Durability and Efficiency
     - ID: "69536d16-4033-4ebf-9416-436f0f5a3cb6"
       Hint: FeatureLink
       Value: |
