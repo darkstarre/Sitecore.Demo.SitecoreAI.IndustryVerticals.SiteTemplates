@@ -63,7 +63,7 @@ Languages:
     Value: "3608f367-b664-4f33-9de3-617931997bd1"
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: Decor
+    Value: Markets
   Versions:
   - Version: 1
     Fields:
@@ -75,7 +75,7 @@ Languages:
       Value: 20250821T102837Z
     - ID: "32c603c2-c858-4138-8fcb-8e18a5ad8240"
       Hint: metadataTitle
-      Value: Decor
+      Value: Markets
     - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
       Hint: NavigationTitle
       Value: Markets
@@ -99,7 +99,7 @@ Languages:
     Value: "b8df146e-c690-44c2-9549-4a95aa842ee7"
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: Decoración
+    Value: Mercados
   Versions:
   - Version: 1
     Fields:
@@ -134,10 +134,10 @@ Languages:
       Value: 20250821T102837Z
     - ID: "32c603c2-c858-4138-8fcb-8e18a5ad8240"
       Hint: metadataTitle
-      Value: Decoración
+      Value: Mercados
     - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
       Hint: NavigationTitle
-      Value: Decoración
+      Value: Mercados
     - ID: "4ff91248-33ab-4254-b6f7-2618fd0aebae"
       Hint: Title
       Value: Contáctanos
@@ -172,7 +172,7 @@ Languages:
     Value: "d2e8c83d-893e-45da-83ec-da7d38cc7313"
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: Décor
+    Value: Marchés
   Versions:
   - Version: 1
     Fields:
@@ -184,10 +184,10 @@ Languages:
       Value: 20250821T102837Z
     - ID: "32c603c2-c858-4138-8fcb-8e18a5ad8240"
       Hint: metadataTitle
-      Value: Décor
+      Value: Marchés
     - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
       Hint: NavigationTitle
-      Value: Décor
+      Value: Marchés
     - ID: "4ff91248-33ab-4254-b6f7-2618fd0aebae"
       Hint: Title
       Value: "Contactez-nous"
@@ -219,7 +219,7 @@ Languages:
     Value: "378bf395-5510-4ef5-be4b-6f6a7259da4b"
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: Furniture
+    Value: Marchés
   Versions:
   - Version: 1
     Fields:

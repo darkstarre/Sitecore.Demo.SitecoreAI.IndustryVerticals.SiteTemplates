@@ -55,6 +55,10 @@ SharedFields:
     </r>
 Languages:
 - Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: Support
   Versions:
   - Version: 1
     Fields:
@@ -101,6 +105,10 @@ Languages:
       Hint: __Updated
       Value: 20260129T163936Z
 - Language: "es-ES"
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: Soporte
   Versions:
   - Version: 1
     Fields:
@@ -138,10 +146,10 @@ Languages:
       Value: 20250919T111219Z
     - ID: "32c603c2-c858-4138-8fcb-8e18a5ad8240"
       Hint: metadataTitle
-      Value: Hussmann Journal – Artículos
+      Value: Hussmann – Soporte
     - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
       Hint: NavigationTitle
-      Value: Artículos
+      Value: Soporte
     - ID: "4ff91248-33ab-4254-b6f7-2618fd0aebae"
       Hint: Title
       Value: Artículos
@@ -176,6 +184,10 @@ Languages:
       Hint: __Updated
       Value: 20251219T104259Z
 - Language: "fr-CA"
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: Assistance
   Versions:
   - Version: 1
     Fields:
@@ -187,10 +199,10 @@ Languages:
       Value: 20250919T111219Z
     - ID: "32c603c2-c858-4138-8fcb-8e18a5ad8240"
       Hint: metadataTitle
-      Value: Journal Hussmann – Articles
+      Value: Journal Hussmann – Assistance
     - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
       Hint: NavigationTitle
-      Value: Articles
+      Value: Assistance
     - ID: "4ff91248-33ab-4254-b6f7-2618fd0aebae"
       Hint: Title
       Value: Articles
@@ -222,6 +234,10 @@ Languages:
       Hint: __Updated
       Value: 20251217T110105Z
 - Language: "fr-FR"
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: Assistance
   Versions:
   - Version: 1
     Fields:
@@ -233,10 +249,10 @@ Languages:
       Value: 20250919T111219Z
     - ID: "32c603c2-c858-4138-8fcb-8e18a5ad8240"
       Hint: metadataTitle
-      Value: Hussmann Journal – Articles
+      Value: Hussmann Journal – Assistance
     - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
       Hint: NavigationTitle
-      Value: Articles
+      Value: Assistance
     - ID: "4ff91248-33ab-4254-b6f7-2618fd0aebae"
       Hint: Title
       Value: Articles

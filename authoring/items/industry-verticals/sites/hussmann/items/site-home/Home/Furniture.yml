@@ -60,6 +60,10 @@ SharedFields:
     </r>
 Languages:
 - Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: Services
   Versions:
   - Version: 1
     Fields:
@@ -74,7 +78,7 @@ Languages:
       Value: 20250821T083005Z
     - ID: "32c603c2-c858-4138-8fcb-8e18a5ad8240"
       Hint: metadataTitle
-      Value: Furniture
+      Value: Services
     - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
       Hint: NavigationTitle
       Value: Services
@@ -95,6 +99,10 @@ Languages:
       Hint: __Updated
       Value: 20260129T163932Z
 - Language: "es-ES"
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: Servicios
   Versions:
   - Version: 1
     Fields:
@@ -129,10 +137,10 @@ Languages:
       Value: 20250821T083005Z
     - ID: "32c603c2-c858-4138-8fcb-8e18a5ad8240"
       Hint: metadataTitle
-      Value: Muebles
+      Value: Servicios
     - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
       Hint: NavigationTitle
-      Value: Muebles
+      Value: Servicios
     - ID: "4ff91248-33ab-4254-b6f7-2618fd0aebae"
       Hint: Title
       Value: Sobre nosotros
@@ -161,6 +169,10 @@ Languages:
       Hint: __Updated
       Value: 20251219T104253Z
 - Language: "fr-CA"
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: Services
   Versions:
   - Version: 1
     Fields:
@@ -172,10 +184,10 @@ Languages:
       Value: 20250821T083005Z
     - ID: "32c603c2-c858-4138-8fcb-8e18a5ad8240"
       Hint: metadataTitle
-      Value: Meubles
+      Value: Services
     - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
       Hint: NavigationTitle
-      Value: Meubles
+      Value: Services
     - ID: "4ff91248-33ab-4254-b6f7-2618fd0aebae"
       Hint: Title
       Value: À propos de nous
@@ -207,7 +219,7 @@ Languages:
     Value: "5a781b35-de7c-4265-825a-6905040b908b"
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: Decor
+    Value: Services
   Versions:
   - Version: 1
     Fields:
