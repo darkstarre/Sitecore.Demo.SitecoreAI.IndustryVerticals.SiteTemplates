@@ -1,8 +1,8 @@
 ﻿---
-ID: "00484fb5-d9f8-41eb-b5b8-9434eabb804e"
-Parent: "4e91eb80-0aa7-4576-a409-ad926024b9df"
+ID: "2c5d899a-bd62-4211-a4b7-92150092afb6"
+Parent: "02d7b155-2def-4f9b-a278-a67ae753bd30"
 Template: "1c82e550-ebcd-4e5d-8abd-d50d0809541e"
-Path: "/sitecore/content/industry-verticals/hussmann/Home/Articles/Handmade pieces that took time to make/Data"
+Path: "/sitecore/content/industry-verticals/hussmann/Home/Support/Exploring new ways of decorating/Data"
 Languages:
 - Language: en
   Versions:
@@ -10,7 +10,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20250919T121310Z
+      Value: 20251001T115912Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -21,14 +21,14 @@ Languages:
         sitecore\movin.tilakaratne@sitecore.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "f067fd46-cdf3-453f-93df-a9afc9b59d87"
+      Value: "ce7d104f-f22b-46e9-a4b9-d284f27b6574"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\movin.tilakaratne@sitecore.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250919T121310Z
+      Value: 20251001T115912Z
 - Language: "es-ES"
   Versions:
   - Version: 1
@@ -46,7 +46,7 @@ Languages:
         sitecore\movin.tilakaratne@sitecore.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "133402e5-158f-4686-bc95-b899a2722feb"
+      Value: "e013c1a2-00aa-407e-bb8c-3a5ebcd096d9"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -71,7 +71,7 @@ Languages:
         sitecore\isuru.bandara@sitecore.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b0277ca8-b72a-457d-8383-946f7fcb2a91"
+      Value: "e6f97ed0-bec2-4aca-8291-5fe09c0c32e0"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -96,7 +96,7 @@ Languages:
         sitecore\isuru.bandara@sitecore.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "d9959e3b-ed32-4a9c-a328-8783a5f3964c"
+      Value: "0ac78168-c2e0-4df9-b991-a7b6caa52dc2"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |

@@ -1,4 +1,4 @@
-﻿---
+---
 ID: "4cdf6846-ee50-4674-8733-37198f65406c"
 Parent: "1754c76c-9ff6-4ced-8f65-6c1ae843775a"
 Template: "30a718e4-b5b1-49df-aea6-ad761528b5c5"
@@ -79,7 +79,7 @@ Languages:
     - ID: "9097fa39-7bba-4e25-92f0-0b25d187509d"
       Hint: ExploreLink
       Value: |
-        <link class="" querystring="" id="1e0cb6c4-d606-4890-ab2c-d9d133fef4a6" anchor="" target="" title="" linktype="internal" text="Explora más" url="/industry-verticals/hussmann/Home/Articles" />
+        <link class="" querystring="" id="1e0cb6c4-d606-4890-ab2c-d9d133fef4a6" anchor="" target="" title="" linktype="internal" text="Explora más" url="/industry-verticals/hussmann/Home/Support" />
     - ID: "a6a4a7d3-4017-4996-9264-27b1d3030273"
       Hint: Articles
       Value: |
