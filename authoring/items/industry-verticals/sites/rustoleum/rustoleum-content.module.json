@@ -1,0 +1,45 @@
+{
+  "$schema": "../.sitecore/schemas/ModuleFile.schema.json",
+  "namespace": "Project.Rustoleum-Content",
+  "references": ["Project.IndustryVerticals"],
+  "items": {
+    "includes": [
+      {
+        "name": "rustoleum-site",
+        "path": "/sitecore/content/industry-verticals/rustoleum",
+        "scope": "SingleItem",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "rustoleum-home",
+        "path": "/sitecore/content/industry-verticals/rustoleum/home",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "rustoleum-content-media",
+        "path": "/sitecore/content/industry-verticals/rustoleum/Media",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "rustoleum-data",
+        "path": "/sitecore/content/industry-verticals/rustoleum/Data",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "rustoleum-dictionary",
+        "path": "/sitecore/content/industry-verticals/rustoleum/Dictionary",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "rustoleum-presentation",
+        "path": "/sitecore/content/industry-verticals/rustoleum/Presentation",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateAndUpdate"
+      }
+    ]
+  }
+}

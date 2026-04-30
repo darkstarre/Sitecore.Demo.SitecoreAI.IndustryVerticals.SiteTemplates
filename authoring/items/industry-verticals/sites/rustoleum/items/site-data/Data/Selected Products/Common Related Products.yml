@@ -1,0 +1,183 @@
+---
+ID: "c2d00af9-0764-4362-95b5-780fe059175a"
+Parent: "49ca2389-6080-414d-ac6e-93c21f713691"
+Template: "0cb3fc95-fea8-40eb-9560-158e7d92a3a4"
+Path: "/sitecore/content/industry-verticals/rustoleum/Data/Selected Products/Common Related Products"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20251002T110007Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\sanduni.galagoda@sitecore.com
+    - ID: "53d0df0a-b9c3-4a83-9150-37c68259f6ab"
+      Hint: Title
+      Value: Related Products
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\sanduni.galagoda@sitecore.com
+    - ID: "7a6784c9-46c6-4781-86c3-c482f3ef62e6"
+      Hint: ProductsLink
+      Value: |
+        <link class="" querystring="" id="aa454d5c-a2d5-4b62-8401-76ef853b15d9" anchor="" target="" title="" linktype="internal" text="View All" url="/industry-verticals/rustoleum/Home/Products" />
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "88b463d8-7f5a-45af-9fdd-49ae3bf83fb7"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\ranula.gamage@sitecore.com
+    - ID: "c3fb8c52-2f64-45bc-9970-ea340d7271fa"
+      Hint: ProductsList
+      Value: |
+        {e1c13ee3-3169-44aa-9fdf-35808a912f9b}
+        {5c1a41f1-339e-42bf-ba20-ef4f56051c14}
+        {4fd06a7c-16a5-4a5b-bc6d-06b9f55bc397}
+        {bdebb9d5-6c21-44ff-b88f-c23eab368b2f}
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20251127T103505Z
+- Language: "es-ES"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20251002T110007Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\sanduni.galagoda@sitecore.com
+    - ID: "53d0df0a-b9c3-4a83-9150-37c68259f6ab"
+      Hint: Title
+      Value: Productos relacionados
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\sanduni.galagoda@sitecore.com
+    - ID: "7a6784c9-46c6-4781-86c3-c482f3ef62e6"
+      Hint: ProductsLink
+      Value: |
+        <link class="" id="aa454d5c-a2d5-4b62-8401-76ef853b15d9" querystring="" anchor="" target="" title="" linktype="internal" text="Ver todo" url="/industry-verticals/rustoleum/Home/Products" />
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "174ea446-9ef9-4fa6-98b0-6cd75c16b206"
+    - ID: "9857f526-390f-48df-b6d1-1a97cc328e8f"
+      Hint: __Version Name
+      Value: AI translated
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\movin.tilakaratne@sitecore.com
+    - ID: "c3fb8c52-2f64-45bc-9970-ea340d7271fa"
+      Hint: ProductsList
+      Value: |
+        {e1c13ee3-3169-44aa-9fdf-35808a912f9b}
+        {5c1a41f1-339e-42bf-ba20-ef4f56051c14}
+        {4fd06a7c-16a5-4a5b-bc6d-06b9f55bc397}
+        {bdebb9d5-6c21-44ff-b88f-c23eab368b2f}
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20251219T104352Z
+- Language: "fr-CA"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20251002T110007Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\sanduni.galagoda@sitecore.com
+    - ID: "53d0df0a-b9c3-4a83-9150-37c68259f6ab"
+      Hint: Title
+      Value: Produits connexes
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\sanduni.galagoda@sitecore.com
+    - ID: "7a6784c9-46c6-4781-86c3-c482f3ef62e6"
+      Hint: ProductsLink
+      Value: |
+        <link class="" id="aa454d5c-a2d5-4b62-8401-76ef853b15d9" querystring="" anchor="" target="" title="" linktype="internal" text="Voir tout" url="/industry-verticals/rustoleum/Home/Products" />
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "a8296297-8087-4f1b-ba0e-3476e5c910c4"
+    - ID: "9857f526-390f-48df-b6d1-1a97cc328e8f"
+      Hint: __Version Name
+      Value: AI translated
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\isuru.bandara@sitecore.com
+    - ID: "c3fb8c52-2f64-45bc-9970-ea340d7271fa"
+      Hint: ProductsList
+      Value: |
+        {e1c13ee3-3169-44aa-9fdf-35808a912f9b}
+        {5c1a41f1-339e-42bf-ba20-ef4f56051c14}
+        {4fd06a7c-16a5-4a5b-bc6d-06b9f55bc397}
+        {bdebb9d5-6c21-44ff-b88f-c23eab368b2f}
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20251217T110201Z
+- Language: "fr-FR"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20251002T110007Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\sanduni.galagoda@sitecore.com
+    - ID: "53d0df0a-b9c3-4a83-9150-37c68259f6ab"
+      Hint: Title
+      Value: Produits connexes
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\sanduni.galagoda@sitecore.com
+    - ID: "7a6784c9-46c6-4781-86c3-c482f3ef62e6"
+      Hint: ProductsLink
+      Value: |
+        <link class="" id="aa454d5c-a2d5-4b62-8401-76ef853b15d9" querystring="" anchor="" target="" title="" linktype="internal" text="Voir tout" url="/industry-verticals/rustoleum/Home/Products" />
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "68a0aaf1-8434-4e76-94bb-c4c23eb2a785"
+    - ID: "9857f526-390f-48df-b6d1-1a97cc328e8f"
+      Hint: __Version Name
+      Value: AI translated
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\isuru.bandara@sitecore.com
+    - ID: "c3fb8c52-2f64-45bc-9970-ea340d7271fa"
+      Hint: ProductsList
+      Value: |
+        {e1c13ee3-3169-44aa-9fdf-35808a912f9b}
+        {5c1a41f1-339e-42bf-ba20-ef4f56051c14}
+        {4fd06a7c-16a5-4a5b-bc6d-06b9f55bc397}
+        {bdebb9d5-6c21-44ff-b88f-c23eab368b2f}
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20251217T104041Z

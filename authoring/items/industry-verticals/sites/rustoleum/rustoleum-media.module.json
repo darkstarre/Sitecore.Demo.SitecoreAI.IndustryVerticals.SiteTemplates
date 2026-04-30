@@ -1,0 +1,15 @@
+{
+  "$schema": "../.sitecore/schemas/ModuleFile.schema.json",
+  "namespace": "Project.Rustoleum-Media",
+  "references": ["Project.IndustryVerticals"],
+  "items": {
+    "includes": [
+      {
+        "name": "rustoleum-media",
+        "path": "/sitecore/Media Library/Project/industry-verticals/rustoleum",
+        "scope": "DescendantsOnly",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      }
+    ]
+  }
+}
