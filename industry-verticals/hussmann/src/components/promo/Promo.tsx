@@ -64,9 +64,14 @@ const shouldUseFallbackImage = (field?: ImageField) =>
 const resolvePromoImage = (field: ImageField | undefined, fallbackIndex: number): ImageField =>
   shouldUseFallbackImage(field) ? FALLBACK_PROMO_IMAGES[fallbackIndex] : field!;
 
+const promoImageAlt = (field: ImageField | undefined, fallback: string): string => {
+  const alt = field?.value?.alt;
+  return typeof alt === 'string' && alt.length > 0 ? alt : fallback;
+};
+
 const PromoImage = ({ field, className }: { field: ImageField; className: string }) => {
   const src = field?.value?.src || '';
-  const alt = field?.value?.alt || 'Hussmann promo image';
+  const alt = promoImageAlt(field, 'Hussmann promo image');
   if (src.startsWith('/hussmann-refresh/')) {
     return (
       <img
@@ -126,7 +131,10 @@ export const SingleImageContainer = ({
           <div
             className={`relative z-10 aspect-4/3 w-full max-w-4xl overflow-hidden rounded-2xl ${shadowClass}`}
           >
-            <PromoImage field={promoImageOne} className="h-full w-full object-cover object-center" />
+            <PromoImage
+              field={promoImageOne}
+              className="h-full w-full object-cover object-center"
+            />
           </div>
         </div>
       </div>
@@ -245,10 +253,7 @@ export const WithFullImage = (props: PromoProps): JSX.Element => {
     <section className={`${props.params.styles} py-20`} id={id ? id : undefined}>
       <div className={`container flex ${isPromoReversed}`}>
         <div className="relative my-10 aspect-[1232/608] overflow-hidden rounded-2xl">
-          <PromoImage
-            field={promoImageTwo}
-            className="h-full w-full object-cover object-center"
-          />
+          <PromoImage field={promoImageTwo} className="h-full w-full object-cover object-center" />
         </div>
 
         <div className="space-y-5">

@@ -36,6 +36,11 @@ const FALLBACK_HERO_IMAGE: ImageField = {
 const shouldUseFallbackImage = (src?: string) =>
   !src || src.includes('starter-verticals-v2.sitecoresandbox.cloud');
 
+const heroImageAlt = (field: ImageField | undefined, fallback: string): string => {
+  const alt = field?.value?.alt;
+  return typeof alt === 'string' && alt.length > 0 ? alt : fallback;
+};
+
 const HeroBannerCommon = ({
   params,
   fields,
@@ -80,7 +85,7 @@ const HeroBannerCommon = ({
             {useFallbackImage ? (
               <img
                 src={imageField?.value?.src || FALLBACK_HERO_IMAGE.value?.src || ''}
-                alt={imageField?.value?.alt || 'Hussmann refrigeration systems'}
+                alt={heroImageAlt(imageField, 'Hussmann refrigeration systems')}
                 className="h-full w-full object-cover object-center md:object-bottom"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />
@@ -123,7 +128,7 @@ export const Default = ({ params, fields, rendering }: HeroBannerProps) => {
             <div className="max-w-182">
               <div className={clsx({ shim: screenLayer })}>
                 {/* Title — light text for dark hero imagery */}
-                <h1 className="text-center text-5xl leading-[110%] font-bold capitalize text-white md:text-7xl md:leading-[130%] lg:text-left xl:text-[80px]">
+                <h1 className="text-center text-5xl leading-[110%] font-bold text-white capitalize md:text-7xl md:leading-[130%] lg:text-left xl:text-[80px]">
                   <ContentSdkText field={fields.Title} />
                   {!hideAccentLine && (
                     <AccentLine className="mx-auto !h-5 w-[9ch] text-white lg:mx-0" />
@@ -173,7 +178,7 @@ export const TopContent = ({ params, fields, rendering }: HeroBannerProps) => {
           >
             <div className={clsx({ shim: screenLayer })}>
               {/* Title — light text for dark hero imagery */}
-              <h1 className="text-center text-5xl leading-[110%] font-bold capitalize text-white md:text-7xl md:leading-[130%] xl:text-[80px]">
+              <h1 className="text-center text-5xl leading-[110%] font-bold text-white capitalize md:text-7xl md:leading-[130%] xl:text-[80px]">
                 <ContentSdkText field={fields.Title} />
                 {!hideAccentLine && <AccentLine className="mx-auto !h-5 w-[9ch] text-white" />}
               </h1>
