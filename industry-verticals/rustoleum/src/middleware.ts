@@ -9,8 +9,12 @@ import sites from '.sitecore/sites.json';
 import scConfig from 'sitecore.config';
 import { RUSTOLEUM_CONTENT_SITE_NAME } from 'src/constants/site';
 
-/** This host only serves the Forma Lux site tree (Rust-Oleum reskin); keep multisite resolution scoped. */
-const sitesForHost = sites.filter((s) => s.name === RUSTOLEUM_CONTENT_SITE_NAME);
+/**
+ * One entry per site name — generated `.sitecore/sites.json` can list the same site twice
+ * (e.g. forma-lux duplicated), which breaks multisite middleware and routing.
+ */
+const siteEntry = sites.find((s) => s.name === RUSTOLEUM_CONTENT_SITE_NAME);
+const sitesForHost = siteEntry ? [siteEntry] : [];
 
 const multisite = new MultisiteMiddleware({
   sites: sitesForHost.length ? sitesForHost : sites,
