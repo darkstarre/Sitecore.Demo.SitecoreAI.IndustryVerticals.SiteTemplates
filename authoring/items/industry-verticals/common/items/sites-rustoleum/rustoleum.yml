@@ -31,7 +31,7 @@ SharedFields:
   Value: "{128be3d4-c2e7-4f0f-9ad9-b6202a9cb407}"
 - ID: "85a7501a-86d9-4243-9075-0b727c3a6db4"
   Hint: Name
-  Value: Rustoleum
+  Value: Rust-Oleum
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: "<image mediaid='a03aa4fa-580d-4c82-b24a-1146cf2d0d99' />"

@@ -19,7 +19,7 @@ SharedFields:
   Value: "{128be3d4-c2e7-4f0f-9ad9-b6202a9cb407}"
 - ID: "85a7501a-86d9-4243-9075-0b727c3a6db4"
   Hint: Name
-  Value: Rustoleum
+  Value: Rust-Oleum
 - ID: "8e0dd914-9afb-4d45-bf8b-7ff5d6e5337e"
   Hint: HostName
   Value: *
