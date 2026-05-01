@@ -5,31 +5,31 @@
   "items": {
     "includes": [
       {
-        "name": "site-home",
-        "path": "/sitecore/content/industry-verticals/rustoleum/Home",
+        "name": "rustoleum-home",
+        "path": "/sitecore/content/industry-verticals/rustoleum/home",
         "scope": "DescendantsOnly",
         "allowedPushOperations": "CreateAndUpdate"
       },
       {
-        "name": "site-media",
+        "name": "rustoleum-site-media",
         "path": "/sitecore/content/industry-verticals/rustoleum/Media",
         "scope": "DescendantsOnly",
         "allowedPushOperations": "CreateAndUpdate"
       },
       {
-        "name": "site-data",
+        "name": "rustoleum-data",
         "path": "/sitecore/content/industry-verticals/rustoleum/Data",
         "scope": "DescendantsOnly",
         "allowedPushOperations": "CreateAndUpdate"
       },
       {
-        "name": "site-dictionary",
+        "name": "rustoleum-dictionary",
         "path": "/sitecore/content/industry-verticals/rustoleum/Dictionary",
         "scope": "DescendantsOnly",
         "allowedPushOperations": "CreateAndUpdate"
       },
       {
-        "name": "site-presentation",
+        "name": "rustoleum-presentation",
         "path": "/sitecore/content/industry-verticals/rustoleum/Presentation",
         "scope": "DescendantsOnly",
         "allowedPushOperations": "CreateAndUpdate"

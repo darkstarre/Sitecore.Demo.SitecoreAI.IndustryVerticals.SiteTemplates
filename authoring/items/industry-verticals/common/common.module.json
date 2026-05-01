@@ -38,6 +38,11 @@
             "allowedPushOperations": "CreateOnly"
           },
           {
+            "path": "/rustoleum",
+            "scope": "SingleItem",
+            "allowedPushOperations": "CreateOnly"
+          },
+          {
             "path": "/forma-lux",
             "scope": "SingleItem",
             "allowedPushOperations": "CreateOnly"
@@ -69,11 +74,6 @@
           },
           {
             "path": "/littelfuse",
-            "scope": "SingleItem",
-            "allowedPushOperations": "CreateOnly"
-          },
-          {
-            "path": "/rustoleum",
             "scope": "SingleItem",
             "allowedPushOperations": "CreateOnly"
           }
@@ -231,11 +231,11 @@
         ]
       },
       {
-        "name": "sites-rustoleum",
-        "path": "/sitecore/content/industry-verticals/rustoleum",
+        "name": "sites-essential-living",
+        "path": "/sitecore/content/industry-verticals/essential-living",
         "rules": [
           {
-            "path": "/Home",
+            "path": "/home",
             "scope": "SingleItem",
             "allowedPushOperations": "CreateOnly"
           },
@@ -276,8 +276,8 @@
         ]
       },
       {
-        "name": "sites-essential-living",
-        "path": "/sitecore/content/industry-verticals/essential-living",
+        "name": "sites-rustoleum",
+        "path": "/sitecore/content/industry-verticals/rustoleum",
         "rules": [
           {
             "path": "/home",

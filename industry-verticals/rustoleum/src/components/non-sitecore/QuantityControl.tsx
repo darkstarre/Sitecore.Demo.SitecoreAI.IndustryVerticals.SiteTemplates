@@ -13,7 +13,7 @@ const QuantityControl: React.FC<QuantityControlProps> = ({
   onChange,
   min = 1,
   max = 99,
-  isLarge,
+  isLarge = false,
 }) => {
   const handleChange = (newQuantity: number) => {
     if (newQuantity < min || newQuantity > max) return;
@@ -21,23 +21,25 @@ const QuantityControl: React.FC<QuantityControlProps> = ({
   };
 
   return (
-    <div className="flex items-center gap-2">
+    <div
+      className={`flex items-center gap-2 ${isLarge ? 'justify-between border px-8 py-1 text-lg' : ''}`}
+    >
       <button
         type="button"
         onClick={() => handleChange(quantity - 1)}
         disabled={quantity <= min}
         aria-label="Decrease quantity"
-        className={`surface-btn ${isLarge ? 'surface-btn-lg' : ''}`}
+        className={`disabled:pointer-events-none disabled:opacity-50`}
       >
         −
       </button>
-      <span className={`text-center font-bold ${isLarge ? 'w-8 text-lg' : 'w-6'}`}>{quantity}</span>
+      <span className={`w-6 text-center`}>{quantity}</span>
       <button
         type="button"
         onClick={() => handleChange(quantity + 1)}
         disabled={quantity >= max}
         aria-label="Increase quantity"
-        className={`surface-btn ${isLarge ? 'surface-btn-lg' : ''}`}
+        className={`disabled:pointer-events-none disabled:opacity-50`}
       >
         +
       </button>

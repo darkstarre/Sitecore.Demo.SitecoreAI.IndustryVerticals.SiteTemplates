@@ -1,5 +1,5 @@
 ---
-ID: "6cf63140-0d42-4f7c-aa23-649c62b722c8"
+ID: "4ae18ad6-34f6-4d9e-bc81-5f41f50f55af"
 Parent: "07194d9b-c0d3-4b3a-9fd2-06c42800b5cf"
 Template: "e5b045ab-fadd-4e52-8168-4b4e5c489e36"
 Path: "/sitecore/content/industry-verticals/rustoleum"
@@ -25,22 +25,19 @@ SharedFields:
     {1F35559F-2140-4774-8BC1-525BB722BAA2}
 - ID: "2b2fe9fd-78a6-40eb-b9f9-28409d8d3700"
   Hint: SitemapMediaItems
-  Value: "{4aee94e3-0cc1-4b97-a496-89f140661db8}"
+  Value: "{602e452a-3d21-4f30-9954-9e6475fe986e}"
 - ID: "33d9005e-1f71-415f-b107-53b965c3b037"
   Hint: SiteMediaLibrary
-  Value: "{fb82facd-9ef7-422c-be01-994e680fbcd9}"
+  Value: "{128be3d4-c2e7-4f0f-9ad9-b6202a9cb407}"
 - ID: "85a7501a-86d9-4243-9075-0b727c3a6db4"
   Hint: Name
-  Value: Rust-Oleum
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 0
+  Value: Rustoleum
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
-  Value: "<image mediaid='eddb8b3a-8380-4883-b8a3-994a80eeb09c' />"
+  Value: "<image mediaid='a03aa4fa-580d-4c82-b24a-1146cf2d0d99' />"
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "5266f4b4-5f07-463b-a1a4-3ada0294aa16"
+  Value: "749a7025-0a2e-4444-9ae3-613f4130c577"
 - ID: "e2bf3c8d-a12e-45f4-98d6-a37f13bcf375"
   Hint: SiteTemplate
   Value: "{2867D289-8951-458A-AF19-CE93A67BB494}"
@@ -54,7 +51,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20250820T091624Z
+      Value: 20251111T120528Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -65,61 +62,11 @@ Languages:
         sitecore\neli.kostadinova@sitecore.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "401b797e-3d8c-4e9d-9d27-2d588f1947da"
+      Value: "1c3dd572-659a-4dc1-99ba-621ffa88eb21"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\megan.chavez@sitecore.com
+        sitecore\sanduni.galagoda@sitecore.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20260421T024116Z
-- Language: "es-ES"
-  Versions:
-  - Version: 1
-    Fields:
-    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
-      Hint: __Created
-      Value: 20251219T104205Z
-    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
-      Hint: __Owner
-      Value: |
-        sitecore\movin.tilakaratne@sitecore.com
-    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
-      Hint: __Created by
-      Value: |
-        sitecore\movin.tilakaratne@sitecore.com
-    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
-      Hint: __Revision
-      Value: "ae8ee741-a42b-431d-b2dd-4ca6439bd352"
-    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
-      Hint: __Updated by
-      Value: |
-        sitecore\movin.tilakaratne@sitecore.com
-    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
-      Hint: __Updated
-      Value: 20251219T104205Z
-- Language: "fr-FR"
-  Versions:
-  - Version: 1
-    Fields:
-    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
-      Hint: __Created
-      Value: 20251217T103902Z
-    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
-      Hint: __Owner
-      Value: |
-        sitecore\isuru.bandara@sitecore.com
-    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
-      Hint: __Created by
-      Value: |
-        sitecore\isuru.bandara@sitecore.com
-    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
-      Hint: __Revision
-      Value: "08580095-fd09-4e39-8d24-f75633db7d99"
-    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
-      Hint: __Updated by
-      Value: |
-        sitecore\isuru.bandara@sitecore.com
-    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
-      Hint: __Updated
-      Value: 20251217T103902Z
+      Value: 20251201T132654Z

@@ -1,26 +1,33 @@
 @theme {
-  --color-foreground: #1e1e1e;
-  --color-foreground-light: #505050;
-  --color-foreground-muted: #9f9f9f;
+  /* Cooley-inspired: dark navy foreground on light backgrounds */
+  --color-foreground: #0d1b2a;
+  --color-foreground-light: #64748b;
 
-  --color-background: #fff;
-  --color-background-accent: #faf3ea;
-  --color-background-muted: #f7f7f7;
-  --color-background-muted-light: #7a7a7a;
-  --color-background-muted-dark: #666;
-  --color-background-surface: #fafafa;
+  /* Light, clean backgrounds */
+  --color-background: #ffffff;
+  --color-background-accent: #f8fafc;
+  --color-background-muted: #f1f5f9;
 
-  --color-accent: #c1a25f;
+  /* Dark surface for header, footer, hero (Cooley navy) */
+  --color-surface-dark: #0d1b2a;
+  --color-surface-dark-muted: #1b263b;
+  --color-on-dark: #ffffff;
+  --color-on-dark-muted: #94a3b8;
 
-  --color-success: #2ec1ac;
-  --color-danger: #e97171;
+  /* Accent: professional blue */
+  --color-accent: #0d47a1;
+  --color-accent-hover: #1565c0;
 
-  --color-border: #e8e8e8;
+  --color-success: #2e7d32;
+  --color-danger: #c62828;
 
-  --font-heading: 'Manrope', sans-serif;
-  --font-body: 'Manrope', sans-serif;
+  --color-border: #e2e8f0;
 
-  --radius-base: 0.5rem;
+  /* Professional typography: clean sans-serif */
+  --font-heading: 'Source Serif 4', 'Georgia', serif;
+  --font-body: 'Source Sans 3', 'Helvetica Neue', sans-serif;
+
+  --radius-base: 0rem;
 
   /*
   This does not show in the theme editor

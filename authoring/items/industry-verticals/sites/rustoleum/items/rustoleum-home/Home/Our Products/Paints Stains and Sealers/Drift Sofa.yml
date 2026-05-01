@@ -1,0 +1,87 @@
+---
+ID: "c1465cb8-58ba-4617-ba3f-dbcec6b8a818"
+Parent: "1afa6687-b14c-4871-ac34-04af79decc43"
+Template: "f6e44a9e-074a-4865-987e-0c2dc00b7af5"
+Path: "/sitecore/content/industry-verticals/rustoleum/Home/Our Products/Paints Stains and Sealers/Drift Sofa"
+SharedFields:
+- ID: "1fbc6a49-6281-48ee-87e9-a3970b145adb"
+  Hint: NavigationFilter
+  Value: "{D063E9D1-C7B5-4B1E-B31E-69886C9C59F5}"
+- ID: "2cfb917c-9876-4edb-82c0-1c9acd6965d4"
+  Hint: Reviews
+  Value: |
+    {51d26b81-63f3-4c16-8c1f-7f281df3c7c9}
+    {d40c364a-3c7f-4f46-be1f-2c7647c90188}
+- ID: "4194f0b1-8aac-49c1-8e93-129877fe4c79"
+  Hint: Tags
+  Value: |
+    {d2a2c7fe-f0ee-4b8e-a894-b24ddbf95d37}
+    {fbebde9d-c193-47fe-9470-23dc1907d38f}
+    {3cf32a3b-478b-4496-8a1c-fd03488cb2d2}
+    {fc62435d-296b-405e-bde8-54538bbb358b}
+- ID: "58d111ab-b286-42ab-bb35-8daadd6ab480"
+  Hint: SKU
+  Value: DRFTS
+- ID: "6d624193-14b5-4076-b1d6-b6cac9888298"
+  Hint: Color
+  Value: "{089f7c85-71cf-47e4-8b9d-1ddc149f29dd}"
+- ID: "74707399-0e90-4a4c-bc13-dde7ec849507"
+  Hint: Image2
+  Value: |
+    <Image src="https://starter-verticals-v2.sitecoresandbox.cloud/api/public/content/80805-LandingPageHero-2000x600?v=3e0706bd" dam-id="pjL5ybSpSt277ehS5E2Q7w" width="2000" height="600" alt="Sofa_E_3.jpg" dam-content-type="Image" thumbnailsrc="https://starter-verticals-v2.sitecoresandbox.cloud/api/gateway/80805/thumbnail" />
+- ID: "998ad31d-a023-4c69-8654-9b70de07a7f3"
+  Hint: Size
+  Value: |
+    {8c65aed4-0291-44dc-8f47-e3382a6f8b16}
+    {f8d19a4e-7f4a-4018-9a0b-3d3b6c96600e}
+- ID: "bf3fd6d5-2930-40a0-9c22-b4fe37f6717f"
+  Hint: Image1
+  Value: |
+    <Image src="https://starter-verticals-v2.sitecoresandbox.cloud/api/public/content/80807-LandingPageHero-2000x600?v=a570e69a" dam-id="0ODAjG_FTTmE1uet3g8W5w" width="2000" height="600" alt="Sofa_E_1.jpg" dam-content-type="Image" thumbnailsrc="https://starter-verticals-v2.sitecoresandbox.cloud/api/gateway/80807/thumbnail" />
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{2a6108e3-940a-4b30-a6c9-40479e5426b7}" />
+- ID: "cef30aa1-3383-482a-9e55-9226ee7116bd"
+  Hint: Category
+  Value: "{7b1788b3-7eb2-4808-bc5a-6a0a1a3d919b}"
+- ID: "d9c8ae87-80fc-460b-9140-3db7358b1c8e"
+  Hint: Image3
+  Value: |
+    <Image src="https://starter-verticals-v2.sitecoresandbox.cloud/api/public/content/80808-HomePageHero-2000x800?v=c33e0533" dam-id="-UlBGTMsTPCKVfuVlmiBEQ" width="2000" height="800" alt="Sofa_E_2.jpg" dam-content-type="Image" thumbnailsrc="https://starter-verticals-v2.sitecoresandbox.cloud/api/gateway/80808/thumbnail" />
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "087fdc34-da8b-4370-bbd4-7d77d2d5067a"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20251117T120956Z
+    - ID: "30b20e46-ce60-4993-a2d3-778a61e77331"
+      Hint: ShortDescription
+      Value: "The Drift Sofa is a sculptural statement in soft white bouclé. Its curved, bean-like silhouette offers a cozy, enveloping feel while maintaining a sleek, modern aesthetic. Perfect for contemporary interiors, it blends comfort and style in a single, fluid form."
+    - ID: "4d1068af-ad2e-485a-8e61-031ea8464425"
+      Hint: Price
+      Value: 3200
+    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
+      Hint: NavigationTitle
+      Value: Drift Sofa
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "6e0a87d4-c1d4-4383-a13b-c6069fd72918"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\ranula.gamage@sitecore.com
+    - ID: "c97b8c3c-2801-4b14-9bf8-f11ec7ab1d11"
+      Hint: Title
+      Value: Drift Sofa
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260129T105818Z

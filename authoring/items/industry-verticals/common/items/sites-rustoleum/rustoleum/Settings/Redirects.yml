@@ -1,6 +1,6 @@
 ---
-ID: "05658018-361a-4d86-910d-2db5f7197426"
-Parent: "af06417b-1dcf-4d7f-8bca-79e1d54b97a5"
+ID: "6c77ce10-c12e-478b-b2af-3f0cc69b0bdf"
+Parent: "ca0e4215-9f55-4333-bbd0-ba147b10ecd5"
 Template: "c2dc4690-af44-48c7-bb21-90d1ad246732"
 Path: "/sitecore/content/industry-verticals/rustoleum/Settings/Redirects"
 BranchID: "50213d5e-83f8-4fa7-a91d-825e61c7b8a2"
@@ -15,7 +15,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20250820T091628Z
+      Value: 20251111T120532Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -26,61 +26,11 @@ Languages:
         sitecore\neli.kostadinova@sitecore.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "150ddd29-7f56-42b8-ae18-e1f9916152ee"
+      Value: "aab46320-1c06-470b-b837-eaadc3dd7b24"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\neli.kostadinova@sitecore.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250820T091628Z
-- Language: "es-ES"
-  Versions:
-  - Version: 1
-    Fields:
-    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
-      Hint: __Created
-      Value: 20251219T104211Z
-    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
-      Hint: __Owner
-      Value: |
-        sitecore\movin.tilakaratne@sitecore.com
-    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
-      Hint: __Created by
-      Value: |
-        sitecore\movin.tilakaratne@sitecore.com
-    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
-      Hint: __Revision
-      Value: "2dae4c11-3cf5-479c-bf62-26d5bd4f3cf5"
-    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
-      Hint: __Updated by
-      Value: |
-        sitecore\movin.tilakaratne@sitecore.com
-    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
-      Hint: __Updated
-      Value: 20251219T104211Z
-- Language: "fr-FR"
-  Versions:
-  - Version: 1
-    Fields:
-    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
-      Hint: __Created
-      Value: 20251217T103908Z
-    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
-      Hint: __Owner
-      Value: |
-        sitecore\isuru.bandara@sitecore.com
-    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
-      Hint: __Created by
-      Value: |
-        sitecore\isuru.bandara@sitecore.com
-    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
-      Hint: __Revision
-      Value: "c2fe1fbb-2fc8-4940-9485-fd612a4be1b3"
-    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
-      Hint: __Updated by
-      Value: |
-        sitecore\isuru.bandara@sitecore.com
-    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
-      Hint: __Updated
-      Value: 20251217T103908Z
+      Value: 20251111T120532Z

@@ -1,0 +1,90 @@
+---
+ID: "ba026373-c153-4400-9f7e-fa15bff02a9f"
+Parent: "03b0ebb6-7efb-4899-b625-2edef105bead"
+Template: "f6e44a9e-074a-4865-987e-0c2dc00b7af5"
+Path: "/sitecore/content/industry-verticals/rustoleum/Home/Our Products/Cleaners/Ondine Vase"
+SharedFields:
+- ID: "1fbc6a49-6281-48ee-87e9-a3970b145adb"
+  Hint: NavigationFilter
+  Value: "{D063E9D1-C7B5-4B1E-B31E-69886C9C59F5}"
+- ID: "2cfb917c-9876-4edb-82c0-1c9acd6965d4"
+  Hint: Reviews
+  Value: |
+    {26618341-bcf7-4d55-bab2-b3dc54e8f8e5}
+    {08366ca9-3770-46a1-beac-3da123826120}
+- ID: "4194f0b1-8aac-49c1-8e93-129877fe4c79"
+  Hint: Tags
+  Value: |
+    {473e2131-e2a3-4ccd-8d2a-49a76356f234}
+    {3cf32a3b-478b-4496-8a1c-fd03488cb2d2}
+    {2a07ca6b-240a-4b24-b6ae-1fde22902cf9}
+    {fc62435d-296b-405e-bde8-54538bbb358b}
+- ID: "58d111ab-b286-42ab-bb35-8daadd6ab480"
+  Hint: SKU
+  Value: NDNV
+- ID: "74707399-0e90-4a4c-bc13-dde7ec849507"
+  Hint: Image2
+  Value: |
+    <Image src="https://starter-verticals-v2.sitecoresandbox.cloud/api/public/content/78066-HomePageHero-2000x800?v=a9924cd0" dam-id="hj9KAyPsSFCILijhZkajXw" width="2000" height="800" alt="Vase_3_2.jpg" dam-content-type="Image" thumbnailsrc="https://starter-verticals-v2.sitecoresandbox.cloud/api/gateway/78066/thumbnail" />
+- ID: "bf3fd6d5-2930-40a0-9c22-b4fe37f6717f"
+  Hint: Image1
+  Value: |
+    <Image src="https://starter-verticals-v2.sitecoresandbox.cloud/api/public/content/78065-HomePageHero-2000x800?v=2fa7a967" dam-id="9GsL5noCTZq3p-bezBoM1w" width="2000" height="800" alt="Vase_3_1.jpg" dam-content-type="Image" thumbnailsrc="https://starter-verticals-v2.sitecoresandbox.cloud/api/gateway/78065/thumbnail" />
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{93022fe2-ce0e-4774-ae9f-855b37df84cb}" />
+- ID: "cef30aa1-3383-482a-9e55-9226ee7116bd"
+  Hint: Category
+  Value: "{6970958d-8aca-48c2-ad21-208cf37666e2}"
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "91031901-f679-4653-a90d-9e15c2d07314"
+- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  Hint: __Renderings
+  Value: |
+    <r xmlns:p="p" xmlns:s="s"
+      p:p="1">
+      <d
+        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+        <r
+          uid="{49CD39B5-6527-4977-BCB6-FAAEE06EF4CE}"
+          s:ds="21fc7370-ac17-4403-a9d4-844e7703aaee"
+          s:id="{E874A406-4977-443B-8AFE-690812AFB5EF}"
+          s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;Autoplay&amp;Loop&amp;FieldNames=%7B6c890882-edc1-4e2e-b9d3-ec2be7c0f979%7D&amp;Styles=%7C%7Bbbe34886-d8c4-4a72-8b49-eb1f428f5aa2%7D&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+          s:ph="/headless-main/sxa-product-content/related-products-1" />
+      </d>
+    </r>
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20251117T123442Z
+    - ID: "30b20e46-ce60-4993-a2d3-778a61e77331"
+      Hint: ShortDescription
+      Value: The Ondine Vase features soft, flowing curves and a matte white finish for a sculptural, artistic look. It pairs beautifully with greenery or dried botanicals and works as a striking standalone piece. Ideal for adding texture and sophistication to modern interiors.
+    - ID: "4d1068af-ad2e-485a-8e61-031ea8464425"
+      Hint: Price
+      Value: 160
+    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
+      Hint: NavigationTitle
+      Value: Ondine Vase
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "c82717bf-deed-4594-b599-5eb4e59b8cb1"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\ranula.gamage@sitecore.com
+    - ID: "c97b8c3c-2801-4b14-9bf8-f11ec7ab1d11"
+      Hint: Title
+      Value: Ondine Vase
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260129T105817Z

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { Default as SocialFollow, Horizontal } from '../components/social-follow/SocialFollow';
+import { Default as SocialFollow } from '../components/social-follow/SocialFollow';
 import { ComponentProps } from 'react';
 import { CommonParams, CommonRendering } from './common/commonData';
 import { createLinkField, createTextField } from './helpers/createFields';
@@ -41,11 +41,5 @@ const baseFields = {
 export const Default: Story = {
   render: () => {
     return <SocialFollow params={baseParams} rendering={baseRendering} fields={baseFields} />;
-  },
-};
-
-export const HorizontalIcons: Story = {
-  render: () => {
-    return <Horizontal params={baseParams} rendering={baseRendering} fields={baseFields} />;
   },
 };

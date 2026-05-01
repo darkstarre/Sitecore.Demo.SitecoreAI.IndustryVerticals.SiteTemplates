@@ -9,12 +9,9 @@ type StoryProps = ComponentProps<typeof ProductListing> & {
 };
 
 const meta = {
-  title: 'Products/ProductListing',
+  title: 'Products/Product Listing',
   component: ProductListing,
   tags: ['autodocs'],
-  parameters: {
-    layout: 'fullscreen',
-  },
   argTypes: {
     numberOfProducts: {
       name: 'Number of Products',

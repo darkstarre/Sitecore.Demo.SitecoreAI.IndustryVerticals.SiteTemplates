@@ -1,0 +1,45 @@
+---
+ID: "3abe16b8-da27-4c17-9eb2-4f90e1e391c6"
+Parent: "a11a9039-45fb-45a1-b051-ce4800754667"
+Template: "0cb3fc95-fea8-40eb-9560-158e7d92a3a4"
+Path: "/sitecore/content/industry-verticals/rustoleum/Data/Selected Products/Most Popular Lighting"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20251117T133016Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\sanduni.galagoda@sitecore.com
+    - ID: "53d0df0a-b9c3-4a83-9150-37c68259f6ab"
+      Hint: Title
+      Value: Most popular right now
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\sanduni.galagoda@sitecore.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "6623d97a-f6e2-4071-b299-6682a2d8c941"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\sanduni.galagoda@sitecore.com
+    - ID: "c3fb8c52-2f64-45bc-9970-ea340d7271fa"
+      Hint: ProductsList
+      Value: |
+        {59cfc16f-a308-479a-a226-2cc812e7597b}
+        {0f4cc187-cf66-4555-bffa-04124b4096c2}
+        {34b2fee9-7366-45b9-b8d6-1c78ee55c53d}
+        {faada7ef-e12b-4a9e-84d4-d8398d07a730}
+        {aaeee6f0-ece8-4d49-a187-a2ef2317fc1d}
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20251117T134210Z

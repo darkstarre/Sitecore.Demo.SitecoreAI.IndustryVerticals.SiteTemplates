@@ -1,0 +1,77 @@
+---
+ID: "e216246d-9e47-4d46-a622-762fc59bbfa2"
+Parent: "03b0ebb6-7efb-4899-b625-2edef105bead"
+Template: "f6e44a9e-074a-4865-987e-0c2dc00b7af5"
+Path: "/sitecore/content/industry-verticals/rustoleum/Home/Our Products/Cleaners/Circa Boucle Pillow Duo"
+SharedFields:
+- ID: "1fbc6a49-6281-48ee-87e9-a3970b145adb"
+  Hint: NavigationFilter
+  Value: "{D063E9D1-C7B5-4B1E-B31E-69886C9C59F5}"
+- ID: "4194f0b1-8aac-49c1-8e93-129877fe4c79"
+  Hint: Tags
+  Value: |
+    {d2a2c7fe-f0ee-4b8e-a894-b24ddbf95d37}
+    {fbebde9d-c193-47fe-9470-23dc1907d38f}
+    {3cf32a3b-478b-4496-8a1c-fd03488cb2d2}
+    {fc62435d-296b-405e-bde8-54538bbb358b}
+- ID: "58d111ab-b286-42ab-bb35-8daadd6ab480"
+  Hint: SKU
+  Value: CRCBPD
+- ID: "74707399-0e90-4a4c-bc13-dde7ec849507"
+  Hint: Image2
+  Value: |
+    <Image src="https://starter-verticals-v2.sitecoresandbox.cloud/api/public/content/77884-HomePageHero-2000x800?v=8919c50f" dam-id="yIUbadVcTZ-qKL4L_YmHTg" width="2000" height="800" alt="round-pillows-1.jpg" dam-content-type="Image" thumbnailsrc="https://starter-verticals-v2.sitecoresandbox.cloud/api/gateway/77884/thumbnail" />
+- ID: "998ad31d-a023-4c69-8654-9b70de07a7f3"
+  Hint: Size
+  Value: "{d00f855d-ed84-43ba-99a8-9a85b2509fae}"
+- ID: "bf3fd6d5-2930-40a0-9c22-b4fe37f6717f"
+  Hint: Image1
+  Value: |
+    <Image src="https://starter-verticals-v2.sitecoresandbox.cloud/api/public/content/77885-HomePageHero-2000x800?v=6116f2a2" dam-id="YZ9mJ44yQZ2aXoOguVVdfA" width="2000" height="800" alt="round-pillows-2.jpg" dam-content-type="Image" thumbnailsrc="https://starter-verticals-v2.sitecoresandbox.cloud/api/gateway/77885/thumbnail" />
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{b5062a25-fe0d-46d8-981f-30050a069f37}" />
+- ID: "cef30aa1-3383-482a-9e55-9226ee7116bd"
+  Hint: Category
+  Value: "{1c364240-0dd6-4c43-b31b-c68c54a57d07}"
+- ID: "d9c8ae87-80fc-460b-9140-3db7358b1c8e"
+  Hint: Image3
+  Value: |
+    <Image src="https://starter-verticals-v2.sitecoresandbox.cloud/api/public/content/77888-HomePageHero-2000x800?v=878497d4" dam-id="9XJzoBDCRgW-1tRWjkuGuw" width="2000" height="800" alt="round-pillows-3.jpg" dam-content-type="Image" thumbnailsrc="https://starter-verticals-v2.sitecoresandbox.cloud/api/gateway/77888/thumbnail" />
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "132305f3-c22b-4f2b-82c5-0ec4fa952b91"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20251117T125658Z
+    - ID: "30b20e46-ce60-4993-a2d3-778a61e77331"
+      Hint: ShortDescription
+      Value: This sculptural pillow set features a modern cream donut cushion paired with a warm beige bouclé sphere, creating a playful yet elegant combination. The soft, textured fabrics add depth and warmth to sofas, armchairs, or bedroom décor. Perfect for contemporary interiors, this duo brings a curated, designer look with minimal effort.
+    - ID: "4d1068af-ad2e-485a-8e61-031ea8464425"
+      Hint: Price
+      Value: 145
+    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
+      Hint: NavigationTitle
+      Value: Circa Boucle Pillow Duo
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "9dc2e07f-ac2e-4434-a15c-92b121af0c36"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\ranula.gamage@sitecore.com
+    - ID: "c97b8c3c-2801-4b14-9bf8-f11ec7ab1d11"
+      Hint: Title
+      Value: Circa Bouclé Pillow Duo
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260129T105817Z

@@ -6,14 +6,12 @@ import { renderStorybookPlaceholder } from './helpers/renderStorybookPlaceholder
 import { createLinkField, createTextField } from './helpers/createFields';
 import { boolToSitecoreCheckbox } from './helpers/boolToSitecoreCheckbox';
 import { createProductItems } from './helpers/createItems';
-import { ComponentFields } from '@sitecore-content-sdk/nextjs';
+import { ComponentFields, LinkField } from '@sitecore-content-sdk/nextjs';
 import {
   BackgroundColorArgs,
   backgroundColorArgTypes,
   defaultBackgroundColorArgs,
 } from './common/commonControls';
-import clsx from 'clsx';
-import { CommonStyles } from '@/types/styleFlags';
 
 type StoryProps = ComponentProps<typeof SectionWrapper> &
   BackgroundColorArgs & {
@@ -56,11 +54,17 @@ const baseRendering = {
   params: baseParams,
   placeholders: {
     [`section-wrapper-content-${baseParams.DynamicPlaceholderId}`]: [renderStorybookPlaceholder()],
+    [`section-wrapper-searchbar-${baseParams.DynamicPlaceholderId}`]: [
+      renderStorybookPlaceholder(),
+    ],
   },
 };
 
 const baseFields = {
-  Title: createTextField('Browse The Range'),
+  Title: createTextField('The new collection has arrived'),
+  Description: createTextField(
+    'Discover accessories that transforms spaces into sanctuaries—soft glows, clean lines, and timeless elegance.'
+  ),
   Link: createLinkField('View All'),
 };
 
@@ -69,11 +73,7 @@ export const Default: Story = {
     const params = {
       ...baseParams,
       HideAccentLine: boolToSitecoreCheckbox(args.hideAccentLine),
-      styles: clsx(
-        baseParams.styles,
-        args.BackgroundColor,
-        args.hideAccentLine && CommonStyles.HideAccentLine
-      ),
+      styles: `${baseParams.styles} ${args.BackgroundColor}`,
     };
 
     return <SectionWrapper params={params} fields={baseFields} rendering={baseRendering} />;
@@ -85,11 +85,7 @@ export const WithPlaceholderData: Story = {
     const params = {
       ...baseParams,
       HideAccentLine: boolToSitecoreCheckbox(args.hideAccentLine),
-      styles: clsx(
-        baseParams.styles,
-        args.BackgroundColor,
-        args.hideAccentLine && CommonStyles.HideAccentLine
-      ),
+      styles: `${baseParams.styles} ${args.BackgroundColor}`,
     };
     const rendering = {
       ...baseRendering,
@@ -97,16 +93,20 @@ export const WithPlaceholderData: Story = {
         [`section-wrapper-content-${baseParams.DynamicPlaceholderId}`]: [
           {
             ...CommonRendering,
-            componentName: 'AllProductsCarousel',
+            componentName: 'RelatedProducts',
             params: CommonParams,
             fields: {
-              items: createProductItems(5),
+              ProductsList: createProductItems(8),
             } as unknown as ComponentFields,
           },
         ],
       },
     };
+    const fields = {
+      ...baseFields,
+      Link: {} as LinkField,
+    };
 
-    return <SectionWrapper params={params} fields={baseFields} rendering={rendering} />;
+    return <SectionWrapper params={params} fields={fields} rendering={rendering} />;
   },
 };

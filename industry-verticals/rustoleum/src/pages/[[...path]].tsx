@@ -16,36 +16,6 @@ import client from 'lib/sitecore-client';
 import components from '.sitecore/component-map';
 import scConfig from 'sitecore.config';
 
-/** Dev-only hints when Edge returns a route shell without datasource fields or header partials. */
-function logRustoleumEdgeDiagnostics(page: SitecorePageProps['page']) {
-  if (process.env.NODE_ENV !== 'development' || !page?.layout?.sitecore?.route?.placeholders) {
-    return;
-  }
-  const ph = page.layout.sitecore.route.placeholders as Record<string, unknown>;
-  const header = ph['headless-header'];
-  if (Array.isArray(header) && header.length === 0) {
-    console.warn(
-      '[rustoleum] Edge returned an empty headless-header. Publish Presentation (partial designs / page designs) or confirm Project.Rustoleum-Content deployed to this environment.'
-    );
-  }
-  const main = ph['headless-main'];
-  if (!Array.isArray(main)) {
-    return;
-  }
-  const hero = main.find(
-    (r: unknown) =>
-      typeof r === 'object' &&
-      r !== null &&
-      'componentName' in r &&
-      (r as { componentName: string }).componentName === 'HeroBanner'
-  ) as { fields?: unknown; dataSource?: string } | undefined;
-  if (hero && hero.fields === undefined) {
-    console.warn(
-      `[rustoleum] HeroBanner has no fields from Edge (dataSource ${hero.dataSource ?? 'n/a'}). Publish items under /sitecore/content/industry-verticals/rustoleum/Data (and the Home item) to web, or confirm your SITECORE_EDGE_CONTEXT_ID matches the CM instance that received the content.`
-    );
-  }
-}
-
 const SitecorePage = ({ page, notFound, componentProps }: SitecorePageProps): JSX.Element => {
   useEffect(() => {
     // Since Sitecore Editor does not support Fast Refresh, need to refresh editor chromes after Fast Refresh finished
@@ -102,7 +72,7 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
 
 // This function gets called at build time on server-side.
 // It may be called again, on a serverless function, if
-// revalidation (or fallback) is enabled and a new request comes in.
+// revalidation is enabled and a new request comes in.
 export const getStaticProps: GetStaticProps = async (context) => {
   let props = {};
   const path = extractPath(context);
@@ -114,7 +84,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     page = context.preview
       ? await client.getPreview(context.previewData)
       : await client.getPage(path, { locale: context.locale });
-    logRustoleumEdgeDiagnostics(page);
   }
   if (page) {
     props = {
@@ -128,12 +97,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
   return {
     props,
-    // Next.js will attempt to re-generate the page:
-    // - When a request comes in
-    // - At most once every 5 seconds
-    // Next.js will attempt to re-generate the page:
-    // - When a request comes in
-    // - At most once every 5 seconds
     revalidate: 5, // In seconds
     notFound: !page,
   };

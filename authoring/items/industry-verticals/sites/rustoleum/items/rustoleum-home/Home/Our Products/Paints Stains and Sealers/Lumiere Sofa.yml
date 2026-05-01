@@ -1,0 +1,84 @@
+---
+ID: "a0889fd3-72dc-4a15-a21d-b6bf30321475"
+Parent: "1afa6687-b14c-4871-ac34-04af79decc43"
+Template: "f6e44a9e-074a-4865-987e-0c2dc00b7af5"
+Path: "/sitecore/content/industry-verticals/rustoleum/Home/Our Products/Paints Stains and Sealers/Lumiere Sofa"
+SharedFields:
+- ID: "1fbc6a49-6281-48ee-87e9-a3970b145adb"
+  Hint: NavigationFilter
+  Value: "{D063E9D1-C7B5-4B1E-B31E-69886C9C59F5}"
+- ID: "2cfb917c-9876-4edb-82c0-1c9acd6965d4"
+  Hint: Reviews
+  Value: |
+    {08e4e4d0-a2f6-4e96-9091-f6628357729a}
+    {51d26b81-63f3-4c16-8c1f-7f281df3c7c9}
+- ID: "4194f0b1-8aac-49c1-8e93-129877fe4c79"
+  Hint: Tags
+  Value: |
+    {91866103-ffc6-45d8-8f03-ba27e79e6239}
+    {2a07ca6b-240a-4b24-b6ae-1fde22902cf9}
+    {fc62435d-296b-405e-bde8-54538bbb358b}
+    {3cf32a3b-478b-4496-8a1c-fd03488cb2d2}
+    {fbebde9d-c193-47fe-9470-23dc1907d38f}
+- ID: "58d111ab-b286-42ab-bb35-8daadd6ab480"
+  Hint: SKU
+  Value: LUMS
+- ID: "6d624193-14b5-4076-b1d6-b6cac9888298"
+  Hint: Color
+  Value: "{890e6dcc-5f68-43bd-bcbe-8003392c1241}"
+- ID: "74707399-0e90-4a4c-bc13-dde7ec849507"
+  Hint: Image2
+  Value: |
+    <Image src="https://starter-verticals-v2.sitecoresandbox.cloud/api/public/content/80838-HomepagePromoCTAs-1100x740?v=a4b3ca05" dam-id="vaQUyFLiQ2yMj9eT42RlsA" width="1100" height="740" alt="Sofa_A_2.jpg" dam-content-type="Image" thumbnailsrc="https://starter-verticals-v2.sitecoresandbox.cloud/api/gateway/80838/thumbnail" />
+- ID: "998ad31d-a023-4c69-8654-9b70de07a7f3"
+  Hint: Size
+  Value: |
+    {8c65aed4-0291-44dc-8f47-e3382a6f8b16}
+    {f8d19a4e-7f4a-4018-9a0b-3d3b6c96600e}
+- ID: "bf3fd6d5-2930-40a0-9c22-b4fe37f6717f"
+  Hint: Image1
+  Value: |
+    <Image src="https://starter-verticals-v2.sitecoresandbox.cloud/api/public/content/80839-HomepagePromoCTAs-1100x740?v=e243d0e7" dam-id="iE6pIB1XQTOvpoy3vo2ocA" width="1100" height="740" alt="Sofa_A_1.jpg" dam-content-type="Image" thumbnailsrc="https://starter-verticals-v2.sitecoresandbox.cloud/api/gateway/80839/thumbnail" />
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{864e0357-745a-4797-bfbe-0423f62e5742}" />
+- ID: "cef30aa1-3383-482a-9e55-9226ee7116bd"
+  Hint: Category
+  Value: "{7b1788b3-7eb2-4808-bc5a-6a0a1a3d919b}"
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "aac893c1-ce0d-472a-8429-f8a0d439df1e"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20251117T115127Z
+    - ID: "30b20e46-ce60-4993-a2d3-778a61e77331"
+      Hint: ShortDescription
+      Value: The Lumière Sofa offers modern comfort with effortless style. Its soft, pouffy cushions and clean rectangular silhouette create a welcoming yet sculptural presence. Upholstered in luxurious velvety beige fabric, it brings warmth and sophistication to any living space, perfect for lounging or making a statement in a modern interior.
+    - ID: "4d1068af-ad2e-485a-8e61-031ea8464425"
+      Hint: Price
+      Value: 2100
+    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
+      Hint: NavigationTitle
+      Value: Lumiere Sofa
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "c596d04c-1a74-4e9a-a7ec-7ff2392e17f1"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\ranula.gamage@sitecore.com
+    - ID: "c97b8c3c-2801-4b14-9bf8-f11ec7ab1d11"
+      Hint: Title
+      Value: Lumière Sofa
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260129T105818Z

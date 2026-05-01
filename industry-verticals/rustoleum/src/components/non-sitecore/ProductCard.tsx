@@ -1,13 +1,11 @@
 import { NextImage as ContentSdkImage, Text } from '@sitecore-content-sdk/nextjs';
-import StarRating from './StarRating';
 import Link from 'next/link';
 import { Product } from '@/types/products';
 import { useLocale } from '@/hooks/useLocaleOptions';
 
 interface ProductCardProps {
-  product: Partial<Product> & {
-    Rating: number;
-  };
+  product: Product;
+  productId: string;
   url: string;
   className?: string;
 }
@@ -23,41 +21,31 @@ export const ProductCard = ({ product, url, className }: ProductCardProps) => {
       : product.Price?.value;
 
   return (
-    <Link href={url} passHref>
-      <div
-        className={`flex min-h-123 w-full flex-col overflow-hidden rounded-2xl hover:drop-shadow-sm ${className}`}
-      >
-        {/* Product Image */}
-        <div className="bg-background-surface flex h-72 w-full items-center justify-center p-6">
+    <div className={`flex flex-col gap-8 ${className}`}>
+      <Link href={url || '#'} className="mb-auto">
+        <div className="group bg-background-accent relative aspect-3/4">
+          <ContentSdkImage field={product.Image1} className="size-full object-cover" priority />
           <ContentSdkImage
-            field={product.Image1}
-            className="max-h-full max-w-full object-contain"
+            field={product.Image2}
+            className="absolute inset-0 z-5 size-full object-cover opacity-0 transition-opacity group-hover:opacity-100"
             priority
           />
         </div>
 
-        {/* Product Details */}
-        <div className="bg-background flex grow-1 flex-col items-start px-5 pt-3 pb-9 text-left">
-          <p className="!text-foreground-light">
-            <Text field={product.Category?.fields?.CategoryName} />
-          </p>
+        <h6 className="font-body mt-8 text-lg font-light">
+          <Text field={product.Title} />
+        </h6>
 
-          <h6 className="!text-foreground mt-1 line-clamp-2 font-semibold">
-            <Text field={product.Title} />
-          </h6>
-
-          <StarRating
-            rating={product.Rating || 0}
-            showOnlyFilled
-            className="!text-accent mt-1 mb-5"
-          />
-
-          <h6 className="!text-foreground mt-auto font-semibold">
-            <span className="mr-1 align-super text-sm">{currencySymbol} </span>
-            {formattedPrice}
-          </h6>
-        </div>
-      </div>
-    </Link>
+        <p className="text-foreground-light mt-3 font-normal">
+          <span>{currencySymbol} </span>
+          {formattedPrice}
+        </p>
+      </Link>
+      {/* Add to cart button TBD */}
+      {/* <AddToCartButton productId={productId} product={product} /> */}
+      <Link href={url || '#'} className="outline-btn self-start">
+        View
+      </Link>
+    </div>
   );
 };

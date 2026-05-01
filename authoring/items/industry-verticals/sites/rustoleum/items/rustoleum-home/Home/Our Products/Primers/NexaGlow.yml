@@ -1,0 +1,92 @@
+---
+ID: "59cfc16f-a308-479a-a226-2cc812e7597b"
+Parent: "0efe689c-5d7d-4200-92e7-fbf8be00dd18"
+Template: "f6e44a9e-074a-4865-987e-0c2dc00b7af5"
+Path: "/sitecore/content/industry-verticals/rustoleum/Home/Our Products/Primers/NexaGlow"
+SharedFields:
+- ID: "1fbc6a49-6281-48ee-87e9-a3970b145adb"
+  Hint: NavigationFilter
+  Value: "{D063E9D1-C7B5-4B1E-B31E-69886C9C59F5}"
+- ID: "2cfb917c-9876-4edb-82c0-1c9acd6965d4"
+  Hint: Reviews
+  Value: "{25149416-7980-4949-bc43-8919139d9e18}"
+- ID: "4194f0b1-8aac-49c1-8e93-129877fe4c79"
+  Hint: Tags
+  Value: |
+    {2a07ca6b-240a-4b24-b6ae-1fde22902cf9}
+    {473e2131-e2a3-4ccd-8d2a-49a76356f234}
+    {3cf32a3b-478b-4496-8a1c-fd03488cb2d2}
+    {064fa3e9-43d9-4f7a-b0ac-7ec7a25d3927}
+    {7256fdf4-6d34-4c6d-b5dd-8b0e3a8f261f}
+- ID: "58d111ab-b286-42ab-bb35-8daadd6ab480"
+  Hint: SKU
+  Value: L111048
+- ID: "6d624193-14b5-4076-b1d6-b6cac9888298"
+  Hint: Color
+  Value: "{890e6dcc-5f68-43bd-bcbe-8003392c1241}"
+- ID: "74707399-0e90-4a4c-bc13-dde7ec849507"
+  Hint: Image2
+  Value: |
+    <image mediaid="36a8e2df-3611-4790-a512-6478575376b7" />
+- ID: "bf3fd6d5-2930-40a0-9c22-b4fe37f6717f"
+  Hint: Image1
+  Value: |
+    <image mediaid="f29d1923-2a12-43ad-bb78-03a384f3ddd9" alt="lamp" />
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{e3d7e504-1016-405e-9471-49d561d19017}" />
+- ID: "cef30aa1-3383-482a-9e55-9226ee7116bd"
+  Hint: Category
+  Value: "{62567133-1205-4c88-aaa4-2d04e5bf8eae}"
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "3bd99e45-770e-4cdb-b45a-837906ce149d"
+Languages:
+- Language: en
+  Fields:
+  - ID: "30e85e5d-e00a-4864-b358-7624d511deb4"
+    Hint: __Unversioned revision
+    Value: "5a430209-9156-49d7-bd06-42739a578d3f"
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: NexaGlow
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20251117T101042Z
+    - ID: "30b20e46-ce60-4993-a2d3-778a61e77331"
+      Hint: ShortDescription
+      Value: A versatile lamp that adds effortless sophistication, creating a soft ambient light ideal for any room.
+    - ID: "4d1068af-ad2e-485a-8e61-031ea8464425"
+      Hint: Price
+      Value: 136
+    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
+      Hint: NavigationTitle
+      Value: HaloSphere
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\sanduni.galagoda@sitecore.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\sanduni.galagoda@sitecore.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "9516d726-0ed4-4925-acb0-7792aba0162a"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\sanduni.galagoda@sitecore.com
+    - ID: "c97b8c3c-2801-4b14-9bf8-f11ec7ab1d11"
+      Hint: Title
+      Value: NexaGlow
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20251125T142130Z

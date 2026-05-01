@@ -5,6 +5,7 @@ import { CommonParams, CommonRendering } from './common/commonData';
 import { renderStorybookPlaceholder } from './helpers/renderStorybookPlaceholder';
 import { getNavigationFields, logoParam } from './constants/navFields';
 import { ComponentFields } from '@sitecore-content-sdk/nextjs';
+import { createImageField, createLinkField } from './helpers/createFields';
 
 type StoryProps = ComponentProps<typeof Header> & {
   withRoot?: boolean;
@@ -61,6 +62,15 @@ export const WithPlaceholderData: Story = {
             [`header-left-${baseParams.DynamicPlaceholderId}`]: [
               {
                 ...CommonRendering,
+                componentName: 'Image',
+                params: CommonParams,
+                fields: {
+                  Image: createImageField('logo'),
+                  TargetUrl: createLinkField(),
+                },
+              },
+              {
+                ...CommonRendering,
                 componentName: 'LanguageSwitcher',
                 params: CommonParams,
               },
@@ -69,15 +79,37 @@ export const WithPlaceholderData: Story = {
               {
                 ...CommonRendering,
                 componentName: 'Navigation',
-                params: { ...CommonParams, Logo: logoParam },
-                fields: getNavigationFields() as unknown as ComponentFields,
+                params: { ...CommonParams, Logo: logoParam, SimpleLayout: '1' },
+                fields: getNavigationFields({ withRoot: false }) as unknown as ComponentFields,
+              },
+              {
+                ...CommonRendering,
+                componentName: 'LinkList',
+                params: { ...CommonParams, FieldNames: 'SecondaryNavigation' },
+                fields: {
+                  data: {
+                    datasource: {
+                      children: {
+                        results: [
+                          { field: { link: createLinkField('About') } },
+                          { field: { link: createLinkField('Find a Retailer') } },
+                        ],
+                      },
+                    },
+                  },
+                } as unknown as ComponentFields,
               },
             ],
             [`header-right-${baseParams.DynamicPlaceholderId}`]: [
               {
                 ...CommonRendering,
                 componentName: 'NavigationIcons',
-                params: CommonParams,
+                params: {
+                  ...CommonParams,
+                  HideCartIcon: '1',
+                  HideWishlistIcon: '1',
+                  HideAccountIcon: '1',
+                },
               },
             ],
           },

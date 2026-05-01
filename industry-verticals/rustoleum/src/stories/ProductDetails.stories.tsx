@@ -13,9 +13,9 @@ import {
 
 type StoryProps = ComponentProps<typeof ProductDetails> &
   BackgroundColorArgs & {
-    showCompareButton?: boolean;
     showAddToCartButton?: boolean;
-    ShowAddtoWishlistButton?: boolean;
+    showCompareButton?: boolean;
+    showAddToWishlistButton?: boolean;
   };
 
 const meta = {
@@ -32,16 +32,12 @@ const meta = {
       control: { type: 'boolean' },
       defaultValue: true,
     },
-    ShowAddtoWishlistButton: {
-      control: { type: 'boolean' },
-      defaultValue: true,
-    },
   },
   args: {
     ...defaultBackgroundColorArgs,
-    showCompareButton: true,
     showAddToCartButton: true,
-    ShowAddtoWishlistButton: true,
+    showCompareButton: true,
+    showAddToWishlistButton: true,
   },
   parameters: {},
 } satisfies Meta<StoryProps>;
@@ -58,7 +54,6 @@ const baseRendering = {
   componentName: 'Product Details',
   params: baseParams,
   placeholders: {
-    [`product-reviews-${baseParams.DynamicPlaceholderId}`]: [renderStorybookPlaceholder()],
     [`related-products-${baseParams.DynamicPlaceholderId}`]: [renderStorybookPlaceholder()],
   },
 };
@@ -69,9 +64,9 @@ export const Default: Story = {
   render: (args) => {
     const params = {
       ...baseParams,
-      ShowCompareButton: boolToSitecoreCheckbox(args.showCompareButton),
       ShowAddtoCartButton: boolToSitecoreCheckbox(args.showAddToCartButton),
-      ShowAddtoWishlistButton: boolToSitecoreCheckbox(args.ShowAddtoWishlistButton),
+      ShowCompareButton: boolToSitecoreCheckbox(args.showCompareButton),
+      ShowAddtoWishlistButton: boolToSitecoreCheckbox(args.showAddToWishlistButton),
       styles: `${baseParams.styles} ${args.BackgroundColor}`,
     };
 

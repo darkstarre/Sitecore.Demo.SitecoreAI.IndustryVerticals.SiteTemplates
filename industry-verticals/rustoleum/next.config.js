@@ -4,6 +4,16 @@ const path = require('path');
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
+  env: {
+    // Dev default: use /public/brand/rustoleum-logo.png so logo updates show without Edge publish.
+    // Set to 0 to load logo URLs from Edge. Production default is unset → treated as off in client unless set.
+    NEXT_PUBLIC_LOCAL_BRAND_LOGO:
+      process.env.NEXT_PUBLIC_LOCAL_BRAND_LOGO ??
+      (process.env.NODE_ENV !== 'production' ? '1' : '0'),
+  },
+
+  outputFileTracingRoot: path.join(__dirname),
+
   // Allow specifying a distinct distDir when concurrently running app in a container
   distDir: process.env.NEXTJS_DIST_DIR || '.next',
 
@@ -39,17 +49,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'starter-verticals.sitecoresandbox.cloud',
-        port: '',
-      },
-      {
-        protocol: 'https',
         hostname: 'starter-verticals-v2.sitecoresandbox.cloud',
-        port: '',
-      },
-      {
-        protocol: 'https',
-        hostname: 'placehold.co',
         port: '',
       },
     ],

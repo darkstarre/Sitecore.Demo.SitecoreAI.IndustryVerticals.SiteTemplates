@@ -1,5 +1,7 @@
+export type AppLocale = 'en' | 'fr-FR' | 'es-ES';
+
 export type LocaleOption = {
-  code: string;
+  code: AppLocale;
   label: string;
   currency: string;
   currencySymbol: string;

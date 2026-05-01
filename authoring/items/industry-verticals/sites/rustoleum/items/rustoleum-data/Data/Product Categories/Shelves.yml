@@ -1,0 +1,26 @@
+---
+ID: "56c1f5bb-f0d3-4433-ba82-7dcc93347866"
+Parent: "d4af142e-6766-41f5-8034-ebe9fdaee43c"
+Template: "5635eaab-28a6-4783-a10e-c4f9b1b99bba"
+Path: "/sitecore/content/industry-verticals/rustoleum/Data/Product Categories/Shelves"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20251117T140052Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "2343ca49-de2e-433b-a3ad-2e6e82a209e9"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\neli.kostadinova@sitecore.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20251117T140052Z
+    - ID: "fe0c006b-d8ca-442a-943a-566a619d913c"
+      Hint: CategoryName
+      Value: Shelves

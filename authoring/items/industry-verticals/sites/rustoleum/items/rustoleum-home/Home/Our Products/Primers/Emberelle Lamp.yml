@@ -1,0 +1,84 @@
+---
+ID: "faada7ef-e12b-4a9e-84d4-d8398d07a730"
+Parent: "0efe689c-5d7d-4200-92e7-fbf8be00dd18"
+Template: "f6e44a9e-074a-4865-987e-0c2dc00b7af5"
+Path: "/sitecore/content/industry-verticals/rustoleum/Home/Our Products/Primers/Emberelle Lamp"
+SharedFields:
+- ID: "1fbc6a49-6281-48ee-87e9-a3970b145adb"
+  Hint: NavigationFilter
+  Value: "{D063E9D1-C7B5-4B1E-B31E-69886C9C59F5}"
+- ID: "4194f0b1-8aac-49c1-8e93-129877fe4c79"
+  Hint: Tags
+  Value: |
+    {ef4e1364-0ec5-4c0e-8958-10df8c2087b1}
+    {064fa3e9-43d9-4f7a-b0ac-7ec7a25d3927}
+    {1f0ac8d0-6041-43f8-928e-2075e9587057}
+    {24bfa3c4-1cef-4d39-9a8e-d7b2dbcaa616}
+    {47146a7b-0354-4203-b562-60637f3002bc}
+- ID: "58d111ab-b286-42ab-bb35-8daadd6ab480"
+  Hint: SKU
+  Value: L867690
+- ID: "74707399-0e90-4a4c-bc13-dde7ec849507"
+  Hint: Image2
+  Value: |
+    <image mediaid="8caf4298-7a2a-4cc9-95c3-a26b065ea6ab" />
+- ID: "998ad31d-a023-4c69-8654-9b70de07a7f3"
+  Hint: Size
+  Value: |
+    {88d6d1b3-7bd7-4656-ac5d-58b8fb9d8336}
+    {e977f382-1b80-403a-bbae-6f613f84d989}
+- ID: "bf3fd6d5-2930-40a0-9c22-b4fe37f6717f"
+  Hint: Image1
+  Value: |
+    <image mediaid="c0962c2b-04e1-453a-8189-76e38828fb2a" alt="lamp" />
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{2bb795c7-3e44-4f58-a498-d7f1430679c5}" />
+- ID: "cef30aa1-3383-482a-9e55-9226ee7116bd"
+  Hint: Category
+  Value: "{2dcb0369-b693-4154-aea9-b765487d172a}"
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "deccb093-0a39-4e05-a3ab-7352d31e7054"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20251117T113224Z
+    - ID: "30b20e46-ce60-4993-a2d3-778a61e77331"
+      Hint: ShortDescription
+      Value: A clean, versatile design that works effortlessly in any setting, bringing a calm and inviting radiance.
+    - ID: "4d1068af-ad2e-485a-8e61-031ea8464425"
+      Hint: Price
+      Value: 678
+    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
+      Hint: NavigationTitle
+      Value: Emberelle Lamp
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\sanduni.galagoda@sitecore.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\sanduni.galagoda@sitecore.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "ea5b5ed3-1800-4745-819b-91ed8ad2f1cd"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\sanduni.galagoda@sitecore.com
+    - ID: "c97b8c3c-2801-4b14-9bf8-f11ec7ab1d11"
+      Hint: Title
+      Value: Emberelle Lamp
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20251125T141622Z

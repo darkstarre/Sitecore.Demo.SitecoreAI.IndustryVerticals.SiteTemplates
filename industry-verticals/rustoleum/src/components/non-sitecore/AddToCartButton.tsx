@@ -1,4 +1,4 @@
-import { Check, Loader2, X } from 'lucide-react';
+import { Check, Loader2, Plus, X } from 'lucide-react';
 import { useCartAction } from '@/hooks/useCartAction';
 import { Color, Product, Size } from '@/types/products';
 import { useI18n } from 'next-localization';
@@ -27,14 +27,19 @@ export const AddToCartButton = ({
       onClick={() =>
         handleAddToCart(productId, product, selectedQuantity, selectedColor, selectedSize)
       }
-      className="main-btn"
+      className="main-btn w-full"
       aria-label={t('cart_btn_text') || 'Add to Cart'}
       type="button"
     >
-      {status === 'loading' && <Loader2 className="size-7 animate-spin" strokeWidth={3} />}
-      {status === 'success' && <Check className="size-7" strokeWidth={3} />}
-      {status === 'error' && <X className="size-7" strokeWidth={3} />}
-      {status === 'idle' && (t('cart_btn_text') || 'Add to Cart')}
+      {status === 'loading' && <Loader2 className="size-6 animate-spin" />}
+      {status === 'success' && <Check className="size-6" />}
+      {status === 'error' && <X className="size-6" />}
+      {status === 'idle' && (
+        <>
+          <Plus className="size-5" />
+          {t('cart_btn_text') || 'Add to Cart'}
+        </>
+      )}
     </button>
   );
 };

@@ -37,55 +37,55 @@ export const Default = (props: OfferProps) => {
       <div className={`component offers ${styles}`} id={id}>
         [OFFERS]
       </div>
-    ) : (
-      <></>
-    );
+    ) : null;
   }
 
   return (
     <div className={`component offers ${styles}`} id={id}>
-      <div className="mx-auto flex w-full max-w-3xl items-center justify-center gap-5 p-2">
-        <button
-          className={`swiper-btn-prev-${uid}`}
-          name="previous-offer"
-          aria-label="Previous offer"
-        >
-          <ChevronLeft />
-        </button>
+      <div className="container flex justify-center px-4 py-2 md:justify-end md:px-0">
+        <div className="text-accent flex w-full max-w-md items-center gap-3 text-sm lg:max-w-2xl lg:text-base">
+          <button
+            className={`swiper-btn-prev-${uid}`}
+            name="previous-offer"
+            aria-label="Previous offer"
+          >
+            <ChevronLeft />
+          </button>
 
-        <Swiper
-          modules={[Navigation, Autoplay]}
-          navigation={{
-            prevEl: `.swiper-btn-prev-${uid}`,
-            nextEl: `.swiper-btn-next-${uid}`,
-            disabledClass: 'pointer-events-none opacity-50',
-          }}
-          slidesPerView={1}
-          centeredSlides
-          noSwiping
-          noSwipingClass="no-swiping"
-          loop={true}
-          autoplay={
-            autoPlay
-              ? {
-                  delay: autoPlayDelay,
-                  pauseOnMouseEnter: true,
-                }
-              : false
-          }
-          autoHeight
-          className="mx-0! w-full transition-all"
-        >
-          {datasource.map((offer) => (
-            <SwiperSlide key={offer.id} className="no-swiping text-center">
-              <Text field={offer.fields.OfferText} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+          <Swiper
+            modules={[Navigation, Autoplay]}
+            navigation={{
+              prevEl: `.swiper-btn-prev-${uid}`,
+              nextEl: `.swiper-btn-next-${uid}`,
+              disabledClass: 'pointer-events-none opacity-50',
+            }}
+            slidesPerView={1}
+            centeredSlides
+            noSwiping
+            noSwipingClass="no-swiping"
+            loop={true}
+            autoplay={
+              autoPlay
+                ? {
+                    delay: autoPlayDelay,
+                    pauseOnMouseEnter: true,
+                  }
+                : false
+            }
+            autoHeight
+            className="w-full text-center transition-all"
+          >
+            {datasource.map((offer) => (
+              <SwiperSlide key={offer.id} className="no-swiping">
+                <Text field={offer.fields.OfferText} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
 
-        <button className={`swiper-btn-next-${uid}`} name="next-offer" aria-label="Next offer">
-          <ChevronRight />
-        </button>
+          <button className={`swiper-btn-next-${uid}`} name="next-offer" aria-label="Next offer">
+            <ChevronRight />
+          </button>
+        </div>
       </div>
     </div>
   );

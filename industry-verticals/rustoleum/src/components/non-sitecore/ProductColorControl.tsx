@@ -14,21 +14,22 @@ export const ProductColorControl = ({
   if (!colors.length) return null;
 
   return (
-    <div className="flex gap-3">
-      {colors.map((color) => (
-        <button
-          aria-label="Select Color"
-          key={color.id}
-          onClick={() => onSelect(color)}
-          className={`size-8 rounded-full border-2 transition-all ${
-            selectedColor?.id === color.id
-              ? 'ring-accent ring-2 ring-offset-2'
-              : 'border-muted hover:ring-accent/50'
-          }`}
-          title={color.fields?.Name?.value}
-          style={{ backgroundColor: color.fields?.HexCode?.value }}
-        />
-      ))}
+    <div className="flex items-center justify-between">
+      <div className="flex gap-3">
+        {colors.map((color) => (
+          <button
+            aria-label="Select Color"
+            key={color.id}
+            onClick={() => onSelect(color)}
+            className={`size-8 rounded-full transition-all ${
+              selectedColor?.id === color.id ? 'ring-accent ring ring-offset-2' : ''
+            }`}
+            title={color.fields?.Name?.value}
+            style={{ backgroundColor: color.fields?.HexCode?.value }}
+          />
+        ))}
+      </div>
+      <p className="text-foreground-light text-sm">{selectedColor?.fields.Name.value}</p>
     </div>
   );
 };

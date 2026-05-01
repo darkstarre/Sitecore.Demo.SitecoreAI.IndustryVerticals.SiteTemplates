@@ -1,4 +1,4 @@
-import { createPlaceholderImageSrc, createTextField } from '../helpers/createFields';
+import { createTextField } from '../helpers/createFields';
 
 export const createNavItem = (text: string) => {
   return {
@@ -25,68 +25,80 @@ export const navRoot = {
   Styles: ['level0', 'submenu', 'item0', 'odd', 'first', 'last', 'active'],
 };
 
+/* Rust-Oleum-style primary navigation (mirrors live site structure) */
 export const topLevelPages = [
   {
-    ...createNavItem('Furniture'),
+    ...createNavItem('Our Products'),
     Styles: ['level1', 'item0', 'odd', 'first'],
-  },
-  {
-    ...createNavItem('Decor'),
-    Styles: ['level1', 'item1', 'even'],
-  },
-  {
-    ...createNavItem('About us'),
-    Styles: ['level1', 'item1', 'even'],
     Children: [
       {
-        ...createNavItem('Our story'),
+        ...createNavItem('Paints, Stains & Sealers'),
         Styles: ['level2', 'item0', 'odd', 'first'],
       },
       {
-        ...createNavItem('Our team'),
+        ...createNavItem('Primers'),
         Styles: ['level2', 'item1', 'even'],
       },
       {
-        ...createNavItem('Careers'),
-        Styles: ['level2', 'item2', 'odd', 'last'],
+        ...createNavItem('Cleaners'),
+        Styles: ['level2', 'item2', 'odd'],
+      },
+      {
+        ...createNavItem('Professionals'),
+        Styles: ['level2', 'item3', 'even'],
+      },
+      {
+        ...createNavItem('Automotive'),
+        Styles: ['level2', 'item4', 'odd'],
+      },
+      {
+        ...createNavItem('Abrasives'),
+        Styles: ['level2', 'item5', 'even'],
+      },
+      {
+        ...createNavItem('Browse by Brands'),
+        Styles: ['level2', 'item6', 'odd', 'last'],
       },
     ],
   },
   {
-    ...createNavItem('Contact'),
-    Styles: ['level1', 'submenu', 'item2', 'odd', 'last'],
+    ...createNavItem('Professional Solutions'),
+    Styles: ['level1', 'item1', 'even'],
+  },
+  {
+    ...createNavItem('Inspiration'),
+    Styles: ['level1', 'item2', 'odd'],
+  },
+  {
+    ...createNavItem('Resource Center'),
+    Styles: ['level1', 'item3', 'even'],
+  },
+  {
+    ...createNavItem('About'),
+    Styles: ['level1', 'item4', 'odd', 'last'],
   },
 ];
 
 export const flatTopLevelPages = [
   {
-    ...createNavItem('Furniture'),
+    ...createNavItem('Our Products'),
     Styles: ['level0', 'item0', 'odd', 'first', 'flat-level1'],
   },
   {
-    ...createNavItem('Decor'),
+    ...createNavItem('Professional Solutions'),
     Styles: ['level0', 'item1', 'even', 'flat-level1'],
   },
   {
-    ...createNavItem('About us'),
-    Styles: ['level0', 'item1', 'even', 'flat-level1'],
+    ...createNavItem('Inspiration'),
+    Styles: ['level0', 'item2', 'odd', 'flat-level1'],
   },
   {
-    ...createNavItem('Our story'),
-    Styles: ['level0', 'item0', 'odd', 'first', 'flat-level2'],
+    ...createNavItem('Resource Center'),
+    Styles: ['level0', 'item3', 'even', 'flat-level1'],
   },
   {
-    ...createNavItem('Our team'),
-    Styles: ['level0', 'item1', 'even', 'flat-level2'],
-  },
-  {
-    ...createNavItem('Careers'),
-    Styles: ['level0', 'item2', 'odd', 'last', 'flat-level2'],
-  },
-
-  {
-    ...createNavItem('Contact'),
-    Styles: ['level0', 'submenu', 'item2', 'odd', 'last', 'flat-level1'],
+    ...createNavItem('About'),
+    Styles: ['level0', 'item4', 'odd', 'last', 'flat-level1'],
   },
 ];
 
@@ -107,4 +119,5 @@ export const getNavigationFields = (options?: { withRoot?: boolean; flat?: boole
   return arrayToObject(pages);
 };
 
-export const logoParam = `<image mediaid="8cc2a449-e23b-488c-bb23-3d7c7a07f6e7" mediaurl="${createPlaceholderImageSrc(true)}" />`;
+/** Matches CM `Logo` media item; `mediaurl` supports Storybook / disconnected dev. */
+export const logoParam = `<image mediaid="8f822ad5-3603-4a41-9fb7-41869da2ef4c" mediaurl="/brand/rustoleum-logo.png" alt="Rust-Oleum" />`;

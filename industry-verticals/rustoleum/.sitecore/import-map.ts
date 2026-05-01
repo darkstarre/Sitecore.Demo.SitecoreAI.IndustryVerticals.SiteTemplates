@@ -7,89 +7,58 @@ import {
 } from '@sitecore-content-sdk/nextjs/codegen';
 // end of built-in imports
 
-import { Link, Text, useSitecore, RichText, NextImage, Placeholder, Image as Image_8a80e63291fea86e0744df19113dc44bec187216, CdpHelper, withDatasourceCheck, DateField } from '@sitecore-content-sdk/nextjs';
-import { useMemo, useRef, useState, useEffect, useId, useCallback } from 'react';
+import { Link, Text, useSitecore, RichText, NextImage, Image, Placeholder, CdpHelper, withDatasourceCheck } from '@sitecore-content-sdk/nextjs';
+import { useMemo, useId, useEffect, useState, useRef, useCallback } from 'react';
 import React from 'react';
+import * as React_7214d18997ee864dd178de7b3a8430f6783e8b89 from 'react';
 import Head from 'next/head';
 import { useI18n } from 'next-localization';
 import { faFacebookF, faInstagram, faLinkedin, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon, YoutubeIcon } from '@/assets/icons/social/social';
-import { isParamEnabled } from '@/helpers/isParamEnabled';
-import AccentLine from '@/assets/icons/accent-line/AccentLine';
-import ProductCarousel from 'src/components/non-sitecore/ProductCarousel';
-import { CommonStyles, LayoutStyles, PromoFlags, HeroBannerStyles } from '@/types/styleFlags';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation, A11y, Keyboard } from 'swiper/modules';
-import { ArrowRight, ChevronLeft, ChevronRight, ChevronDown, Heart, Plus, Star, User, X, Check, Loader2, LoaderCircle, ShoppingCart, Search, Globe, MoreHorizontal, Home } from 'lucide-react';
+import { A11y, Keyboard, Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { ChevronLeft, ChevronRight, ArrowRight, Loader2, Check, Heart, Plus, Star, X, User, ShoppingCart, ArrowLeft, Globe, Menu, MoreHorizontal, Home } from 'lucide-react';
+import { ProductCard } from 'src/components/non-sitecore/ProductCard';
 import Link_a258c208ba01265ca0aa9c7abae745cc7141aa63 from 'next/link';
-import { cn } from '@/shadcn/lib/utils';
-import { useSearchParams, useRouter, usePathname } from 'next/navigation';
-import QuestionsAnswers from 'src/components/non-sitecore/search/QuestionsAnswers';
-import SearchResultsWidget from 'src/components/non-sitecore/search/SearchResultsComponent';
-import { SEARCH_WIDGET_ID, HIGHLIGHTED_ARTICLES_RFKID, DEFAULT_IMG_URL, PREVIEW_WIDGET_ID, HOMEHIGHLIGHTED_WIDGET_ID } from '@/constants/search';
-import CarouselButton from 'src/components/non-sitecore/CarouselButton';
-import ReviewCard from 'src/components/non-sitecore/ReviewCard';
-import clsx from 'clsx';
-import { Quote } from '@/assets/icons/quote/Quote';
-import { usePagination } from '@/hooks/usePagination';
-import { ProductCard } from '@/components/non-sitecore/ProductCard';
-import { Pagination as Pagination_25a2ac6977db7c44c4c657d8bc0b397259e5032a } from 'src/components/non-sitecore/Pagination';
-import { calculateAverageRatingFromIGQL, calculateAverageRating } from '@/helpers/productUtils';
-import { ProductTabs } from 'src/components/non-sitecore/ProductTabs';
+import BlobAccent from '@/assets/shapes/BlobAccent';
+import { CommonStyles } from '@/types/styleFlags';
+import InfiniteScroll from '@/shadcn/components/ui/infiniteScroll';
+import { ProductCard as ProductCard_f5c29266c91cfe4f66c8f4e91c1fad0bbbe159f9 } from '@/components/non-sitecore/ProductCard';
+import { isParamEnabled } from '@/helpers/isParamEnabled';
 import QuantityControl from 'src/components/non-sitecore/QuantityControl';
-import { AddToCartButton } from 'src/components/non-sitecore/AddToCartButton';
 import { ProductGallery } from 'src/components/non-sitecore/ProductGallery';
 import { ProductMetaDetals } from 'src/components/non-sitecore/ProductMetaDetails';
-import { ProductDescription } from 'src/components/non-sitecore/ProductDescription';
 import { ProductSizeControl } from 'src/components/non-sitecore/ProductSizeControl';
 import { ProductColorControl } from 'src/components/non-sitecore/ProductColorControl';
-import { EmailIcon, EmailShareButton, FacebookIcon as FacebookIcon_9cb8204ac12fcef03c9ff3e4b02fa570c6e7630c, FacebookShareButton, LinkedinIcon as LinkedinIcon_9cb8204ac12fcef03c9ff3e4b02fa570c6e7630c, LinkedinShareButton, PinterestIcon, PinterestShareButton, TwitterIcon as TwitterIcon_9cb8204ac12fcef03c9ff3e4b02fa570c6e7630c, TwitterShareButton } from 'react-share';
-import StarRating from 'src/components/non-sitecore/StarRating';
-import { ProductReviews } from 'src/components/non-sitecore/ProductReviews';
-import SocialShare from 'src/components/non-sitecore/SocialShare';
+import { AddToCartButton } from 'src/components/non-sitecore/AddToCartButton';
 import { useLocale } from '@/hooks/useLocaleOptions';
-import { ProductCard as ProductCard_1c3beebee643aa9e58bfc4ec64964849bfb9dc1b } from 'src/components/non-sitecore/ProductCard';
-import { getCart } from '@/lib/cart';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/shadcn/components/ui/accordion';
+import { ParentPathLink } from 'src/components/non-sitecore/ParentPathLink';
+import { ProductReviews } from 'src/components/non-sitecore/ProductReviews';
+import StarRating from 'src/components/non-sitecore/StarRating';
+import CarouselButton from 'src/components/non-sitecore/CarouselButton';
+import { calculateAverageRating } from '@/helpers/productUtils';
+import { usePathname } from 'next/navigation';
 import { useCartAction } from '@/hooks/useCartAction';
-import { PopoverClose } from '@radix-ui/react-popover';
+import { getCart } from '@/lib/cart';
+import { DrawerClose, Drawer, DrawerContent, DrawerTrigger } from '@/shadcn/components/ui/drawer';
 import ShortArrow from '@/assets/icons/arrow-short/ArrowShort';
-import { usePreviewSearchActions, useSearchResultsActions, WidgetDataType, useSearchResults, widget, useQuestions, usePreviewSearch, FilterEqual } from '@sitecore-search/react';
-import { PreviewSearch, SortSelect, Pagination as Pagination_b6c381477cbf12fc0dc4f9aeb9e8e41e943b6ea7, AccordionFacets, FacetItem, RangeFacet, SearchResultsAccordionFacets, SearchResultsFacetValueRange, Select, ArticleCard, CardViewSwitcher as CardViewSwitcher_b6c381477cbf12fc0dc4f9aeb9e8e41e943b6ea7 } from '@sitecore-search/ui';
-import { GridIcon, ListBulletIcon, CheckIcon, ChevronDownIcon } from '@radix-ui/react-icons';
-import HomeHighlighted from 'src/components/non-sitecore/search/HomeHighlighted';
-import Spinner from 'src/components/non-sitecore/search/Spinner';
-import ArticleItemCard from 'src/components/non-sitecore/search/ArticleCard';
-import SortOrder from 'src/components/non-sitecore/search/SortOrder';
-import ArticleHorizontalItemCard from 'src/components/non-sitecore/search/ArticleHorizontalCard';
-import SearchPagination from 'src/components/non-sitecore/search/SearchPagination';
-import SearchFacets from 'src/components/non-sitecore/search/SearchFacets';
-import ResultsPerPage from 'src/components/non-sitecore/search/ResultsPerPage';
-import QueryResultsSummary from 'src/components/non-sitecore/search/QueryResultsSummary';
-import CardViewSwitcher from 'src/components/non-sitecore/search/CardViewSwitcher';
-import { useSearchTracking } from '@/hooks/useSearchTracking';
-import { Accordion, Content, Header, Item, Trigger } from '@radix-ui/react-accordion';
-import Image from 'next/image';
-import SuggestionBlock from 'src/components/non-sitecore/search/SuggestionBlock';
-import { Popover, PopoverContent, PopoverTrigger } from '@/shadcn/components/ui/popover';
 import { MiniCart } from 'src/components/non-sitecore/MiniCart';
-import PreviewSearch_938f3b0320996fc3fe6ab3d953daf2e708e085ca from 'src/components/non-sitecore/search/PreviewSearch';
-import HamburgerIcon from '@/components/non-sitecore/HamburgerIcon';
 import { useClickAway } from '@/hooks/useClickAway';
 import { useStopResponsiveTransition } from '@/hooks/useStopResponsiveTransition';
-import { extractMediaUrl } from '@/helpers/extractMediaUrl';
+import { resolveNavLogoSrc, RUSTOLEUM_BRAND_LOGO_PATH } from '@/lib/rustoleumBrandLogo';
 import { getLinkContent, getLinkField, isNavLevel, isNavRootItem, prepareFields } from '@/helpers/navHelpers';
-import { useRouter as useRouter_0e8a928699f624a3ad05eb9c9906b0e7ce1a00be } from 'next/router';
-import { Select as Select_4a7098778d43a9b4dcd5871ec48ea51b5a246850, SelectContent, SelectItem, SelectTrigger, SelectValue } from 'src/shadcn/components/ui/select';
+import clsx from 'clsx';
+import { useRouter } from 'next/router';
 import { localeOptions } from '@/constants/localeOptions';
-import { generateIndexes } from '@/helpers/generateIndexes';
 import client from 'lib/sitecore-client';
+import Image_5d8ce56058442d94361877e28c501c951a554a6a from 'next/image';
 import * as FEAAS from '@sitecore-feaas/clientside/react';
 import nextConfig from 'next.config';
 import { pageView } from '@sitecore-cloudsdk/events/browser';
 import config from 'sitecore.config';
-import { faUser, faCalendar, faTag } from '@fortawesome/free-solid-svg-icons';
-import { sortByDateDesc, getCategoryCounts } from '@/helpers/articleUtils';
+import { extractMediaUrl } from '@/helpers/extractMediaUrl';
+import ProductCarousel from 'src/components/non-sitecore/ProductCarousel';
 
 const importMap = [
   {
@@ -100,23 +69,23 @@ const importMap = [
       { name: 'useSitecore', value: useSitecore },
       { name: 'RichText', value: RichText },
       { name: 'NextImage', value: NextImage },
+      { name: 'Image', value: Image },
       { name: 'Placeholder', value: Placeholder },
-      { name: 'Image', value: Image_8a80e63291fea86e0744df19113dc44bec187216 },
       { name: 'CdpHelper', value: CdpHelper },
       { name: 'withDatasourceCheck', value: withDatasourceCheck },
-      { name: 'DateField', value: DateField },
     ]
   },
   {
     module: 'react',
     exports: [
       { name: 'useMemo', value: useMemo },
-      { name: 'useRef', value: useRef },
-      { name: 'useState', value: useState },
-      { name: 'useEffect', value: useEffect },
       { name: 'useId', value: useId },
+      { name: 'useEffect', value: useEffect },
+      { name: 'useState', value: useState },
+      { name: 'useRef', value: useRef },
       { name: 'useCallback', value: useCallback },
       { name: 'default', value: React },
+      { name: '*', value: React_7214d18997ee864dd178de7b3a8430f6783e8b89 },
     ]
   },
   {
@@ -148,43 +117,6 @@ const importMap = [
     ]
   },
   {
-    module: '@/assets/icons/social/social',
-    exports: [
-      { name: 'FacebookIcon', value: FacebookIcon },
-      { name: 'InstagramIcon', value: InstagramIcon },
-      { name: 'LinkedinIcon', value: LinkedinIcon },
-      { name: 'TwitterIcon', value: TwitterIcon },
-      { name: 'YoutubeIcon', value: YoutubeIcon },
-    ]
-  },
-  {
-    module: '@/helpers/isParamEnabled',
-    exports: [
-      { name: 'isParamEnabled', value: isParamEnabled },
-    ]
-  },
-  {
-    module: '@/assets/icons/accent-line/AccentLine',
-    exports: [
-      { name: 'default', value: AccentLine },
-    ]
-  },
-  {
-    module: 'src/components/non-sitecore/ProductCarousel',
-    exports: [
-      { name: 'default', value: ProductCarousel },
-    ]
-  },
-  {
-    module: '@/types/styleFlags',
-    exports: [
-      { name: 'CommonStyles', value: CommonStyles },
-      { name: 'LayoutStyles', value: LayoutStyles },
-      { name: 'PromoFlags', value: PromoFlags },
-      { name: 'HeroBannerStyles', value: HeroBannerStyles },
-    ]
-  },
-  {
     module: 'swiper/react',
     exports: [
       { name: 'Swiper', value: Swiper },
@@ -194,33 +126,38 @@ const importMap = [
   {
     module: 'swiper/modules',
     exports: [
-      { name: 'Autoplay', value: Autoplay },
-      { name: 'Pagination', value: Pagination },
-      { name: 'Navigation', value: Navigation },
       { name: 'A11y', value: A11y },
       { name: 'Keyboard', value: Keyboard },
+      { name: 'Navigation', value: Navigation },
+      { name: 'Pagination', value: Pagination },
+      { name: 'Autoplay', value: Autoplay },
     ]
   },
   {
     module: 'lucide-react',
     exports: [
-      { name: 'ArrowRight', value: ArrowRight },
       { name: 'ChevronLeft', value: ChevronLeft },
       { name: 'ChevronRight', value: ChevronRight },
-      { name: 'ChevronDown', value: ChevronDown },
+      { name: 'ArrowRight', value: ArrowRight },
+      { name: 'Loader2', value: Loader2 },
+      { name: 'Check', value: Check },
       { name: 'Heart', value: Heart },
       { name: 'Plus', value: Plus },
       { name: 'Star', value: Star },
-      { name: 'User', value: User },
       { name: 'X', value: X },
-      { name: 'Check', value: Check },
-      { name: 'Loader2', value: Loader2 },
-      { name: 'LoaderCircle', value: LoaderCircle },
+      { name: 'User', value: User },
       { name: 'ShoppingCart', value: ShoppingCart },
-      { name: 'Search', value: Search },
+      { name: 'ArrowLeft', value: ArrowLeft },
       { name: 'Globe', value: Globe },
+      { name: 'Menu', value: Menu },
       { name: 'MoreHorizontal', value: MoreHorizontal },
       { name: 'Home', value: Home },
+    ]
+  },
+  {
+    module: 'src/components/non-sitecore/ProductCard',
+    exports: [
+      { name: 'ProductCard', value: ProductCard },
     ]
   },
   {
@@ -230,106 +167,39 @@ const importMap = [
     ]
   },
   {
-    module: '@/shadcn/lib/utils',
+    module: '@/assets/shapes/BlobAccent',
     exports: [
-      { name: 'cn', value: cn },
+      { name: 'default', value: BlobAccent },
     ]
   },
   {
-    module: 'next/navigation',
+    module: '@/types/styleFlags',
     exports: [
-      { name: 'useSearchParams', value: useSearchParams },
-      { name: 'useRouter', value: useRouter },
-      { name: 'usePathname', value: usePathname },
+      { name: 'CommonStyles', value: CommonStyles },
     ]
   },
   {
-    module: 'src/components/non-sitecore/search/QuestionsAnswers',
+    module: '@/shadcn/components/ui/infiniteScroll',
     exports: [
-      { name: 'default', value: QuestionsAnswers },
-    ]
-  },
-  {
-    module: 'src/components/non-sitecore/search/SearchResultsComponent',
-    exports: [
-      { name: 'default', value: SearchResultsWidget },
-    ]
-  },
-  {
-    module: '@/constants/search',
-    exports: [
-      { name: 'SEARCH_WIDGET_ID', value: SEARCH_WIDGET_ID },
-      { name: 'HIGHLIGHTED_ARTICLES_RFKID', value: HIGHLIGHTED_ARTICLES_RFKID },
-      { name: 'DEFAULT_IMG_URL', value: DEFAULT_IMG_URL },
-      { name: 'PREVIEW_WIDGET_ID', value: PREVIEW_WIDGET_ID },
-      { name: 'HOMEHIGHLIGHTED_WIDGET_ID', value: HOMEHIGHLIGHTED_WIDGET_ID },
-    ]
-  },
-  {
-    module: 'src/components/non-sitecore/CarouselButton',
-    exports: [
-      { name: 'default', value: CarouselButton },
-    ]
-  },
-  {
-    module: 'src/components/non-sitecore/ReviewCard',
-    exports: [
-      { name: 'default', value: ReviewCard },
-    ]
-  },
-  {
-    module: 'clsx',
-    exports: [
-      { name: 'default', value: clsx },
-    ]
-  },
-  {
-    module: '@/assets/icons/quote/Quote',
-    exports: [
-      { name: 'Quote', value: Quote },
-    ]
-  },
-  {
-    module: '@/hooks/usePagination',
-    exports: [
-      { name: 'usePagination', value: usePagination },
+      { name: 'default', value: InfiniteScroll },
     ]
   },
   {
     module: '@/components/non-sitecore/ProductCard',
     exports: [
-      { name: 'ProductCard', value: ProductCard },
+      { name: 'ProductCard', value: ProductCard_f5c29266c91cfe4f66c8f4e91c1fad0bbbe159f9 },
     ]
   },
   {
-    module: 'src/components/non-sitecore/Pagination',
+    module: '@/helpers/isParamEnabled',
     exports: [
-      { name: 'Pagination', value: Pagination_25a2ac6977db7c44c4c657d8bc0b397259e5032a },
-    ]
-  },
-  {
-    module: '@/helpers/productUtils',
-    exports: [
-      { name: 'calculateAverageRatingFromIGQL', value: calculateAverageRatingFromIGQL },
-      { name: 'calculateAverageRating', value: calculateAverageRating },
-    ]
-  },
-  {
-    module: 'src/components/non-sitecore/ProductTabs',
-    exports: [
-      { name: 'ProductTabs', value: ProductTabs },
+      { name: 'isParamEnabled', value: isParamEnabled },
     ]
   },
   {
     module: 'src/components/non-sitecore/QuantityControl',
     exports: [
       { name: 'default', value: QuantityControl },
-    ]
-  },
-  {
-    module: 'src/components/non-sitecore/AddToCartButton',
-    exports: [
-      { name: 'AddToCartButton', value: AddToCartButton },
     ]
   },
   {
@@ -345,12 +215,6 @@ const importMap = [
     ]
   },
   {
-    module: 'src/components/non-sitecore/ProductDescription',
-    exports: [
-      { name: 'ProductDescription', value: ProductDescription },
-    ]
-  },
-  {
     module: 'src/components/non-sitecore/ProductSizeControl',
     exports: [
       { name: 'ProductSizeControl', value: ProductSizeControl },
@@ -363,36 +227,9 @@ const importMap = [
     ]
   },
   {
-    module: 'react-share',
+    module: 'src/components/non-sitecore/AddToCartButton',
     exports: [
-      { name: 'EmailIcon', value: EmailIcon },
-      { name: 'EmailShareButton', value: EmailShareButton },
-      { name: 'FacebookIcon', value: FacebookIcon_9cb8204ac12fcef03c9ff3e4b02fa570c6e7630c },
-      { name: 'FacebookShareButton', value: FacebookShareButton },
-      { name: 'LinkedinIcon', value: LinkedinIcon_9cb8204ac12fcef03c9ff3e4b02fa570c6e7630c },
-      { name: 'LinkedinShareButton', value: LinkedinShareButton },
-      { name: 'PinterestIcon', value: PinterestIcon },
-      { name: 'PinterestShareButton', value: PinterestShareButton },
-      { name: 'TwitterIcon', value: TwitterIcon_9cb8204ac12fcef03c9ff3e4b02fa570c6e7630c },
-      { name: 'TwitterShareButton', value: TwitterShareButton },
-    ]
-  },
-  {
-    module: 'src/components/non-sitecore/StarRating',
-    exports: [
-      { name: 'default', value: StarRating },
-    ]
-  },
-  {
-    module: 'src/components/non-sitecore/ProductReviews',
-    exports: [
-      { name: 'ProductReviews', value: ProductReviews },
-    ]
-  },
-  {
-    module: 'src/components/non-sitecore/SocialShare',
-    exports: [
-      { name: 'default', value: SocialShare },
+      { name: 'AddToCartButton', value: AddToCartButton },
     ]
   },
   {
@@ -402,15 +239,48 @@ const importMap = [
     ]
   },
   {
-    module: 'src/components/non-sitecore/ProductCard',
+    module: '@/shadcn/components/ui/accordion',
     exports: [
-      { name: 'ProductCard', value: ProductCard_1c3beebee643aa9e58bfc4ec64964849bfb9dc1b },
+      { name: 'Accordion', value: Accordion },
+      { name: 'AccordionContent', value: AccordionContent },
+      { name: 'AccordionItem', value: AccordionItem },
+      { name: 'AccordionTrigger', value: AccordionTrigger },
     ]
   },
   {
-    module: '@/lib/cart',
+    module: 'src/components/non-sitecore/ParentPathLink',
     exports: [
-      { name: 'getCart', value: getCart },
+      { name: 'ParentPathLink', value: ParentPathLink },
+    ]
+  },
+  {
+    module: 'src/components/non-sitecore/ProductReviews',
+    exports: [
+      { name: 'ProductReviews', value: ProductReviews },
+    ]
+  },
+  {
+    module: 'src/components/non-sitecore/StarRating',
+    exports: [
+      { name: 'default', value: StarRating },
+    ]
+  },
+  {
+    module: 'src/components/non-sitecore/CarouselButton',
+    exports: [
+      { name: 'default', value: CarouselButton },
+    ]
+  },
+  {
+    module: '@/helpers/productUtils',
+    exports: [
+      { name: 'calculateAverageRating', value: calculateAverageRating },
+    ]
+  },
+  {
+    module: 'next/navigation',
+    exports: [
+      { name: 'usePathname', value: usePathname },
     ]
   },
   {
@@ -420,9 +290,18 @@ const importMap = [
     ]
   },
   {
-    module: '@radix-ui/react-popover',
+    module: '@/lib/cart',
     exports: [
-      { name: 'PopoverClose', value: PopoverClose },
+      { name: 'getCart', value: getCart },
+    ]
+  },
+  {
+    module: '@/shadcn/components/ui/drawer',
+    exports: [
+      { name: 'DrawerClose', value: DrawerClose },
+      { name: 'Drawer', value: Drawer },
+      { name: 'DrawerContent', value: DrawerContent },
+      { name: 'DrawerTrigger', value: DrawerTrigger },
     ]
   },
   {
@@ -432,155 +311,9 @@ const importMap = [
     ]
   },
   {
-    module: '@sitecore-search/react',
-    exports: [
-      { name: 'usePreviewSearchActions', value: usePreviewSearchActions },
-      { name: 'useSearchResultsActions', value: useSearchResultsActions },
-      { name: 'WidgetDataType', value: WidgetDataType },
-      { name: 'useSearchResults', value: useSearchResults },
-      { name: 'widget', value: widget },
-      { name: 'useQuestions', value: useQuestions },
-      { name: 'usePreviewSearch', value: usePreviewSearch },
-      { name: 'FilterEqual', value: FilterEqual },
-    ]
-  },
-  {
-    module: '@sitecore-search/ui',
-    exports: [
-      { name: 'PreviewSearch', value: PreviewSearch },
-      { name: 'SortSelect', value: SortSelect },
-      { name: 'Pagination', value: Pagination_b6c381477cbf12fc0dc4f9aeb9e8e41e943b6ea7 },
-      { name: 'AccordionFacets', value: AccordionFacets },
-      { name: 'FacetItem', value: FacetItem },
-      { name: 'RangeFacet', value: RangeFacet },
-      { name: 'SearchResultsAccordionFacets', value: SearchResultsAccordionFacets },
-      { name: 'SearchResultsFacetValueRange', value: SearchResultsFacetValueRange },
-      { name: 'Select', value: Select },
-      { name: 'ArticleCard', value: ArticleCard },
-      { name: 'CardViewSwitcher', value: CardViewSwitcher_b6c381477cbf12fc0dc4f9aeb9e8e41e943b6ea7 },
-    ]
-  },
-  {
-    module: '@radix-ui/react-icons',
-    exports: [
-      { name: 'GridIcon', value: GridIcon },
-      { name: 'ListBulletIcon', value: ListBulletIcon },
-      { name: 'CheckIcon', value: CheckIcon },
-      { name: 'ChevronDownIcon', value: ChevronDownIcon },
-    ]
-  },
-  {
-    module: 'src/components/non-sitecore/search/HomeHighlighted',
-    exports: [
-      { name: 'default', value: HomeHighlighted },
-    ]
-  },
-  {
-    module: 'src/components/non-sitecore/search/Spinner',
-    exports: [
-      { name: 'default', value: Spinner },
-    ]
-  },
-  {
-    module: 'src/components/non-sitecore/search/ArticleCard',
-    exports: [
-      { name: 'default', value: ArticleItemCard },
-    ]
-  },
-  {
-    module: 'src/components/non-sitecore/search/SortOrder',
-    exports: [
-      { name: 'default', value: SortOrder },
-    ]
-  },
-  {
-    module: 'src/components/non-sitecore/search/ArticleHorizontalCard',
-    exports: [
-      { name: 'default', value: ArticleHorizontalItemCard },
-    ]
-  },
-  {
-    module: 'src/components/non-sitecore/search/SearchPagination',
-    exports: [
-      { name: 'default', value: SearchPagination },
-    ]
-  },
-  {
-    module: 'src/components/non-sitecore/search/SearchFacets',
-    exports: [
-      { name: 'default', value: SearchFacets },
-    ]
-  },
-  {
-    module: 'src/components/non-sitecore/search/ResultsPerPage',
-    exports: [
-      { name: 'default', value: ResultsPerPage },
-    ]
-  },
-  {
-    module: 'src/components/non-sitecore/search/QueryResultsSummary',
-    exports: [
-      { name: 'default', value: QueryResultsSummary },
-    ]
-  },
-  {
-    module: 'src/components/non-sitecore/search/CardViewSwitcher',
-    exports: [
-      { name: 'default', value: CardViewSwitcher },
-    ]
-  },
-  {
-    module: '@/hooks/useSearchTracking',
-    exports: [
-      { name: 'useSearchTracking', value: useSearchTracking },
-    ]
-  },
-  {
-    module: '@radix-ui/react-accordion',
-    exports: [
-      { name: 'Accordion', value: Accordion },
-      { name: 'Content', value: Content },
-      { name: 'Header', value: Header },
-      { name: 'Item', value: Item },
-      { name: 'Trigger', value: Trigger },
-    ]
-  },
-  {
-    module: 'next/image',
-    exports: [
-      { name: 'default', value: Image },
-    ]
-  },
-  {
-    module: 'src/components/non-sitecore/search/SuggestionBlock',
-    exports: [
-      { name: 'default', value: SuggestionBlock },
-    ]
-  },
-  {
-    module: '@/shadcn/components/ui/popover',
-    exports: [
-      { name: 'Popover', value: Popover },
-      { name: 'PopoverContent', value: PopoverContent },
-      { name: 'PopoverTrigger', value: PopoverTrigger },
-    ]
-  },
-  {
     module: 'src/components/non-sitecore/MiniCart',
     exports: [
       { name: 'MiniCart', value: MiniCart },
-    ]
-  },
-  {
-    module: 'src/components/non-sitecore/search/PreviewSearch',
-    exports: [
-      { name: 'default', value: PreviewSearch_938f3b0320996fc3fe6ab3d953daf2e708e085ca },
-    ]
-  },
-  {
-    module: '@/components/non-sitecore/HamburgerIcon',
-    exports: [
-      { name: 'default', value: HamburgerIcon },
     ]
   },
   {
@@ -596,9 +329,10 @@ const importMap = [
     ]
   },
   {
-    module: '@/helpers/extractMediaUrl',
+    module: '@/lib/rustoleumBrandLogo',
     exports: [
-      { name: 'extractMediaUrl', value: extractMediaUrl },
+      { name: 'resolveNavLogoSrc', value: resolveNavLogoSrc },
+      { name: 'RUSTOLEUM_BRAND_LOGO_PATH', value: RUSTOLEUM_BRAND_LOGO_PATH },
     ]
   },
   {
@@ -612,19 +346,15 @@ const importMap = [
     ]
   },
   {
-    module: 'next/router',
+    module: 'clsx',
     exports: [
-      { name: 'useRouter', value: useRouter_0e8a928699f624a3ad05eb9c9906b0e7ce1a00be },
+      { name: 'default', value: clsx },
     ]
   },
   {
-    module: 'src/shadcn/components/ui/select',
+    module: 'next/router',
     exports: [
-      { name: 'Select', value: Select_4a7098778d43a9b4dcd5871ec48ea51b5a246850 },
-      { name: 'SelectContent', value: SelectContent },
-      { name: 'SelectItem', value: SelectItem },
-      { name: 'SelectTrigger', value: SelectTrigger },
-      { name: 'SelectValue', value: SelectValue },
+      { name: 'useRouter', value: useRouter },
     ]
   },
   {
@@ -634,15 +364,15 @@ const importMap = [
     ]
   },
   {
-    module: '@/helpers/generateIndexes',
-    exports: [
-      { name: 'generateIndexes', value: generateIndexes },
-    ]
-  },
-  {
     module: 'lib/sitecore-client',
     exports: [
       { name: 'default', value: client },
+    ]
+  },
+  {
+    module: 'next/image',
+    exports: [
+      { name: 'default', value: Image_5d8ce56058442d94361877e28c501c951a554a6a },
     ]
   },
   {
@@ -670,18 +400,15 @@ const importMap = [
     ]
   },
   {
-    module: '@fortawesome/free-solid-svg-icons',
+    module: '@/helpers/extractMediaUrl',
     exports: [
-      { name: 'faUser', value: faUser },
-      { name: 'faCalendar', value: faCalendar },
-      { name: 'faTag', value: faTag },
+      { name: 'extractMediaUrl', value: extractMediaUrl },
     ]
   },
   {
-    module: '@/helpers/articleUtils',
+    module: 'src/components/non-sitecore/ProductCarousel',
     exports: [
-      { name: 'sortByDateDesc', value: sortByDateDesc },
-      { name: 'getCategoryCounts', value: getCategoryCounts },
+      { name: 'default', value: ProductCarousel },
     ]
   }
 ] as ImportEntry[];

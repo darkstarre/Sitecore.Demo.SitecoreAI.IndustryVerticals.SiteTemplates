@@ -1,0 +1,74 @@
+---
+ID: "b3de3b37-39ca-40b3-823d-0fda594eba8e"
+Parent: "1afa6687-b14c-4871-ac34-04af79decc43"
+Template: "f6e44a9e-074a-4865-987e-0c2dc00b7af5"
+Path: "/sitecore/content/industry-verticals/rustoleum/Home/Our Products/Paints Stains and Sealers/Haven Dining Table"
+SharedFields:
+- ID: "1fbc6a49-6281-48ee-87e9-a3970b145adb"
+  Hint: NavigationFilter
+  Value: "{D063E9D1-C7B5-4B1E-B31E-69886C9C59F5}"
+- ID: "4194f0b1-8aac-49c1-8e93-129877fe4c79"
+  Hint: Tags
+  Value: |
+    {3cf32a3b-478b-4496-8a1c-fd03488cb2d2}
+    {ef4e1364-0ec5-4c0e-8958-10df8c2087b1}
+    {2a07ca6b-240a-4b24-b6ae-1fde22902cf9}
+    {fc62435d-296b-405e-bde8-54538bbb358b}
+- ID: "58d111ab-b286-42ab-bb35-8daadd6ab480"
+  Hint: SKU
+  Value: HVNDT
+- ID: "74707399-0e90-4a4c-bc13-dde7ec849507"
+  Hint: Image2
+  Value: |
+    <Image src="https://starter-verticals-v2.sitecoresandbox.cloud/api/public/content/78260-HomePageHero-2000x800?v=bc6e18da" dam-id="w6PHAbaxSGawemNaK6LYaA" width="2000" height="800" alt="dining_table_2.jpg" dam-content-type="Image" thumbnailsrc="https://starter-verticals-v2.sitecoresandbox.cloud/api/gateway/78260/thumbnail" />
+- ID: "bf3fd6d5-2930-40a0-9c22-b4fe37f6717f"
+  Hint: Image1
+  Value: |
+    <Image src="https://starter-verticals-v2.sitecoresandbox.cloud/api/public/content/78264-HomePageHero-2000x800?v=0d2bf19c" dam-id="7u-eKMbrRz-yxfEOcvvveg" width="2000" height="800" alt="dining_table_3.jpg" dam-content-type="Image" thumbnailsrc="https://starter-verticals-v2.sitecoresandbox.cloud/api/gateway/78264/thumbnail" />
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{9ec20732-fa96-47bb-918e-d789103b50d1}" />
+- ID: "cef30aa1-3383-482a-9e55-9226ee7116bd"
+  Hint: Category
+  Value: "{6e328e7c-196a-4661-8368-f36e9c959fc8}"
+- ID: "d9c8ae87-80fc-460b-9140-3db7358b1c8e"
+  Hint: Image3
+  Value: |
+    <Image src="https://starter-verticals-v2.sitecoresandbox.cloud/api/public/content/78262-HomePageHero-2000x800?v=5b6b8cd4" dam-id="U0PyTHZdRVaDMa_QO2m6lg" width="2000" height="800" alt="dining_table_1.jpg" dam-content-type="Image" thumbnailsrc="https://starter-verticals-v2.sitecoresandbox.cloud/api/gateway/78262/thumbnail" />
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "2d85b90e-36c5-4072-bf96-d41914402983"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20251117T114721Z
+    - ID: "30b20e46-ce60-4993-a2d3-778a61e77331"
+      Hint: ShortDescription
+      Value: "The Haven Dining Table blends natural craftsmanship with modern elegance. Its solid oak top features soft, flowing curves that soften the rectangular form, while rounded dowel-style legs add a subtle sculptural touch. Warm, tactile wood and refined proportions make it a centerpiece that invites gathering and conversation."
+    - ID: "4d1068af-ad2e-485a-8e61-031ea8464425"
+      Hint: Price
+      Value: 2189
+    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
+      Hint: NavigationTitle
+      Value: Haven Dining Table
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "5190e963-e9a1-458b-b43c-5093ba7d784f"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\ranula.gamage@sitecore.com
+    - ID: "c97b8c3c-2801-4b14-9bf8-f11ec7ab1d11"
+      Hint: Title
+      Value: Haven Dining Table
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260129T105818Z

@@ -28,7 +28,6 @@ const redirects = new RedirectsMiddleware({
   ...scConfig.api.edge,
   ...scConfig.redirects,
   // This function determines if the middleware should be turned off on per-request basis.
-  // Certain paths are ignored by default (e.g. Next.js API routes), but you may wish to disable more.
   // By default it is disabled while in development mode.
   // This is an important performance consideration since Next.js Edge middleware runs on every request.
   skip: () => false,
@@ -42,7 +41,6 @@ const personalize = new PersonalizeMiddleware({
   ...scConfig.api.edge,
   ...scConfig.personalize,
   // This function determines if the middleware should be turned off on per-request basis.
-  // Certain paths are ignored by default (e.g. Next.js API routes), but you may wish to disable more.
   // By default it is disabled while in development mode.
   // This is an important performance consideration since Next.js Edge middleware runs on every request.
   skip: () => false,
