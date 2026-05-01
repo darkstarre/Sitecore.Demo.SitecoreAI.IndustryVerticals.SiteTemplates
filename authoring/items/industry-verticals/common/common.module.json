@@ -280,7 +280,7 @@
         "path": "/sitecore/content/industry-verticals/rustoleum",
         "rules": [
           {
-            "path": "/Home",
+            "path": "/home",
             "scope": "SingleItem",
             "allowedPushOperations": "CreateOnly"
           },
