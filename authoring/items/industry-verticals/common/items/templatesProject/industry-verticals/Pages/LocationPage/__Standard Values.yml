@@ -1,4 +1,4 @@
----
+﻿---
 ID: "544a4ae9-f357-464e-9cc7-6a528a31fef0"
 Parent: "a00094dd-19f5-4478-afbe-3ffc0eb03db6"
 Template: "a00094dd-19f5-4478-afbe-3ffc0eb03db6"
@@ -15,6 +15,3 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20260415T180800Z
-    - ID: "c676100c-bb5a-4ad0-a2e9-e73fd0168708"
-      Hint: Title
-      Value: $name

@@ -34,10 +34,10 @@ SharedFields:
   Value: *
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "c53f94d4-a24f-490f-b858-855acbad7643"
+  Value: "355f6300-2ba6-4a79-9322-1649d8d2677a"
 - ID: "f57099a3-526a-49f2-aebd-635453e48875"
   Hint: RenderingHost
-  Value: "luxury-retail"
+  Value: retail
 - ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
   Hint: __Originator
   Value: "{23E42340-77BE-49FC-A7C4-77D3CB545223}"
@@ -59,11 +59,11 @@ Languages:
         sitecore\neli.kostadinova@sitecore.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5b9e0a91-a940-445e-a4e6-2b6b8b64e93a"
+      Value: "df1f3eae-bce8-4f15-9e4b-1905ea04e1de"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\neli.kostadinova@sitecore.com
+        sitecore\megan.chavez@sitecore.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20251111T120910Z
+      Value: 20260315T062810Z

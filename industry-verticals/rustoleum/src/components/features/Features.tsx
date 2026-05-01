@@ -12,13 +12,13 @@ import AccentLine from '@/assets/icons/accent-line/AccentLine';
 import { CommonStyles } from '@/types/styleFlags';
 
 interface Fields {
-  data: {
-    datasource: {
-      children: {
-        results: Feature[];
+  data?: {
+    datasource?: {
+      children?: {
+        results?: Feature[];
       };
-      title: IGQLTextField;
-    };
+      title?: IGQLTextField;
+    } | null;
   };
 }
 
@@ -40,6 +40,10 @@ type FeatureWrapperProps = {
   children: React.ReactNode;
 };
 
+function getFeatureResults(props: FeaturesProps): Feature[] {
+  return props.fields?.data?.datasource?.children?.results ?? [];
+}
+
 const FeatureWrapper = (wrapperProps: FeatureWrapperProps) => {
   // rendering item id
   const id = wrapperProps.props.params.RenderingIdentifier;
@@ -52,19 +56,22 @@ const FeatureWrapper = (wrapperProps: FeatureWrapperProps) => {
 };
 
 export const Default = (props: FeaturesProps) => {
-  // results of the graphql
-  const results = props.fields.data.datasource.children.results;
+  const results = getFeatureResults(props);
   const hideAccentLine = props.params.styles?.includes(CommonStyles.HideAccentLine);
-  const featureSectionTitle = props.fields.data.datasource.title;
+  const featureSectionTitle = props.fields?.data?.datasource?.title;
+
+  const hasTitle = Boolean(featureSectionTitle?.jsonValue?.value);
 
   return (
     <FeatureWrapper props={props}>
       <div className="container grid grid-cols-1 py-20 lg:grid-cols-[1fr_2fr] lg:gap-10">
         <div className="mb-20 lg:mb-0">
-          <h2 className="inline-block max-w-md font-bold max-lg:text-[42px]">
-            <Text field={featureSectionTitle.jsonValue} />
-            {!hideAccentLine && <AccentLine className="w-full max-w-xs" />}
-          </h2>
+          {hasTitle && featureSectionTitle?.jsonValue ? (
+            <h2 className="inline-block max-w-md font-bold max-lg:text-[42px]">
+              <Text field={featureSectionTitle.jsonValue} />
+              {!hideAccentLine && <AccentLine className="w-full max-w-xs" />}
+            </h2>
+          ) : null}
         </div>
         <div className="grid grid-cols-1 gap-16 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
           {results.map((item, index) => {
@@ -93,8 +100,7 @@ export const Default = (props: FeaturesProps) => {
 };
 
 export const ImageGrid = (props: FeaturesProps) => {
-  // results of the graphql
-  const results = props.fields.data.datasource.children.results;
+  const results = getFeatureResults(props);
 
   return (
     <FeatureWrapper props={props}>
@@ -113,8 +119,7 @@ export const ImageGrid = (props: FeaturesProps) => {
 };
 
 export const ThreeColGridCentered = (props: FeaturesProps) => {
-  // results of the graphql
-  const results = props.fields.data.datasource.children.results;
+  const results = getFeatureResults(props);
 
   return (
     <FeatureWrapper props={props}>
@@ -147,8 +152,7 @@ export const ThreeColGridCentered = (props: FeaturesProps) => {
 };
 
 export const NumberedGrid = (props: FeaturesProps) => {
-  // results of the graphql
-  const results = props.fields.data.datasource.children.results;
+  const results = getFeatureResults(props);
 
   return (
     <FeatureWrapper props={props}>
@@ -183,8 +187,7 @@ export const NumberedGrid = (props: FeaturesProps) => {
 };
 
 export const FourColGrid = (props: FeaturesProps) => {
-  // results of the graphql
-  const results = props.fields.data.datasource.children.results;
+  const results = getFeatureResults(props);
 
   return (
     <FeatureWrapper props={props}>
@@ -217,7 +220,7 @@ export const FourColGrid = (props: FeaturesProps) => {
 };
 
 export const ImageCardGrid = (props: FeaturesProps) => {
-  const results = props.fields.data.datasource.children.results;
+  const results = getFeatureResults(props);
 
   return (
     <FeatureWrapper props={props}>

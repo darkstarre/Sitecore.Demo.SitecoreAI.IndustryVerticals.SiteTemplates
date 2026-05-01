@@ -5,7 +5,7 @@
   "items": {
     "includes": [
       {
-        "name": "rustoleum-media",
+        "name": "retail-media",
         "path": "/sitecore/Media Library/Project/industry-verticals/rustoleum",
         "scope": "DescendantsOnly",
         "allowedPushOperations": "CreateUpdateAndDelete"

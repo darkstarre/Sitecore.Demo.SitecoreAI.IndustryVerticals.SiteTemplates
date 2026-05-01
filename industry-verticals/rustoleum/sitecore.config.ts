@@ -19,7 +19,7 @@ export default defineConfig({
       apiHost: process.env.NEXT_PUBLIC_SITECORE_API_HOST || '',
     },
   },
-  defaultSite: process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME,
+  defaultSite: process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME || 'rustoleum',
   defaultLanguage: process.env.NEXT_PUBLIC_DEFAULT_LANGUAGE || 'en',
   editingSecret: process.env.SITECORE_EDITING_SECRET,
   redirects: {
@@ -32,7 +32,7 @@ export default defineConfig({
   },
   personalize: {
     scope: process.env.NEXT_PUBLIC_PERSONALIZE_SCOPE,
-    edgeTimeout: parseInt(process.env.PERSONALIZE_MIDDLEWARE_EDGE_TIMEOUT!, 10),
-    cdpTimeout: parseInt(process.env.PERSONALIZE_MIDDLEWARE_EDGE_TIMEOUT!, 10),
+    edgeTimeout: parseInt(process.env.PERSONALIZE_MIDDLEWARE_EDGE_TIMEOUT || '4000', 10),
+    cdpTimeout: parseInt(process.env.PERSONALIZE_MIDDLEWARE_EDGE_TIMEOUT || '4000', 10),
   },
 });

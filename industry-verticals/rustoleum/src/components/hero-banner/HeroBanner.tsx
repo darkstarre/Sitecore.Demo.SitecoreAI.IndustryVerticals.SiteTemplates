@@ -37,6 +37,7 @@ const HeroBannerCommon = ({
   const { styles, RenderingIdentifier: id } = params;
   const isPageEditing = page.mode.isEditing;
   const hideGradientOverlay = styles?.includes(HeroBannerStyles.HideGradientOverlay);
+  const hasBackgroundMedia = Boolean(fields?.Image?.value?.src || fields?.Video?.value?.src);
 
   if (!fields) {
     return isPageEditing ? (
@@ -51,7 +52,9 @@ const HeroBannerCommon = ({
   return (
     <div className={`component hero-banner ${styles} relative flex items-center`} id={id}>
       {/* Background Media */}
-      <div className="absolute inset-0 z-0">
+      <div
+        className={`absolute inset-0 z-0 ${!hasBackgroundMedia && !isPageEditing ? 'bg-muted' : ''}`}
+      >
         {!isPageEditing && fields?.Video?.value?.src ? (
           <video
             className="h-full w-full object-cover"
@@ -84,12 +87,16 @@ const HeroBannerCommon = ({
 };
 
 export const Default = ({ params, fields, rendering }: HeroBannerProps) => {
+  const { page } = useSitecore();
+  const isPageEditing = page.mode.isEditing;
   const styles = params.styles || '';
   const hideAccentLine = styles.includes(CommonStyles.HideAccentLine);
   const withPlaceholder = styles.includes(HeroBannerStyles.WithPlaceholder);
   const reverseLayout = styles.includes(LayoutStyles.Reversed);
   const screenLayer = styles.includes(HeroBannerStyles.ScreenLayer);
   const searchBarPlaceholderKey = `hero-banner-search-bar-${params.DynamicPlaceholderId}`;
+  const showAccentLineDecor =
+    !hideAccentLine && (isPageEditing || Boolean(fields?.Title?.value));
 
   return (
     <HeroBannerCommon params={params} fields={fields} rendering={rendering}>
@@ -104,7 +111,7 @@ export const Default = ({ params, fields, rendering }: HeroBannerProps) => {
                 {/* Title */}
                 <h1 className="text-center text-5xl leading-[110%] font-bold capitalize md:text-7xl md:leading-[130%] lg:text-left xl:text-[80px]">
                   <ContentSdkText field={fields.Title} />
-                  {!hideAccentLine && <AccentLine className="mx-auto !h-5 w-[9ch] lg:mx-0" />}
+                  {showAccentLineDecor && <AccentLine className="mx-auto !h-5 w-[9ch] lg:mx-0" />}
                 </h1>
 
                 {/* Description */}
@@ -133,12 +140,16 @@ export const Default = ({ params, fields, rendering }: HeroBannerProps) => {
 };
 
 export const TopContent = ({ params, fields, rendering }: HeroBannerProps) => {
+  const { page } = useSitecore();
+  const isPageEditing = page.mode.isEditing;
   const styles = params.styles || '';
   const hideAccentLine = styles.includes(CommonStyles.HideAccentLine);
   const withPlaceholder = styles.includes(HeroBannerStyles.WithPlaceholder);
   const reverseLayout = styles.includes(LayoutStyles.Reversed);
   const screenLayer = styles.includes(HeroBannerStyles.ScreenLayer);
   const searchBarPlaceholderKey = `hero-banner-search-bar-${params.DynamicPlaceholderId}`;
+  const showAccentLineDecor =
+    !hideAccentLine && (isPageEditing || Boolean(fields?.Title?.value));
 
   return (
     <HeroBannerCommon params={params} fields={fields} rendering={rendering}>
@@ -152,7 +163,7 @@ export const TopContent = ({ params, fields, rendering }: HeroBannerProps) => {
               {/* Title */}
               <h1 className="text-center text-5xl leading-[110%] font-bold capitalize md:text-7xl md:leading-[130%] xl:text-[80px]">
                 <ContentSdkText field={fields.Title} />
-                {!hideAccentLine && <AccentLine className="mx-auto !h-5 w-[9ch]" />}
+                {showAccentLineDecor && <AccentLine className="mx-auto !h-5 w-[9ch]" />}
               </h1>
 
               {/* Description */}
