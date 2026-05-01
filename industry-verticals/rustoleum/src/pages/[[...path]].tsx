@@ -1,6 +1,6 @@
 import { useEffect, JSX } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import sites from '.sitecore/sites.json';
+import { RUSTOLEUM_CONTENT_SITE_NAME } from 'src/constants/site';
 import NotFound from 'src/NotFound';
 import Layout from 'src/Layout';
 import {
@@ -8,7 +8,6 @@ import {
   ComponentPropsContext,
   SitecorePageProps,
   StaticPath,
-  SiteInfo,
 } from '@sitecore-content-sdk/nextjs';
 import { extractPath, handleEditorFastRefresh } from '@sitecore-content-sdk/nextjs/utils';
 import { isDesignLibraryPreviewData } from '@sitecore-content-sdk/nextjs/editing';
@@ -39,23 +38,12 @@ const SitecorePage = ({ page, notFound, componentProps }: SitecorePageProps): JS
 // This function gets called at build and export time to determine
 // pages for SSG ("paths", as tokenized array).
 export const getStaticPaths: GetStaticPaths = async (context) => {
-  // Fallback, along with revalidate in getStaticProps (below),
-  // enables Incremental Static Regeneration. This allows us to
-  // leave certain (or all) paths empty if desired and static pages
-  // will be generated on request (development mode in this example).
-  // Alternatively, the entire sitemap could be pre-rendered
-  // ahead of time (non-development mode in this example).
-  // See https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration
-
   let paths: StaticPath[] = [];
   let fallback: boolean | 'blocking' = 'blocking';
 
   if (process.env.NODE_ENV !== 'development' && scConfig.generateStaticPaths) {
     try {
-      paths = await client.getPagePaths(
-        sites.map((site: SiteInfo) => site.name),
-        context?.locales || []
-      );
+      paths = await client.getPagePaths([RUSTOLEUM_CONTENT_SITE_NAME], context?.locales || []);
     } catch (error) {
       console.log('Error occurred while fetching static paths');
       console.log(error);
@@ -83,13 +71,16 @@ export const getStaticProps: GetStaticProps = async (context) => {
   } else {
     page = context.preview
       ? await client.getPreview(context.previewData)
-      : await client.getPage(path, { locale: context.locale });
+      : await client.getPage(path, {
+          locale: context.locale,
+          site: RUSTOLEUM_CONTENT_SITE_NAME,
+        });
   }
   if (page) {
     props = {
       page,
       dictionary: await client.getDictionary({
-        site: page.siteName,
+        site: RUSTOLEUM_CONTENT_SITE_NAME,
         locale: page.locale,
       }),
       componentProps: await client.getComponentData(page.layout, context, components),
