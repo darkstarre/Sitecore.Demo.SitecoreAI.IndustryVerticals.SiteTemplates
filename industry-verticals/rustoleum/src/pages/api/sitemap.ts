@@ -1,6 +1,6 @@
 import { SitemapMiddleware } from '@sitecore-content-sdk/nextjs/middleware';
 import scClient from 'lib/sitecore-client';
-import sites from '.sitecore/sites.json';
+import { sitesForMiddleware } from 'lib/app-sites';
 
 /**
  * API route for generating sitemap.xml
@@ -10,6 +10,6 @@ import sites from '.sitecore/sites.json';
  */
 
 // Wire up the SitemapMiddleware handler
-const handler = new SitemapMiddleware(scClient, sites).getHandler();
+const handler = new SitemapMiddleware(scClient, sitesForMiddleware).getHandler();
 
 export default handler;
