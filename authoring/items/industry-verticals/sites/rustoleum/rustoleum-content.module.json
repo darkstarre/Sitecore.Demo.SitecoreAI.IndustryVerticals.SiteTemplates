@@ -6,7 +6,7 @@
     "includes": [
       {
         "name": "rustoleum-home",
-        "path": "/sitecore/content/industry-verticals/rustoleum/home",
+        "path": "/sitecore/content/industry-verticals/rustoleum/Home",
         "scope": "DescendantsOnly",
         "allowedPushOperations": "CreateAndUpdate"
       },
