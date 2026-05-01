@@ -4,8 +4,6 @@
 
 Retail demo site (same app template as luxury-retail / Essential Living), with its own Sitecore content tree under `rustoleum`.
 
-**Content Editor vs Sites:** There is a single headless site: technical **SiteName** `rustoleum` (see Site Grouping under the content tree), display name **Rust-Oleum**. XM Cloud **Rendering Host** `rustoleum` is the Next.js host—not a second site. If the site picker shows two identical entries, one is usually a duplicate Site Grouping item or a stray site created in CM; keep one child under `Settings/Site Grouping` with `SiteName` `rustoleum` and remove the other.
-
 ## Developer Expectations:
 
 - Tailwind-based styling (Shadcn)
