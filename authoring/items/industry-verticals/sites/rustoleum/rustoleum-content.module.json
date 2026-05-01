@@ -5,62 +5,8 @@
   "items": {
     "includes": [
       {
-        "name": "rustoleum-site-root",
-        "path": "/sitecore/content/industry-verticals/rustoleum",
-        "scope": "SingleItem",
-        "allowedPushOperations": "CreateAndUpdate"
-      },
-      {
-        "name": "rustoleum-home-root",
-        "path": "/sitecore/content/industry-verticals/rustoleum/Home",
-        "scope": "SingleItem",
-        "allowedPushOperations": "CreateAndUpdate"
-      },
-      {
-        "name": "rustoleum-data-root",
-        "path": "/sitecore/content/industry-verticals/rustoleum/Data",
-        "scope": "SingleItem",
-        "allowedPushOperations": "CreateAndUpdate"
-      },
-      {
-        "name": "rustoleum-media-root",
-        "path": "/sitecore/content/industry-verticals/rustoleum/Media",
-        "scope": "SingleItem",
-        "allowedPushOperations": "CreateAndUpdate"
-      },
-      {
-        "name": "rustoleum-dictionary-root",
-        "path": "/sitecore/content/industry-verticals/rustoleum/Dictionary",
-        "scope": "SingleItem",
-        "allowedPushOperations": "CreateAndUpdate"
-      },
-      {
-        "name": "rustoleum-presentation-root",
-        "path": "/sitecore/content/industry-verticals/rustoleum/Presentation",
-        "scope": "SingleItem",
-        "allowedPushOperations": "CreateAndUpdate"
-      },
-      {
-        "name": "rustoleum-settings-root",
-        "path": "/sitecore/content/industry-verticals/rustoleum/Settings",
-        "scope": "SingleItem",
-        "allowedPushOperations": "CreateAndUpdate"
-      },
-      {
-        "name": "rustoleum-site-grouping-root",
-        "path": "/sitecore/content/industry-verticals/rustoleum/Settings/Site Grouping",
-        "scope": "SingleItem",
-        "allowedPushOperations": "CreateAndUpdate"
-      },
-      {
-        "name": "rustoleum-site-grouping-item",
-        "path": "/sitecore/content/industry-verticals/rustoleum/Settings/Site Grouping/rustoleum",
-        "scope": "SingleItem",
-        "allowedPushOperations": "CreateAndUpdate"
-      },
-      {
         "name": "site-home",
-        "path": "/sitecore/content/industry-verticals/rustoleum/Home",
+        "path": "/sitecore/content/industry-verticals/rustoleum/home",
         "scope": "DescendantsOnly",
         "allowedPushOperations": "CreateAndUpdate"
       },
